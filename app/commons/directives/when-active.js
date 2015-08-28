@@ -21,7 +21,7 @@ function whenActiveLinkFunction($location) {
 			  scope.$on('$stateChangeSuccess', function () {
 		        
 		            var loc = "#"+$location.path(),
-		            	href = element.attr('href'),
+		            	href = (element.attr('ui-sref'))?element.attr('ui-sref'):(element.attr('href'))?element.attr('href'):'',
 		            	state = href.indexOf(loc),
 		            	substate = -1;
 

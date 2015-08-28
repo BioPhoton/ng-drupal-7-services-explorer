@@ -28,6 +28,10 @@
 	 				<label for="get_variable__name">Name</label>
 	    			<input type="text" class="form-control" id="get_variable__name" placeholder="Variable name" ng-model="system.getVariableData.name">
 	    		</div>
+	    		<div class="form-group">
+	 				<label for="get_variable__default">Default</label>
+	    			<input type="text" class="form-control" id="get_variable__default" placeholder="Variable default" ng-model="system.getVariableData.default">
+	    		</div>
 			    <button class="button button-small" ng-click="system.doGetVariable()">get_variable request</button>
 			</form>
 			

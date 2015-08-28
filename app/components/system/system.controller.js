@@ -3,44 +3,51 @@
 
 
 angular
-    .module('ngDrupalServicesTests.system.controller', ['SystemResourceModules'])
+    .module('ngDrupalServicesTests.system.controller', ['ngDrupal7Services-3_x.resources.system.resource', 'ngDrupal7Services-3_x.resources.system.channel'])
     .controller('SystemController', SystemController);
 
 
 /** @ngInject */
-function SystemController($scope, SystemResourceChannel, SystemResource) { 
-	/* jshint validthis: true */
-	var vm = this;
-	
-	vm.isCollapsed = false;
+function SystemController($scope, SystemChannel, SystemResource) { 
 	
 	var requestEnd = 0;
 	var requestStart = 0;
-	   
+	
+	/* jshint validthis: true */
+	var vm = this;
+
 	/*connect request*/
+	
 	//store requests
 	vm.connectRequests = [];
 	//test request
 	vm.doConncet = doConncet;
 	//test the connect on confirm event
-	SystemResourceChannel.onSystemConnectConfirmed($scope, onSystemConnectConfirmedCallback);
+	SystemChannel.onSystemConnectConfirmed($scope, onSystemConnectConfirmedCallback);
 	//test the connect on failed event
-    SystemResourceChannel.onSystemConnectFailed($scope, onSystemConnectFailedCallback);
+    SystemChannel.onSystemConnectFailed($scope, onSystemConnectFailedCallback);
+    
+    //__________________________________________________________________________________________________
     
     /*get_variable request*/
-	//store requests
+	
+    //store requests
 	vm.getVariableRequests = [];
 	//test request
 	vm.doGetVariable = doGetVariable;
 	vm.getVariableData = {
-			   name : ''
+			   name : '',
+			   default : ''
 	};
 	//test the connect on confirm event
-	SystemResourceChannel.onSystemGetVariableConfirmed($scope, onSystemGetVariableConfirmedCallback);
+	SystemChannel.onSystemGetVariableConfirmed($scope, onSystemGetVariableConfirmedCallback);
 	//test the connect on failed event
-	SystemResourceChannel.onSystemGetVariableFailed($scope, onSystemGetVariableFailedCallback);
-	
+	SystemChannel.onSystemGetVariableFailed($scope, onSystemGetVariableFailedCallback);
+
+    //__________________________________________________________________________________________________
+    
 	/*set_variable request*/
+	
 	//store requests
 	vm.setVariableRequests = [];
 	//test request
@@ -50,10 +57,28 @@ function SystemController($scope, SystemResourceChannel, SystemResource) {
 			   value 	: ''
 	};
 	//test the connect on confirm event
-	SystemResourceChannel.onSystemSetVariableConfirmed($scope, onSystemSetVariableConfirmedCallback);
+	SystemChannel.onSystemSetVariableConfirmed($scope, onSystemSetVariableConfirmedCallback);
 	//test the connect on failed event
-	SystemResourceChannel.onSystemSetVariableFailed($scope, onSystemSetVariableFailedCallback);
+	SystemChannel.onSystemSetVariableFailed($scope, onSystemSetVariableFailedCallback);
+
+    //__________________________________________________________________________________________________
 	
+	/*del_variable request*/
+	
+	//store requests
+	vm.delVariableRequests = [];
+	//test request
+	vm.doDelVariable = doDelVariable;
+	vm.delVariableData = {
+			   name 	: ''
+	};
+	//test the connect on confirm event
+	SystemChannel.onSystemDelVariableConfirmed($scope, onSystemDelVariableConfirmedCallback);
+	//test the connect on failed event
+	SystemChannel.onSystemDelVariableFailed($scope, onSystemDelVariableFailedCallback);
+
+    //__________________________________________________________________________________________________
+    
 	///////////////////////
 	
     /*connect request*/
@@ -82,12 +107,14 @@ function SystemController($scope, SystemResourceChannel, SystemResource) {
 		vm.connectRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 	}
 	
+	//_____________________________________________________________________________________________________________________________________________
+	
 	/*get_variable request*/
 	
 	//do request
 	function doGetVariable() {
 		requestStart = Date.now();
-			SystemResource.get_variable(vm.getVariableData.name)
+			SystemResource.get_variable(vm.getVariableData)
 				.then(
 			    	//get_variable success
 			    	function(data) { console.log('system get_variable success'); },
@@ -108,6 +135,8 @@ function SystemController($scope, SystemResourceChannel, SystemResource) {
 	   vm.getVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
    };
 	
+   //_____________________________________________________________________________________________________________________________________________
+   
    /*set_variable request*/
 	
 	//do request
@@ -134,77 +163,38 @@ function SystemController($scope, SystemResourceChannel, SystemResource) {
 	   vm.setVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 	};
 	   
+	//_____________________________________________________________________________________________________________________________________________
 	  
-	   /*
-	   //set_variable
-	   $scope.systemSetVariableRequests = [];
-	   $scope.setVariableData = {
-			   name 	: '',
-			   value 	: '',
-	   };
-	   $scope.callSystemRecourceSetVariable = function() {
-		   		requestStart = Date.now();
-				SystemResource.set_variable($scope.setVariableData.name, $scope.setVariableData.value)
-			    .then(
-			    		//set_variable success
-				    	function(data) { console.log('system set_variable success'); },
-				    	//set_variable error
-				    	function(data) { console.log('system set_variable error'); }
-			    );
-	   };
-	   //
-	   SystemResourceChannel.onSystemSetVariableConfirmed($scope, function(data) { 
-		   requestEnd = Date.now();
-		   $scope.systemSetVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
-	   });
-	 
-	   SystemResourceChannel.onSystemSetVariableFailed($scope, function(data) { 
-		   requestEnd = Date.now();
-		   $scope.systemSetVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
-	   });
-	   
-	   //del variable
-	   $scope.systemDelVariableRequests = [];
-	   $scope.delVariableData = {
-			   name : ''
-	   };
-	   $scope.callSystemRecourceDelVariable = function() {
-		   
-		   	requestStart = Date.now();
-			SystemResource.del_variable($scope.delVariableData.name)
-		    .then(
-		    		//set_variable success
+	/*del_variable request*/
+	
+	//do request
+	function doDelVariable() {
+		requestStart = Date.now();
+			SystemResource.del_variable(vm.delVariableData)
+				.then(
+			    	//get_variable success
 			    	function(data) { console.log('system del_variable success'); },
-			    	//set_variable error
+			    	//get_variable error
 			    	function(data) { console.log('system del_variable error'); }
-		    );
-	   };
-	   //
-	   SystemResourceChannel.onSystemDelVariableConfirmed($scope, function(data) { 
-		   requestEnd = Date.now();
-		   $scope.systemDelVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
-	   });
-	 
-	   SystemResourceChannel.onSystemDelVariableFailed($scope, function(data) { 
-		   requestEnd = Date.now();
-		   $scope.systemDelVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
-	   });
-	*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			    );
+	};
+	//confirm callback
+	function onSystemDelVariableConfirmedCallback(data) { 
+	   requestEnd = Date.now();
+	   console.log('onSystemDelVariableConfirmed'); 
+	   vm.delVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+	};
+	//failed callback
+	function onSystemDelVariableFailedCallback(data) { 
+	   requestEnd = Date.now();
+	   console.log('onSystemDelVariableFailed');
+	   vm.delVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+	};
+	   
+	//_____________________________________________________________________________________________________________________________________________
 
 };
 
-SystemController.$inject = ['$scope', 'SystemResourceChannel', 'SystemResource'];
+SystemController.$inject = ['$scope', 'SystemChannel', 'SystemResource'];
 
 })();

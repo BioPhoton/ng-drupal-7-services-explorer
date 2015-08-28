@@ -3,14 +3,15 @@
 
 
 angular
-    .module('ngDrupalServicesTests.home.controller', [])
+    .module('ngDrupalServicesTests.home.controller', ['ngDrupal7Services-3_x.resources.system.resource', 'ngDrupal7Services-3_x.resources.system.channel'])
     .controller('HomeController', HomeController);
 
 
 /** @ngInject */
-function HomeController($scope) { 
+function HomeController($scope,SystemResourceConstant, SystemResource, SystemChannel) { 
 	/* jshint validthis: true */
 	var vm = this;
+	console.log(SystemResource); 
 	
 	vm.isCollapsed = false;
 	vm.doStuff = doStuff;
@@ -23,6 +24,6 @@ function HomeController($scope) {
 
 };
 
-HomeController.$inject = ['$scope'];
+HomeController.$inject = ['$scope', 'SystemResourceConstant','SystemResource', 'SystemChannel', ];
 
 })();
