@@ -1,6 +1,10 @@
 # ng-drupal-services-tests-with-ng
  Tests for Angular Headless Drupal setup with services
 
+#TODO
+implement user resource
+implement auth
+
 #Development
 
 ##Project settings:
