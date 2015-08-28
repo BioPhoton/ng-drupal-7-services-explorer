@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="This is a project for testing the ng-drupal-7-services repo in github">
+    <meta name="author" content="Michael Hladky">
+
+    <title>Headless Drupal tests</title>
+
+    <!-- compiled css -->
+    <link href="./assets/css/app.css" rel="stylesheet">
+    
+    <!-- js dependencies -->
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+ 	
+    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    
+    <script src="./app/commons/directives/when-active.js"></script>
+    
+    <script src="./bower_components/ng-drupal-ionic/lib/common/drupalApiConfig.js"></script>
+    <script src="./bower_components/ng-drupal-ionic/lib/resources/systemResource.js"></script>
+    
+    
+     <!-- js app files -->
+     <script src="./app/app.js"></script>
+     <script src="./app/components/navigation/navigation.controller.js"></script>
+     <script src="./app/components/home/home.controller.js"></script>
+     <script src="./app/components/system/system.controller.js"></script>
+    
+    
+  </head>  
+  
+  <body ng-app="ngDrupalServicesTests">
+
+		<ng-include src="'app/components/navigation/navigation.view.html'"></ng-include>
+   		<div id="main-contant-wrapper">
+			<div class="container">
+				<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+				<div ui-view></div>
+			</div>
+		</div>
+
+  	</body>
+</html>

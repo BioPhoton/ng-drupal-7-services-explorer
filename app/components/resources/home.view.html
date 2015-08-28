@@ -1,0 +1,16 @@
+<div id="home">
+
+
+	{{home.isCollapsed}}
+
+	<button type="button" class="btn btn-default"
+		ng-click="home.isCollapsed = !home.isCollapsed">Toggle
+		collapse</button>
+	<hr>
+	<div collapse="home.isCollapsed">
+		<div class="well well-lg">Some content</div>
+	</div>
+
+	
+
+</div>

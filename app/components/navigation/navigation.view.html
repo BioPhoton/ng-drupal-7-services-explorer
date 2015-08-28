@@ -1,0 +1,73 @@
+<div ng-controller="NavigationController as mainNav">
+
+
+	<nav class="navbar navbar-default navbar-static-top">
+	  <div class="container">
+	    <div class="navbar-header">
+	    	
+	      <button type="button" class="navbar-toggle" ng-click="mainNav.navCollapsed = !mainNav.navCollapsed">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Headless Drupal Tests</a>
+	    </div>
+	    <div id="navbar" class="navbar-collapse collapse" ng-class="!mainNav.navCollapsed && 'in'" ng-click="mainNav.navCollapsed=true">
+	      <ul class="nav navbar-nav">
+	        <li><a when-active ui-sref="home">Home</a></li>
+	        <li class="dropdown" dropdown>
+				<a href="#" dropdown-toggle>Resources <b class="caret"></b></a>
+				<ul class="dropdown-menu" role="menu">
+					<li class="dropdown-submenu">
+		                <a tabindex="-1" href="#">Services 3.x</a>
+		                <ul class="dropdown-menu">
+		                  <li><a href="#">Comments</a></li>
+				          <li><a href="#">File</a></li>
+				          <li><a href="#">Node</a></li>
+				          <li><a when-active ui-sref="system">System</a></li>
+				          <li><a href="#">Taxonomy Terms</a></li>
+				          <li><a href="#">Taxonomy Vocabulary</a></li>
+				          <li><a href="#">User</a></li>
+		                </ul>
+		            </li>
+		          	<li class="dropdown-submenu"><a href="#">Services Views</a>
+		          		<ul class="dropdown-menu">
+		                  <li><a href="#">Views</a></li>
+		                </ul>
+		          	</li>
+		            <li class="dropdown-submenu"><a href="#">Services Menu</a>
+		            	<ul class="dropdown-menu">
+		                  <li><a href="#">Menu</a></li>
+		                </ul>
+		            </li>
+		            <li class="dropdown-submenu"><a href="#">Services Search</a>
+		            	<ul class="dropdown-menu">
+		                  <li><a href="#">Search Node</a></li>
+		                  <li><a href="#">Search User</a></li>
+		                </ul>
+		            </li>
+		            <li class="dropdown-submenu"><a href="#">Services Entity</a>
+		            	<ul class="dropdown-menu">
+		                  <li><a href="#">Entity Comment</a></li>
+		                  <li><a href="#">Entity File</a></li>
+		                  <li><a href="#">Entity Node</a></li>
+		                  <li><a href="#">Entity Taxonomy Terms</a></li>
+		                  <li><a href="#">Entity Taxonomy Vocabulary</a></li>
+		                  <li><a href="#">Entity User</a></li>
+		                </ul>
+		            </li>
+		            <li class="dropdown-submenu"><a href="#">Services Entity Reference</a></li>
+		             <li class="dropdown-submenu"><a href="#">Services Definition</a>
+		            	<ul class="dropdown-menu">
+		                  <li><a href="#">Definition</a></li>
+		                </ul>
+		            </li>
+		         </ul>
+			</li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	
+</div>

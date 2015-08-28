@@ -1,0 +1,43 @@
+//=Bootstrap start
+
+//== Colors
+ 
+$brand-white:         #fff !default; 
+$brand-black:         #000 !default;
+
+$brand-primary:         #4d7399 !default;
+$brand-success:         #c1cc72 !default;
+
+$brand-warning:         #e3b348 !default;
+
+
+//== Buttons
+$btn-font-weight:                bold !default;
+
+$btn-default-color:              #333 !default;
+$btn-default-bg:                 #f6f4f0 !default;
+$btn-default-border:             #5d5d5d !default;
+
+$btn-primary-color:              $brand-black !default;
+$btn-success-color:              $brand-black !default;
+$btn-info-color:                 $brand-black !default;
+$btn-warning-color:              $brand-black !default;
+//$btn-danger-color:               $brand-black !default;
+
+
+//== Typography
+$font-size-base:          14px !default;
+
+$icon-font-path: "../fonts/bootstrap/" !default;
+
+@import "bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss"; 
+
+
+// needed for buootatrap-ui =>https://angular-ui.github.io/bootstrap/#/getting_started
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+//=Bootstrap end
+
+//=Fontawesome
+$fa-font-path: "../fonts/fontawesome" !default;
+@import "bower_components/fontawesome/scss/font-awesome.scss"; 
