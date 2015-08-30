@@ -26,7 +26,7 @@
 		        controller: 'HomeController as home',
 		    })
 		    
-		    .state('system', {
+		   .state('system', {
 		        url: '/system',
 		        templateUrl: './app/components/system/system.view.html',
 		        controller: 'SystemController as system',
