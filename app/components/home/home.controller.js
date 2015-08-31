@@ -8,30 +8,30 @@ angular
                                                     ,'ngDrupal7Services-3_x.commons.authentication.channelConstant'
                                                     ,'ngDrupal7Services-3_x.commons.authentication.channel'
                                                     ,'ngDrupal7Services-3_x.commons.authentication.serviceConstant'
-                                                    //,'ngDrupal7Services-3_x.commons.authentication.service'
+                                                    ,'ngDrupal7Services-3_x.commons.authentication.service'
                                                     ])
     .controller('HomeController', HomeController);
 
 	HomeController.$inject = ['$scope', 
 	                          'RequestIntercepterAccept'
 	                          ,'AuthenticationChannelConstant'
-	                          ,'AuthenticationChannel',
-	                          //,'AuthenticationServiceConstant'
-	                          //,'AuthenticationService'
+	                          ,'AuthenticationChannel'
+	                          ,'AuthenticationServiceConstant'
+	                          ,'AuthenticationService'
 	                          ];
 
 	/** @ngInject */ 
 	function HomeController($scope,  RequestIntercepterAccept
 									,AuthenticationChannelConstant
 									,AuthenticationChannel
-									//,AuthenticationServiceConstant
-									//,AuthenticationService
+									,AuthenticationServiceConstant
+									,AuthenticationService
 			) { 
 		console.log('RequestIntercepterAccept: ', RequestIntercepterAccept); 
 		console.log('AuthenticationChannelConstant: ', AuthenticationChannelConstant); 
 		console.log('AuthenticationChannel: ', AuthenticationChannel); 
-		//console.log('AuthenticationServiceConstant: ', AuthenticationServiceConstant);
-		//console.log('AuthenticationService: ', AuthenticationService);
+		console.log('AuthenticationServiceConstant: ', AuthenticationServiceConstant);
+		console.log('AuthenticationService: ', AuthenticationService);
 		
 		var requestEnd = 0;
 		var requestStart = 0;
