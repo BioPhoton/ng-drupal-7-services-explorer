@@ -2,6 +2,7 @@
 	<h1>System resource</h1>
 	<p></p>
 	<tabset justified="true">
+		
 		<tab heading="Connect">
 			<h2>Connect request</h2>
 			<accordion close-others="oneAtATime">
@@ -13,65 +14,8 @@
 		  	<form >
 		  		<button class="btn btn-success" ng-click="home.doConncet()">connect request</button>
 		  	</form>
-			
 		</tab> 
-		<tab heading="Get Variable">
-			<h2>Get Variable request</h2>
-			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Get Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getVariableRequests">
-				    <ng-include src="'app/templates/request/request.html'"></ng-include>
-		    	</accordion-group>
-		  	</accordion>
-		  	
-		  	<form name="getVariableForm">
-		  		<div class="form-group">
-	 				<label for="get_variable__name">Name</label>
-	    			<input type="text" class="form-control" id="get_variable__name" placeholder="Variable name" ng-model="home.getVariableData.name">
-	    		</div>
-	    		<div class="form-group">
-	 				<label for="get_variable__default">Default</label>
-	    			<input type="text" class="form-control" id="get_variable__default" placeholder="Variable default" ng-model="home.getVariableData.default">
-	    		</div>
-			    <button class="btn btn-success" ng-click="home.doGetVariable()">get_variable request</button>
-			</form>
-			
-		</tab> 
-		<tab heading="Set Variable">
-			<h2>Set Variable request</h2>
-			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Set Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.setVariableRequests">
-				    <ng-include src="'app/templates/request/request.html'"></ng-include>
-		    	</accordion-group>
-		  	</accordion>
-		  	
-		  	<form name="setVariableForm">
-		  		<div class="form-group">
-	 				<label for="set_variable__name">Name</label>
-	    			<input type="text" class="form-control" id="set_variable__name" placeholder="Variable name" ng-model="home.setVariableData.name">
-	    		</div>
-	    		<div class="form-group">
-	 				<label for="set_variable__value">Value</label>
-	    			<input type="text" class="form-control" id="set_variable__value" placeholder="Variable value" ng-model="home.setVariableData.value">
-	    		</div>
-			    <button class="btn btn-success" ng-click="home.doSetVariable()">set_variable request</button>
-			</form>
-		</tab> 
-		<tab heading="Del Variable">
-			<h2>Del Variable request</h2>
-			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Del Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.delVariableRequests">
-				    <ng-include src="'app/templates/request/request.html'"></ng-include>
-		    	</accordion-group>
-		  	</accordion>
-		  	
-		  	<form name="delVariableForm">
-		  		<div class="form-group">
-	 				<label for="del_variable__name">Name</label>
-	    			<input type="text" class="form-control" id="del_variable__name" placeholder="Variable name" ng-model="home.delVariableData.name">
-	    		</div>
-			    <button class="btn btn-success" ng-click="home.doDelVariable()">del_variable request</button>
-			</form>
-		</tab>
+		
 	</tabset>
 	
 </div>
