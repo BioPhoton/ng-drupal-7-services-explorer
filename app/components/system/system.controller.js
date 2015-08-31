@@ -16,7 +16,7 @@ angular
 		
 		// jshint validthis: true 
 		var vm = this;
-		console.log(SystemChannel); 
+		
 		//connect request
 		
 		//store requests
@@ -26,10 +26,10 @@ angular
 		//test the connect on confirm event
 		SystemChannel.subSystemConnectConfirmed($scope, subSystemConnectConfirmedCallback);
 		//test the connect on failed event
-	    //SystemChannel.subSystemConnectFailed($scope, subSystemConnectFailedCallback);
+	    SystemChannel.subSystemConnectFailed($scope, subSystemConnectFailedCallback);
 	    
 	    //__________________________________________________________________________________________________
-	    /*
+	    
 	    //get_variable request
 		
 	    //store requests
@@ -77,7 +77,7 @@ angular
 		SystemChannel.subSystemDelVariableConfirmed($scope, subSystemDelVariableConfirmedCallback);
 		//test the connect on failed event
 		SystemChannel.subSystemDelVariableFailed($scope, subSystemDelVariableFailedCallback);
-	*/
+		
 	    //__________________________________________________________________________________________________
 	    
 		///////////////////////
@@ -90,9 +90,9 @@ angular
 	   		SystemResource.connect()
 			    .then(
 			    		//connect success
-			    		function(data) { console.log('system conncet success'); },
+			    		function(data) { console.log('system connect success'); },
 			    		//connect error
-			    		function(data) { console.log('system conncet error'); }
+			    		function(data) { console.log('system connect error'); }
 			    );
 		}
 		//confirm callback
@@ -109,11 +109,12 @@ angular
 		}
 		
 		//_____________________________________________________________________________________________________________________________________________
-		/*
+		
 		//get_variable request
 		
 		//do request
 		function doGetVariable() {
+			console.log('doGetVariable'); 
 			requestStart = Date.now();
 				SystemResource.get_variable(vm.getVariableData)
 					.then(
@@ -191,7 +192,7 @@ angular
 		   console.log('subSystemDelVariableFailed');
 		   vm.delVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		};
-		 */
+		
 		//_____________________________________________________________________________________________________________________________________________
 
 	};

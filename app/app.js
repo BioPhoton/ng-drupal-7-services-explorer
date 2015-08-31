@@ -3,10 +3,13 @@
 
 	angular.module('ngDrupalServicesTests', [ 'ui.router', 'ui.bootstrap', 'commons.directives.whenActive', 
 	                                          'ngDrupal7Services-3_x.commons.configurations',
+	                                          'ngDrupal7Services-3_x.commons.http.configurations',
 	                                          
 	                                          'ngDrupalServicesTests.navigation.controller', 
 	                                          'ngDrupalServicesTests.home.controller',
-	                                          'ngDrupalServicesTests.system.controller'
+	                                          
+	                                          'ngDrupalServicesTests.system.controller',
+	                                          'ngDrupalServicesTests.user.controller'
 	                                          
 	                                          ])
 		
@@ -26,10 +29,16 @@
 		        controller: 'HomeController as home',
 		    })
 		    
-		   .state('system', {
+		    .state('system', {
 		        url: '/system',
 		        templateUrl: './app/components/system/system.view.html',
 		        controller: 'SystemController as system',
+		    })
+		    
+		    .state('user', {
+		        url: '/user',
+		        templateUrl: './app/components/user/user.view.html',
+		        controller: 'UserController as user',
 		    })
 		    
 		    ;
