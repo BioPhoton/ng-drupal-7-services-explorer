@@ -8114,7 +8114,7 @@ h1.ellipsis {
   margin-left: -1px;
   border-radius: 0 6px 6px 6px; }
 
-.dropdown-submenu:hover > .dropdown-menu {
+.dropdown-submenu:not(.disabled):hover > .dropdown-menu {
   display: block; }
 
 .dropdown-submenu > a:after {

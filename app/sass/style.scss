@@ -32,7 +32,7 @@ h1.ellipsis {
     border-radius: 0 6px 6px 6px;
 }
 
-.dropdown-submenu:hover>.dropdown-menu {
+.dropdown-submenu:not(.disabled):hover>.dropdown-menu {
     display: block;
 }
 
