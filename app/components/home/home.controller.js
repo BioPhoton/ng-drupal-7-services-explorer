@@ -26,7 +26,10 @@ angular
 									,AuthenticationChannel
 									,AuthenticationServiceConstant
 									,AuthenticationService
-			) { 
+			) 
+	{ 
+		
+		
 		console.log('RequestIntercepterAccept: ', RequestIntercepterAccept); 
 		console.log('AuthenticationChannelConstant: ', AuthenticationChannelConstant); 
 		console.log('AuthenticationChannel: ', AuthenticationChannel); 
@@ -39,29 +42,96 @@ angular
 		// jshint validthis: true 
 		var vm = this;
 
-		//connect request
+		// login request
 		
-		//store requests
-		vm.connectRequests = [];
-		//test request
-		vm.doConncet = doConncet;
+		// store requests
+		vm.loginRequests = [];
+		vm.loginData = {
+				uid : ''
+		};
+		// test request
+		vm.doLogin = doLogin;
+		// test the login on confirm event
+		AuthenticationChannel.subAuthenticationLoginConfirmed($scope, subAuthenticationLoginConfirmedCallback);
+		// test the login on failed event
+		AuthenticationChannel.subAuthenticationLoginFailed($scope, subAuthenticationLoginFailedCallback);
+
+	    //__________________________________________________________________________________________________
 		
+		// logout request
+		
+		// store requests
+		vm.logoutRequests = [];
+
+		// test request
+		vm.doLogout = doLogout;
+		// test the token on confirm event
+		AuthenticationChannel.subAuthenticationLogoutConfirmed($scope, subAuthenticationLogoutConfirmedCallback);
+		// test the token on failed event
+	    AuthenticationChannel.subAuthenticationLogoutFailed($scope, subAuthenticationLogoutFailedCallback);
+
+	    //__________________________________________________________________________________________________
+	  
 		///////////////////////
-		
-		//connect request
 	    
-	    //do request
-		function doConncet() {
+		// login request
+	    
+	    // do request
+		function doLogin() {
 			requestStart = Date.now();
-	   		SystemResource.connect()
+	   		AuthenticationService.login(vm.loginData)
 			    .then(
-			    		//connect success
-			    		function(data) { console.log('system conncet success'); },
-			    		//connect error
-			    		function(data) { console.log('system conncet error'); }
+			    		//login success
+			    		function(data) { console.log('user login success'); },
+			    		//login error
+			    		function(data) { console.log('user login error'); }
 			    );
+		};
+		
+		// confirm callback
+		function subAuthenticationLoginConfirmedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subAuthenticationLoginConfirmed'); 
+			vm.loginRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		// failed callback
+		function subAuthenticationLoginFailedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subAuthenticationLoginFailed', data); 
+			vm.loginRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
+		//_____________________________________________________________________________________________________________________________________________
+		
+		// logout request
+	    
+	    //do request
+		function doLogout() {
+			requestStart = Date.now();
+	   		AuthenticationService.logout(vm.logoutData)
+			    .then(
+		    		//logout success
+		    		function(data) { console.log('user logout success'); },
+		    		//logout error
+		    		function(data) { console.log('user logout error'); }
+			    );
+		};
+		
+		// confirm callback
+		function subAuthenticationLogoutConfirmedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subAuthenticationLogoutConfirmed'); 
+			vm.logoutRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		// failed callback
+		function subAuthenticationLogoutFailedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subAuthenticationLogoutFailed'); 
+			vm.logoutRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+		}
+		
+		//_____________________________________________________________________________________________________________________________________________
+		  /**/
 	};
 	
 	

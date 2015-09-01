@@ -2,19 +2,45 @@
 	<h1>System resource</h1>
 	<p></p>
 	<tabset justified="true">
-		
-		<tab heading="Connect">
-			<h2>Connect request</h2>
+	
+		<tab heading="Login">
+		  	
+			<h2>Login request</h2>
 			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Connect Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.connectRequests">
+ 				<accordion-group heading="Login Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.loginRequests">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+
+		  	<form name="loginForm">
+		  		<div class="form-group">
+	 				<label for="login__username">Username</label>
+	    			<input type="text" class="form-control" id="login__username" placeholder="Username" ng-model="home.loginData.username">
+	    		</div>
+	    		<div class="form-group">
+	 				<label for="login__password">Password</label>
+	    			<input type="text" class="form-control" id="login__password" placeholder="Password" ng-model="home.loginData.password">
+	    		</div>
+		  		<button class="btn btn-success" ng-click="home.doLogin()">login request</button>
+		  	</form>
+			
+		</tab> 
+		
+		<tab heading="Logout">
+			
+			<h2>Logout request</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="Logout Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.logoutRequests">
 				    <ng-include src="'app/templates/request/request.html'"></ng-include>
 		    	</accordion-group>
 		  	</accordion>
 		  	
-		  	<form >
-		  		<button class="btn btn-success" ng-click="home.doConncet()">connect request</button>
+		  	<form name="logoutForm">
+		  		<button class="btn btn-success" ng-click="home.doLogout()">logout request</button>
 		  	</form>
+			
 		</tab> 
+ 
 		
 	</tabset>
 	
