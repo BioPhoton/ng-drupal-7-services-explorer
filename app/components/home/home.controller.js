@@ -71,6 +71,20 @@ angular
 	    AuthenticationChannel.subAuthenticationLogoutFailed($scope, subAuthenticationLogoutFailedCallback);
 
 	    //__________________________________________________________________________________________________
+	    
+	    // refresh connection request
+		
+		// store requests
+		vm.refreshConnectionRequests = [];
+
+		// test request
+		vm.doRefreshConnection = doRefreshConnection;
+		// test the token on confirm event
+		AuthenticationChannel.subAuthenticationRefreshConnectionConfirmed($scope, subAuthenticationRefreshConnectionConfirmedCallback);
+		// test the token on failed event
+	    AuthenticationChannel.subAuthenticationRefreshConnectionFailed($scope, subAuthenticationRefreshConnectionFailedCallback);
+
+	    //__________________________________________________________________________________________________
 	  
 		///////////////////////
 	    
@@ -82,9 +96,9 @@ angular
 	   		AuthenticationService.login(vm.loginData)
 			    .then(
 			    		//login success
-			    		function(data) { console.log('user login success'); },
+			    		function(data) { console.log('auth login success'); },
 			    		//login error
-			    		function(data) { console.log('user login error'); }
+			    		function(data) { console.log('auth login error'); }
 			    );
 		};
 		
@@ -111,9 +125,9 @@ angular
 	   		AuthenticationService.logout(vm.logoutData)
 			    .then(
 		    		//logout success
-		    		function(data) { console.log('user logout success'); },
+		    		function(data) { console.log('auth logout success'); },
 		    		//logout error
-		    		function(data) { console.log('user logout error'); }
+		    		function(data) { console.log('auth logout error'); }
 			    );
 		};
 		
@@ -131,7 +145,37 @@ angular
 		}
 		
 		//_____________________________________________________________________________________________________________________________________________
-		  /**/
+
+
+		// refresh request
+	    
+	    //do request
+		function doRefreshConnection() {
+			requestStart = Date.now();
+	   		AuthenticationService.refreshConnection()
+			    .then(
+		    		//logout success
+		    		function(data) { console.log('auth RefreshConnection success'); },
+		    		//logout error
+		    		function(data) { console.log('auth RefreshConnection error'); }
+			    );
+		};
+		
+		// confirm callback
+		function subAuthenticationRefreshConnectionConfirmedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subAuthenticationRefreshConnectionConfirmedCallback'); 
+			vm.logoutRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		// failed callback
+		function subAuthenticationRefreshConnectionFailedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subAuthenticationRefreshConnectionFailedCallback'); 
+			vm.logoutRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+		}
+		
+		//_____________________________________________________________________________________________________________________________________________
+		
 	};
 	
 	

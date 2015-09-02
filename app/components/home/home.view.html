@@ -19,7 +19,7 @@
 	    		</div>
 	    		<div class="form-group">
 	 				<label for="login__password">Password</label>
-	    			<input type="text" class="form-control" id="login__password" placeholder="Password" ng-model="home.loginData.password">
+	    			<input type="password" class="form-control" id="login__password" placeholder="Password" ng-model="home.loginData.password">
 	    		</div>
 		  		<button class="btn btn-success" ng-click="home.doLogin()">login request</button>
 		  	</form>
@@ -40,8 +40,67 @@
 		  	</form>
 			
 		</tab> 
- 
+    			
+		<tab heading="refreshConnection">
+			
+			<h2>Refresh connection function</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="RefreshConnection Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.refreshConnectionRequests">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="refreshConnectionForm">
+		  		<button class="btn btn-success" ng-click="home.doRefreshConnection()">refreshConnection</button>
+		  	</form>
+			
+		</tab> 
 		
+		<tab heading="getLastConnectTime">
+			
+			<h2>Get last connect time</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="getLastConnectTime {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getLastConnectTimeRequests">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="getLastConnectTimeForm">
+		  		<button class="btn btn-success" ng-click="home.doGetLastConnectTime()">getLastConnectTime</button>
+		  	</form>
+			
+		</tab> 
+		
+		<tab heading="getConnectionState">
+			
+			<h2>get Connection State</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="getConnectionState {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getConnectionStateRequests">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="getLastConnectTimeForm">
+		  		<button class="btn btn-success" ng-click="home.doGetConnectionState()">getConnectionState</button>
+		  	</form>
+			
+		</tab> 
+		
+		<tab heading="getAuthenticationHeaders">
+			
+			<h2>get Authentication Headers</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="getAuthenticationHeaders {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getAuthenticationHeadersRequests">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="getAuthenticationHeadersForm">
+		  		<button class="btn btn-success" ng-click="home.doGetAuthenticationHeaders()">getAuthenticationHeaders</button>
+		  	</form>
+			
+		</tab> 
+ 
 	</tabset>
 	
 </div>

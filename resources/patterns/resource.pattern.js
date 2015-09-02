@@ -7,8 +7,8 @@
  * Url: http://drupal_instance/api_endpoint/yyy/xxx
  * 
  * @params  {Object} data the requests data
- * 			@key 	{String} name The name of the variable to return, required:true, source:post body
- * 			@key 	{String} _default The default value to use if this variable has never been set, required:false, source:post body
+ * 			@key 	{String} var1 The name of the variable to return, required:true, source:post body
+ * 			@key 	{String} var2 The default value to use if this variable has never been set, required:false, source:post body
  * 
  * @return 	{Promise}
  *
@@ -47,15 +47,14 @@ function xxx(data){
 		requestConfig.data['default'] = data.default;
 	}
 
-	$http(requestConfig)
+	return $http(requestConfig)
 		.success(function(responseData, status, headers, config){
 			YYYChannel.pubYYYXXXConfirmed(responseData);
-			defer.resolve(responseData);
+			return responseData;
 		})
 		.error(function(responseData, status, headers, config){
 			YYYChannel.pubYYYXXXFailed(responseData);
-			defer.reject(responseData);
+			return responseData;
 		});
-	
-	return defer.promise;
+
 };
