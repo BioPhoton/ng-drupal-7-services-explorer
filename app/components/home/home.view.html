@@ -1,5 +1,5 @@
 <div id="system" class="resource">
-	<h1>System resource</h1>
+	<h1>Auth Service</h1>
 	<p></p>
 	<tabset justified="true">
 	
@@ -60,7 +60,7 @@
 			
 			<h2>Get last connect time</h2>
 			<accordion close-others="oneAtATime">
- 				<accordion-group heading="getLastConnectTime {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getLastConnectTimeRequests">
+ 				<accordion-group heading="getLastConnectTime {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getLastConnectionTimeData">
 				    <ng-include src="'app/templates/request/request.html'"></ng-include>
 		    	</accordion-group>
 		  	</accordion>
@@ -75,7 +75,7 @@
 			
 			<h2>get Connection State</h2>
 			<accordion close-others="oneAtATime">
- 				<accordion-group heading="getConnectionState {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getConnectionStateRequests">
+ 				<accordion-group heading="getConnectionState {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getConnectionStateData">
 				    <ng-include src="'app/templates/request/request.html'"></ng-include>
 		    	</accordion-group>
 		  	</accordion>
@@ -90,13 +90,13 @@
 			
 			<h2>get Authentication Headers</h2>
 			<accordion close-others="oneAtATime">
- 				<accordion-group heading="getAuthenticationHeaders {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getAuthenticationHeadersRequests">
+ 				<accordion-group heading="getAuthenticationHeaders {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in home.getAuthenticationHeadersData">
 				    <ng-include src="'app/templates/request/request.html'"></ng-include>
 		    	</accordion-group>
 		  	</accordion>
 		  	
 		  	<form name="getAuthenticationHeadersForm">
-		  		<button class="btn btn-success" ng-click="home.doGetAuthenticationHeaders()">getAuthenticationHeaders</button>
+		  		<button class="btn btn-success" ng-click="home.doGetAuthenticationHeaders()">doGetAuthenticationHeaders</button>
 		  	</form>
 			
 		</tab> 

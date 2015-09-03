@@ -30,12 +30,6 @@ angular
 	{ 
 		
 		
-		console.log('RequestIntercepterAccept: ', RequestIntercepterAccept); 
-		console.log('AuthenticationChannelConstant: ', AuthenticationChannelConstant); 
-		console.log('AuthenticationChannel: ', AuthenticationChannel); 
-		console.log('AuthenticationServiceConstant: ', AuthenticationServiceConstant);
-		console.log('AuthenticationService: ', AuthenticationService);
-		
 		var requestEnd = 0;
 		var requestStart = 0;
 		 
@@ -86,6 +80,40 @@ angular
 
 	    //__________________________________________________________________________________________________
 	  
+	    // getLastConnectionTime
+		
+		// store requests
+		vm.getLastConnectionTimeData = [];
+
+		// test request
+		vm.doGetLastConnectTime = doGetLastConnectTime;
+
+	    //__________________________________________________________________________________________________
+		
+		// getConnectionState
+		
+		// store requests
+		vm.getConnectionStateData = [];
+
+		// test request
+		vm.doGetConnectionState = doGetConnectionState;
+
+	    //__________________________________________________________________________________________________
+		
+		// getAuthenticationHeaders
+		
+		// store requests
+		vm.getAuthenticationHeadersData = [];
+
+		// test request
+		vm.doGetAuthenticationHeaders = doGetAuthenticationHeaders;
+
+	    //__________________________________________________________________________________________________
+		
+		
+		
+	   
+	    
 		///////////////////////
 	    
 		// login request
@@ -96,7 +124,7 @@ angular
 	   		AuthenticationService.login(vm.loginData)
 			    .then(
 			    		//login success
-			    		function(data) { console.log('auth login success'); },
+			    		function(data) { console.log('auth login success', data); },
 			    		//login error
 			    		function(data) { console.log('auth login error'); }
 			    );
@@ -165,17 +193,52 @@ angular
 		function subAuthenticationRefreshConnectionConfirmedCallback(data) { 
 			requestEnd = Date.now();
 			console.log('subAuthenticationRefreshConnectionConfirmedCallback'); 
-			vm.logoutRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+			vm.refreshConnectionRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
 		}
 		// failed callback
 		function subAuthenticationRefreshConnectionFailedCallback(data) { 
 			requestEnd = Date.now();
 			console.log('subAuthenticationRefreshConnectionFailedCallback'); 
-			vm.logoutRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+			vm.refreshConnectionRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
 		//_____________________________________________________________________________________________________________________________________________
 		
+		// get last ConnectionTime 
+	    
+	    //do request
+		function doGetLastConnectTime() {
+			requestStart = Date.now();
+			requestEnd = Date.now();
+			
+			vm.getLastConnectionTimeData.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:AuthenticationService.getLastConnectTime()});    
+		};
+		
+		//_____________________________________________________________________________________________________________________________________________
+		
+		// get connectionState 
+	    
+	    //do request
+		function doGetConnectionState() {
+			requestStart = Date.now();
+			requestEnd = Date.now();
+			
+			vm.getConnectionStateData.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data: AuthenticationService.getConnectionState()});    
+		};
+		
+		//_____________________________________________________________________________________________________________________________________________
+		
+		// get authenticationHeaders 
+	    
+	    //do request
+		function doGetAuthenticationHeaders() {
+			requestStart = Date.now();
+			requestEnd = Date.now();
+			
+			vm.getAuthenticationHeadersData.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data: AuthenticationService.getAuthenticationHeaders()});    
+		};
+		
+		//_____________________________________________________________________________________________________________________________________________
 	};
 	
 	

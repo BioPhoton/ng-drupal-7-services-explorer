@@ -17,7 +17,7 @@
 			//drupal services configurations
 			DrupalApiConstant.drupal_instance = 'http://www.drupalionic.org/drupal_test/';
 			DrupalApiConstant.api_endpoint += 'v1/';
-			console.log(DrupalApiConstant); 
+			
 			//routing configurations
 			$urlRouterProvider.otherwise('/home');
 		    

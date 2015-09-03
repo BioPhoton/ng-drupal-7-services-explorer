@@ -19,8 +19,7 @@ function xxx(data){
 	data = (data)?data:{};
 	
 	//validation of params
-	var errors = [],
-	defer = $q.defer();	
+	var errors = [];	
 
 	//basic validation
 	if(!data.name) { 
@@ -29,8 +28,7 @@ function xxx(data){
 	
 	if(errors.length != 0) {
 		YYYChannel.pubYYYXXXFailed(errors);
-		defer.reject(errors); 
-		return defer.promise;
+		return $q.reject(errors);
 	}
 	
 	var getVariablePath = DrupalApiConstant.drupal_instance + DrupalApiConstant.api_endpoint + YYYResourceConstant.resourcePath + '/' + YYYResourceConstant.actions.xxx,
@@ -52,9 +50,9 @@ function xxx(data){
 			YYYChannel.pubYYYXXXConfirmed(responseData);
 			return responseData;
 		})
-		.error(function(responseData, status, headers, config){
-			YYYChannel.pubYYYXXXFailed(responseData);
-			return responseData;
+		.error(function(responseError, status, headers, config){
+			YYYChannel.pubYYYXXXFailed(responseError);
+			return responseError;
 		});
 
 };
