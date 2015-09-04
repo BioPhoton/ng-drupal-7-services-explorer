@@ -17,6 +17,7 @@ angular
 		// jshint validthis: true 
 		var vm = this;
 		
+		
 		//connect request
 		
 		//store requests

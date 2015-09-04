@@ -36,6 +36,8 @@ angular
 		// jshint validthis: true 
 		var vm = this;
 
+		
+		
 		// login request
 		
 		// store requests
