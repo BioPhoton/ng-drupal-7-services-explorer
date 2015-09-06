@@ -21,6 +21,7 @@
     <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
     
     <script src="./app/commons/directives/when-active.js"></script>
+    <script src="./app/components/navigation/animations/animations.navAnimations.js"></script>
     
     <script src="./bower_components/angular-cookies/angular-cookies.min.js"></script>
     
@@ -50,11 +51,6 @@
     <script src="./bower_components/ng-drupal7-services/resources/user/user.channelConstant.js"></script>
     <script src="./bower_components/ng-drupal7-services/resources/user/user.channel.js"></script>
     
-   
- 
- 
-
-    
      <!-- js app files -->
      <script src="./app/app.js"></script>
      <script src="./app/components/navigation/navigation.controller.js"></script>
@@ -71,7 +67,7 @@
    		<div id="main-contant-wrapper">
 			<div class="container ui-view-container">
 				<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-				<div ui-view></div>
+				<div ui-view nav-animations></div>
 			</div>
 		</div>
 

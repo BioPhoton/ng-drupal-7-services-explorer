@@ -3,29 +3,13 @@
 
 
 angular
-    .module('ngDrupalServicesTests.home.controller', [
-                                                     'ngDrupal7Services-3_x.commons.http.intercepter.requestAccept'
-                                                    ,'ngDrupal7Services-3_x.commons.authentication.channelConstant'
-                                                    ,'ngDrupal7Services-3_x.commons.authentication.channel'
-                                                    ,'ngDrupal7Services-3_x.commons.authentication.serviceConstant'
-                                                    ,'ngDrupal7Services-3_x.commons.authentication.service'
-                                                    ])
+    .module('ngDrupalServicesTests.home.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel'])
     .controller('HomeController', HomeController);
 
-	HomeController.$inject = ['$scope', 
-	                          'RequestIntercepterAccept'
-	                          ,'AuthenticationChannelConstant'
-	                          ,'AuthenticationChannel'
-	                          ,'AuthenticationServiceConstant'
-	                          ,'AuthenticationService'
-	                          ];
+	HomeController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel'];
 
 	/** @ngInject */ 
-	function HomeController($scope,  RequestIntercepterAccept
-									,AuthenticationChannelConstant
-									,AuthenticationChannel
-									,AuthenticationServiceConstant
-									,AuthenticationService
+	function HomeController($scope ,AuthenticationService, AuthenticationChannel
 			) 
 	{ 
 		

@@ -5,7 +5,9 @@
 	                                          'ngDrupal7Services-3_x.commons.configurations',
 	                                          'ngDrupal7Services-3_x.commons.http.configurations',
 	                                          
-	                                          'ngDrupalServicesTests.navigation.controller', 
+	                                          'ngDrupalServicesTests.navigation.controller',
+	                                          'components.navigation.animations.navAnimations',
+	                                          
 	                                          'ngDrupalServicesTests.home.controller',
 	                                          
 	                                          'ngDrupalServicesTests.system.controller',
