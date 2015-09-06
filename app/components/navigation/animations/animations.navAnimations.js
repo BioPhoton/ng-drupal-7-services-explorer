@@ -18,7 +18,10 @@ function navAnimationsLinkFunction() {
 		  restrict : 'A',
 		  scope: true,
 		  link: function (scope, element, attr) {
-			  var 	routAnimationClassName = ""
+			  
+			  var 	containerClassName = "animate-perspective",
+			  		pageClassname = "animate-view",
+			  		routAnimationClassName = "",
 				  	classPrefix = 'animate-';
 			  
 			  scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
