@@ -21,6 +21,37 @@
 			
 		</tab> 
 		
+		<tab heading="Create">
+			<h2>Create request</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="Create Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.createRequests">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<p>@TODO implement validation of https://api.drupal.org/api/drupal/modules!user!user.module/function/user_validate_name/7</p>
+		  	<form name="createForm">
+		  	
+		  		<div class="form-group">
+	 				<label for="create__username">Username</label>
+	    			<input type="text" class="form-control" id="create__username" placeholder="Username" ng-model="user.createData.username">
+	    		</div>
+	    		
+	    		<div class="form-group">
+	 				<label for="create__email">Email</label>
+	    			<input type="email" class="form-control" id="create__email" placeholder="Email" ng-model="user.createData.email">
+	    		</div>
+	    		
+	    		<div class="form-group">
+	 				<label for="create__password">Password</label>
+	    			<input type="password" class="form-control" id="create__password" placeholder="Password" ng-model="user.createData.password">
+	    		</div>
+
+		  		<button class="btn btn-success" ng-click="user.doCreate()">create request</button>
+		  	</form>
+
+		</tab> 
+		
 		<tab heading="Login">
 			<h2>Login request</h2>
 			<accordion close-others="oneAtATime">
@@ -71,8 +102,7 @@
 		  		<button class="btn btn-success" ng-click="user.doToken()">token request</button>
 		  	</form>
 			
-		</tab> 
-		
+		</tab> 	
 		
 	</tabset>
 	

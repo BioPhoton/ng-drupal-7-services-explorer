@@ -77,6 +77,24 @@ angular
 
 	    //__________________________________________________________________________________________________
 	    
+	    //create request
+		
+		//store requests
+		vm.createRequests = [];
+		vm.createData = {
+				username : '',
+				password: '',
+				email : ''
+		};
+		//test request
+		vm.doCreate = doCreate;
+		//test the retrieve on confirm event
+		UserChannel.subUserCreateConfirmed($scope, subUserCreateConfirmedCallback);
+		//test the retrieve on failed event
+	    UserChannel.subUserCreateFailed($scope, subUserCreateFailedCallback);
+
+	    //__________________________________________________________________________________________________
+	    
 		///////////////////////
 		
 		//retrieve request
@@ -191,6 +209,35 @@ angular
 			requestEnd = Date.now();
 			console.log('subUserTokenFailed'); 
 			vm.tokenRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+		}
+		
+		//_____________________________________________________________________________________________________________________________________________
+		
+		//create request
+	    
+	    //do create
+		function doCreate() {
+			requestStart = Date.now();
+	   		UserResource.create(vm.createData)
+			    .then(
+			    		//token success
+			    		function(data) { console.log('user create success'); },
+			    		//token error
+			    		function(data) { console.log('user create error'); }
+			    );
+		};
+		
+		//confirm callback
+		function subUserCreateConfirmedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subUserCreateConfirmed'); 
+			vm.createRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		//failed callback
+		function subUserCreateFailedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subUserCreateFailed'); 
+			vm.createRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
 		//_____________________________________________________________________________________________________________________________________________

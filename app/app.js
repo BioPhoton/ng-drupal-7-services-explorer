@@ -10,6 +10,8 @@
 	                                          
 	                                          'ngDrupalServicesTests.home.controller',
 	                                          
+	                                          'ngDrupalServicesTests.auth.controller',
+	                                          
 	                                          'ngDrupalServicesTests.system.controller',
 	                                          'ngDrupalServicesTests.user.controller'
 	                                          
@@ -29,6 +31,12 @@
 		        url: '/home',
 		        templateUrl: './app/components/home/home.view.html',
 		        controller: 'HomeController as home',
+		    })
+		    
+		    .state('auth', {
+		        url: '/auth',
+		        templateUrl: './app/components/auth/auth.view.html',
+		        controller: 'AuthController as auth',
 		    })
 		    
 		    .state('system', {

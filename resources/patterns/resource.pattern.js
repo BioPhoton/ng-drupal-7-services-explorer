@@ -22,18 +22,18 @@ function xxx(data){
 	var errors = [];	
 
 	//basic validation
-	if(!data.name) { 
-		errors.push('Param name is required.');
-	}
+	//if not given
+	if(!data) { errors.push('Param data is required.'); }
+
 	
 	if(errors.length != 0) {
 		YYYChannel.pubYYYXXXFailed(errors);
 		return $q.reject(errors);
 	}
 	
-	var getVariablePath = DrupalApiConstant.drupal_instance + DrupalApiConstant.api_endpoint + YYYResourceConstant.resourcePath + '/' + YYYResourceConstant.actions.xxx,
+	var xxxPath = DrupalApiConstant.drupal_instance + DrupalApiConstant.api_endpoint + YYYResourceConstant.resourcePath + '/' + YYYResourceConstant.actions.xxx,
 		requestConfig = {
-				url 	: getVariablePath,
+				url 	: xxxPath,
 				method 	:'POST',
 				data 	: {
 					name : data.name,
