@@ -22,6 +22,10 @@ bower components are stored in "bower_components" => .bowerrc
 	$ gulp setup-project => read under gulp section
 4. Done
 
+##Console commands
+use `bower update` to update your bower libs
+
+
 
 ##Gulp:
 $ gulp help //list all tasks
