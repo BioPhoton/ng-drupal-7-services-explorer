@@ -1,35 +1,34 @@
-.ui-view-container {
-  position: relative;
-}
-
-[ui-view].ng-enter, [ui-view].ng-leave {
+ /*
+.animate-view.ng-enter, .animate-view.ng-leave {
+	
   position: absolute;
   left: 15px;
   right: 15px;
 	transition:all .5s ease-in-out;
 }
 
-[ui-view].ng-enter {
+.animate-view.ng-enter {
+  background:red;
   opacity: 0;
   transform:scale3d(0.5, 0.5, 0.5);
 }
 
-[ui-view].ng-enter-active {
+.animate-view.ng-enter-active {
+
   opacity: 1;
   transform:scale3d(1, 1, 1);
 } 
 
-[ui-view].ng-leave {
+.animate-view.ng-leave {
   opacity: 1;
-  /*padding-left: 0px;*/  
   transform:translate3d(0, 0, 0);
 }
 
-[ui-view].ng-leave-active {
+.animate-view.ng-leave-active {
   opacity: 0;
-  /*padding-left: 100px;*/
+
   transform:translate3d(100px, 0, 0);
-}
+}*/
 
 
 /* http://plnkr.co/edit/uW4v9T?p=info  ---------------  https://scotch.io/tutorials/animating-angularjs-apps-ngview  --------------------   http://tympanus.net/Development/PageTransitions/ */

@@ -35,7 +35,8 @@ var bowerDir 		= './bower_components',
 			twb3TargetFontsPath 	= '/bootstrap'
 
 var config = {
-		sassPaths: [ resourcesDir+'/sass/*.scss', 'app/**/*.scss'],
+		//we exclude animations because irt is imported in page specific animations
+		sassPaths: [ resourcesDir+'/sass/*.scss', 'app/**/*.scss', '!app/components/navigation/animations/animations.scss'],
 		autoprefixerOptions : {
 			browsers: [
                        '> 1%',
@@ -100,7 +101,7 @@ gulp.task('move-fonts', function() {
         
 });
 
-/*Taske the app.scss file and creates .css and .min.css files and save theem in app/css.*/
+/* Taske the app.scss file and creates .css and .min.css files and save theem in app/css. */
 gulp.task('sass', function(done) {
 	  var scssFrom = config.sassPaths,
 		  scssTo = assetsPath+cssPath; 
