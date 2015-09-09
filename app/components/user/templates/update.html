@@ -1,0 +1,35 @@
+<h2>Update request</h2>
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="Update Request {{key}} at {{request.requestStart | date}}"
+	ng-repeat="(key,request) in user.updateRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+	
+<form name="updateForm">
+
+	<div class="form-group">
+		<label for="update__username">Uid</label> <input type="text"
+			class="form-control" id="update__uid" placeholder="Uid"
+			ng-model="user.updateData.uid">
+	</div>
+
+	<div class="form-group">
+		<label for="update__username">Username</label> <input type="text"
+			class="form-control" id="update__username" placeholder="Username"
+			ng-model="user.updateData.data.name">
+	</div>
+
+	<div class="form-group">
+		<label for="update__email">Email</label> <input type="email"
+			class="form-control" id="update__email" placeholder="Email"
+			ng-model="user.updateData.data.email">
+	</div>
+
+	<div class="form-group">
+		<label for="update__password">Password</label> <input type="password"
+			class="form-control" id="update__password" placeholder="Password"
+			ng-model="user.updateData.data.password">
+	</div>
+
+	<button class="btn btn-success" ng-click="user.doUpdate()">update
+		request</button>
+</form>

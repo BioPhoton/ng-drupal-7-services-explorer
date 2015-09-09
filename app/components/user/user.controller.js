@@ -14,6 +14,8 @@ angular
 		var requestEnd = 0;
 		var requestStart = 0;
 		
+		
+		
 		// jshint validthis: true 
 		var vm = this;
 		
@@ -82,18 +84,71 @@ angular
 		//store requests
 		vm.createRequests = [];
 		vm.createData = {
-				username : '',
-				password: '',
-				email : ''
+				username : 's',
+				password: 's',
+				email : 's'
 		};
 		//test request
 		vm.doCreate = doCreate;
-		//test the retrieve on confirm event
+		//test the create on confirm event
 		UserChannel.subUserCreateConfirmed($scope, subUserCreateConfirmedCallback);
-		//test the retrieve on failed event
+		//test the create on failed event
 	    UserChannel.subUserCreateFailed($scope, subUserCreateFailedCallback);
 
 	    //__________________________________________________________________________________________________
+	    
+	    //update request
+		
+		//store requests
+		vm.updateRequests = [];
+		vm.updateData = {};
+		//test request
+		vm.doUpdate = doUpdate;
+		//test the update on confirm event
+		UserChannel.subUserUpdateConfirmed($scope, subUserUpdateConfirmedCallback);
+		//test the update on failed event
+	    UserChannel.subUserUpdateFailed($scope, subUserUpdateFailedCallback);
+
+	    //__________________________________________________________________________________________________
+	    
+	    //delete request
+		
+		//store requests
+		vm.deleteRequests = [];
+		vm.deleteErrors = {}
+		vm.deleteData = {
+				uid : '',
+		};
+		//test request
+		vm.doDelete = doDelete;
+		//test the delete on confirm event
+		UserChannel.subUserDeleteConfirmed($scope, subUserDeleteConfirmedCallback);
+		//test the delete on failed event
+	    UserChannel.subUserDeleteFailed($scope, subUserDeleteFailedCallback);
+
+	    //__________________________________________________________________________________________________
+	    
+	    //index request
+		
+		//store requests
+		vm.indexRequests = [];
+		vm.indexData = {};
+	    vm.indexData.page = 0;
+	    vm.indexData.fields = {};
+	    vm.indexData.parameters = {};
+	    vm.indexData.pagesize = 5;
+		
+	    vm.indexFieldsColapsed = true;
+	    vm.indexParametersColapsed = true;
+		//test request
+		vm.doIndex = doIndex;
+		//test the index on confirm event
+		UserChannel.subUserIndexConfirmed($scope, subUserIndexConfirmedCallback);
+		//test the index on failed event
+	    UserChannel.subUserIndexFailed($scope, subUserIndexFailedCallback);
+
+	    //__________________________________________________________________________________________________
+	    
 	    
 		///////////////////////
 		
@@ -220,9 +275,9 @@ angular
 			requestStart = Date.now();
 	   		UserResource.create(vm.createData)
 			    .then(
-			    		//token success
+			    		//create success
 			    		function(data) { console.log('user create success'); },
-			    		//token error
+			    		//create error
 			    		function(data) { console.log('user create error'); }
 			    );
 		};
@@ -241,6 +296,95 @@ angular
 		}
 		
 		//_____________________________________________________________________________________________________________________________________________
+		
+		//update request
+	    
+	    //do update
+		function doUpdate() {
+			requestStart = Date.now();
+	   		UserResource.update(vm.updateData)
+			    .then(
+			    		//update success
+			    		function(data) { console.log('user update success'); },
+			    		//update error
+			    		function(data) { console.log('user update error'); }
+			    );
+		};
+		
+		//confirm callback
+		function subUserUpdateConfirmedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subUserUpdateConfirmed'); 
+			vm.updateRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		//failed callback
+		function subUserUpdateFailedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subUserUpdateFailed'); 
+			vm.updateRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+		}
+		
+		//_____________________________________________________________________________________________________________________________________________
+		
+		//delete request
+	    
+	    //do delete
+		function doDelete() {
+			requestStart = Date.now();
+	   		UserResource.delete(vm.deleteData)
+			    .then(
+			    		//delete success
+			    		function(data) { console.log('user delete success'); },
+			    		//delete error
+			    		function(data) { console.log('user delete error'); }
+			    );
+		};
+		
+		//confirm callback
+		function subUserDeleteConfirmedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subUserDeleteConfirmed'); 
+			vm.deleteRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		//failed callback
+		function subUserDeleteFailedCallback(data) { 
+			requestEnd = Date.now();
+			vm.deleteErrors = data;
+			console.log('subUserDeleteFailed'); 
+			vm.deleteRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+		}
+		
+		//_____________________________________________________________________________________________________________________________________________
+		
+		//index request
+	    
+	    //do index
+		function doIndex() {
+			requestStart = Date.now();
+	   		UserResource.index(vm.indexData)
+			    .then(
+			    		//index success
+			    		function(data) { console.log('user index success'); },
+			    		//index error
+			    		function(data) { console.log('user index error'); }
+			    );
+		};
+		
+		//confirm callback
+		function subUserIndexConfirmedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subUserIndexConfirmed'); 
+			vm.indexRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		//failed callback
+		function subUserIndexFailedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subUserIndexFailed'); 
+			vm.indexRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+		}
+		
+		//_____________________________________________________________________________________________________________________________________________
+
 
 		
 	};

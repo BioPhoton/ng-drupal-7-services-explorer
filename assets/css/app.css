@@ -6051,6 +6051,30 @@ button.close {
 .nav, .pagination, .carousel, .panel-title a {
   cursor: pointer; }
 
+.caret.up {
+  border-top: 0px;
+  border-bottom: 4px dashed;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent; }
+
+.caret.down {
+  border-top: 4px dashed;
+  border-bottom: 0px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent; }
+
+.caret.right {
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px dashed;
+  border-right: 0px; }
+
+.caret.left {
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 0px;
+  border-right: 4px dashed; }
+
 /*!
  *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

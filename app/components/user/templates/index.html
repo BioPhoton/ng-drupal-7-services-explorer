@@ -1,0 +1,212 @@
+<h2>Index request</h2>
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="Index Request {{key}} at {{request.requestStart | date}}"
+	ng-repeat="(key,request) in user.indexRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="indexForm">
+
+	<div class="form-group">
+		<label for="index__page">Page</label> 
+		<input type="text" class="form-control" id="index__page" placeholder="Page" ng-model="user.indexData.page">
+	</div>
+	
+	<div class="form-group">
+		<label for="index__pagesize">Pagesize</label> 
+		<input type="text" class="form-control" id="index__pagesize" placeholder="Pagesize" ng-model="user.indexData.pagesize">
+	</div>
+	
+	<div class="form-group">
+		<label ng-click="user.indexFieldsColapsed = !user.indexFieldsColapsed">Fields <span class="caret" ng-class="{true:'down',false:'up'}[user.indexFieldsColapsed]"></span></label> 
+		<div class="well collapse" ng-class="!user.indexFieldsColapsed && 'in'"> 
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.uid">
+			    fields.uid
+			  </label>
+			</div>
+			
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.name">
+			    fields.name
+			  </label>
+			</div>
+			
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.mail">
+			    fields.mail
+			  </label>
+			</div>
+					
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.theme">
+			    fields.theme
+			  </label>
+			</div>
+					
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.signature">
+			    fields.signature
+			  </label>
+			</div>
+					
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.signature_format">
+			    fields.signature_format
+			  </label>
+			</div>
+					
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.indexd">
+			    fields.indexd
+			  </label>
+			</div>
+					
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.access">
+			    fields.access
+			  </label>
+			</div>
+					
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.login">
+			    fields.login
+			  </label>
+			</div>		
+							
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.status">
+			    fields.status
+			  </label>
+			</div>	
+							
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.timezone">
+			    fields.timezone
+			  </label>
+			</div>	
+							
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.language">
+			    fields.language
+			  </label>
+			</div>	
+			
+									
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.picture">
+			    fields.picture
+			  </label>
+			</div>	
+									
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.init">
+			    fields.init
+			  </label>
+			</div>	
+									
+			<div class="checkbox">
+		  		<label>
+			    <input type="checkbox" ng-model="user.indexData.fields.data">
+			    fields.data
+			  </label>
+			</div>	
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label ng-click="user.indexParametersColapsed = !user.indexParametersColapsed">Parameters <span class="caret" ng-class="{true:'down',false:'up'}[user.indexParametersColapsed]"></span></label> 
+	</div>
+	<div class="well collapse" ng-class="!user.indexParametersColapsed && 'in'"> 
+		<div class="form-group">
+			<label for="index__parameters_uid">Parameter uid</label> 
+			<input type="text" class="form-control" id="index__parameters_uid" placeholder="Uid" ng-model="user.indexData.parameters.uid">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_name">Parameter name</label> 
+			<input type="text" class="form-control" id="index__parameters_name" placeholder="Name" ng-model="user.indexData.parameters.name">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_name">Parameter mail</label> 
+			<input type="text" class="form-control" id="index__parameters_mail" placeholder="EMail" ng-model="user.indexData.parameters.mail">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_theme">Parameter theme</label> 
+			<input type="text" class="form-control" id="index__parameters_theme" placeholder="Theme" ng-model="user.indexData.parameters.theme">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_signature">Parameter signature</label> 
+			<input type="text" class="form-control" id="index__parameters_signature" placeholder="Signature" ng-model="user.indexData.parameters.signature">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_signature_format">Parameter signature_format</label> 
+			<input type="text" class="form-control" id="index__parameters_signature_format" placeholder="Fignature Format" ng-model="user.indexData.parameters.signature_format">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_created">Parameter created</label> 
+			<input type="text" class="form-control" id="index__parameters_created" placeholder="Created" ng-model="user.indexData.parameters.created">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_access">Parameter access</label> 
+			<input type="text" class="form-control" id="index__parameters_access" placeholder="Access" ng-model="user.indexData.parameters.access">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_login">Parameter login</label> 
+			<input type="text" class="form-control" id="index__parameters_login" placeholder="Login" ng-model="user.indexData.parameters.login">
+		</div>
+			
+		<div class="form-group">
+			<label for="index__parameters_status">Parameter status</label> 
+			<input type="text" class="form-control" id="index__parameters_status" placeholder="Status" ng-model="user.indexData.parameters.status">
+		</div>
+			
+		<div class="form-group">
+			<label for="index__parameters_timezone">Parameter timezone</label> 
+			<input type="text" class="form-control" id="index__parameters_timezone" placeholder="Timezone" ng-model="user.indexData.parameters.timezone">
+		</div>
+			
+		<div class="form-group">
+			<label for="index__parameters_language">Parameter language</label> 
+			<input type="text" class="form-control" id="index__parameters_language" placeholder="Language" ng-model="user.indexData.parameters.language">
+		</div>
+			
+		<div class="form-group">
+			<label for="index__parameters_picture">Parameter picture</label> 
+			<input type="text" class="form-control" id="index__parameters_picture" placeholder="Picture" ng-model="user.indexData.parameters.picture">
+		</div>	
+			
+		<div class="form-group">
+			<label for="index__parameters_init">Parameter init</label> 
+			<input type="text" class="form-control" id="index__parameters_init" placeholder="Init" ng-model="user.indexData.parameters.init">
+		</div>
+			
+		<div class="form-group">
+			<label for="index__parameters_data">Parameter data</label> 
+			<input type="text" class="form-control" id="index__parameters_data" placeholder="Data" ng-model="user.indexData.parameters.data">
+		</div>	
+	</div>
+	
+	<button class="btn btn-success" ng-click="user.doIndex()">index request</button>
+	
+</form>

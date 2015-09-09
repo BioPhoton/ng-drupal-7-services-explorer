@@ -3,105 +3,35 @@
 	<p></p>
 	<tabset justified="true">
 		<tab heading="Retrieve">
-			<h2>Retrieve request</h2>
-			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.retrieveRequests">
-				    <ng-include src="'app/templates/request/request.html'"></ng-include>
-		    	</accordion-group>
-		  	</accordion>
-		  	
-		  	<form name="retrieveForm">
-		  		<div class="form-group">
-	 				<label for="retrieve__uid">Uid</label>
-	    			<input type="text" class="form-control" id="retrieve__uid" placeholder="Variable name" ng-model="user.retrieveData.uid">
-	    		</div>
-
-		  		<button class="btn btn-success" ng-click="user.doRetrieve()">retrieve request</button>
-		  	</form>
-			
+			<ng-include src="'app/components/user/templates/retrieve.html'"></ng-include>
 		</tab> 
 		
 		<tab heading="Create">
-			<h2>Create request</h2>
-			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Create Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.createRequests">
-				    <ng-include src="'app/templates/request/request.html'"></ng-include>
-		    	</accordion-group>
-		  	</accordion>
-		  	
-		  	<p>@TODO implement validation of https://api.drupal.org/api/drupal/modules!user!user.module/function/user_validate_name/7</p>
-		  	<form name="createForm">
-		  	
-		  		<div class="form-group">
-	 				<label for="create__username">Username</label>
-	    			<input type="text" class="form-control" id="create__username" placeholder="Username" ng-model="user.createData.username">
-	    		</div>
-	    		
-	    		<div class="form-group">
-	 				<label for="create__email">Email</label>
-	    			<input type="email" class="form-control" id="create__email" placeholder="Email" ng-model="user.createData.email">
-	    		</div>
-	    		
-	    		<div class="form-group">
-	 				<label for="create__password">Password</label>
-	    			<input type="password" class="form-control" id="create__password" placeholder="Password" ng-model="user.createData.password">
-	    		</div>
-
-		  		<button class="btn btn-success" ng-click="user.doCreate()">create request</button>
-		  	</form>
-
+			<ng-include src="'app/components/user/templates/create.html'"></ng-include>
+		</tab> 
+		
+		<tab heading="Update">
+			<ng-include src="'app/components/user/templates/update.html'"></ng-include>
+		</tab> 
+		
+		<tab heading="Delete">
+			<ng-include src="'app/components/user/templates/delete.html'"></ng-include>
+		</tab> 
+		
+		<tab heading="Index">
+			<ng-include src="'app/components/user/templates/index.html'"></ng-include>
 		</tab> 
 		
 		<tab heading="Login">
-			<h2>Login request</h2>
-			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Login Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.loginRequests">
-				    <ng-include src="'app/templates/request/request.html'"></ng-include>
-		    	</accordion-group>
-		  	</accordion>
-
-		  	<form name="loginForm">
-		  		<div class="form-group">
-	 				<label for="login__username">Username</label>
-	    			<input type="text" class="form-control" id="login__username" placeholder="Username" ng-model="user.loginData.username">
-	    		</div>
-	    		
-	    		<div class="form-group">
-	 				<label for="login__password">Password</label>
-	    			<input type="password" class="form-control" id="login__password" placeholder="Password" ng-model="user.loginData.password">
-	    		</div>
-
-		  		<button class="btn btn-success" ng-click="user.doLogin()">login request</button>
-		  	</form>
-			
+			<ng-include src="'app/components/user/templates/login.html'"></ng-include>
 		</tab> 
 		
 		<tab heading="Logout">
-			<h2>Logout request</h2>
-			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Logout Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.logoutRequests">
-				    <ng-include src="'app/templates/request/request.html'"></ng-include>
-		    	</accordion-group>
-		  	</accordion>
-		  	
-		  	<form name="logoutForm">
-		  		<button class="btn btn-success" ng-click="user.doLogout()">logout request</button>
-		  	</form>
-			
+			<ng-include src="'app/components/user/templates/logout.html'"></ng-include>
 		</tab> 
 		
 		<tab heading="Token">
-			<h2>Token request</h2>
-			<accordion close-others="oneAtATime">
- 				<accordion-group heading="Token Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.tokenRequests">
-				    <ng-include src="'app/templates/request/request.html'"></ng-include>
-		    	</accordion-group>
-		  	</accordion>
-		  	
-		  	<form name="tokenForm">
-		  		<button class="btn btn-success" ng-click="user.doToken()">token request</button>
-		  	</form>
-			
+			<ng-include src="'app/components/user/templates/token.html'"></ng-include>
 		</tab> 	
 		
 	</tabset>

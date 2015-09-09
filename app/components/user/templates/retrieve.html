@@ -1,0 +1,15 @@
+<h2>Retrieve request</h2>
+<accordion close-others="oneAtATime">
+	<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.retrieveRequests">
+	   <ng-include src="'app/templates/request/request.html'"></ng-include>
+	</accordion-group>
+</accordion>
+ 	
+<form name="retrieveForm">
+	<div class="form-group">
+		<label for="retrieve__uid">Uid</label>
+		<input type="text" class="form-control" id="retrieve__uid" placeholder="Variable name" ng-model="user.retrieveData.uid">
+	</div>
+
+	<button class="btn btn-success" ng-click="user.doRetrieve()">retrieve request</button>
+</form>

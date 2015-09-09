@@ -35,7 +35,6 @@
 		    
 		    .state('auth', {
 		        url: '/auth',
-		        cache : true,
 		        templateUrl: './app/components/auth/auth.view.html',
 		        controller: 'AuthController as auth',
 		    })
