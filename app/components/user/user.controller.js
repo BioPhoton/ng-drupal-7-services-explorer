@@ -84,9 +84,9 @@ angular
 		//store requests
 		vm.createRequests = [];
 		vm.createData = {
-				username : 's',
-				password: 's',
-				email : 's'
+				name : 's',
+				pass: 's',
+				mail : 's@s.at'
 		};
 		//test request
 		vm.doCreate = doCreate;

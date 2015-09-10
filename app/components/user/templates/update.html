@@ -13,23 +13,14 @@
 	</div>
 
 	<div class="form-group">
-		<label for="update__username">Username</label> <input type="text"
-			class="form-control" id="update__username" placeholder="Username"
-			ng-model="user.updateData.data.name">
+		<label for="update__name">Parameter name</label> 
+		<input type="text" class="form-control" id="update__name" placeholder="Username" ng-model="user.updateData.name">
 	</div>
-
+	
 	<div class="form-group">
-		<label for="update__email">Email</label> <input type="email"
-			class="form-control" id="update__email" placeholder="Email"
-			ng-model="user.updateData.data.email">
+		<label for="update__name">Parameter mail</label> 
+		<input type="text" class="form-control" id="update__mail" placeholder="EMail" ng-model="user.updateData.mail">
 	</div>
-
-	<div class="form-group">
-		<label for="update__password">Password</label> <input type="password"
-			class="form-control" id="update__password" placeholder="Password"
-			ng-model="user.updateData.data.password">
-	</div>
-
-	<button class="btn btn-success" ng-click="user.doUpdate()">update
-		request</button>
+		
+	<button class="btn btn-success" ng-click="user.doUpdate()">update request</button>
 </form>

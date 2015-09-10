@@ -66,6 +66,18 @@ h1.ellipsis {
     border-radius: 6px 0 6px 6px;
 }
 
+.nav-tabs>li {
+    height:62px;
+}
+.nav-tabs>li>a, .nav-tabs>li>a>div {
+    height:100%;
+    display:table;
+}
+.nav-tabs>li>a span {
+    display:table-cell;
+    vertical-align:middle;
+}
+
 /*layout*/
 #main-contant-wrapper {
 	
