@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-	angular.module('ngDrupalServicesTests', [ 'ui.router', 'ui.bootstrap', 'ngAnimate', 'commons.directives.whenActive', 
+	angular.module('ngDrupalServicesTests', [ 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngMessages', 'commons.directives.whenActive', 
 	                                          'ngDrupal7Services-3_x.commons.configurations',
 	                                          'ngDrupal7Services-3_x.commons.http.configurations',
 	                                          

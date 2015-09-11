@@ -1,0 +1,22 @@
+<h2>Del Variable request</h2>
+<p>
+Unsets a persistent variable.<br/>
+Case-sensitivity of the variable_* functions depends on the database collation used. To avoid problems, always use lower case for persistent variable names.<br/>
+see <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstrap.inc/function/variable_del/7" title="variable_del">variable_del</a>
+</p>
+<accordion close-others="oneAtATime">
+	<accordion-group heading="Del Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in system.delVariableRequests">
+	    <ng-include src="'app/templates/request/request.html'"></ng-include>
+   	</accordion-group>
+</accordion>
+ 	
+<form name="delVariableForm" novalidate>
+	<div class="form-group">
+		<label for="del_variable__name">Name</label>
+ 		<input type="text" class="form-control" id="del_variable__name" placeholder="Variable name" ng-model="system.delVariableData.name">
+ 		<div class="help-block">
+			<div>The name of the variable to undefine</div>
+		</div>
+ 	</div>
+    <button class="btn btn-success" ng-click="system.doDelVariable()">del_variable request</button>
+</form>

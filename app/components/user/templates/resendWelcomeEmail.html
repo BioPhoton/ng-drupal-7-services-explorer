@@ -1,0 +1,15 @@
+<h2>Resend Welcome Email request</h2>
+<accordion close-others="oneAtATime">
+	<accordion-group heading="Resend Welcome Email Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.resendWelcomeEmailRequests">
+	   <ng-include src="'app/templates/request/request.html'"></ng-include>
+	</accordion-group>
+</accordion>
+ 	
+<form name="resendWelcomeEmailForm">
+	<div class="form-group">
+		<label for="resendWelcomeEmail__uid">Uid</label>
+		<input type="text" class="form-control" id="resendWelcomeEmail__uid" placeholder="Uid" ng-model="user.resendWelcomeEmailData.uid">
+	</div>
+
+	<button class="btn btn-success" ng-click="user.doResendWelcomeEmail()">resend welcome email request</button>
+</form>

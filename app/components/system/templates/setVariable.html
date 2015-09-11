@@ -1,0 +1,50 @@
+<script type="text/ng-template" id="required-message">
+  <div ng-message="required">This field is required</div>
+</script>
+
+
+<h2>Set Variable request</h2>
+<p>
+Sets a persistent variable.<br/>
+Case-sensitivity of the variable_* functions depends on the database collation used. To avoid problems, always use lower case for persistent variable names.<br/>
+see <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstrap.inc/function/variable_set/7" title="variable_set">variable_set</a>
+</p>
+<accordion close-others="oneAtATime">
+		<accordion-group heading="Set Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in system.setVariableRequests">
+	    <ng-include src="'app/templates/request/request.html'"></ng-include>
+   	</accordion-group>
+</accordion>
+ 	
+ <form name="setVariableForm" novalidate>
+ 
+	<div class="form-group" ng-class="{ 'has-error has-feedback': setVariableForm.name.$touched && setVariableForm.name.$invalid }">
+		<label for="set_variable__name">Name</label>
+ 		<input type="text" class="form-control" id="set_variable__name" placeholder="Variable name" ng-model="system.setVariableData.name" name="name" required>
+ 		<div class="help-block">
+			<div ng-if="!setVariableForm.name.$touched">The name of the variable to set</div>
+			
+			<ng-messages for="setVariableForm.name.$error">
+			  
+			   <ng-messages-include src="required-message"></ng-message>
+			</ng-messages>
+			
+			<ng-messages for="setVariableForm.name.$error">
+			  <div ng-repeat="errorMessage in setVariableForm.name.$error">
+			    <div ng-message-exp="errorMessage.type">
+			      {{errorMessage.text}}
+			    </div>
+			  </div>
+			</ng-messages>
+			
+		</div>
+ 	</div>
+ 	<div class="form-group">
+		<label for="set_variable__value">Value</label>
+ 		<input type="text" class="form-control" id="set_variable__value" placeholder="Variable value" ng-model="system.setVariableData.value">
+ 		<div class="help-block">
+			<div>The value to set. This can be any PHP data type; these functions take care of serialization as necessary</div>
+		</div>
+ 	</div>
+    <button class="btn btn-success" ng-click="system.doSetVariable()">set_variable request</button>
+</form>
+

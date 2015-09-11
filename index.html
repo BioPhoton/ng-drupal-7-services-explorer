@@ -24,7 +24,7 @@
     <script src="./app/components/navigation/animations/animations.navAnimations.js"></script>
     
     <script src="./bower_components/angular-cookies/angular-cookies.min.js"></script>
-    
+    <script src="./bower_components/angular-messages/angular-messages.min.js"></script>
     
     <script src="./bower_components/ng-drupal-7-services/commons/commons.drupalApiConfig.js"></script>
     
@@ -63,10 +63,14 @@
      <script src="./app/components/user/user.controller.js"></script>
     
     
+   
+    
   </head>  
   
   <body ng-app="ngDrupalServicesTests">
-
+  		<!-- includes common error messages for the ng-messages direcitve -->
+ 		<ng-include src="'app/templates/errorMessages.html'"></ng-include>
+	
 		<ng-include src="'app/components/navigation/navigation.view.html'"></ng-include>
    		<div id="main-contant-wrapper">
 			<div class="container">

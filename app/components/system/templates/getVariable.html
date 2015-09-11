@@ -1,0 +1,40 @@
+<h2>Get Variable request</h2>
+<p>
+Returns a persistent variable.<br/>
+Case-sensitivity of the variable_* functions depends on the database collation used. To avoid problems, always use lower case for persistent variable names.<br/>
+see <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstrap.inc/function/variable_get/7" title="variable_get">variable_get</a>
+</p>
+<accordion close-others="oneAtATime">
+		<accordion-group heading="Get Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in system.getVariableRequests">
+	    <ng-include src="'app/templates/request/request.html'"></ng-include>
+   	</accordion-group>
+</accordion>
+
+<form name="getVariableForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': getVariableForm.name.$touched && getVariableForm.name.$invalid || getVariableForm.name.$invalid && getVariableForm.$submitted}">
+		<label for="get_variable__name">Name</label>
+		<input type="text" name="name" class="form-control" id="get_variable__name" placeholder="Variable name" ng-model="system.getVariableData.name" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		 
+		<div class="help-block">
+			<p ng-if="!getVariableForm.name.$touched && !getVariableForm.$submitted || getVariableForm.name.$valid" >The name of the variable to return</p>
+			
+			<ng-messages ng-if="getVariableForm.name.$invalid && getVariableForm.name.$touched || getVariableForm.$submitted" for="getVariableForm.name.$error">
+			  <ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="get_variable__default">Default</label>
+		<input type="text" class="form-control" id="get_variable__default" placeholder="Variable default" ng-model="system.getVariableData.default">
+		<div class="help-block">
+			<div>The default value to use if this variable has never been set</div>
+		</div>
+	</div>
+	
+    <button class="btn btn-success" ng-click="system.doGetVariable()">get_variable request</button>
+    
+</form>
+	

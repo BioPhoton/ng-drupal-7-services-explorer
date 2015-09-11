@@ -25,9 +25,9 @@ angular
 		//test request
 		vm.doConncet = doConncet;
 		//test the connect on confirm event
-		SystemChannel.subSystemConnectConfirmed($scope, subSystemConnectConfirmedCallback);
+		SystemChannel.subConnectConfirmed($scope, subConnectConfirmedCallback);
 		//test the connect on failed event
-	    SystemChannel.subSystemConnectFailed($scope, subSystemConnectFailedCallback);
+	    SystemChannel.subConnectFailed($scope, subConnectFailedCallback);
 	    
 	    //__________________________________________________________________________________________________
 	    
@@ -42,9 +42,9 @@ angular
 				   default : ''
 		};
 		//test the connect on confirm event
-		SystemChannel.subSystemGetVariableConfirmed($scope, subSystemGetVariableConfirmedCallback);
+		SystemChannel.subGetVariableConfirmed($scope, subGetVariableConfirmedCallback);
 		//test the connect on failed event
-		SystemChannel.subSystemGetVariableFailed($scope, subSystemGetVariableFailedCallback);
+		SystemChannel.subGetVariableFailed($scope, subGetVariableFailedCallback);
 
 	    //__________________________________________________________________________________________________
 	    
@@ -59,9 +59,9 @@ angular
 				   value 	: ''
 		};
 		//test the connect on confirm event
-		SystemChannel.subSystemSetVariableConfirmed($scope, subSystemSetVariableConfirmedCallback);
+		SystemChannel.subSetVariableConfirmed($scope, subSetVariableConfirmedCallback);
 		//test the connect on failed event
-		SystemChannel.subSystemSetVariableFailed($scope, subSystemSetVariableFailedCallback);
+		SystemChannel.subSetVariableFailed($scope, subSetVariableFailedCallback);
 
 	    //__________________________________________________________________________________________________
 		
@@ -75,9 +75,9 @@ angular
 				   name 	: ''
 		};
 		//test the connect on confirm event
-		SystemChannel.subSystemDelVariableConfirmed($scope, subSystemDelVariableConfirmedCallback);
+		SystemChannel.subDelVariableConfirmed($scope, subDelVariableConfirmedCallback);
 		//test the connect on failed event
-		SystemChannel.subSystemDelVariableFailed($scope, subSystemDelVariableFailedCallback);
+		SystemChannel.subDelVariableFailed($scope, subDelVariableFailedCallback);
 		
 	    //__________________________________________________________________________________________________
 	    
@@ -97,15 +97,15 @@ angular
 			    );
 		}
 		//confirm callback
-		function subSystemConnectConfirmedCallback(data) { 
+		function subConnectConfirmedCallback(data) { 
 			requestEnd = Date.now();
-			console.log('subSystemConnectConfirmed'); 
+			console.log('subConnectConfirmed'); 
 			vm.connectRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
 		}
 		//failed callback
-		function subSystemConnectFailedCallback(data) { 
+		function subConnectFailedCallback(data) { 
 			requestEnd = Date.now();
-			console.log('subSystemConnectFailed'); 
+			console.log('subConnectFailed'); 
 			vm.connectRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
@@ -126,15 +126,15 @@ angular
 				    );
 		};
 		//confirm callback
-		function subSystemGetVariableConfirmedCallback(data) { 
+		function subGetVariableConfirmedCallback(data) { 
 		   requestEnd = Date.now();
-		   console.log('subSystemGetVariableConfirmed'); 
+		   console.log('subGetVariableConfirmed'); 
 		   vm.getVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		};
 		//failed callback
-		function subSystemGetVariableFailedCallback(data) { 
+		function subGetVariableFailedCallback(data) { 
 		   requestEnd = Date.now();
-		   console.log('subSystemGetVariableFailed');
+		   console.log('subGetVariableFailed');
 		   vm.getVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 	   };
 		
@@ -154,15 +154,15 @@ angular
 				    );
 		};
 		//confirm callback
-		function subSystemSetVariableConfirmedCallback(data) { 
+		function subSetVariableConfirmedCallback(data) { 
 		   requestEnd = Date.now();
-		   console.log('subSystemSetVariableConfirmed'); 
+		   console.log('subSetVariableConfirmed'); 
 		   vm.setVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		};
 		//failed callback
-		function subSystemSetVariableFailedCallback(data) { 
+		function subSetVariableFailedCallback(data) { 
 		   requestEnd = Date.now();
-		   console.log('subSystemSetVariableFailed');
+		   console.log('subSetVariableFailed');
 		   vm.setVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		};
 		   
@@ -182,15 +182,15 @@ angular
 				    );
 		};
 		//confirm callback
-		function subSystemDelVariableConfirmedCallback(data) { 
+		function subDelVariableConfirmedCallback(data) { 
 		   requestEnd = Date.now();
-		   console.log('subSystemDelVariableConfirmed'); 
+		   console.log('subDelVariableConfirmed'); 
 		   vm.delVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		};
 		//failed callback
-		function subSystemDelVariableFailedCallback(data) { 
+		function subDelVariableFailedCallback(data) { 
 		   requestEnd = Date.now();
-		   console.log('subSystemDelVariableFailed');
+		   console.log('subDelVariableFailed');
 		   vm.delVariableRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		};
 		

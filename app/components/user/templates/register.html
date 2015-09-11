@@ -1,73 +1,73 @@
-<h2>Create request</h2>
+<h2>Register request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
 	heading="Register Request {{key}} at {{request.requestStart | date}}"
 	ng-repeat="(key,request) in user.registerRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
 
-<form name="createForm" novalidate>
+<form name="registerForm" novalidate>
 
 	<div class="form-group">
-		<label for="create__username">Username</label> <input type="text"
-			class="form-control" id="create__username" placeholder="Username"
+		<label for="register__username">Username</label> <input type="text"
+			class="form-control" id="register__username" placeholder="Username"
 			ng-model="user.registerData.name">
 	</div>
 
 	<div class="form-group">
-		<label for="create__email">Email</label> <input type="email"
-			class="form-control" id="create__email" placeholder="Email"
+		<label for="register__email">Email</label> <input type="email"
+			class="form-control" id="register__email" placeholder="Email"
 			ng-model="user.registerData.mail">
 	</div>
 
 	<div class="form-group">
-		<label for="create__password">Password</label> <input type="password"
-			class="form-control" id="create__password" placeholder="Password"
+		<label for="register__password">Password</label> <input type="password"
+			class="form-control" id="register__password" placeholder="Password"
 			ng-model="user.registerData.pass">
 	</div>
 	
 	<div class="form-group">
-		<label for="create__password">Theme</label> <input type="text"
-			class="form-control" id="create__theme" placeholder="Theme"
+		<label for="register__password">Theme</label> <input type="text"
+			class="form-control" id="register__theme" placeholder="Theme"
 			ng-model="user.registerData.theme">
 	</div>
 	
 	<div class="form-group">
-		<label for="create__signature">Signature</label> <input type="text"
-			class="form-control" id="create__signature" placeholder="Signature"
+		<label for="register__signature">Signature</label> <input type="text"
+			class="form-control" id="register__signature" placeholder="Signature"
 			ng-model="user.registerData.signature">
 	</div>
 	
 	<div class="form-group">
-		<label for="create__signature_format">Signature Format</label> <input type="text"
-			class="form-control" id="create__signature_format" placeholder="Signature Format (plain_text)"
+		<label for="register__signature_format">Signature Format</label> <input type="text"
+			class="form-control" id="register__signature_format" placeholder="Signature Format (plain_text)"
 			ng-model="user.registerData.signature_format">
 	</div>
 	
 	<div class="form-group">
-		<label for="create__password">Created</label> <input type="number"
-			class="form-control" id="create__created" placeholder="Created"
-			ng-model="user.registerData.created">
+		<label for="register__createed">Created</label> <input type="number"
+			class="form-control" id="register__createed" placeholder="Created"
+			ng-model="user.registerData.createed">
 	</div>
 	
 	<div class="form-group">
-		<label for="create__password">Access</label> <input type="text"
-			class="form-control" id="create__access" placeholder="Access"
+		<label for="register__password">Access</label> <input type="text"
+			class="form-control" id="register__access" placeholder="Access"
 			ng-model="user.registerData.access">
 	</div>
 	
 	<div class="form-group">
-		<label for="create__password">Login</label> <input type="text"
-			class="form-control" id="create__login" placeholder="login"
+		<label for="register__login">Login</label> <input type="text"
+			class="form-control" id="register__login" placeholder="login"
 			ng-model="user.registerData.login">
 	</div>
 	
 	<div class="form-group">
-		<label for="create__password">Status</label> <input type="text"
-			class="form-control" id="create__status" placeholder="Status"
+		<label for="register__status">Status</label> <input type="text"
+			class="form-control" id="register__status" placeholder="Status"
 			ng-model="user.registerData.status">
 	</div>
 
-	<button class="btn btn-success" ng-click="user.doRegiser()">register request</button>
+	<button class="btn btn-success" ng-click="user.doRegister()">register request</button>
 </form>
 
 				

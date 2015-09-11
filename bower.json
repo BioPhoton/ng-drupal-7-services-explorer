@@ -1,10 +1,10 @@
 {
-  "name": "ng-bootstrap-seed",
+  "name": "ng-drupal-7-services-tests-with-ng",
   "version": "0.0.0",
   "authors": [
     "Michael Hladky <michael@hladky.at>"
   ],
-  "description": "starting point for a gulp, bower, sass, bootatrap, angular project",
+  "description": "ready to use angular project to test your api setup",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -14,13 +14,13 @@
     "tests"
   ],
   "dependencies": {
+    "angular": "1.4.5",
+    "angular-animate": "~1.4.5",
+    "angular-bootstrap": "~0.13.2",
+    "angular-messages": "~1.4.5",
+    "angular-ui-router": "0.2.13",
     "bootstrap-sass-official": "~3.3.5",
     "fontawesome": "~4.4.0",
-    "angular": "1.4.5",
-    "angular-ui-router": "0.2.13",
-    "angular-bootstrap": "~0.13.2",
-    "ng-drupal-7-services": "https://github.com/BioPhoton/ng-drupal-7-services.git",
-    
-    "angular-animate": "~1.4.5"
+    "ng-drupal-7-services": "https://github.com/BioPhoton/ng-drupal-7-services.git"
   }
 }

@@ -1,4 +1,8 @@
 <h2>Retrieve request</h2>
+<p>
+Get user details.<br/>
+see <code>services/resources/user_resource.inc => _user_resource_retrieve()</code>
+</p>
 <accordion close-others="oneAtATime">
 	<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.retrieveRequests">
 	   <ng-include src="'app/templates/request/request.html'"></ng-include>
@@ -9,6 +13,9 @@
 	<div class="form-group">
 		<label for="retrieve__uid">Uid</label>
 		<input type="text" class="form-control" id="retrieve__uid" placeholder="Variable name" ng-model="user.retrieveData.uid">
+		<div class="help-block">
+			<div>UID of the user to be loaded</div>
+		</div>
 	</div>
 
 	<button class="btn btn-success" ng-click="user.doRetrieve()">retrieve request</button>

@@ -1,4 +1,9 @@
 <h2>Create request</h2>
+<p>
+Create a new user.<br/>
+This function uses drupal_form_submit() and as such expects all input to match the submitting form in question.</br>
+see <code>services/resources/user_resource.inc => _user_resource_create()</code>
+</p>
 <accordion close-others="oneAtATime"> <accordion-group
 	heading="Create Request {{key}} at {{request.requestStart | date}}"
 	ng-repeat="(key,request) in user.createRequests"> <ng-include
@@ -12,21 +17,54 @@
 <form name="createForm" novalidate>
 
 	<div class="form-group">
-		<label for="create__username">Username</label> <input type="text"
-			class="form-control" id="create__username" placeholder="Username"
-			ng-model="user.createData.name">
+		<label for="create__username">Username</label> 
+		<input type="text" class="form-control" id="create__username" placeholder="Username" ng-model="user.createData.name" required>
+		<div class="help-block">
+			<div>The user name</div>
+		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="create__email">Email</label> <input type="email"
-			class="form-control" id="create__email" placeholder="Email"
-			ng-model="user.createData.mail">
+		<label for="create__email">Email</label> 
+		<input type="email" class="form-control" id="create__email" placeholder="Email" ng-model="user.createData.mail" required>
+		<div class="help-block">
+			<div>The email address</div>
+		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="create__password">Password</label> <input type="password"
-			class="form-control" id="create__password" placeholder="Password"
-			ng-model="user.createData.pass">
+		<label for="create__status">Password</label> 
+		<input type="password" class="form-control" id="create__password" placeholder="Password" ng-model="user.createData.pass" required>
+		<div class="help-block">
+			<div>The plain text unencrypted password</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="create__password">Status</label> 
+		<input type="number" class="form-control" id="create__status" placeholder="Status" ng-model="user.createData.status">
+		<div class="help-block">
+			<div>Value 0 for blocked, otherwise will be active by default</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="create__notify">Notify</label> 
+		<input type="number" class="form-control" id="create__notify" placeholder="Notify" ng-model="user.createData.notify">
+		<div class="help-block">
+			<div>Value 1 to notify user of new account, will not notify by default</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label ng-click="user.createRolesColapsed = !user.createRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[user.createRolesColapsed]"></span></label> 
+	</div>
+	<div class="well collapse" ng-class="!user.createRolesColapsed && 'in'"> 
+		<div class="form-group">
+			<label for="create__role_administrator">Administrator role</label> 
+			<input type="text" class="form-control" id="create__role_administrator" placeholder="Uid" ng-model="user.createData.roled.administrator">
+		</div>
+
 	</div>
 
 	<button class="btn btn-success" ng-click="user.doCreate()">create

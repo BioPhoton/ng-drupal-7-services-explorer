@@ -1,0 +1,15 @@
+<h2>Connect request</h2>
+<p>
+Returns the details of currently logged in user.<br/>
+object with session id, session name and a user object.<br/>
+see <code>services/resources/system_resource.inc line 91</code>
+</p>
+<accordion close-others="oneAtATime"> 
+	<accordion-group heading="Connect Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in system.connectRequests">
+		<ng-include src="'app/templates/request/request.html'"></ng-include> 
+	</accordion-group> 
+</accordion>
+
+<form name="connectForm" novalidate>
+	<button class="btn btn-success" ng-click="system.doConncet()">connect request</button>
+</form>
