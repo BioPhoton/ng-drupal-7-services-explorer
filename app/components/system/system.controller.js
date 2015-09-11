@@ -114,16 +114,17 @@ angular
 		//get_variable request
 		
 		//do request
-		function doGetVariable() {
-			console.log('doGetVariable'); 
-			requestStart = Date.now();
-				SystemResource.get_variable(vm.getVariableData)
-					.then(
-				    	//get_variable success
-				    	function(data) { console.log('system get_variable success'); },
-				    	//get_variable error
-				    	function(data) { console.log('system get_variable error'); }
-				    );
+		function doGetVariable(getVariableForm) {
+			if(getVariableForm.$valid) {
+				requestStart = Date.now();
+					SystemResource.get_variable(vm.getVariableData)
+						.then(
+					    	//get_variable success
+					    	function(data) { console.log('system get_variable success'); },
+					    	//get_variable error
+					    	function(data) { console.log('system get_variable error'); }
+					    );
+			}
 		};
 		//confirm callback
 		function subGetVariableConfirmedCallback(data) { 
@@ -143,15 +144,17 @@ angular
 	   //set_variable request
 		
 		//do request
-		function doSetVariable() {
-			requestStart = Date.now();
-				SystemResource.set_variable(vm.setVariableData)
-					.then(
-				    	//get_variable success
-				    	function(data) { console.log('system set_variable success'); },
-				    	//get_variable error
-				    	function(data) { console.log('system set_variable error'); }
-				    );
+		function doSetVariable(setVariableForm) {
+			if(setVariableForm.$valid) {
+				requestStart = Date.now();
+					SystemResource.set_variable(vm.setVariableData)
+						.then(
+					    	//get_variable success
+					    	function(data) { console.log('system set_variable success'); },
+					    	//get_variable error
+					    	function(data) { console.log('system set_variable error'); }
+					    );
+			}
 		};
 		//confirm callback
 		function subSetVariableConfirmedCallback(data) { 
@@ -171,15 +174,17 @@ angular
 		//del_variable request
 		
 		//do request
-		function doDelVariable() {
-			requestStart = Date.now();
-				SystemResource.del_variable(vm.delVariableData)
-					.then(
-				    	//get_variable success
-				    	function(data) { console.log('system del_variable success'); },
-				    	//get_variable error
-				    	function(data) { console.log('system del_variable error'); }
-				    );
+		function doDelVariable(delVariableForm) {
+			if(delVariableForm.$valid) {
+				requestStart = Date.now();
+					SystemResource.del_variable(vm.delVariableData)
+						.then(
+					    	//get_variable success
+					    	function(data) { console.log('system del_variable success'); },
+					    	//get_variable error
+					    	function(data) { console.log('system del_variable error'); }
+					    );
+			}
 		};
 		//confirm callback
 		function subDelVariableConfirmedCallback(data) { 

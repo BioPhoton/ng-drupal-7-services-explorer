@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="This is a project for testing the ng-drupal-7-services repo in github">
@@ -20,7 +20,8 @@
     <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
     
-    <script src="./app/commons/directives/when-active.js"></script>
+    <script src="./app/commons/directives/whenReady.js"></script>
+     
     <script src="./app/components/navigation/animations/animations.navAnimations.js"></script>
     
     <script src="./bower_components/angular-cookies/angular-cookies.min.js"></script>
@@ -67,7 +68,8 @@
     
   </head>  
   
-  <body ng-app="ngDrupalServicesTests">
+  <body ng-app="ngDrupalServicesTests" ng-init="ready=false;" when-ready="ready=true" wait-for-interpolation="true">
+  {{ready}}
   		<!-- includes common error messages for the ng-messages direcitve -->
  		<ng-include src="'app/templates/errorMessages.html'"></ng-include>
 	

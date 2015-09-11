@@ -2,8 +2,9 @@
 <p>
 Returns a persistent variable.<br/>
 Case-sensitivity of the variable_* functions depends on the database collation used. To avoid problems, always use lower case for persistent variable names.<br/>
-see <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstrap.inc/function/variable_get/7" title="variable_get">variable_get</a>
+See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstrap.inc/function/variable_get/7" title="variable_get">variable_get</a> and <code>services/resources/system_resource.inc</code>
 </p>
+<hr/>
 <accordion close-others="oneAtATime">
 		<accordion-group heading="Get Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in system.getVariableRequests">
 	    <ng-include src="'app/templates/request/request.html'"></ng-include>
@@ -34,7 +35,7 @@ see <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
 		</div>
 	</div>
 	
-    <button class="btn btn-success" ng-click="system.doGetVariable()">get_variable request</button>
+    <button class="btn btn-success" ng-click="system.doGetVariable(getVariableForm)">get_variable request</button>
     
 </form>
 	

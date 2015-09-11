@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-	angular.module('ngDrupalServicesTests', [ 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngMessages', 'commons.directives.whenActive', 
+	angular.module('ngDrupalServicesTests', [ 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngMessages', 'commons.directives.whenReady',
 	                                          'ngDrupal7Services-3_x.commons.configurations',
 	                                          'ngDrupal7Services-3_x.commons.http.configurations',
 	                                          
@@ -33,7 +33,12 @@
 		        controller: 'HomeController as home',
 		    })
 		    
-		    .state('auth', {
+		    .state('commons', {
+		        url: '/commons',
+		        templateUrl: './app/components/auth/auth.view.html',
+		        controller: 'AuthController as auth',
+		    })
+		    .state('commons.auth', {
 		        url: '/auth',
 		        templateUrl: './app/components/auth/auth.view.html',
 		        controller: 'AuthController as auth',

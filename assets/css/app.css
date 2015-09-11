@@ -8197,18 +8197,13 @@ h1.ellipsis {
   margin-left: 10px;
   border-radius: 6px 0 6px 6px; }
 
-.nav-tabs > li {
-  height: 62px; }
-
-.nav-tabs > li > a, .nav-tabs > li > a > div {
-  height: 100%;
-  display: table; }
-
-.nav-tabs > li > a span {
-  display: table-cell;
-  vertical-align: middle; }
-
 /*layout*/
+.navbar-default .navbar-nav > .active-trail > a,
+.navbar-default .navbar-nav > .active-trail > a:hover,
+.navbar-default .navbar-nav > .active-trail > a:focus {
+  background-color: #efefef;
+  color: #555; }
+
 /* Navigation specific animations */
 /*Big THX to tympanus.net => http://tympanus.net/codrops/2013/05/07/a-collection-of-page-transitions/ */
 /* http://plnkr.co/edit/uW4v9T?p=info  ---------------  https://scotch.io/tutorials/animating-angularjs-apps-ngview  --------------------   http://tympanus.net/Development/PageTransitions/ */
