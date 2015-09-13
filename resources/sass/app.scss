@@ -16,7 +16,7 @@ $icon-font-path: "../fonts/bootstrap/" !default;
 // needed for buootatrap-ui =>https://angular-ui.github.io/bootstrap/#/getting_started
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
-
+// crets for all 4 sides
 .caret.up {
 	border-top: 0px;
 	border-bottom: 4px dashed;
@@ -41,6 +41,12 @@ $icon-font-path: "../fonts/bootstrap/" !default;
     border-left:  0px;
     border-right: 4px dashed;
 }
+
+//for inline-checkboxes or radios with label
+.control-label {
+  display: block;
+}
+
 
 //=Bootstrap end
 

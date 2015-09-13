@@ -6075,6 +6075,9 @@ button.close {
   border-left: 0px;
   border-right: 4px dashed; }
 
+.control-label {
+  display: block; }
+
 /*!
  *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

@@ -358,15 +358,19 @@ angular
 		//create request
 	    
 	    //do create
-		function doCreate() {
-			requestStart = Date.now();
-	   		UserResource.create(vm.createData)
-			    .then(
-		    		//create success
-		    		function(data) { console.log('user create success'); },
-		    		//create error
-		    		function(data) { console.log('user create error'); }
-			    );
+		function doCreate(createForm) {
+			if(createForm.$valid) {
+
+				requestStart = Date.now();
+				UserResource.create(vm.createData)
+					.then(
+						//create success
+						function(data) { console.log('user create success'); },
+						//create error
+						function(data) { console.log('user create error'); }
+					);
+
+			}
 		};
 		
 		//confirm callback

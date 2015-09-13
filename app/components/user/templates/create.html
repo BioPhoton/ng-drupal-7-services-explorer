@@ -15,42 +15,72 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 </p>
 
 <form name="createForm" novalidate>
+<pre>{{createForm | json}}</pre>
 
-	<div class="form-group">
-		<label for="create__username">Username</label> 
-		<input type="text" class="form-control" id="create__username" placeholder="Username" ng-model="user.createData.name" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.name.$touched && createForm.name.$invalid || createForm.name.$invalid && createForm.$submitted}">
+		<label for="create__name">Name</label>
+		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="user.createData.name"  ng-minlength="5" ng-maxlength="60" maxlength="61" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 		<div class="help-block">
-			<div>The user name</div>
+			<p ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The user name</p>
+
+			<ng-messages ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<div ng-message="minlength, maxlength">
+					asdsaad
+				</div>
+				<div ng-message-exp="['minlength', 'maxlength']">
+					Your email must be between 1 and 60 characters long
+				</div>
+			</ng-messages>
 		</div>
 	</div>
 
-	<div class="form-group">
+
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.email.$touched && createForm.email.$invalid || createForm.email.$invalid && createForm.$submitted}">
 		<label for="create__email">Email</label> 
-		<input type="email" class="form-control" id="create__email" placeholder="Email" ng-model="user.createData.mail" required>
+		<input type="email" class="form-control" name="email" id="create__email" placeholder="Email" ng-model="user.createData.mail" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 		<div class="help-block">
-			<div>The email address</div>
+			<p ng-if="!createForm.email.$touched && !createForm.$submitted || createForm.email.$valid" >The email address</p>
+
+			<ng-messages ng-if="createForm.email.$invalid && createForm.email.$touched || createForm.$submitted" for="createForm.email.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-email"></ng-messages-include>
+			</ng-messages>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="create__status">Password</label> 
-		<input type="password" class="form-control" id="create__password" placeholder="Password" ng-model="user.createData.pass" required>
+		<label for="create__password">Password</label>
+		<input type="password" class="form-control" name="password" id="create__password" placeholder="Password" ng-model="user.createData.pass" required>
 		<div class="help-block">
 			<div>The plain text unencrypted password</div>
 		</div>
 	</div>
 	
 	<div class="form-group">
-		<label for="create__password">Status</label> 
-		<input type="number" class="form-control" id="create__status" placeholder="Status" ng-model="user.createData.status">
+		<label class="control-label" for="create__status">Status</label>
+		<label class="radio-inline">
+			<input type="radio" name="create__status" id="blocked" ng-model="user.createData.status" value="0"> blocked
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="create__status" id="active" ng-model="user.createData.status" value="1"> active
+		</label>
 		<div class="help-block">
 			<div>Value 0 for blocked, otherwise will be active by default</div>
 		</div>
 	</div>
 	
 	<div class="form-group">
-		<label for="create__notify">Notify</label> 
-		<input type="number" class="form-control" id="create__notify" placeholder="Notify" ng-model="user.createData.notify">
+		<label class="control-label" for="create__notify">Notify</label>
+		<label class="radio-inline">
+			<input type="radio" name="create__notify" id="notification" ng-model="user.createData.notify" value="0"> no user notification
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="create__notify" id="no_notification" ng-model="user.createData.notify" value="1"> user notification
+		</label>
 		<div class="help-block">
 			<div>Value 1 to notify user of new account, will not notify by default</div>
 		</div>
@@ -61,12 +91,32 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 	</div>
 	<div class="well collapse" ng-class="!user.createRolesColapsed && 'in'"> 
 		<div class="form-group">
-			<label for="create__role_administrator">Administrator role</label> 
-			<input type="text" class="form-control" id="create__role_administrator" placeholder="Uid" ng-model="user.createData.roled.administrator">
+
+			<div class="checkbox disabled">
+				<label>
+					<input type="checkbox" name="create__role__anonymous_user" disabled>
+					anonymous user (not available)
+				</label>
+			</div>
+
+			<div class="checkbox disabled">
+				<label>
+					<input type="checkbox" name="create__role__authenticated_user" disabled>
+					authenticated user (not available)
+				</label>
+			</div>
+
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="create__role__administrator" ng-model="user.createData.roles.administrator">
+					administrator
+				</label>
+			</div>
+
 		</div>
 
 	</div>
 
-	<button class="btn btn-success" ng-click="user.doCreate()">create
+	<button class="btn btn-success" ng-click="user.doCreate(createForm)">create
 		request</button>
 </form>
