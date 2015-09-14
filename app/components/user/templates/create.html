@@ -15,23 +15,40 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 </p>
 
 <form name="createForm" novalidate>
-<pre>{{createForm | json}}</pre>
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.name.$touched && createForm.name.$invalid || createForm.name.$invalid && createForm.$submitted}">
 		<label for="create__name">Name</label>
-		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="user.createData.name"  ng-minlength="5" ng-maxlength="60" maxlength="61" required>
+		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="user.createData.name" ng-maxlength="60" required>
 		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 		<div class="help-block">
 			<p ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The user name</p>
 
 			<ng-messages ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
-				<div ng-message="minlength, maxlength">
-					asdsaad
+				
+				<div ng-message="maxlength">
+					Your username must be less than 61 characters long
 				</div>
-				<div ng-message-exp="['minlength', 'maxlength']">
-					Your email must be between 1 and 60 characters long
+				
+				<!--
+				@TODO implement validation
+				<div ng-message="starts-with">
+					The username cannot begin with a space
+				</div> 
+				
+				<div ng-message="contains">
+					The username cannot contain multiple spaces in a row
 				</div>
+				
+				<div ng-message="ends-with">
+					The username cannot end with a space
+				</div>
+				
+				<div ng-message="drupal-illegal-char">
+					The username contains an illegal character
+				</div>
+				-->
+	
 			</ng-messages>
 		</div>
 	</div>
@@ -66,7 +83,7 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 			<input type="radio" name="create__status" id="blocked" ng-model="user.createData.status" value="0"> blocked
 		</label>
 		<label class="radio-inline">
-			<input type="radio" name="create__status" id="active" ng-model="user.createData.status" value="1"> active
+			<input type="radio" name="create__status" id="active" ng-model="user.createData.status" value="1" > active
 		</label>
 		<div class="help-block">
 			<div>Value 0 for blocked, otherwise will be active by default</div>
@@ -85,7 +102,7 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 			<div>Value 1 to notify user of new account, will not notify by default</div>
 		</div>
 	</div>
-	
+	<pre>field {{createForm.status | json}} status {{user.createData.roles}}</pre>
 	<div class="form-group">
 		<label ng-click="user.createRolesColapsed = !user.createRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[user.createRolesColapsed]"></span></label> 
 	</div>
@@ -108,8 +125,15 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="create__role__administrator" ng-model="user.createData.roles.administrator">
+					<input type="checkbox" name="create__role__administrator" ng-model="user.createData.roles.administrator" ng-true-value="'3'">
 					administrator
+				</label>
+			</div>
+			
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="create__role__editor" ng-model="user.createData.roles.editor" ng-true-value="'4'">
+					editor (custom created role)
 				</label>
 			</div>
 
