@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-	angular.module('ngDrupalServicesTests', [ 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngMessages', 'commons.directives.whenReady',
+	angular.module('ngDrupalServicesTests', [ 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngMessages', 'commons.directives.whenReady', 'commons.directives.contains',
 	                                          'ngDrupal7Services-3_x.commons.configurations',
 	                                          'ngDrupal7Services-3_x.commons.http.configurations',
 	                                          
@@ -13,9 +13,16 @@
 	                                          'ngDrupalServicesTests.auth.controller',
 	                                          
 	                                          'ngDrupalServicesTests.system.controller',
-	                                          'ngDrupalServicesTests.user.controller'
+	                                          'ngDrupalServicesTests.user.controller',
+	                                          
+	                                          'ngDrupal7Services-3_x.commons.authentication.service'
 	                                          
 	                                          ])
+	                                          
+	                                          .run(function(AuthenticationService) {
+	                                        	  AuthenticationService.refreshConnection();
+	                                        	  
+	                                          })
 		
 		.config( function($stateProvider, $urlRouterProvider, DrupalApiConstant) {
 			//drupal services configurations

@@ -22,11 +22,13 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="user.createData.name"  ng-minlength="5" ng-maxlength="60" maxlength="61" required>
 		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 		<div class="help-block">
-			<p class="hint" ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The user name</p>
+			<p ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The user name</p>
 
-			<ng-messages class="errors" ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
+			<ng-messages ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
-
+				<div ng-message="minlength, maxlength">
+					asdsaad
+				</div>
 				<div ng-message-exp="['minlength', 'maxlength']">
 					Your email must be between 1 and 60 characters long
 				</div>

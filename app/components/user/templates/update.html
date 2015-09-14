@@ -6,21 +6,125 @@
 	
 <form name="updateForm">
 
-	<div class="form-group">
-		<label for="update__username">Uid</label> <input type="text"
-			class="form-control" id="update__uid" placeholder="Uid"
-			ng-model="user.updateData.uid">
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.uid.$touched && updateForm.uid.$invalid || updateForm.uid.$invalid && updateForm.$submitted}" >
+		<label for="update__uid">Uid</label>
+		<input type="number" class="form-control" id="update__uid" name="uid" placeholder="Uid" ng-model="user.updateData.uid" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<div class="help-block">
+			<p ng-if="!updateForm.uid.$touched && !updateForm.$submitted || updateForm.uid.$valid" >UID of the user to be loaded</p>
+			<ng-messages ng-if="updateForm.uid.$invalid && updateForm.uid.$touched || updateForm.$submitted" for="updateForm.uid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.name.$touched && updateForm.name.$invalid || updateForm.name.$invalid && updateForm.$submitted}">
+		<label for="update__name">Name</label>
+		<input type="text" class="form-control" name="name" id="update__name" placeholder="Name" ng-model="user.updateData.name" ng-maxlength="60" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<div class="help-block">
+			<p ng-if="!updateForm.name.$touched && !updateForm.$submitted || updateForm.name.$valid" >The user name</p>
+
+			<ng-messages ng-if="updateForm.name.$invalid && updateForm.name.$touched || updateForm.$submitted" for="updateForm.name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				
+				<div ng-message="maxlength">
+					Your username must be less than 61 characters long
+				</div>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.email.$touched && updateForm.email.$invalid || updateForm.email.$invalid && updateForm.$submitted}">
+		<label for="update__email">Email</label> 
+		<input type="email" class="form-control" name="email" id="update__email" placeholder="Email" ng-model="user.updateData.mail" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<div class="help-block">
+			<p ng-if="!updateForm.email.$touched && !updateForm.$submitted || updateForm.email.$valid" >The email address</p>
+
+			<ng-messages ng-if="updateForm.email.$invalid && updateForm.email.$touched || updateForm.$submitted" for="updateForm.email.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-email"></ng-messages-include>
+			</ng-messages>
+		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="update__name">Parameter name</label> 
-		<input type="text" class="form-control" id="update__name" placeholder="Username" ng-model="user.updateData.name">
+		<label class="control-label" for="update__status">Status</label>
+		<label class="radio-inline">
+			<input type="radio" name="update__status" id="blocked" ng-model="user.updateData.status" value="0"> blocked
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="update__status" id="active" ng-model="user.updateData.status" value="1" > active
+		</label>
+		<div class="help-block">
+			<div>Value 0 for blocked, otherwise will be active by default</div>
+		</div>
 	</div>
 	
 	<div class="form-group">
-		<label for="update__name">Parameter mail</label> 
-		<input type="text" class="form-control" id="update__mail" placeholder="EMail" ng-model="user.updateData.mail">
+		<label class="control-label" for="update__notify">Notify</label>
+		<label class="radio-inline">
+			<input type="radio" name="update__notify" id="notification" ng-model="user.updateData.notify" value="0"> no user notification
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="update__notify" id="no_notification" ng-model="user.updateData.notify" value="1"> user notification
+		</label>
+		<div class="help-block">
+			<div>Value 1 to notify user of new account, will not notify by default</div>
+		</div>
 	</div>
-		
-	<button class="btn btn-success" ng-click="user.doUpdate()">update request</button>
+	<pre>field {{updateForm.status | json}} status {{user.updateData.roles}}</pre>
+	<div class="form-group">
+		<label ng-click="user.updateRolesColapsed = !user.updateRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[user.updateRolesColapsed]"></span></label> 
+	</div>
+	<div class="well collapse" ng-class="!user.updateRolesColapsed && 'in'"> 
+		<div class="form-group">
+
+			<div class="checkbox disabled">
+				<label>
+					<input type="checkbox" name="update__role__anonymous_user" disabled>
+					anonymous user (not available)
+				</label>
+			</div>
+
+			<div class="checkbox disabled">
+				<label>
+					<input type="checkbox" name="update__role__authenticated_user" disabled>
+					authenticated user (not available)
+				</label>
+			</div>
+
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="update__role__administrator" ng-model="user.updateData.roles.administrator" ng-true-value="'3'">
+					administrator
+				</label>
+			</div>
+			
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="update__role__editor" ng-model="user.updateData.roles.editor" ng-true-value="'4'">
+					editor (custom updated role)
+				</label>
+			</div>
+
+		</div>
+
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.field_nickname.$touched && updateForm.field_nickname.$invalid || updateForm.field_nickname.$invalid && updateForm.$submitted}">
+		<label for="update__field_nickname">Nickname</label> 
+		<input type="field_nickname" class="form-control" name="field_nickname" id="update__field_nickname" placeholder="Nickname" ng-model="user.updateData.field_nickname" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<div class="help-block">
+			<p ng-if="!updateForm.field_nickname.$touched && !updateForm.$submitted || updateForm.field_nickname.$valid" >The user's nickname. ( Custom created field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
+
+			<ng-messages ng-if="updateForm.field_nickname.$invalid && updateForm.field_nickname.$touched || updateForm.$submitted" for="updateForm.field_nickname.$error">
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="user.doUpdate(updateForm)">update request</button>
 </form>

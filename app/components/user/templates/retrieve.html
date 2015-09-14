@@ -10,11 +10,17 @@ see <code>services/resources/user_resource.inc => _user_resource_retrieve()</cod
 </accordion>
  	
 <form name="retrieveForm">
-	<div class="form-group">
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.uid.$touched && retrieveForm.uid.$invalid || retrieveForm.uid.$invalid && retrieveForm.$submitted}" >
 		<label for="retrieve__uid">Uid</label>
-		<input type="text" class="form-control" id="retrieve__uid" placeholder="Variable name" ng-model="user.retrieveData.uid">
+		<input type="number" class="form-control" id="retrieve__uid" name="uid" placeholder="Uid" ng-model="user.retrieveData.uid" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 		<div class="help-block">
-			<div>UID of the user to be loaded</div>
+			<p ng-if="!retrieveForm.uid.$touched && !retrieveForm.$submitted || retrieveForm.uid.$valid" >UID of the user to be loaded</p>
+			<ng-messages ng-if="retrieveForm.uid.$invalid && retrieveForm.uid.$touched || createForm.$submitted" for="retrieveForm.uid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
 		</div>
 	</div>
 

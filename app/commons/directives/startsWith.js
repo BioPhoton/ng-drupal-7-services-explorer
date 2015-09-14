@@ -23,17 +23,18 @@
                 ctrl.$parsers.unshift(function(value) {
                     if(value){
                         // test and set the validity after update.
-                        var valid = value.charAt(0) !== ' ';
-                        ctrl.$setValidity('startsWith_space', valid);
+                    	 var regexp = new RegExp('^'+attrs.startsWith), 
+                     		 valid = !regexp.test(value);
+                        ctrl.$setValidity('starts-with', valid);
                     }
 
                     // if it's valid, return the value to the model,
                     // otherwise return undefined.
                     return valid ? value : undefined;
                 });
+            }
 
-
-            };
+        };
 
 
     };
