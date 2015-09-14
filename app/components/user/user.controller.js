@@ -3,13 +3,13 @@
 
 
 angular
-    .module('ngDrupalServicesTests.user.controller', ['ngDrupal7Services-3_x.resources.user.resource', 'ngDrupal7Services-3_x.resources.user.channel'])
+    .module('ngDrupalServicesTests.user.controller', ['ngDrupal7Services-3_x.resources.user.resource', 'ngDrupal7Services-3_x.resources.user.channel', 'ngDrupal7Services-3_x.commons.helperService'])
     .controller('UserController', UserController);
 
-	UserController.$inject = ['$scope', 'UserResource', 'UserChannel'];
+	UserController.$inject = ['$scope', 'UserResource', 'UserChannel', 'DrupalHelperService'];
 
 	/** @ngInject */ 
-	function UserController($scope, UserResource, UserChannel) { 
+	function UserController($scope, UserResource, UserChannel, DrupalHelperService) { 
 		
 		var requestEnd = 0;
 		var requestStart = 0;
@@ -360,7 +360,13 @@ angular
 	    //do create
 		function doCreate(createForm) {
 			if(createForm.$valid) {
-
+				
+				console.log(vm.createData.field_nickname);
+				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
+				
+				vm.createData.signature = DrupalHelperService.structureField(vm.createData.signature);
+				
+				console.log(vm.createData.field_nickname);
 				requestStart = Date.now();
 				UserResource.create(vm.createData)
 					.then(

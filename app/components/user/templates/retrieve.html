@@ -10,7 +10,7 @@ see <code>services/resources/user_resource.inc => _user_resource_retrieve()</cod
 </accordion>
  	
 <form name="retrieveForm">
-<pre>{{retrieveForm.uid | json}}</pre>
+
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.uid.$touched && retrieveForm.uid.$invalid || retrieveForm.uid.$invalid && retrieveForm.$submitted}" >
 		<label for="retrieve__uid">Uid</label>
 		<input type="number" class="form-control" id="retrieve__uid" name="uid" placeholder="Uid" ng-model="user.retrieveData.uid" required>

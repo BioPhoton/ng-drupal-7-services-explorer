@@ -23,7 +23,7 @@
                 ctrl.$parsers.unshift(function(value) {
                     if(value){
                         // test and set the validity after update.
-                        var regexp1 = /[^\x{80}-\x{F7} a-z0-9@_.\'-]/i,
+                        var regexp1 = /[^\x{80}-\x{F7} a-z0-9@_.\'-]/,
 	                        regexp2 = 	/[\x{80}-\x{A0} . // Non-printable ISO-8859-1 + NBSP
 	                            	    \x{AD} . // Soft-hyphen
 			                            \x{2000}-\x{200F} . // Various space characters
@@ -34,7 +34,7 @@
 			                            \x{FFF9}-\x{FFFD} . // Replacement characters
 			                            \x{0}-\x{1F}]/u,
 			                            
-                    	valid = regexp.test(value);
+                    	valid = regexp1.test(value, 'i');
                         
                         ctrl.$setValidity('drupal-illegal-char', valid);
                     }

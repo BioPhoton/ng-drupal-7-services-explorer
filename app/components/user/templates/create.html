@@ -53,8 +53,6 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 		</div>
 	</div>
 
-
-
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.email.$touched && createForm.email.$invalid || createForm.email.$invalid && createForm.$submitted}">
 		<label for="create__email">Email</label> 
 		<input type="email" class="form-control" name="email" id="create__email" placeholder="Email" ng-model="user.createData.mail" required>
@@ -140,7 +138,34 @@ see <code>services/resources/user_resource.inc => _user_resource_create()</code>
 		</div>
 
 	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.field_nickname.$touched && createForm.field_nickname.$invalid || createForm.field_nickname.$invalid && createForm.$submitted}">
+		<label for="create__field_nickname">Nickname</label> 
+		<input type="field_nickname" class="form-control" name="field_nickname" id="create__field_nickname" placeholder="Nickname" ng-model="user.createData.field_nickname" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<div class="help-block">
+			<p ng-if="!createForm.field_nickname.$touched && !createForm.$submitted || createForm.field_nickname.$valid" >The user's nickname. ( Custom field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
 
+			<ng-messages ng-if="createForm.field_nickname.$invalid && createForm.field_nickname.$touched || createForm.$submitted" for="createForm.field_nickname.$error">
+			</ng-messages>
+		</div>
+	</div>
+	
+	<!-- 
+	@TODO test if its working
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.signature.$touched && createForm.signature.$invalid || createForm.signature.$invalid && createForm.$submitted}">
+		<label for="create__signature">Signature</label> 
+		<input type="signature" class="form-control" name="signature" id="create__signature" placeholder="Signature" ng-model="user.createData.signature" required>
+		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<div class="help-block">
+			<p ng-if="!createForm.signature.$touched && !createForm.$submitted || createForm.signature.$valid" >The user's signature. ( You need to enable this under <code>admin/config/people/accounts</code> in your Backend )</p>
+
+			<ng-messages ng-if="createForm.signature.$invalid && createForm.signature.$touched || createForm.$submitted" for="createForm.signature.$error">
+				
+			</ng-messages>
+		</div>
+	</div>
+ 	-->
 	<button class="btn btn-success" ng-click="user.doCreate(createForm)">create
 		request</button>
 </form>
