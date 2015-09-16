@@ -12,5 +12,5 @@ See <code>services/resources/system_resource.inc</code>
 </accordion>
 
 <form name="connectForm" novalidate>
-	<button class="btn btn-success" ng-click="system.doConncet()">connect request</button>
+	<button class="btn btn-success" ng-click="system.doConncet(connectForm)">connect request <i ng-if="system.connectRequestPending" class="fa fa-spinner fa-spin"></i></button>
 </form>

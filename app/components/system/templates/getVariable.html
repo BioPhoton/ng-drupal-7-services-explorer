@@ -35,7 +35,7 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
 		</div>
 	</div>
 	
-    <button class="btn btn-success" ng-click="system.doGetVariable(getVariableForm)">get_variable request</button>
+    <button class="btn btn-success" ng-click="system.doGetVariable(getVariableForm)">get_variable request <i ng-if="system.getVariableRequestPending" class="fa fa-spinner fa-spin"></i></button>
     
 </form>
 	

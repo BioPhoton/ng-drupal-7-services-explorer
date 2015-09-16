@@ -26,6 +26,7 @@ angular
 		vm.retrieveData = {
 				uid : ''
 		};
+		vm.retrieveRequestPending = false;
 		//test request and event callbacks
 		vm.doRetrieve = doRetrieve;
 		//test the retrieve on confirm event
@@ -242,15 +243,19 @@ angular
 		//retrieve request
 	    
 	    //do request
-		function doRetrieve() {
-			requestStart = Date.now();
-	   		UserResource.retrieve(vm.retrieveData)
-			    .then(
-		    		//retrieve success
-		    		function(data) { console.log('user retrieve success'); },
-		    		//retrieve error
-		    		function(data) { console.log('user retrieve error'); }
-			    );
+		function doRetrieve(retrieveForm) {
+			
+			if(retrieveForm.$valid) {
+				vm.retrieveRequestPending = true;
+				requestStart = Date.now();
+		   		UserResource.retrieve(vm.retrieveData)
+				    .then(
+			    		//retrieve success
+			    		function(data) { console.log('user retrieve success'); },
+			    		//retrieve error
+			    		function(data) { console.log('user retrieve error'); }
+				    ).finally(function() {vm.retrieveRequestPending = false; });
+			}
 		};
 		
 		//confirm callback
