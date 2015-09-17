@@ -8,7 +8,7 @@
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.username.$touched && loginForm.username.$invalid || loginForm.username.$invalid && loginForm.$submitted}">
 		<label for="login__username">Username</label>
-		<input type="text" class="form-control" name="username" id="login__username" placeholder="Name" ng-model="user.loginData.username" ng-maxlength="60" required>
+		<input type="text" class="form-control" name="username" id="login__username" placeholder="Name" ng-model="user.loginData.username" ng-maxlength="60" maxlength="61" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p ng-if="!loginForm.username.$touched && !loginForm.$submitted || loginForm.username.$valid" >The user name</p>
