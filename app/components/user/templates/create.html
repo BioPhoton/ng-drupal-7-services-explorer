@@ -9,11 +9,6 @@
 		ng-repeat="(key,request) in user.createRequests"> <ng-include
 		src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
-<p>@TODO implement validation of:<br/>
-	https://api.drupal.org/api/drupal/modules!user!user.module/function/user_validate_name/7<br/>
-	https://api.drupal.org/api/drupal/modules!user!user.module/function/user_validate_mail/7<br/>
-</p>
-
 <form name="createForm" novalidate>
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.name.$touched && createForm.name.$invalid || createForm.name.$invalid && createForm.$submitted}">
@@ -25,30 +20,9 @@
 
 			<ng-messages class="error" ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
-
 				<div ng-message="maxlength">
 					Your username must be less than 61 characters long
 				</div>
-
-				<!--
-				@TODO implement validation
-				<div ng-message="starts-with">
-					The username cannot begin with a space
-				</div> 
-				
-				<div ng-message="contains">
-					The username cannot contain multiple spaces in a row
-				</div>
-				
-				<div ng-message="ends-with">
-					The username cannot end with a space
-				</div>
-				
-				<div ng-message="drupal-illegal-char">
-					The username contains an illegal character
-				</div>
-				-->
-
 			</ng-messages>
 		</div>
 	</div>
@@ -68,7 +42,6 @@
 	</div>
 
 	<div class="form-group">
-		@TODO check password validation
 		<label for="create__password">Password</label>
 		<input type="password" class="form-control" name="password" id="create__password" placeholder="Password" ng-model="user.createData.pass" required>
 		<div class="help-block">

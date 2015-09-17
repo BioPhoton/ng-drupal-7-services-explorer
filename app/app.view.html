@@ -11,6 +11,7 @@
       <a class="navbar-brand" href="#">Headless Drupal Tests</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse" ng-class="!app.navCollapsed && 'in'">
+    
       <ul class="nav navbar-nav">
         <li ui-sref-active-eq="active">
          	<a ui-sref="app.home">Home</a>
@@ -72,6 +73,20 @@
 	         </ul>
 		</li>
       </ul>
+      
+		<form class="navbar-form navbar-right" name="navbarLoginForm" novalidate>
+			<div class="form-group" ng-class="{ 'has-error has-feedback' : navbarLoginForm.username.$touched && navbarLoginForm.username.$invalid || navbarLoginForm.username.$invalid && navbarLoginForm.$submitted}">
+	    		<input type="text" class="form-control" name="username" id="navbarLogin__username" placeholder="Username" ng-model="user.navbarLoginData.username" ng-maxlength="60" required>
+	    		<form-control-feedback></form-control-feedback>
+	    	</div>
+	
+	    	<div class="form-group" ng-class="{ 'has-error has-feedback': navbarLoginForm.password.$touched && navbarLoginForm.password.$invalid || navbarLoginForm.password.$invalid && navbarLoginForm.$submitted}">
+	    		<input type="password" class="form-control" name="password" id="navbarLogin__password" placeholder="Password" ng-model="user.navbarLoginData.password" required>
+	    		<form-control-feedback></form-control-feedback>
+	    	</div>
+	    	<button class="btn btn-success" ng-click="user.doLogin(navbarLoginForm)">Login</button>
+    	</form>
+      
     </div>
   </div>
 </nav>
@@ -83,10 +98,4 @@
 	</div>
 </div>
 
-
-
-<!-- 
-@TODO find better way to include this
-includes common error messages for the ng-messages direcitve 
--->
 <ng-include src="'app/templates/errorMessages.html'"></ng-include>

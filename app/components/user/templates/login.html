@@ -6,14 +6,14 @@
 
 <form name="loginForm" novalidate>
 	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.name.$touched && loginForm.name.$invalid || loginForm.name.$invalid && loginForm.$submitted}">
-		<label for="login__name">Name</label>
-		<input type="text" class="form-control" name="name" id="login__name" placeholder="Name" ng-model="user.loginData.name" ng-maxlength="60" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.username.$touched && loginForm.username.$invalid || loginForm.username.$invalid && loginForm.$submitted}">
+		<label for="login__username">Username</label>
+		<input type="text" class="form-control" name="username" id="login__username" placeholder="Name" ng-model="user.loginData.username" ng-maxlength="60" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p ng-if="!loginForm.name.$touched && !loginForm.$submitted || loginForm.name.$valid" >The user name</p>
+			<p ng-if="!loginForm.username.$touched && !loginForm.$submitted || loginForm.username.$valid" >The user name</p>
 
-			<ng-messages ng-if="loginForm.name.$invalid && loginForm.name.$touched || loginForm.$submitted" for="loginForm.name.$error">
+			<ng-messages ng-if="loginForm.username.$invalid && loginForm.username.$touched || loginForm.$submitted" for="loginForm.username.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<div ng-message="maxlength">
 					Your username must be less than 61 characters long
@@ -22,13 +22,13 @@
 		</div>
 	</div>
 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.pass.$touched && loginForm.pass.$invalid || loginForm.pass.$invalid && loginForm.$submitted}">
-		<label for="login__pass">Password</label>
-		<input type="password" class="form-control" name="pass" id="login__pass" placeholder="Password" ng-model="user.loginData.pass" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.password.$touched && loginForm.password.$invalid || loginForm.password.$invalid && loginForm.$submitted}">
+		<label for="login__password">Password</label>
+		<input type="password" class="form-control" name="password" id="login__password" placeholder="Password" ng-model="user.loginData.password" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!loginForm.pass.$touched && !loginForm.$submitted || loginForm.pass.$valid">The plain text unencrypted password</p>
-			<ng-messages class="error" ng-if="loginForm.pass.$invalid && loginForm.pass.$touched || loginForm.$submitted" for="loginForm.pass.$error">
+			<p class="description" ng-if="!loginForm.password.$touched && !loginForm.$submitted || loginForm.password.$valid">The plain text unencrypted password</p>
+			<ng-messages class="error" ng-if="loginForm.password.$invalid && loginForm.password.$touched || loginForm.$submitted" for="loginForm.password.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>

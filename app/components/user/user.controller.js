@@ -531,16 +531,17 @@ angular
 		//resendWelcomeEmail request
 	    
 	    //do request
-		function doResendWelcomeEmail() {
-			console.log('ASDF'); 
-			requestStart = Date.now();
-	   		UserResource.resendWelcomeEmail(vm.resendWelcomeEmailData)
-			    .then(
-		    		//resendWelcomeEmail success
-		    		function(data) { console.log('user resendWelcomeEmail success'); },
-		    		//resendWelcomeEmail error
-		    		function(data) { console.log('user resendWelcomeEmail error'); }
-			    );
+		function doResendWelcomeEmail(resendWelcomeEmailForm) {
+			if(resendWelcomeEmailForm.$valid) {
+				requestStart = Date.now();
+		   		UserResource.resendWelcomeEmail(vm.resendWelcomeEmailData)
+				    .then(
+			    		//resendWelcomeEmail success
+			    		function(data) { console.log('user resendWelcomeEmail success'); },
+			    		//resendWelcomeEmail error
+			    		function(data) { console.log('user resendWelcomeEmail error'); }
+				    );
+			}
 		};
 		
 		//confirm callback

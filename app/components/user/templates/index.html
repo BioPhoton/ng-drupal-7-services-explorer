@@ -8,12 +8,11 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': indexForm.page.$touched && indexForm.page.$invalid || indexForm.page.$invalid && indexForm.$submitted}" >
 		<label for="index__page">Page</label>
-		<input type="number" class="form-control" id="index__page" name="page" placeholder="Page" ng-model="user.indexData.page" required>
+		<input type="number" class="form-control" id="index__page" name="page" placeholder="Page" ng-model="user.indexData.page" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p  class="description" ng-if="!indexForm.page.$touched && !indexForm.$submitted || indexForm.page.$valid" >Number of items to display on one page</p>
 			<ng-messages  class="error" ng-if="indexForm.page.$invalid && indexForm.page.$touched || createForm.$submitted" for="indexForm.page.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
 		</div>
@@ -21,12 +20,11 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': indexForm.pagesize.$touched && indexForm.pagesize.$invalid || indexForm.pagesize.$invalid && indexForm.$submitted}" >
 		<label for="index__pagesize">Pagesize</label>
-		<input type="number" class="form-control" id="index__pagesize" name="pagesize" placeholder="Pagesize" ng-model="user.indexData.pagesize" required>
+		<input type="number" class="form-control" id="index__pagesize" name="pagesize" placeholder="Pagesize" ng-model="user.indexData.pagesize" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!indexForm.pagesize.$touched && !indexForm.$submitted || indexForm.pagesize.$valid" >Number of items to display on one page. (Anonymous user are limited to 25)</p>
 			<ng-messages class="error" ng-if="indexForm.pagesize.$invalid && indexForm.pagesize.$touched || createForm.$submitted" for="indexForm.pagesize.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
 		</div>

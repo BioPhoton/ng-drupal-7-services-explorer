@@ -67,7 +67,7 @@ angular
 	        url: '/user',
 	        views : {
 	        	'mainNavContent' : {
-			        templateUrl: './app/components/user/_user.view.html',
+			        templateUrl: './app/components/user/user.view.html',
 			        controller: 'UserController as user'
 	        	}
 	        }

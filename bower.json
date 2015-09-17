@@ -22,5 +22,8 @@
     "bootstrap-sass-official": "~3.3.5",
     "fontawesome": "~4.4.0",
     "ng-drupal-7-services": "https://github.com/BioPhoton/ng-drupal-7-services.git"
+  },
+  "resolutions": {
+    "angular": "1.4.5"
   }
 }
