@@ -6,7 +6,7 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
 </p>
 <hr/>
 <accordion close-others="oneAtATime">
-		<accordion-group heading="Get Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in system.getVariableRequests">
+		<accordion-group heading="Get Variable Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in system.getVariableRequests">
 	    <ng-include src="'app/templates/request/request.html'"></ng-include>
    	</accordion-group>
 </accordion>
@@ -16,12 +16,12 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
 	<div class="form-group" ng-class="{ 'has-error has-feedback': getVariableForm.name.$touched && getVariableForm.name.$invalid || getVariableForm.name.$invalid && getVariableForm.$submitted}">
 		<label for="get_variable__name">Name</label>
 		<input type="text" name="name" class="form-control" id="get_variable__name" placeholder="Variable name" ng-model="system.getVariableData.name" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		 
 		<div class="help-block">
-			<p ng-if="!getVariableForm.name.$touched && !getVariableForm.$submitted || getVariableForm.name.$valid" >The name of the variable to return</p>
+			<p class="description" ng-if="!getVariableForm.name.$touched && !getVariableForm.$submitted || getVariableForm.name.$valid" >The name of the variable to return</p>
 			
-			<ng-messages ng-if="getVariableForm.name.$invalid && getVariableForm.name.$touched || getVariableForm.$submitted" for="getVariableForm.name.$error">
+			<ng-messages class="error"  ng-if="getVariableForm.name.$invalid && getVariableForm.name.$touched || getVariableForm.$submitted" for="getVariableForm.name.$error">
 			  <ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>
@@ -35,7 +35,7 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
 		</div>
 	</div>
 	
-    <button class="btn btn-success" ng-click="system.doGetVariable(getVariableForm)">get_variable request <i ng-if="system.getVariableRequestPending" class="fa fa-spinner fa-spin"></i></button>
+    <button class="btn btn-success" ng-click="system.doGetVariable(getVariableForm)">get_variable request</button>
     
 </form>
 	

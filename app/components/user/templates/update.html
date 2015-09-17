@@ -1,18 +1,18 @@
 <h2>Update request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
-	heading="Update Request {{key}} at {{request.requestStart | date}}"
+	heading="Update Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
 	ng-repeat="(key,request) in user.updateRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 	
-<form name="updateForm">
+<form name="updateForm" novalidate>
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.uid.$touched && updateForm.uid.$invalid || updateForm.uid.$invalid && updateForm.$submitted}" >
 		<label for="update__uid">Uid</label>
 		<input type="number" class="form-control" id="update__uid" name="uid" placeholder="Uid" ng-model="user.updateData.uid" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p ng-if="!updateForm.uid.$touched && !updateForm.$submitted || updateForm.uid.$valid" >UID of the user to be loaded</p>
-			<ng-messages ng-if="updateForm.uid.$invalid && updateForm.uid.$touched || updateForm.$submitted" for="updateForm.uid.$error">
+			<p class="description" ng-if="!updateForm.uid.$touched && !updateForm.$submitted || updateForm.uid.$valid" >UID of the user to be loaded</p>
+			<ng-messages class="error" ng-if="updateForm.uid.$invalid && updateForm.uid.$touched || updateForm.$submitted" for="updateForm.uid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
@@ -22,11 +22,11 @@
 	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.name.$touched && updateForm.name.$invalid || updateForm.name.$invalid && updateForm.$submitted}">
 		<label for="update__name">Name</label>
 		<input type="text" class="form-control" name="name" id="update__name" placeholder="Name" ng-model="user.updateData.name" ng-maxlength="60" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p ng-if="!updateForm.name.$touched && !updateForm.$submitted || updateForm.name.$valid" >The user name</p>
+			<p class="description" ng-if="!updateForm.name.$touched && !updateForm.$submitted || updateForm.name.$valid" >The user name</p>
 
-			<ng-messages ng-if="updateForm.name.$invalid && updateForm.name.$touched || updateForm.$submitted" for="updateForm.name.$error">
+			<ng-messages class="error" ng-if="updateForm.name.$invalid && updateForm.name.$touched || updateForm.$submitted" for="updateForm.name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				
 				<div ng-message="maxlength">
@@ -39,11 +39,11 @@
 	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.email.$touched && updateForm.email.$invalid || updateForm.email.$invalid && updateForm.$submitted}">
 		<label for="update__email">Email</label> 
 		<input type="email" class="form-control" name="email" id="update__email" placeholder="Email" ng-model="user.updateData.mail" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p ng-if="!updateForm.email.$touched && !updateForm.$submitted || updateForm.email.$valid" >The email address</p>
+			<p class="description" ng-if="!updateForm.email.$touched && !updateForm.$submitted || updateForm.email.$valid" >The email address</p>
 
-			<ng-messages ng-if="updateForm.email.$invalid && updateForm.email.$touched || updateForm.$submitted" for="updateForm.email.$error">
+			<ng-messages class="error" ng-if="updateForm.email.$invalid && updateForm.email.$touched || updateForm.$submitted" for="updateForm.email.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-email"></ng-messages-include>
 			</ng-messages>
@@ -117,11 +117,12 @@
 	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.field_nickname.$touched && updateForm.field_nickname.$invalid || updateForm.field_nickname.$invalid && updateForm.$submitted}">
 		<label for="update__field_nickname">Nickname</label> 
 		<input type="field_nickname" class="form-control" name="field_nickname" id="update__field_nickname" placeholder="Nickname" ng-model="user.updateData.field_nickname" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p ng-if="!updateForm.field_nickname.$touched && !updateForm.$submitted || updateForm.field_nickname.$valid" >The user's nickname. ( Custom created field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
+			<p  class="description" ng-if="!updateForm.field_nickname.$touched && !updateForm.$submitted || updateForm.field_nickname.$valid" >The user's nickname. ( Custom created field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
 
-			<ng-messages ng-if="updateForm.field_nickname.$invalid && updateForm.field_nickname.$touched || updateForm.$submitted" for="updateForm.field_nickname.$error">
+			<ng-messages class="error" ng-if="updateForm.field_nickname.$invalid && updateForm.field_nickname.$touched || updateForm.$submitted" for="updateForm.field_nickname.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>
 	</div>

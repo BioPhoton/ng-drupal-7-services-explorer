@@ -1,15 +1,24 @@
 <h2>Resend Welcome Email request</h2>
 <accordion close-others="oneAtATime">
-	<accordion-group heading="Resend Welcome Email Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.resendWelcomeEmailRequests">
+	<accordion-group heading="Resend Welcome Email Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in user.resendWelcomeEmailRequests">
 	   <ng-include src="'app/templates/request/request.html'"></ng-include>
 	</accordion-group>
 </accordion>
  	
-<form name="resendWelcomeEmailForm">
-	<div class="form-group">
+<form name="resendWelcomeEmailForm" novalidate>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': resendWelcomeEmailForm.uid.$touched && resendWelcomeEmailForm.uid.$invalid || resendWelcomeEmailForm.uid.$invalid && resendWelcomeEmailForm.$submitted}" >
 		<label for="resendWelcomeEmail__uid">Uid</label>
-		<input type="text" class="form-control" id="resendWelcomeEmail__uid" placeholder="Uid" ng-model="user.resendWelcomeEmailData.uid">
+		<input type="number" class="form-control" id="resendWelcomeEmail__uid" name="uid" placeholder="Uid" ng-model="user.resendWelcomeEmailData.uid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!resendWelcomeEmailForm.uid.$touched && !resendWelcomeEmailForm.$submitted || resendWelcomeEmailForm.uid.$valid" >UID of the user to resend the welcome email</p>
+			<ng-messages class="error" ng-if="resendWelcomeEmailForm.uid.$invalid && resendWelcomeEmailForm.uid.$touched || resendWelcomeEmailForm.$submitted" for="resendWelcomeEmailForm.uid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
 	</div>
 
-	<button class="btn btn-success" ng-click="user.doResendWelcomeEmail()">resend welcome email request</button>
+	<button class="btn btn-success" ng-click="user.doResendWelcomeEmail(resendWelcomeEmailForm)">resend welcome email request</button>
 </form>

@@ -11,28 +11,24 @@
     <title>Headless Drupal tests</title>
 
     <!-- compiled css -->
-    <link href="./assets/css/app.css" rel="stylesheet">
+    <link href="./assets/css/app.min.css" rel="stylesheet">
     
     <!-- js dependencies -->
+    
+    <!-- angular and modules -->
     <script src="./bower_components/angular/angular.min.js"></script>
     <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
- 	
-    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
-    
-    
-
-    <script src="./app/commons/directives/whenReady.js"></script>
-    <script src="./app/commons/directives/startsWith.js"></script>
-    <script src="./app/commons/directives/endsWith.js"></script>
-    <script src="./app/commons/directives/contains.js"></script>
- 
-     
-    <script src="./app/components/navigation/animations/animations.navAnimations.js"></script>
-    
-    <script src="./bower_components/angular-cookies/angular-cookies.min.js"></script>
+ 	<script src="./bower_components/angular-cookies/angular-cookies.min.js"></script>
     <script src="./bower_components/angular-messages/angular-messages.min.js"></script>
-    
+ 
+
+    <!-- third party libs -->
+    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	
+	<!-- common directives -->
+    <script src="./app/commons/directives/formControlFeedback.js"></script>
+	
+	<!-- ng-drupal-7-services -->
     <script src="./bower_components/ng-drupal-7-services/commons/commons.drupalApiConfig.js"></script>
     
     <script src="./bower_components/ng-drupal-7-services/commons/commons.localStorage.js"></script>
@@ -61,31 +57,25 @@
     <script src="./bower_components/ng-drupal-7-services/resources/user/user.channelConstant.js"></script>
     <script src="./bower_components/ng-drupal-7-services/resources/user/user.channel.js"></script>
     
-     <!-- js app files -->
-     <script src="./app/app.js"></script>
-     <script src="./app/components/navigation/navigation.controller.js"></script>
+    
+     <!-- <script src="./assets/js/vendor-8e5ecb0ace.js"></script>  -->
+    
+     <!-- js app files  -->
+     <script src="./app/app.controller.js"></script>    
      <script src="./app/components/home/home.controller.js"></script>
      <script src="./app/components/auth/auth.controller.js"></script>
      <script src="./app/components/system/system.controller.js"></script>
      <script src="./app/components/user/user.controller.js"></script>
+  
+  	 <script src="./app/app.config.js"></script>
+     <script src="./app/app.states.js"></script>
+     <script src="./app/app.js"></script>
     
-    
-   
+   <!-- <script src="./assets/js/main-92686618e4.js"></script> -->
     
   </head>  
   
-  <body ng-app="ngDrupalServicesTests" ng-init="ready=false;" when-ready="ready=true" wait-for-interpolation="true">
-  {{ready}}
-  		<!-- includes common error messages for the ng-messages direcitve -->
- 		<ng-include src="'app/templates/errorMessages.html'"></ng-include>
-	
-		<ng-include src="'app/components/navigation/navigation.view.html'"></ng-include>
-   		<div id="main-contant-wrapper">
-			<div class="container">
-				<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-				<div ui-view></div>
-			</div>
-		</div>
-
-  	</body>
+  <body ng-app="ngDrupalServicesTests">
+  		<div ui-view></div>
+  </body>
 </html>

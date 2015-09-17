@@ -1,10 +1,10 @@
 <h2>Token request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
-	heading="Token Request {{key}} at {{request.requestStart | date}}"
+	heading="Token Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
 	ng-repeat="(key,request) in user.tokenRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
-<form name="tokenForm">
-	<button class="btn btn-success" ng-click="user.doToken()">token
+<form name="tokenForm" novalidate>
+	<button class="btn btn-success" ng-click="user.doToken(tokenForm)">token
 		request</button>
 </form>

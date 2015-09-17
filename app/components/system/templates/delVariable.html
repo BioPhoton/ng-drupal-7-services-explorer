@@ -6,26 +6,23 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
 </p>
 <hr/>
 <accordion close-others="oneAtATime">
-	<accordion-group heading="Del Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in system.delVariableRequests">
+	<accordion-group heading="Del Variable Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in system.delVariableRequests">
 	    <ng-include src="'app/templates/request/request.html'"></ng-include>
    	</accordion-group>
 </accordion>
  	
 <form name="delVariableForm" novalidate>
-	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': getVariableForm.name.$touched && delVariableForm.name.$invalid || delVariableForm.name.$invalid && delVariableForm.$submitted}">
+	<div class="form-group" ng-class="{ 'has-error has-feedback': delVariableForm.name.$touched && delVariableForm.name.$invalid || delVariableForm.name.$invalid && delVariableForm.$submitted}">
 		<label for="del_variable__name">Name</label>
 		<input type="text" name="name" class="form-control" id="del_variable__name" placeholder="Variable name" ng-model="system.delVariableData.name" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-		 
+		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p ng-if="!delVariableForm.name.$touched && !delVariableForm.$submitted || delVariableForm.name.$valid" >The name of the variable to return</p>
-			
-			<ng-messages ng-if="delVariableForm.name.$invalid && delVariableForm.name.$touched || delVariableForm.$submitted" for="delVariableForm.name.$error">
+			<p class="description" ng-if="!delVariableForm.name.$touched && !delVariableForm.$submitted || delVariableForm.name.$valid" >The name of the variable to return</p>
+			<ng-messages class="error" ng-if="delVariableForm.name.$invalid && delVariableForm.name.$touched || delVariableForm.$submitted" for="delVariableForm.name.$error">
 			  <ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>
 	</div>	
 
-    <button class="btn btn-success" ng-click="system.doDelVariable(delVariableForm)">del_variable request  <i ng-if="system.delVariableRequestPending" class="fa fa-spinner fa-spin"></i></button>
+    <button class="btn btn-success" ng-click="system.doDelVariable(delVariableForm)">del_variable request</button>
 </form>

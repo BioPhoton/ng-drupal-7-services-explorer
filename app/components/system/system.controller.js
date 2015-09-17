@@ -1,7 +1,6 @@
 ;(function() {
     'use strict';
 
-
 angular
     .module('ngDrupalServicesTests.system.controller', ['ngDrupal7Services-3_x.resources.system.resource', 'ngDrupal7Services-3_x.resources.system.channel'])
     .controller('SystemController', SystemController);
@@ -22,7 +21,6 @@ angular
 		
 		//store requests
 		vm.connectRequests = [];
-		vm.connectRequestPending = false;
 		//test request
 		vm.doConncet = doConncet;
 		//test the connect on confirm event
@@ -36,7 +34,6 @@ angular
 		
 	    //store requests
 		vm.getVariableRequests = [];
-		vm.getVariableRequestPending = false;
 		//test request
 		vm.doGetVariable = doGetVariable;
 		vm.getVariableData = {
@@ -54,7 +51,6 @@ angular
 		
 		//store requests
 		vm.setVariableRequests = [];
-		vm.setVariableRequestPending = false;
 		//test request
 		vm.doSetVariable = doSetVariable;
 		vm.setVariableData = {
@@ -72,7 +68,6 @@ angular
 		
 		//store requests
 		vm.delVariableRequests = [];
-		vm.delVariableRequestPending = false;
 		//test request
 		vm.doDelVariable = doDelVariable;
 		vm.delVariableData = {
@@ -93,7 +88,6 @@ angular
 		function doConncet(connectForm) {
 			
 			if(connectForm.$valid) {
-				vm.connectRequestPending = true; 
 				requestStart = Date.now();
 		   		SystemResource.connect()
 				    .then(
@@ -101,7 +95,7 @@ angular
 				    		function(data) { console.log('system connect success'); },
 				    		//connect error
 				    		function(data) { console.log('system connect error'); }
-				    ).finally(function() {vm.connectRequestPending = false; });
+				    );
 				}
 		}
 		//confirm callback
@@ -124,7 +118,6 @@ angular
 		//do request
 		function doGetVariable(getVariableForm) {
 			if(getVariableForm.$valid) {
-				vm.getVariableRequestPending = true; 
 				requestStart = Date.now();
 				SystemResource.get_variable(vm.getVariableData)
 					.then(
@@ -132,7 +125,7 @@ angular
 				    	function(data) { console.log('system get_variable success'); },
 				    	//get_variable error
 				    	function(data) { console.log('system get_variable error'); }
-				    ).finally(function() {vm.getVariableRequestPending = false; });
+				    );
 			}
 		};
 		//confirm callback
@@ -155,7 +148,6 @@ angular
 		//do request
 		function doSetVariable(setVariableForm) {
 			if(setVariableForm.$valid) {
-				vm.setVariableRequestPending = true; 
 				requestStart = Date.now();
 				SystemResource.set_variable(vm.setVariableData)
 					.then(
@@ -163,7 +155,7 @@ angular
 				    	function(data) { console.log('system set_variable success'); },
 				    	//get_variable error
 				    	function(data) { console.log('system set_variable error'); }
-				    ).finally(function() {vm.setVariableRequestPending = false; });
+				    );
 			}
 		};
 		//confirm callback
@@ -186,7 +178,6 @@ angular
 		//do request
 		function doDelVariable(delVariableForm) {
 			if(delVariableForm.$valid) {
-				vm.delVariableRequestPending = true; 
 				requestStart = Date.now();
 				SystemResource.del_variable(vm.delVariableData)
 					.then(
@@ -194,7 +185,7 @@ angular
 				    	function(data) { console.log('system del_variable success'); },
 				    	//get_variable error
 				    	function(data) { console.log('system del_variable error'); }
-				    ).finally(function() {vm.delVariableRequestPending = false; });
+				    );
 			}
 		};
 		//confirm callback

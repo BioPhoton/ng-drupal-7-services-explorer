@@ -5,6 +5,8 @@ angular
     .module('ngDrupalServicesTests.navigation.controller', [])
     .controller('NavigationController', NavigationController);
 
+NavigationController.$inject = ['$scope'];
+
 /** @ngInject */
 function NavigationController($scope) { 
 	/* jshint validthis: true */
@@ -14,6 +16,6 @@ function NavigationController($scope) {
 	
 };
 
-NavigationController.$inject = ['$scope'];
+
 
 })();

@@ -1,15 +1,25 @@
 <h2>Cancel request</h2>
 <accordion close-others="oneAtATime">
-	<accordion-group heading="Cancel Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.cancelRequests">
+	<accordion-group heading="Cancel Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in user.cancelRequests">
 	   <ng-include src="'app/templates/request/request.html'"></ng-include>
 	</accordion-group>
 </accordion>
  	
 <form name="cancelForm">
-	<div class="form-group">
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': cancelForm.uid.$touched && cancelForm.uid.$invalid || cancelForm.uid.$invalid && cancelForm.$submitted }" >
 		<label for="cancel__uid">Uid</label>
-		<input type="text" class="form-control" id="cancel__uid" placeholder="Uid" ng-model="user.cancelData.uid">
+		<input type="number" class="form-control" id="cancel__uid" placeholder="Uid" name="uid" ng-model="user.cancelData.uid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!cancelForm.uid.$touched && !cancelForm.$submitted || cancelForm.uid.$valid" >UID of the user to be canceled</p>
+						
+			<ng-messages class="error" ng-if="cancelForm.uid.$invalid && cancelForm.uid.$touched || cancelForm.$submitted" for="cancelForm.uid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
 	</div>
 
-	<button class="btn btn-success" ng-click="user.doCancel()">resend welcome email request</button>
+	<button class="btn btn-success" ng-click="user.doCancel(cancelForm)">resend welcome email request</button>
 </form>

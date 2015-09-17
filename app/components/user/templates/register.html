@@ -1,73 +1,57 @@
 <h2>Register request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
-	heading="Register Request {{key}} at {{request.requestStart | date}}"
+	heading="Register Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
 	ng-repeat="(key,request) in user.registerRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
 
 <form name="registerForm" novalidate>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': registerForm.username.$touched && registerForm.username.$invalid || registerForm.username.$invalid && registerForm.$submitted}">
+		<label for="register__name">Username</label>
+		<input type="text" class="form-control" name="username" id="register__username" placeholder="Username" ng-model="user.registerData.username" ng-maxlength="60" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!registerForm.username.$touched && !registerForm.$submitted || registerForm.username.$valid" >The user name</p>
 
-	<div class="form-group">
-		<label for="register__username">Username</label> <input type="text"
-			class="form-control" id="register__username" placeholder="Username"
-			ng-model="user.registerData.name">
-	</div>
+			<ng-messages class="error" ng-if="registerForm.username.$invalid && registerForm.username.$touched || registerForm.$submitted" for="registerForm.username.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
 
-	<div class="form-group">
-		<label for="register__email">Email</label> <input type="email"
-			class="form-control" id="register__email" placeholder="Email"
-			ng-model="user.registerData.mail">
-	</div>
+				<div ng-message="maxlength">
+					Your username must be less than 61 characters long
+				</div>
 
-	<div class="form-group">
-		<label for="register__password">Password</label> <input type="password"
-			class="form-control" id="register__password" placeholder="Password"
-			ng-model="user.registerData.pass">
-	</div>
-	
-	<div class="form-group">
-		<label for="register__password">Theme</label> <input type="text"
-			class="form-control" id="register__theme" placeholder="Theme"
-			ng-model="user.registerData.theme">
-	</div>
-	
-	<div class="form-group">
-		<label for="register__signature">Signature</label> <input type="text"
-			class="form-control" id="register__signature" placeholder="Signature"
-			ng-model="user.registerData.signature">
-	</div>
-	
-	<div class="form-group">
-		<label for="register__signature_format">Signature Format</label> <input type="text"
-			class="form-control" id="register__signature_format" placeholder="Signature Format (plain_text)"
-			ng-model="user.registerData.signature_format">
-	</div>
-	
-	<div class="form-group">
-		<label for="register__createed">Created</label> <input type="number"
-			class="form-control" id="register__createed" placeholder="Created"
-			ng-model="user.registerData.createed">
-	</div>
-	
-	<div class="form-group">
-		<label for="register__password">Access</label> <input type="text"
-			class="form-control" id="register__access" placeholder="Access"
-			ng-model="user.registerData.access">
-	</div>
-	
-	<div class="form-group">
-		<label for="register__login">Login</label> <input type="text"
-			class="form-control" id="register__login" placeholder="login"
-			ng-model="user.registerData.login">
-	</div>
-	
-	<div class="form-group">
-		<label for="register__status">Status</label> <input type="text"
-			class="form-control" id="register__status" placeholder="Status"
-			ng-model="user.registerData.status">
+			</ng-messages>
+		</div>
 	</div>
 
-	<button class="btn btn-success" ng-click="user.doRegister()">register request</button>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': registerForm.email.$touched && registerForm.email.$invalid || registerForm.email.$invalid && registerForm.$submitted}">
+		<label for="register__email">Email</label>
+		<input type="email" class="form-control" name="email" id="register__email" placeholder="Email" ng-model="user.registerData.mail" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!registerForm.email.$touched && !registerForm.$submitted || registerForm.email.$valid" >The email address</p>
+
+			<ng-messages class="error" ng-if="registerForm.email.$invalid && registerForm.email.$touched || registerForm.$submitted" for="registerForm.email.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-email"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': registerForm.pass.$touched && registerForm.pass.$invalid || registerForm.pass.$invalid && registerForm.$submitted}">
+		<label for="register__pass">Password</label>
+		<input type="password" class="form-control" name="pass" id="register__pass" placeholder="Password" ng-model="user.registerData.pass" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!registerForm.pass.$touched && !registerForm.$submitted || registerForm.pass.$valid">The plain text unencrypted password</p>
+			<ng-messages class="error" ng-if="registerForm.pass.$invalid && registerForm.pass.$touched || registerForm.$submitted" for="registerForm.pass.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<button class="btn btn-success" ng-click="user.doRegister(registerForm)">register request</button>
 </form>
 
 				

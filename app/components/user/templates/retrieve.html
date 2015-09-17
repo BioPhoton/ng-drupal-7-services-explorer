@@ -4,7 +4,7 @@ Get user details.<br/>
 see <code>services/resources/user_resource.inc => _user_resource_retrieve()</code>
 </p>
 <accordion close-others="oneAtATime">
-	<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in user.retrieveRequests">
+	<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in user.retrieveRequests">
 	   <ng-include src="'app/templates/request/request.html'"></ng-include>
 	</accordion-group>
 </accordion>
@@ -14,15 +14,15 @@ see <code>services/resources/user_resource.inc => _user_resource_retrieve()</cod
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.uid.$touched && retrieveForm.uid.$invalid || retrieveForm.uid.$invalid && retrieveForm.$submitted }" >
 		<label for="retrieve__uid">Uid</label>
 		<input type="number" class="form-control" id="retrieve__uid" name="uid" placeholder="Uid" ng-model="user.retrieveData.uid" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p ng-if="!retrieveForm.uid.$touched && !retrieveForm.$submitted || retrieveForm.uid.$valid" >UID of the user to be loaded</p>
+			<p class="description" ng-if="!retrieveForm.uid.$touched && !retrieveForm.$submitted || retrieveForm.uid.$valid" >UID of the user to be loaded</p>
 						
-			<ng-messages ng-if="retrieveForm.uid.$invalid && retrieveForm.uid.$touched || retrieveForm.$submitted" for="retrieveForm.uid.$error">
+			<ng-messages class="error" ng-if="retrieveForm.uid.$invalid && retrieveForm.uid.$touched || retrieveForm.$submitted" for="retrieveForm.uid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
 		</div>
 	</div>
-	<button class="btn btn-success" ng-click="user.doRetrieve(retrieveForm)">retrieve request <i ng-if="user.retrieveRequestPending" class="fa fa-spinner fa-spin"></i></button>
+	<button class="btn btn-success" ng-click="user.doRetrieve(retrieveForm)">retrieve request</button>
 </form>

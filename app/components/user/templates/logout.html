@@ -1,10 +1,9 @@
 <h2>Logout request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
-	heading="Logout Request {{key}} at {{request.requestStart | date}}"
+	heading="Logout Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
 	ng-repeat="(key,request) in user.logoutRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
-<form name="logoutForm">
-	<button class="btn btn-success" ng-click="user.doLogout()">logout
-		request</button>
+<form name="logoutForm" novalidate>
+	<button class="btn btn-success" ng-click="user.doLogout(logoutForm)">logout request</button>
 </form>

@@ -1,13 +1,10 @@
 <h2>Delete request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
-	heading="Delete Request {{key}} at {{request.requestStart | date}}"
+	heading="Delete Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
 	ng-repeat="(key,request) in user.deleteRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 	
-<form name="deleteForm">
-	
-	ser:{{user.deleteErrors.errors.server_errors}}<br/>
-	form:{{user.deleteErrors.errors.form_errors}}
+<form name="deleteForm" novalidate>
 	<div class="form-errors">
 		<div class="alert alert-danger fade in " ng-repeat="serverError in user.deleteErrors.errors.server_errors"> {{serverError}} </div>
 	</div>
@@ -15,15 +12,15 @@
 	<div class="form-group" ng-class="{ 'has-error has-feedback': deleteForm.uid.$touched && deleteForm.uid.$invalid || deleteForm.uid.$invalid && deleteForm.$submitted}" >
 		<label for="delete__uid">Uid</label>
 		<input type="number" class="form-control" id="delete__uid" name="uid" placeholder="Uid" ng-model="user.deleteData.uid" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p ng-if="!deleteForm.uid.$touched && !deleteForm.$submitted || deleteForm.uid.$valid" >UID of the user to be loaded</p>
-			<ng-messages ng-if="deleteForm.uid.$invalid && deleteForm.uid.$touched || createForm.$submitted" for="deleteForm.uid.$error">
+			<p class="description" ng-if="!deleteForm.uid.$touched && !deleteForm.$submitted || deleteForm.uid.$valid" >UID of the user to be loaded</p>
+			<ng-messages class="error" ng-if="deleteForm.uid.$invalid && deleteForm.uid.$touched || deleteForm.$submitted" for="deleteForm.uid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
 		</div>
 	</div>
 
-	<button class="btn btn-success" ng-click="user.doDelete()">delete request</button>
+	<button class="btn btn-success" ng-click="user.doDelete(deleteForm)">delete request</button>
 </form>

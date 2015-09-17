@@ -1,22 +1,41 @@
 <h2>Login request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
-	heading="Login Request {{key}} at {{request.requestStart | date}}"
+	heading="Login Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
 	ng-repeat="(key,request) in user.loginRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
-<form name="loginForm">
-	<div class="form-group">
-		<label for="login__username">Username</label> <input type="text"
-			class="form-control" id="login__username" placeholder="Username"
-			ng-model="user.loginData.username">
+<form name="loginForm" novalidate>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.name.$touched && loginForm.name.$invalid || loginForm.name.$invalid && loginForm.$submitted}">
+		<label for="login__name">Name</label>
+		<input type="text" class="form-control" name="name" id="login__name" placeholder="Name" ng-model="user.loginData.name" ng-maxlength="60" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p ng-if="!loginForm.name.$touched && !loginForm.$submitted || loginForm.name.$valid" >The user name</p>
+
+			<ng-messages ng-if="loginForm.name.$invalid && loginForm.name.$touched || loginForm.$submitted" for="loginForm.name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<div ng-message="maxlength">
+					Your username must be less than 61 characters long
+				</div>
+			</ng-messages>
+		</div>
 	</div>
 
-	<div class="form-group">
-		<label for="login__password">Password</label> <input type="password"
-			class="form-control" id="login__password" placeholder="Password"
-			ng-model="user.loginData.password">
+	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.pass.$touched && loginForm.pass.$invalid || loginForm.pass.$invalid && loginForm.$submitted}">
+		<label for="login__pass">Password</label>
+		<input type="password" class="form-control" name="pass" id="login__pass" placeholder="Password" ng-model="user.loginData.pass" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!loginForm.pass.$touched && !loginForm.$submitted || loginForm.pass.$valid">The plain text unencrypted password</p>
+			<ng-messages class="error" ng-if="loginForm.pass.$invalid && loginForm.pass.$touched || loginForm.$submitted" for="loginForm.pass.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
 	</div>
+	
+	
 
-	<button class="btn btn-success" ng-click="user.doLogin()">login
+	<button class="btn btn-success" ng-click="user.doLogin(loginForm)">login
 		request</button>
 </form>

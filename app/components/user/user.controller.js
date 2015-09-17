@@ -26,7 +26,6 @@ angular
 		vm.retrieveData = {
 				uid : ''
 		};
-		vm.retrieveRequestPending = false;
 		//test request and event callbacks
 		vm.doRetrieve = doRetrieve;
 		//test the retrieve on confirm event
@@ -246,7 +245,6 @@ angular
 		function doRetrieve(retrieveForm) {
 			
 			if(retrieveForm.$valid) {
-				vm.retrieveRequestPending = true;
 				requestStart = Date.now();
 		   		UserResource.retrieve(vm.retrieveData)
 				    .then(
@@ -254,7 +252,7 @@ angular
 			    		function(data) { console.log('user retrieve success'); },
 			    		//retrieve error
 			    		function(data) { console.log('user retrieve error'); }
-				    ).finally(function() {vm.retrieveRequestPending = false; });
+				    );
 			}
 		};
 		
@@ -276,15 +274,18 @@ angular
 		//login request
 	    
 	    //do request
-		function doLogin() {
-			requestStart = Date.now();
-	   		UserResource.login(vm.loginData)
-			    .then(
-		    		//login success
-		    		function(data) { console.log('user login success'); },
-		    		//login error
-		    		function(data) { console.log('user login error'); }
-			    );
+		function doLogin(loginForm) {
+			if(loginForm.$valid) {
+				requestStart = Date.now();
+		   		UserResource.login(vm.loginData)
+				    .then(
+			    		//login success
+			    		function(data) { console.log('user login success'); },
+			    		//login error
+			    		function(data) { console.log('user login error'); }
+				    );
+			}
+			
 		};
 		
 		//confirm callback
@@ -305,15 +306,17 @@ angular
 		//logout request
 	    
 	    //do request
-		function doLogout() {
-			requestStart = Date.now();
-	   		UserResource.logout(vm.logoutData)
-			    .then(
-		    		//logout success
-		    		function(data) { console.log('user logout success'); },
-		    		//logout error
-		    		function(data) { console.log('user logout error'); }
-			    );
+		function doLogout(logoutForm) {
+			if(logoutForm.$valid) {
+				requestStart = Date.now();
+		   		UserResource.logout(vm.logoutData)
+				    .then(
+			    		//logout success
+			    		function(data) { console.log('user logout success'); },
+			    		//logout error
+			    		function(data) { console.log('user logout error'); }
+				    );
+			}
 		};
 		
 		//confirm callback
@@ -334,15 +337,17 @@ angular
 		//token request
 	    
 	    //do token
-		function doToken() {
-			requestStart = Date.now();
-	   		UserResource.token(vm.tokenData)
-			    .then(
-		    		//token success
-		    		function(data) { console.log('user token success'); },
-		    		//token error
-		    		function(data) { console.log('user token error'); }
-			    );
+		function doToken(tokenForm) {
+			if(tokenForm.$valid) {
+				requestStart = Date.now();
+		   		UserResource.token(vm.tokenData)
+				    .then(
+			    		//token success
+			    		function(data) { console.log('user token success'); },
+			    		//token error
+			    		function(data) { console.log('user token error'); }
+				    );
+			}
 		};
 		
 		//confirm callback
@@ -365,13 +370,9 @@ angular
 	    //do create
 		function doCreate(createForm) {
 			if(createForm.$valid) {
-				
-				console.log(vm.createData.field_nickname);
+				//format fields
 				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
 				
-				vm.createData.signature = DrupalHelperService.structureField(vm.createData.signature);
-				
-				console.log(vm.createData.field_nickname);
 				requestStart = Date.now();
 				UserResource.create(vm.createData)
 					.then(
@@ -380,7 +381,6 @@ angular
 						//create error
 						function(data) { console.log('user create error'); }
 					);
-
 			}
 		};
 		
@@ -402,15 +402,21 @@ angular
 		//update request
 	    
 	    //do update
-		function doUpdate() {
-			requestStart = Date.now();
-	   		UserResource.update(vm.updateData)
-			    .then(
-		    		//update success
-		    		function(data) { console.log('user update success'); },
-		    		//update error
-		    		function(data) { console.log('user update error'); }
-			    );
+		function doUpdate(updateForm) {			
+			if(updateForm.$valid) {
+				//format fields
+				vm.updateData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
+				
+				requestStart = Date.now();
+		   		UserResource.update(vm.updateData)
+				    .then(
+			    		//update success
+			    		function(data) { console.log('user update success'); },
+			    		//update error
+			    		function(data) { console.log('user update error'); }
+				    );
+			}
+			
 		};
 		
 		//confirm callback
@@ -431,15 +437,17 @@ angular
 		//delete request
 	    
 	    //do delete
-		function doDelete() {
-			requestStart = Date.now();
-	   		UserResource.delete(vm.deleteData)
-			    .then(
-		    		//delete success
-		    		function(data) { console.log('user delete success'); },
-		    		//delete error
-		    		function(data) { console.log('user delete error'); }
-			    );
+		function doDelete(deleteForm) {
+			if(deleteForm.$valid) {
+				requestStart = Date.now();
+		   		UserResource.delete(vm.deleteData)
+				    .then(
+			    		//delete success
+			    		function(data) { console.log('user delete success'); },
+			    		//delete error
+			    		function(data) { console.log('user delete error'); }
+				    );
+			}
 		};
 		
 		//confirm callback
@@ -461,15 +469,17 @@ angular
 		//index request
 	    
 	    //do index
-		function doIndex() {
-			requestStart = Date.now();
-	   		UserResource.index(vm.indexData)
-			    .then(
-		    		//index success
-		    		function(data) { console.log('user index success'); },
-		    		//index error
-		    		function(data) { console.log('user index error'); }
-			    );
+		function doIndex(indexForm) {
+			if(indexForm.$valid) {
+				requestStart = Date.now();
+		   		UserResource.index(vm.indexData)
+				    .then(
+			    		//index success
+			    		function(data) { console.log('user index success'); },
+			    		//index error
+			    		function(data) { console.log('user index error'); }
+				    );
+			}
 		};
 		
 		//confirm callback
@@ -490,15 +500,17 @@ angular
 		//register request
 	    
 	    //do request
-		function doRegister() {
-			requestStart = Date.now();
-	   		UserResource.register(vm.registerData)
-			    .then(
-		    		//register success
-		    		function(data) { console.log('user register success'); },
-		    		//register error
-		    		function(data) { console.log('user register error'); }
-			    );
+		function doRegister(registerForm) {
+			if(registerForm.$valid) {
+				requestStart = Date.now();
+		   		UserResource.register(vm.registerData)
+				    .then(
+			    		//register success
+			    		function(data) { console.log('user register success'); },
+			    		//register error
+			    		function(data) { console.log('user register error'); }
+				    );
+			}
 		};
 		
 		//confirm callback

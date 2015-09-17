@@ -15,7 +15,9 @@ var gulp 		= require('gulp'),
 	autoprefixer 	= require('gulp-autoprefixer'),
 	
 	bower 		= require('gulp-bower'),
-	server 		= require('gulp-server-livereload');
+	server 		= require('gulp-server-livereload')
+	
+	bundle = require('gulp-bundle-assets');
 
 /*Vars*/
 
@@ -75,6 +77,13 @@ gulp.task('help', taskListing.withFilters(function(task) {
 	{ return  false; }
 	
 }));
+
+/*Thsi task creates a bundle of all js files*/
+gulp.task('bundle', function() {
+	  return gulp.src('./bundle.config.js')
+	    .pipe(bundle())
+	    .pipe(gulp.dest('./assets/js'));
+	});
 
 
 /*This task basically runs bower install. By including in the gulpfile we only have to run gulp bower and have them all setup and ready.*/

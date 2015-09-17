@@ -6,7 +6,7 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
 </p>
 <hr/>
 <accordion close-others="oneAtATime">
-		<accordion-group heading="Set Variable Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in system.setVariableRequests">
+		<accordion-group heading="Set Variable Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in system.setVariableRequests">
 	    <ng-include src="'app/templates/request/request.html'"></ng-include>
    	</accordion-group>
 </accordion>
@@ -16,12 +16,12 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
 	<div class="form-group" ng-class="{ 'has-error has-feedback': setVariableForm.name.$touched && setVariableForm.name.$invalid || setVariableForm.name.$invalid && setVariableForm.$submitted}">
 		<label for="set_variable__name">Name</label>
 		<input type="text" name="name" class="form-control" id="set_variable__name" placeholder="Variable name" ng-model="system.setVariableData.name" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		 
 		<div class="help-block">
-			<p ng-if="!setVariableForm.name.$touched && !setVariableForm.$submitted || setVariableForm.name.$valid" >The name of the variable to return</p>
+			<p class="description" ng-if="!setVariableForm.name.$touched && !setVariableForm.$submitted || setVariableForm.name.$valid" >The name of the variable to return</p>
 			
-			<ng-messages ng-if="setVariableForm.name.$invalid && setVariableForm.name.$touched || setVariableForm.$submitted" for="setVariableForm.name.$error">
+			<ng-messages class="error" ng-if="setVariableForm.name.$invalid && setVariableForm.name.$touched || setVariableForm.$submitted" for="setVariableForm.name.$error">
 			  <ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>
@@ -30,12 +30,12 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
  	<div class="form-group" ng-class="{ 'has-error has-feedback': setVariableForm.value.$touched && setVariableForm.value.$invalid || setVariableForm.value.$invalid && setVariableForm.$submitted}">
 		<label for="set_variable__value">Value</label>
 		<input type="text" name="value" class="form-control" id="set_variable__value" placeholder="Variable value" ng-model="system.setVariableData.value" required>
-		<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		<form-control-feedback></form-control-feedback>
 		 
 		<div class="help-block">
-			<p ng-if="!setVariableForm.value.$touched && !setVariableForm.$submitted || setVariableForm.value.$valid" >The value to set. This can be any PHP data type; these functions take care of serialization as necessary</p>
+			<p class="description" ng-if="!setVariableForm.value.$touched && !setVariableForm.$submitted || setVariableForm.value.$valid" >The value to set. This can be any PHP data type; these functions take care of serialization as necessary</p>
 			
-			<ng-messages ng-if="setVariableForm.value.$invalid && setVariableForm.value.$touched || setVariableForm.$submitted" for="setVariableForm.value.$error">
+			<ng-messages class="error" ng-if="setVariableForm.value.$invalid && setVariableForm.value.$touched || setVariableForm.$submitted" for="setVariableForm.value.$error">
 			  <ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>
@@ -43,6 +43,6 @@ See <a target="_blank" href="https://api.drupal.org/api/drupal/includes!bootstra
  	
  	
  	
-    <button class="btn btn-success" ng-click="system.doSetVariable(setVariableForm)">set_variable request  <i ng-if="system.setVariableRequestPending" class="fa fa-spinner fa-spin"></i></button>
+    <button class="btn btn-success" ng-click="system.doSetVariable(setVariableForm)">set_variable request</button>
 </form>
 

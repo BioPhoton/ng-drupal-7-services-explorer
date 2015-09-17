@@ -8279,6 +8279,14 @@ h1.ellipsis {
   margin-left: 10px;
   border-radius: 6px 0 6px 6px; }
 
+/*form validation*/
+.help-block {
+  position: relative;
+  min-height: 16px; }
+  .help-block .description, .help-block .error {
+    position: absolute;
+    top: 0px; }
+
 /*layout*/
 .navbar-default .navbar-nav > .active-trail > a,
 .navbar-default .navbar-nav > .active-trail > a:hover,
