@@ -104,15 +104,25 @@ angular
 		// login request
 	    
 	    // do request
-		function doLogin() {
-			requestStart = Date.now();
-	   		AuthenticationService.login(vm.loginData)
-			    .then(
-			    		//login success
-			    		function(data) { console.log('auth login success', data); },
-			    		//login error
-			    		function(data) { console.log('auth login error'); }
-			    );
+		function doLogin(loginForm) {
+			if(loginForm.$valid) {
+				requestStart = Date.now();
+		   		AuthenticationService.login(vm.loginData)
+				    .then(
+				    		//login success
+				    		function(data) { 
+				    			vm.loginData = {};
+				    			console.log('auth login success', data);
+				    			loginForm.$setPristine();
+				    			loginForm.$setUntouched();
+				    		},
+				    		//login error
+				    		function(data) { 
+				    			console.log('auth login error'); 
+				    		}
+				    );
+			}
+			
 		};
 		
 		// confirm callback

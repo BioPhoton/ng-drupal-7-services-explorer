@@ -3,7 +3,6 @@
 	<p>
 	https://docs.google.com/drawings/d/1q3GqIDhmSA8UI8FIrkWaBSV4cXc8otFyBqdlP6EqS5U/pub?w=1440&h=1080<br/>
 	https://www.drupal.org/node/1699354
-	
 	</p>
 	<tabset justified="true">
 	
@@ -25,7 +24,7 @@
 	 				<label for="login__password">Password</label>
 	    			<input type="password" class="form-control" id="login__password" placeholder="Password" ng-model="auth.loginData.password">
 	    		</div>
-		  		<button class="btn btn-success" ng-click="auth.doLogin()">login request</button>
+		  		<button class="btn btn-success" ng-click="auth.doLogin(loginForm)">login request</button>
 		  	</form>
 			
 		</tab> 
@@ -40,7 +39,7 @@
 		  	</accordion>
 		  	
 		  	<form name="logoutForm">
-		  		<button class="btn btn-success" ng-click="auth.doLogout()">logout request</button>
+		  		<button class="btn btn-success" ng-click="auth.doLogout(logoutForm)">logout request</button>
 		  	</form>
 			
 		</tab> 
@@ -55,7 +54,7 @@
 		  	</accordion>
 		  	
 		  	<form name="refreshConnectionForm">
-		  		<button class="btn btn-success" ng-click="auth.doRefreshConnection()">refreshConnection</button>
+		  		<button class="btn btn-success" ng-click="auth.doRefreshConnection(refreshConnectionForm)">refreshConnection</button>
 		  	</form>
 			
 		</tab> 
@@ -70,7 +69,7 @@
 		  	</accordion>
 		  	
 		  	<form name="getLastConnectTimeForm">
-		  		<button class="btn btn-success" ng-click="auth.doGetLastConnectTime()">getLastConnectTime</button>
+		  		<button class="btn btn-success" ng-click="auth.doGetLastConnectTime(getLastConnectTimeForm)">getLastConnectTime</button>
 		  	</form>
 			
 		</tab> 
@@ -85,7 +84,7 @@
 		  	</accordion>
 		  	
 		  	<form name="getLastConnectTimeForm">
-		  		<button class="btn btn-success" ng-click="auth.doGetConnectionState()">getConnectionState</button>
+		  		<button class="btn btn-success" ng-click="auth.doGetConnectionState(getLastConnectTimeForm)">getConnectionState</button>
 		  	</form>
 			
 		</tab> 
@@ -100,7 +99,7 @@
 		  	</accordion>
 		  	
 		  	<form name="getAuthenticationHeadersForm">
-		  		<button class="btn btn-success" ng-click="auth.doGetAuthenticationHeaders()">doGetAuthenticationHeaders</button>
+		  		<button class="btn btn-success" ng-click="auth.doGetAuthenticationHeaders(getAuthenticationHeadersForm)">doGetAuthenticationHeaders</button>
 		  	</form>
 			
 		</tab> 
