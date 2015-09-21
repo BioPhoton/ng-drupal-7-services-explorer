@@ -7,7 +7,8 @@ angular
                                              'ngDrupalServicesTests.home.controller',
                                              'ngDrupalServicesTests.auth.controller',
                                              'ngDrupalServicesTests.system.controller', 
-                                             'ngDrupalServicesTests.user.controller'])
+                                             'ngDrupalServicesTests.user.controller',
+                                             'ngDrupalServicesTests.node.controller'])
     .config(configFunction);
 
 	configFunction.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -69,6 +70,16 @@ angular
 	        	'mainNavContent' : {
 			        templateUrl: './app/components/user/user.view.html',
 			        controller: 'UserController as user'
+	        	}
+	        }
+	    })
+	    
+	    .state('app.node', {
+	        url: '/node',
+	        views : {
+	        	'mainNavContent' : {
+			        templateUrl: './app/components/node/node.view.html',
+			        controller: 'NodeController as node'
 	        	}
 	        }
 	    });

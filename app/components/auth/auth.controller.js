@@ -175,13 +175,10 @@ angular
 	    //do request
 		function doRefreshConnection() {
 			requestStart = Date.now();
-	   		AuthenticationService.refreshConnection()
-			    .then(
-		    		//logout success
-		    		function(data) { console.log('auth RefreshConnection success'); },
-		    		//logout error
-		    		function(data) { console.log('auth RefreshConnection error'); }
-			    );
+	   		AuthenticationService
+	   			.refreshConnection()
+	   				.success(function(data) { console.log('auth RefreshConnection success'); })
+	   				.error(function(data) { console.log('auth RefreshConnection error'); });
 		};
 		
 		// confirm callback

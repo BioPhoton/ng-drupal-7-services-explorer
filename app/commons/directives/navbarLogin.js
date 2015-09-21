@@ -28,9 +28,9 @@
 				    				'<span class="glyphicon glyphicon-user"></span> {{username}} <b class="caret"></b>'+
 				    			'</a>'+
 				    			'<ul class="dropdown-menu">'+
-			                        '<li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>'+
+			                        '<li><a href="#"><span class="glyphicon glyphicon-user"> </span>Profile</a></li>'+
 			                        '<li class="divider"></li>'+
-			                        '<li><a href="#" ng-click="doLogout()"><span class="glyphicon glyphicon-off"></span>Logout</a></li>'+
+			                        '<li><a href="#" ng-click="doLogout()"><span class="glyphicon glyphicon-off"> </span>Logout</a></li>'+
 			                    '</ul>'+
 			                 '</li>'+
 				    	'</ul>'+

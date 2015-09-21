@@ -369,7 +369,9 @@ angular
 	    
 	    //do create
 		function doCreate(createForm) {
+			console.log('SDF'); 
 			if(createForm.$valid) {
+				console.log('SDF');
 				//format fields
 				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
 				

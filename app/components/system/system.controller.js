@@ -92,7 +92,7 @@ angular
 		   		SystemResource.connect()
 				    .then(
 				    		//connect success
-				    		function(data) { console.log('system connect success'); },
+				    		function(data) { console.log('system connect success', data); },
 				    		//connect error
 				    		function(data) { console.log('system connect error'); }
 				    );
