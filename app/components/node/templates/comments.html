@@ -1,0 +1,40 @@
+<h2>Comments request</h2>
+<p>Get node details.<br/>
+see <code>services/resources/node_resource.inc => _node_resource_comments()</code>
+</p>
+<accordion close-others="oneAtATime">
+	<accordion-group heading="Comments Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in node.commentsRequests">
+	   <ng-include src="'app/templates/request/request.html'"></ng-include>
+	</accordion-group>
+</accordion>
+ 	
+<form name="commentsForm" novalidate>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': commentsForm.nid.$touched && commentsForm.nid.$invalid || commentsForm.nid.$invalid && commentsForm.$submitted }" >
+		<label for="comments__nid">Nid</label>
+		<input type="number" class="form-control" id="comments__nid" name="nid" placeholder="Nid" ng-model="node.commentsData.nid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!commentsForm.nid.$touched && !commentsForm.$submitted || commentsForm.nid.$valid" >NID of the node to be loaded</p>
+						
+			<ng-messages class="error" ng-if="commentsForm.nid.$invalid && commentsForm.nid.$touched || commentsForm.$submitted" for="commentsForm.nid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+
+<label class="item item-input">
+<input type="text" ng-model="nodeComments.file_contents" placeholder="file_contents" >
+</label>
+<label class="item item-input">
+<input type="text" ng-model="nodeComments.image_styles" placeholder="image_styles" >
+</label>
+	
+	
+	
+	
+	
+	<button class="btn btn-success" ng-click="node.doComments(commentsForm)">comments request</button>
+</form>

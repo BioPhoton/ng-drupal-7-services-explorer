@@ -1,17 +1,17 @@
 <h2>Update request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
 	heading="Update Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
-	ng-repeat="(key,request) in user.updateRequests"> <ng-include
+	ng-repeat="(key,request) in node.updateRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 	
 <form name="updateForm" novalidate>
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.uid.$touched && updateForm.uid.$invalid || updateForm.uid.$invalid && updateForm.$submitted}" >
 		<label for="update__uid">Uid</label>
-		<input type="number" class="form-control" id="update__uid" name="uid" placeholder="Uid" ng-model="user.updateData.uid" required>
+		<input type="number" class="form-control" id="update__uid" name="uid" placeholder="Uid" ng-model="node.updateData.uid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!updateForm.uid.$touched && !updateForm.$submitted || updateForm.uid.$valid" >UID of the user to be loaded</p>
+			<p class="description" ng-if="!updateForm.uid.$touched && !updateForm.$submitted || updateForm.uid.$valid" >UID of the node to be loaded</p>
 			<ng-messages class="error" ng-if="updateForm.uid.$invalid && updateForm.uid.$touched || updateForm.$submitted" for="updateForm.uid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
@@ -21,16 +21,16 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.name.$touched && updateForm.name.$invalid || updateForm.name.$invalid && updateForm.$submitted}">
 		<label for="update__name">Name</label>
-		<input type="text" class="form-control" name="name" id="update__name" placeholder="Name" ng-model="user.updateData.name" ng-maxlength="60" required>
+		<input type="text" class="form-control" name="name" id="update__name" placeholder="Name" ng-model="node.updateData.name" ng-maxlength="60" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!updateForm.name.$touched && !updateForm.$submitted || updateForm.name.$valid" >The user name</p>
+			<p class="description" ng-if="!updateForm.name.$touched && !updateForm.$submitted || updateForm.name.$valid" >The node name</p>
 
 			<ng-messages class="error" ng-if="updateForm.name.$invalid && updateForm.name.$touched || updateForm.$submitted" for="updateForm.name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				
 				<div ng-message="maxlength">
-					Your username must be less than 61 characters long
+					Your nodename must be less than 61 characters long
 				</div>
 			</ng-messages>
 		</div>
@@ -38,7 +38,7 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.email.$touched && updateForm.email.$invalid || updateForm.email.$invalid && updateForm.$submitted}">
 		<label for="update__email">Email</label> 
-		<input type="email" class="form-control" name="email" id="update__email" placeholder="Email" ng-model="user.updateData.mail" required>
+		<input type="email" class="form-control" name="email" id="update__email" placeholder="Email" ng-model="node.updateData.mail" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!updateForm.email.$touched && !updateForm.$submitted || updateForm.email.$valid" >The email address</p>
@@ -53,10 +53,10 @@
 	<div class="form-group">
 		<label class="control-label" for="update__status">Status</label>
 		<label class="radio-inline">
-			<input type="radio" name="update__status" id="blocked" ng-model="user.updateData.status" value="0"> blocked
+			<input type="radio" name="update__status" id="blocked" ng-model="node.updateData.status" value="0"> blocked
 		</label>
 		<label class="radio-inline">
-			<input type="radio" name="update__status" id="active" ng-model="user.updateData.status" value="1" > active
+			<input type="radio" name="update__status" id="active" ng-model="node.updateData.status" value="1" > active
 		</label>
 		<div class="help-block">
 			<div>Value 0 for blocked, otherwise will be active by default</div>
@@ -66,46 +66,46 @@
 	<div class="form-group">
 		<label class="control-label" for="update__notify">Notify</label>
 		<label class="radio-inline">
-			<input type="radio" name="update__notify" id="notification" ng-model="user.updateData.notify" value="0"> no user notification
+			<input type="radio" name="update__notify" id="notification" ng-model="node.updateData.notify" value="0"> no node notification
 		</label>
 		<label class="radio-inline">
-			<input type="radio" name="update__notify" id="no_notification" ng-model="user.updateData.notify" value="1"> user notification
+			<input type="radio" name="update__notify" id="no_notification" ng-model="node.updateData.notify" value="1"> node notification
 		</label>
 		<div class="help-block">
-			<div>Value 1 to notify user of new account, will not notify by default</div>
+			<div>Value 1 to notify node of new account, will not notify by default</div>
 		</div>
 	</div>
 	
 	<div class="form-group">
-		<label ng-click="user.updateRolesColapsed = !user.updateRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[user.updateRolesColapsed]"></span></label> 
+		<label ng-click="node.updateRolesColapsed = !node.updateRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[node.updateRolesColapsed]"></span></label> 
 	</div>
-	<div class="well collapse" ng-class="!user.updateRolesColapsed && 'in'"> 
+	<div class="well collapse" ng-class="!node.updateRolesColapsed && 'in'"> 
 		<div class="form-group">
 
 			<div class="checkbox disabled">
 				<label>
-					<input type="checkbox" name="update__role__anonymous_user" disabled>
-					anonymous user (not available)
+					<input type="checkbox" name="update__role__anonymous_node" disabled>
+					anonymous node (not available)
 				</label>
 			</div>
 
 			<div class="checkbox disabled">
 				<label>
-					<input type="checkbox" name="update__role__authenticated_user" disabled>
-					authenticated user (not available)
+					<input type="checkbox" name="update__role__authenticated_node" disabled>
+					authenticated node (not available)
 				</label>
 			</div>
 
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="update__role__administrator" ng-model="user.updateData.roles.administrator" ng-true-value="'3'">
+					<input type="checkbox" name="update__role__administrator" ng-model="node.updateData.roles.administrator" ng-true-value="'3'">
 					administrator
 				</label>
 			</div>
 			
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="update__role__editor" ng-model="user.updateData.roles.editor" ng-true-value="'4'">
+					<input type="checkbox" name="update__role__editor" ng-model="node.updateData.roles.editor" ng-true-value="'4'">
 					editor (custom updated role)
 				</label>
 			</div>
@@ -116,10 +116,10 @@
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.field_nickname.$touched && updateForm.field_nickname.$invalid || updateForm.field_nickname.$invalid && updateForm.$submitted}">
 		<label for="update__field_nickname">Nickname</label> 
-		<input type="field_nickname" class="form-control" name="field_nickname" id="update__field_nickname" placeholder="Nickname" ng-model="user.updateData.field_nickname" required>
+		<input type="field_nickname" class="form-control" name="field_nickname" id="update__field_nickname" placeholder="Nickname" ng-model="node.updateData.field_nickname" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p  class="description" ng-if="!updateForm.field_nickname.$touched && !updateForm.$submitted || updateForm.field_nickname.$valid" >The user's nickname. ( Custom created field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
+			<p  class="description" ng-if="!updateForm.field_nickname.$touched && !updateForm.$submitted || updateForm.field_nickname.$valid" >The node's nickname. ( Custom created field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
 
 			<ng-messages class="error" ng-if="updateForm.field_nickname.$invalid && updateForm.field_nickname.$touched || updateForm.$submitted" for="updateForm.field_nickname.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
@@ -127,5 +127,5 @@
 		</div>
 	</div>
 
-	<button class="btn btn-success" ng-click="user.doUpdate(updateForm)">update request</button>
+	<button class="btn btn-success" ng-click="node.doUpdate(updateForm)">update request</button>
 </form>

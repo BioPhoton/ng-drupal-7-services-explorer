@@ -1,0 +1,37 @@
+<h2>AttachFile request</h2>
+<p>Get node details.<br/>
+see <code>services/resources/node_resource.inc => _node_resource_attachFile()</code>
+</p>
+
+<accordion close-others="oneAtATime">
+	<accordion-group heading="AttachFile Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in node.attachFileRequests">
+	   <ng-include src="'app/templates/request/request.html'"></ng-include>
+	</accordion-group>
+</accordion>
+ 	
+<form name="attachFileForm" novalidate>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': attachFileForm.nid.$touched && attachFileForm.nid.$invalid || attachFileForm.nid.$invalid && attachFileForm.$submitted }" >
+		<label for="attachFile__nid">Nid</label>
+		<input type="number" class="form-control" id="attachFile__nid" name="nid" placeholder="Nid" ng-model="node.attachFileData.nid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!attachFileForm.nid.$touched && !attachFileForm.$submitted || attachFileForm.nid.$valid" >NID of the node to be loaded</p>
+						
+			<ng-messages class="error" ng-if="attachFileForm.nid.$invalid && attachFileForm.nid.$touched || attachFileForm.$submitted" for="attachFileForm.nid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<label class="item item-input">
+		<input type="text" ng-model="nodeAttachFile.file_contents" placeholder="file_contents" >
+	</label>
+	
+	<label class="item item-input">
+		<input type="text" ng-model="nodeAttachFile.image_styles" placeholder="image_styles" >
+	</label>
+
+	<button class="btn btn-success" ng-click="node.doAttachFile(attachFileForm)">attachFile request</button>
+</form>

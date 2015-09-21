@@ -1,27 +1,27 @@
 <h2>Create request</h2>
 <p>
-	Create a new user.<br/>
+	Create a new node.<br/>
 	This function uses drupal_form_submit() and as such expects all input to match the submitting form in question.</br>
-	see <code>services/resources/user_resource.inc => _user_resource_create()</code>
+	see <code>services/resources/node_resource.inc => _node_resource_create()</code>
 </p>
 <accordion close-others="oneAtATime"> <accordion-group
 		heading="Create Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
-		ng-repeat="(key,request) in user.createRequests"> <ng-include
+		ng-repeat="(key,request) in node.createRequests"> <ng-include
 		src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
 <form name="createForm" novalidate>
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.name.$touched && createForm.name.$invalid || createForm.name.$invalid && createForm.$submitted}">
 		<label for="create__name">Name</label>
-		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="user.createData.name" ng-maxlength="60" required>
+		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="node.createData.name" ng-maxlength="60" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The user name</p>
+			<p class="description" ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The node name</p>
 
 			<ng-messages class="error" ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<div ng-message="maxlength">
-					Your username must be less than 61 characters long
+					Your nodename must be less than 61 characters long
 				</div>
 			</ng-messages>
 		</div>
@@ -29,7 +29,7 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.email.$touched && createForm.email.$invalid || createForm.email.$invalid && createForm.$submitted}">
 		<label for="create__email">Email</label>
-		<input type="email" class="form-control" name="email" id="create__email" placeholder="Email" ng-model="user.createData.mail" required>
+		<input type="email" class="form-control" name="email" id="create__email" placeholder="Email" ng-model="node.createData.mail" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!createForm.email.$touched && !createForm.$submitted || createForm.email.$valid" >The email address</p>
@@ -43,7 +43,7 @@
 
 	<div class="form-group">
 		<label for="create__password">Password</label>
-		<input type="password" class="form-control" name="password" id="create__password" placeholder="Password" ng-model="user.createData.pass" required>
+		<input type="password" class="form-control" name="password" id="create__password" placeholder="Password" ng-model="node.createData.pass" required>
 		<div class="help-block">
 			<p class="description" ng-if="!createForm.password.$touched && !createForm.$submitted || createForm.password.$valid">The plain text unencrypted password</p>
 			<ng-messages class="error" ng-if="createForm.password.$invalid && createForm.password.$touched || createForm.$submitted" for="createForm.password.$error">
@@ -55,10 +55,10 @@
 	<div class="form-group">
 		<label class="control-label" for="create__status">Status</label>
 		<label class="radio-inline">
-			<input type="radio" name="create__status" id="blocked" ng-model="user.createData.status" value="0"> blocked
+			<input type="radio" name="create__status" id="blocked" ng-model="node.createData.status" value="0"> blocked
 		</label>
 		<label class="radio-inline">
-			<input type="radio" name="create__status" id="active" ng-model="user.createData.status" value="1" > active
+			<input type="radio" name="create__status" id="active" ng-model="node.createData.status" value="1" > active
 		</label>
 		<div class="help-block">
 			<p class="description">Value 0 for blocked, otherwise will be active by default</p>
@@ -68,46 +68,46 @@
 	<div class="form-group">
 		<label class="control-label" for="create__notify">Notify</label>
 		<label class="radio-inline">
-			<input type="radio" name="create__notify" id="notification" ng-model="user.createData.notify" value="0"> no user notification
+			<input type="radio" name="create__notify" id="notification" ng-model="node.createData.notify" value="0"> no node notification
 		</label>
 		<label class="radio-inline">
-			<input type="radio" name="create__notify" id="no_notification" ng-model="user.createData.notify" value="1"> user notification
+			<input type="radio" name="create__notify" id="no_notification" ng-model="node.createData.notify" value="1"> node notification
 		</label>
 		<div class="help-block">
-			<p class="description">Value 1 to notify user of new account, will not notify by default</p>
+			<p class="description">Value 1 to notify node of new account, will not notify by default</p>
 		</div>
 	</div>
 	
 	<div class="form-group">
-		<label ng-click="user.createRolesColapsed = !user.createRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[user.createRolesColapsed]"></span></label>
+		<label ng-click="node.createRolesColapsed = !node.createRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[node.createRolesColapsed]"></span></label>
 	</div>
-	<div class="well collapse" ng-class="!user.createRolesColapsed && 'in'">
+	<div class="well collapse" ng-class="!node.createRolesColapsed && 'in'">
 		<div class="form-group">
 
 			<div class="checkbox disabled">
 				<label>
-					<input type="checkbox" name="create__role__anonymous_user" disabled>
-					anonymous user (not available)
+					<input type="checkbox" name="create__role__anonymous_node" disabled>
+					anonymous node (not available)
 				</label>
 			</div>
 
 			<div class="checkbox disabled">
 				<label>
-					<input type="checkbox" name="create__role__authenticated_user" disabled>
-					authenticated user (not available)
+					<input type="checkbox" name="create__role__authenticated_node" disabled>
+					authenticated node (not available)
 				</label>
 			</div>
 
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="create__role__administrator" ng-model="user.createData.roles.administrator" ng-true-value="'3'">
+					<input type="checkbox" name="create__role__administrator" ng-model="node.createData.roles.administrator" ng-true-value="'3'">
 					administrator
 				</label>
 			</div>
 
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="create__role__editor" ng-model="user.createData.roles.editor" ng-true-value="'4'">
+					<input type="checkbox" name="create__role__editor" ng-model="node.createData.roles.editor" ng-true-value="'4'">
 					editor (custom created role)
 				</label>
 			</div>
@@ -118,10 +118,10 @@
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.field_siganture.$touched && createForm.field_siganture.$invalid || createForm.field_siganture.$invalid && createForm.$submitted}">
 		<label for="create__field_siganture">Signature</label>
-		<input type="field_siganture" class="form-control" name="siganture" id="create__field_siganture" placeholder="Signature" ng-model="user.createData.siganture" required>
+		<input type="field_siganture" class="form-control" name="siganture" id="create__field_siganture" placeholder="Signature" ng-model="node.createData.siganture" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.field_siganture.$touched && !createForm.$submitted || createForm.field_siganture.$valid" >The user's siganture. ( Custom field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
+			<p class="description" ng-if="!createForm.field_siganture.$touched && !createForm.$submitted || createForm.field_siganture.$valid" >The node's siganture. ( Custom field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
 		
 			<ng-messages class="error" ng-if="createForm.field_siganture.$invalid && createForm.field_siganture.$touched || createForm.$submitted" for="createForm.field_siganture.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
@@ -131,10 +131,10 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.field_nickname.$touched && createForm.field_nickname.$invalid || createForm.field_nickname.$invalid && createForm.$submitted}">
 		<label for="create__field_nickname">Nickname</label>
-		<input type="field_nickname" class="form-control" name="field_nickname" id="create__field_nickname" placeholder="Nickname" ng-model="user.createData.field_nickname" required>
+		<input type="field_nickname" class="form-control" name="field_nickname" id="create__field_nickname" placeholder="Nickname" ng-model="node.createData.field_nickname" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.field_nickname.$touched && !createForm.$submitted || createForm.field_nickname.$valid" >The user's nickname. ( Custom field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
+			<p class="description" ng-if="!createForm.field_nickname.$touched && !createForm.$submitted || createForm.field_nickname.$valid" >The node's nickname. ( Custom field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
 
 			<ng-messages class="error" ng-if="createForm.field_nickname.$invalid && createForm.field_nickname.$touched || createForm.$submitted" for="createForm.field_nickname.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
@@ -142,5 +142,5 @@
 		</div>
 	</div>
 
-	<button class="btn btn-success" ng-click="user.doCreate(createForm)">create request</button>
+	<button class="btn btn-success" ng-click="node.doCreate(createForm)">create request</button>
 </form>

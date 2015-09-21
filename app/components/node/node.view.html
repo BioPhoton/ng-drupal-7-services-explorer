@@ -1,29 +1,45 @@
 <div id="node" class="resource">
 	<h1>Node resource</h1>
-	<p></p>
-	<hr/>
-	<tabset justified="true">
-		<tab heading="Retrieve">
-			<ng-include src="'app/components/node/templates/retrieve.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Create">
-			<ng-include src="'app/components/node/templates/create.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Update">
-			<ng-include src="'app/components/node/templates/update.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Delete">
-			<ng-include src="'app/components/node/templates/delete.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Index">
-			<ng-include src="'app/components/node/templates/index.html'"></ng-include>
-		</tab> 
-		
-		
-	</tabset>
+	<p>Link general node functionalities to services module.<br/>
+	See  <code>services/resources/node_resource.inc</code></p>
+	<br/>
+	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="retrieve-tab" role="tab" ui-sref="app.services_3x.node.retrieve" >Retrieve</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="create-tab" role="tab"  ui-sref="app.services_3x.node.create">Create</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="update-tab" role="tab"  ui-sref="app.services_3x.node.update">Update</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="delete-tab" role="tab"  ui-sref="app.services_3x.node.delete">Delete</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.node.index">Index</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.node.files">Files</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.node.comments">Comments</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.node.attach_file">Attach File</a>
+		</li>
+
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="retrieve" ng-show="services_3x.$state.includes('app.services_3x.node.retrieve')"></ui-view>
+		<ui-view name="create" ng-show="services_3x.$state.includes('app.services_3x.node.create')"></ui-view>
+		<ui-view name="update" ng-show="services_3x.$state.includes('app.services_3x.node.update')"></ui-view>
+		<ui-view name="delete" ng-show="services_3x.$state.includes('app.services_3x.node.delete')"></ui-view>
+		<ui-view name="index" ng-show="services_3x.$state.includes('app.services_3x.node.index')"></ui-view>
+		<ui-view name="files" ng-show="services_3x.$state.includes('app.services_3x.node.files')"></ui-view>
+		<ui-view name="comments" ng-show="services_3x.$state.includes('app.services_3x.node.comments')"></ui-view>
+		<ui-view name="attachFile" ng-show="services_3x.$state.includes('app.services_3x.node.attach_file')"></ui-view>
+	</div>
 	
 </div>

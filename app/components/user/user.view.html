@@ -1,61 +1,64 @@
 <div id="user" class="resource">
 	<h1>User resource</h1>
-	<p></p>
-	<hr/>
-	<tabset justified="true">
-		<tab heading="Retrieve">
-			<ng-include src="'app/components/user/templates/retrieve.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Create">
-			<ng-include src="'app/components/user/templates/create.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Update">
-			<ng-include src="'app/components/user/templates/update.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Delete">
-			<ng-include src="'app/components/user/templates/delete.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Index">
-			<ng-include src="'app/components/user/templates/index.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Register">
-			<ng-include src="'app/components/user/templates/register.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Resend Welcome Email">
-			<ng-include src="'app/components/user/templates/resendWelcomeEmail.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Cancel">
-			<ng-include src="'app/components/user/templates/cancel.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Password Reset">
-			<ng-include src="'app/components/user/templates/passwordReset.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Request New Password">
-			<ng-include src="'app/components/user/templates/requestNewPassword.html'"></ng-include>
-		</tab> 
-		
-		
-		<tab heading="Login">
-			<ng-include src="'app/components/user/templates/login.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Logout">
-			<ng-include src="'app/components/user/templates/logout.html'"></ng-include>
-		</tab> 
-		
-		<tab heading="Token">
-			<ng-include src="'app/components/user/templates/token.html'"></ng-include>
-		</tab> 	
-		
-	</tabset>
+	<p>Link general user functionalities to services module.<br/>
+	See  <code>services/resources/user_resource.inc</code></p>
+	<br/>
+	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="retrieve-tab" role="tab" ui-sref="app.services_3x.user.retrieve" >Retrieve</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="create-tab" role="tab"  ui-sref="app.services_3x.user.create">Create</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="update-tab" role="tab"  ui-sref="app.services_3x.user.update">Update</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="delete-tab" role="tab"  ui-sref="app.services_3x.user.delete">Delete</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.user.index">Index</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="del-variable-tab" role="tab"  ui-sref="app.services_3x.user.register">Register</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="resend-welcome-email-tab" role="tab"  ui-sref="app.services_3x.user.resend_welcome_email">Resend Welcome Email</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="cancel-tab" role="tab"  ui-sref="app.services_3x.user.cancel">Cancel</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="password-reset-tab" role="tab"  ui-sref="app.services_3x.user.password_reset">Password Reset</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="request-new-password-tab" role="tab"  ui-sref="app.services_3x.user.request_new_password">requestNewPassword</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="login-tab" role="tab"  ui-sref="app.services_3x.user.login">Login</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="logout-tab" role="tab"  ui-sref="app.services_3x.user.logout">Logout</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="token-tab" role="tab"  ui-sref="app.services_3x.user.token">Token</a>
+		</li>
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="retrieve" ng-show="services_3x.$state.includes('app.services_3x.user.retrieve')"></ui-view>
+		<ui-view name="create" ng-show="services_3x.$state.includes('app.services_3x.user.create')"></ui-view>
+		<ui-view name="update" ng-show="services_3x.$state.includes('app.services_3x.user.update')"></ui-view>
+		<ui-view name="delete" ng-show="services_3x.$state.includes('app.services_3x.user.delete')"></ui-view>
+		<ui-view name="index" ng-show="services_3x.$state.includes('app.services_3x.user.index')"></ui-view>
+		<ui-view name="register" ng-show="services_3x.$state.includes('app.services_3x.user.register')"></ui-view>
+		<ui-view name="resendWelcomeEmail" ng-show="services_3x.$state.includes('app.services_3x.user.resend_welcome_email')"></ui-view>
+		<ui-view name="cancel" ng-show="services_3x.$state.includes('app.services_3x.user.cancel')"></ui-view>
+		<ui-view name="requestNewPassword" ng-show="services_3x.$state.includes('app.services_3x.user.request_new_password')"></ui-view>
+		<ui-view name="passwordReset" ng-show="services_3x.$state.includes('app.services_3x.user.password_reset')"></ui-view>
+		<ui-view name="login" ng-show="services_3x.$state.includes('app.services_3x.user.login')"></ui-view>
+		<ui-view name="logout" ng-show="services_3x.$state.includes('app.services_3x.user.logout')"></ui-view>
+		<ui-view name="token" ng-show="services_3x.$state.includes('app.services_3x.user.token')"></ui-view>
+	</div>
 	
 </div>

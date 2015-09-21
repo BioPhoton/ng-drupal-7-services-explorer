@@ -14,8 +14,6 @@ angular
 		var requestEnd = 0;
 		var requestStart = 0;
 		
-		
-		
 		// jshint validthis: true 
 		var vm = this;
 		

@@ -2,13 +2,16 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.states', ['ui.router',
+    .module('ngDrupalServicesTests.states', ['ui.router','ct.ui.router.extras',
+                                             
                                              'ngDrupalServicesTests.app.controller',
                                              'ngDrupalServicesTests.home.controller',
-                                             'ngDrupalServicesTests.auth.controller',
-                                             'ngDrupalServicesTests.system.controller', 
-                                             'ngDrupalServicesTests.user.controller',
-                                             'ngDrupalServicesTests.node.controller'])
+                                             'ngDrupalServicesTests.services_3x.controller',
+                                              
+                                             'ngDrupalServicesTests.system.states',
+                                             'ngDrupalServicesTests.user.states',
+                                             'ngDrupalServicesTests.node.states'
+                                             ])
     .config(configFunction);
 
 	configFunction.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -30,9 +33,10 @@ angular
             controller: 'AppController',
             controllerAs : 'app'
         })
-	    
-	    .state('app.home', {
+        .state('app.home', {
 	        url: '/home',
+	        deepStateRedirect: true,
+	        sticky: true,
 	        views : {
 	        	'mainNavContent' : {
 	        		templateUrl: './app/components/home/home.view.html',
@@ -42,9 +46,45 @@ angular
 	        }
 	        
 	    })
-	    
+        .state('app.services_3x', {
+            url: "/services_3x",
+            abstract: true,
+            views: {
+			      'mainNavContent': {
+			    	  templateUrl		: "app/components/services_3x/services_3x.view.html",
+			    	  controller		: 'Services_3xController',
+			          controllerAs 		: 'services_3x',
+			      }
+			    }
+        })
+        
+       
+        /*
+        .state('app.services_3x.system', {
+            url: "/system",
+            abstract: true,
+	        views : {
+	        	'system' : {
+			        templateUrl: './app/components/system/system.view.html',
+			        controller: 'SystemController',
+			        controllerAs : 'system'
+	        	}
+	    	}
+        })
+        
+        .state('app.services_3x.system.connect', {
+            url: "/connect",
+            views : {
+	        	'connect' : {
+			        templateUrl: './app/components/system/templates/connect.html'
+	        	}
+	    	}
+        })
+
 	    .state('app.auth', {
 	        url: '/auth',
+	        deepStateRedirect: true,
+	        sticky: true,
 	        views : {
 	        	'mainNavContent' : {
 			        templateUrl: './app/components/auth/auth.view.html',
@@ -53,36 +93,18 @@ angular
 	        	}
 	        }
 	    })
-	    
-	    .state('app.system', {
-	    	url: '/system',
-	    	views : {
-	        	'mainNavContent' : {
-			        templateUrl: './app/components/system/system.view.html',
-			        controller: 'SystemController as system',
-	        	}
-	    	}
-	    })
-	    
-	    .state('app.user', {
-	        url: '/user',
-	        views : {
-	        	'mainNavContent' : {
-			        templateUrl: './app/components/user/user.view.html',
-			        controller: 'UserController as user'
-	        	}
-	        }
-	    })
-	    
+
 	    .state('app.node', {
 	        url: '/node',
+	        deepStateRedirect: true,
+	        sticky: true,
 	        views : {
 	        	'mainNavContent' : {
 			        templateUrl: './app/components/node/node.view.html',
 			        controller: 'NodeController as node'
 	        	}
 	        }
-	    });
+	    })*/;
 		
 	};
 

@@ -2,20 +2,27 @@
 	<h1>System resource</h1>
 	<p>Link general system functionalities to services module.<br/>
 	See  <code>services/resources/system_resource.inc</code></p>
-	<hr/>
-	<tabset justified="true">
-		<tab heading="Connect">
-			<ng-include src="'app/components/system/templates/connect.html'"></ng-include>			
-		</tab> 
-		<tab heading="Get Variable">
-			<ng-include src="'app/components/system/templates/getVariable.html'"></ng-include>			
-		</tab> 
-		<tab heading="Set Variable">
-			<ng-include src="'app/components/system/templates/setVariable.html'"></ng-include>
-		</tab> 
-		<tab heading="Del Variable">
-			<ng-include src="'app/components/system/templates/delVariable.html'"></ng-include>
-		</tab>
-	</tabset>
+	<br/>
+	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="connect-tab" role="tab" ui-sref="app.services_3x.system.connect" >Connect</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="get-variable-tab" role="tab"  ui-sref="app.services_3x.system.get_variable">getVariable</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="set-variable-tab" role="tab"  ui-sref="app.services_3x.system.set_variable">setVariable</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="del-variable-tab" role="tab"  ui-sref="app.services_3x.system.del_variable">delVariable</a>
+		</li>
+	</ul>
+	
+	<div class="tabs-content">
+		<ui-view name="connect" ng-show="services_3x.$state.includes('app.services_3x.system.connect')"></ui-view>
+		<ui-view name="getVariable" ng-show="services_3x.$state.includes('app.services_3x.system.get_variable')"></ui-view>
+		<ui-view name="setVariable" ng-show="services_3x.$state.includes('app.services_3x.system.set_variable')"></ui-view>
+		<ui-view name="delVariable" ng-show="services_3x.$state.includes('app.services_3x.system.del_variable')"></ui-view>
+	</div>
 	
 </div>
