@@ -25,13 +25,22 @@ see <code>services/resources/node_resource.inc => _node_resource_attachFile()</c
 		</div>
 	</div>
 
-	<label class="item item-input">
-		<input type="text" ng-model="nodeAttachFile.file_contents" placeholder="file_contents" >
-	</label>
-	
-	<label class="item item-input">
-		<input type="text" ng-model="nodeAttachFile.image_styles" placeholder="image_styles" >
-	</label>
+<label class="item item-input">
+	<input type="text" ng-model="nodeAttachFile.nid" placeholder="nid" >
+</label>
+<label class="item item-input">
+	<input type="text" ng-model="nodeAttachFile.field_name" placeholder="field_name" >
+</label>
+<label class="item item-input">
+	<input type="text" ng-model="nodeAttachFile.attach" placeholder="attach" >
+</label>
+<label class="item item-input">
+	<input type="text" ng-model="nodeAttachFile.field_values.title" placeholder="field_values.title" >
+</label>
+<label class="item item-input">
+	<input type="text" ng-model="nodeAttachFile.field_values.alt" placeholder="field_values.alt" >
+</label>
+<img width="16" height="16" ng-src="{{'data:image/gif;base64,'+nodeAttachFile.attach}}">
 
 	<button class="btn btn-success" ng-click="node.doAttachFile(attachFileForm)">attachFile request</button>
 </form>
