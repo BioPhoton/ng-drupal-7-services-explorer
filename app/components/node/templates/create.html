@@ -46,10 +46,11 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.body_value.$touched && createForm.body_value.$invalid || createForm.body_value.$invalid && createForm.$submitted}">
 		<label for="create__body_value">Body Value</label>
-		<input type="text" class="form-control" name="body_value" id="create__body_value" placeholder="Body value" ng-model="node.createData.body_value" required>
+		<textarea class="form-control" name="body_value" id="create__body_value" placeholder="Body Value" ng-model="node.createData.body_value" required>
+		</textarea>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.body_value.$touched && !createForm.$submitted || createForm.body_value.$valid" >The Body value.</p>
+			<p class="description" ng-if="!createForm.body_value.$touched && !createForm.$submitted || createForm.body_value.$valid" >The body value.</p>
 
 			<ng-messages class="error" ng-if="createForm.body_value.$invalid && createForm.body_value.$touched || createForm.$submitted" for="createForm.body_value.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
@@ -59,10 +60,11 @@
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.body_summary.$touched && createForm.body_summary.$invalid || createForm.body_summary.$invalid && createForm.$submitted}">
 		<label for="create__body_summary">Body Summary</label>
-		<input type="text" class="form-control" name="body_summary" id="create__body_summary" placeholder="Email" ng-model="node.createData.body_summary" required>
+		<textarea class="form-control" name="body_summary" id="create__body_summary" placeholder="Body Summary" ng-model="node.createData.body_summary" required>
+		</textarea>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.body_summary.$touched && !createForm.$submitted || createForm.body_summary.$valid" >The body_summary address</p>
+			<p class="description" ng-if="!createForm.body_summary.$touched && !createForm.$submitted || createForm.body_summary.$valid" >The body summary</p>
 
 			<ng-messages class="error" ng-if="createForm.body_summary.$invalid && createForm.body_summary.$touched || createForm.$submitted" for="createForm.body_summary.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
