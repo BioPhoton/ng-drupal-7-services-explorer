@@ -1,0 +1,45 @@
+<h2>Delete request</h2>
+<p>If the file is added to a node the request returns an object with
+	the node id in it:
+<pre>
+"file": {
+    "node": {
+      "15": "1"
+    }
+}
+</pre>
+If you delete this node the file is also deleted.
+<br />
+If the file is not connected to a node you can delete it here.
+</p>
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="Delete Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in file.deleteRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="deleteForm" novalidate>
+	<div class="form-errors">
+		<div class="alert alert-danger fade in "
+			ng-repeat="serverError in file.deleteErrors.errors.server_errors">
+			{{serverError}}</div>
+	</div>
+
+	<div class="form-group"
+		ng-class="{ 'has-error has-feedback': deleteForm.fid.$touched && deleteForm.fid.$invalid || deleteForm.fid.$invalid && deleteForm.$submitted}">
+		<label for="delete__fid">Fid</label> <input type="number"
+			class="form-control" id="delete__fid" name="fid" placeholder="Fid"
+			ng-model="file.deleteData.fid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!deleteForm.fid.$touched && !deleteForm.$submitted || deleteForm.fid.$valid">FID of the file to be deleted</p>
+			<ng-messages class="error"
+				ng-if="deleteForm.fid.$invalid && deleteForm.fid.$touched || deleteForm.$submitted"
+				for="deleteForm.fid.$error"> <ng-messages-include
+				src="error-required"></ng-messages-include> <ng-messages-include
+				src="error-number"></ng-messages-include> </ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="file.doDelete(deleteForm)">delete
+		request</button>
+</form>

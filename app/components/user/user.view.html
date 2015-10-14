@@ -3,7 +3,7 @@
 	<p>Link general user functionalities to services module.<br/>
 	See  <code>services/resources/user_resource.inc</code></p>
 	<br/>
-	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified" role="tablist">
+	<ul id="user-tabs" class="nav nav-tabs nav-justified" role="tablist">
 		<li ui-sref-active-eq="active">
 			<a id="retrieve-tab" role="tab" ui-sref="app.services_3x.user.retrieve" >Retrieve</a>
 		</li>
@@ -46,19 +46,19 @@
 	</ul>
 
 	<div class="tabs-content">
-		<ui-view name="retrieve" ng-show="services_3x.$state.includes('app.services_3x.user.retrieve')"></ui-view>
-		<ui-view name="create" ng-show="services_3x.$state.includes('app.services_3x.user.create')"></ui-view>
-		<ui-view name="update" ng-show="services_3x.$state.includes('app.services_3x.user.update')"></ui-view>
-		<ui-view name="delete" ng-show="services_3x.$state.includes('app.services_3x.user.delete')"></ui-view>
-		<ui-view name="index" ng-show="services_3x.$state.includes('app.services_3x.user.index')"></ui-view>
-		<ui-view name="register" ng-show="services_3x.$state.includes('app.services_3x.user.register')"></ui-view>
-		<ui-view name="resendWelcomeEmail" ng-show="services_3x.$state.includes('app.services_3x.user.resend_welcome_email')"></ui-view>
-		<ui-view name="cancel" ng-show="services_3x.$state.includes('app.services_3x.user.cancel')"></ui-view>
-		<ui-view name="requestNewPassword" ng-show="services_3x.$state.includes('app.services_3x.user.request_new_password')"></ui-view>
-		<ui-view name="passwordReset" ng-show="services_3x.$state.includes('app.services_3x.user.password_reset')"></ui-view>
-		<ui-view name="login" ng-show="services_3x.$state.includes('app.services_3x.user.login')"></ui-view>
-		<ui-view name="logout" ng-show="services_3x.$state.includes('app.services_3x.user.logout')"></ui-view>
-		<ui-view name="token" ng-show="services_3x.$state.includes('app.services_3x.user.token')"></ui-view>
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.services_3x.user.retrieve')"></ui-view>
+		<ui-view name="create" ng-show="app.$state.includes('app.services_3x.user.create')"></ui-view>
+		<ui-view name="update" ng-show="app.$state.includes('app.services_3x.user.update')"></ui-view>
+		<ui-view name="delete" ng-show="app.$state.includes('app.services_3x.user.delete')"></ui-view>
+		<ui-view name="index" ng-show="app.$state.includes('app.services_3x.user.index')"></ui-view>
+		<ui-view name="register" ng-show="app.$state.includes('app.services_3x.user.register')"></ui-view>
+		<ui-view name="resendWelcomeEmail" ng-show="app.$state.includes('app.services_3x.user.resend_welcome_email')"></ui-view>
+		<ui-view name="cancel" ng-show="app.$state.includes('app.services_3x.user.cancel')"></ui-view>
+		<ui-view name="requestNewPassword" ng-show="app.$state.includes('app.services_3x.user.request_new_password')"></ui-view>
+		<ui-view name="passwordReset" ng-show="app.$state.includes('app.services_3x.user.password_reset')"></ui-view>
+		<ui-view name="login" ng-show="app.$state.includes('app.services_3x.user.login')"></ui-view>
+		<ui-view name="logout" ng-show="app.$state.includes('app.services_3x.user.logout')"></ui-view>
+		<ui-view name="token" ng-show="app.$state.includes('app.services_3x.user.token')"></ui-view>
 	</div>
 	
 </div>

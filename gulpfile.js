@@ -3,8 +3,6 @@
 
 var gulp 		= require('gulp'),
 	
-	taskListing = require('gulp-task-listing'),
-	
 	gutil		= require("gulp-util"),
 	concat 		= require('gulp-concat'),
 	runSequence = require('run-sequence'),
@@ -23,7 +21,6 @@ var gulp 		= require('gulp'),
 
 	//general
 var bowerDir 		= './bower_components',
-	resourcesDir 	= './resources',
 		//libs
 		libsPath 		= '/libs',
 	assetsPath 		= './assets',
@@ -38,7 +35,7 @@ var bowerDir 		= './bower_components',
 
 var config = {
 		//we exclude animations because irt is imported in page specific animations
-		sassPaths: [ resourcesDir+'/sass/*.scss', 'app/**/*.scss', '!app/components/navigation/animations/animations.scss'],
+		sassPaths: ['app/**/*.scss'],
 		autoprefixerOptions : {
 			browsers: [
                        '> 1%',
@@ -64,21 +61,7 @@ var config = {
 
 /*Gulp Tasks*/
 
-/*List gulp existing tasks */
-//gulp.task('help', taskListing);
-
-gulp.task('help', taskListing.withFilters(function(task) {
-	
-	//sub taks
-	if(task === 'default') 
-	{ return  true; } 
-	//main task
-	else 
-	{ return  false; }
-	
-}));
-
-/*Thsi task creates a bundle of all js files*/
+/*This task creates a bundle of all js files*/
 gulp.task('bundle', function() {
 	  return gulp.src('./bundle.config.js')
 	    .pipe(bundle())

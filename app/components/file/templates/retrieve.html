@@ -1,0 +1,48 @@
+<h2>Retrieve request</h2>
+<p>Get file details.<br/>
+see <code>services/resources/file_resource.inc => _file_resource_retrieve()</code>
+</p>
+<accordion close-others="oneAtATime">
+	<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in file.retrieveRequests">
+	   <ng-include src="'app/templates/request/request.html'"></ng-include>
+	</accordion-group>
+</accordion>
+ 	
+<form name="retrieveForm" novalidate>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.fid.$touched && retrieveForm.fid.$invalid || retrieveForm.fid.$invalid && retrieveForm.$submitted }" >
+		<label for="retrieve__fid">Fid</label>
+		<input type="number" class="form-control" id="retrieve__fid" name="fid" placeholder="Fid" ng-model="file.retrieveData.fid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!retrieveForm.fid.$touched && !retrieveForm.$submitted || retrieveForm.fid.$valid" >FID of the file to be loaded</p>
+						
+			<ng-messages class="error" ng-if="retrieveForm.fid.$invalid && retrieveForm.fid.$touched || retrieveForm.$submitted" for="retrieveForm.fid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="checkbox">
+	  	<label>
+		    <input type="checkbox" ng-model="file.retrieveData.file_contents">
+		    File Contents
+		</label>
+		<div class="help-block">
+			<p class="description">To return file contents or not.</p>
+		</div>
+	</div>
+
+	
+	<div class="checkbox">
+	  	<label>
+		    <input type="checkbox" ng-model="file.retrieveData.image_styles">
+		    fields.name
+		</label>
+		<div class="help-block">
+			<p class="description">To return image styles or not.</p>
+		</div>
+	</div>
+	<button class="btn btn-success" ng-click="file.doRetrieve(retrieveForm)">retrieve request</button>
+</form>

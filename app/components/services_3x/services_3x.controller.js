@@ -5,10 +5,10 @@ angular
     .module('ngDrupalServicesTests.services_3x.controller', ['ui.router'])
     .controller('Services_3xController', Services_3xController);
 
-	Services_3xController.$inject = ['$scope', '$state'];
+	//Services_3xController.$inject = [];
 
 	/** @ngInject */ 
-	function Services_3xController($scope, $state) { 
+	function Services_3xController() { 
 		
 		var requestEnd = 0;
 		var requestStart = 0;
@@ -16,8 +16,7 @@ angular
 		// jshint validthis: true 
 		var vm = this;
 		
-		vm.$state = $state;
-
+		vm.descriptionColapsed = true;
 	};
 	
 	

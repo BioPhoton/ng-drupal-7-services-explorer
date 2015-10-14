@@ -1,5 +1,5 @@
 {
-  "name": "ng-drupal-services-tests",
+  "name": "ng-drupal-services-tests-with-ng",
   "version": "0.0.0",
   "description": "An angular sass bootstrap project for testing the services module in drupal7",
   "dependencies": {

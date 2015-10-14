@@ -1,14 +1,27 @@
 <div id="Services-3x" class="resource">
-	<h1>Services 3.x</h1>
-	<p>@TODO general info's here</p>
+	<h1 ng-click="services_3x.descriptionColapsed = !services_3x.descriptionColapsed">Services 3.x <span class="caret" ng-class="{true:'down',false:'up'}[services_3x.descriptionColapsed]"></span></h1>
+	<div class="collapse" ng-class="!services_3x.descriptionColapsed && 'in'">
+		<p>
+			The services 3.x module consists of following resources:
+		</p>
+		<ul>
+			<li>Comments</li>
+			<li>File</li>
+			<li>Node</li>
+			<li>System</li>
+			<li>Taxonomy Term</li>
+			<li>Taxonomy Vocabulary</li>
+			<li>User</li>
+		</ul>
+	</div>
 	<hr/>
 	
 	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified">
 		<li ui-sref-active="active"  class="disabled">
 			<a>Comments</a>
 		</li>
-		<li ui-sref-active="active"  class="disabled">
-			<a>File</a>
+		<li ui-sref-active="active">
+			<a ui-sref="app.services_3x.file.retrieve">File</a>
 		</li>
         <li ui-sref-active="active">
         	<a ui-sref="app.services_3x.node.retrieve">Node</a>
@@ -31,6 +44,7 @@
 		<ui-view name="user"></ui-view>
 		<ui-view name="node"></ui-view>
 		<ui-view name="system" ></ui-view>
+		<ui-view name="file" ></ui-view>
 	</div>
 	
 </div>

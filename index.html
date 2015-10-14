@@ -11,86 +11,93 @@
     <title>Headless Drupal tests</title>
 
     <!-- compiled css -->
-    <link href="./assets/css/app.min.css" rel="stylesheet">
+    <link href="assets/css/app.min.css" rel="stylesheet">
     
     <!-- js dependencies -->
     
     <!-- angular and modules -->
-    <script src="./bower_components/angular/angular.min.js"></script>
-    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="./bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
     
- 	<script src="./bower_components/angular-cookies/angular-cookies.min.js"></script>
-    <script src="./bower_components/angular-messages/angular-messages.min.js"></script>
+ 	<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
 
     <!-- third party libs -->
-    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	
 	<!-- common directives -->
-    <script src="./app/commons/directives/formControlFeedback.js"></script>
+    <script src="app/commons/directives/formControlFeedback.js"></script>
 
-    <script src="./app/commons/directives/navbarLogin.js"></script>
+    <script src="app/commons/directives/navbarLogin.js"></script>
 	
 	<!-- ng-drupal-7-services -->
-	<script src="./bower_components/ng-drupal-7-services/commons/acl/acl.constant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/acl/acl.toggleByAccessLevel.js"></script>
+	<script src="bower_components/ng-drupal-7-services/src/commons/accessControl/accessControl.constant.js"></script>
     
-    <script src="./bower_components/ng-drupal-7-services/commons/commons.drupalApiConfig.js"></script>
-    
-    <script src="./bower_components/ng-drupal-7-services/commons/commons.localStorage.js"></script>
-    
-    <script src="./bower_components/ng-drupal-7-services/commons/commons.helperService.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/commons.validationConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/commons.baseChannel.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/commons.baseResource.js"></script>
-    
-    <script src="./bower_components/ng-drupal-7-services/commons/http/http.configurations.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/http/http.requestAcceptIntercepter.js"></script>
-    
-    <script src="./bower_components/ng-drupal-7-services/commons/authentication/authentication.httpIntercepter.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/authentication/authentication.channelConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/authentication/authentication.channel.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/authentication/authentication.serviceConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/commons/authentication/authentication.service.js"></script>
-         
-    <script src="./bower_components/ng-drupal-7-services/resources/system/system.resourceConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/system/system.resource.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/system/system.channelConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/system/system.channel.js"></script>
-    
-    <script src="./bower_components/ng-drupal-7-services/resources/user/user.resourceConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/user/user.resource.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/user/user.channelConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/user/user.channel.js"></script>
-    
-    <script src="./bower_components/ng-drupal-7-services/resources/node/node.resourceConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/node/node.resource.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/node/node.channelConstant.js"></script>
-    <script src="./bower_components/ng-drupal-7-services/resources/node/node.channel.js"></script>
    <!--  -->
+   <script src="bower_components/ng-drupal-7-services/src/commons/directives/directives.toggleByAccessLevel.js"></script>
+    
+    <script src="bower_components/ng-drupal-7-services/src/commons/commons.drupalApiConfig.js"></script>
+    
+    <script src="bower_components/ng-drupal-7-services/src/commons/commons.helperService.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/commons/commons.validationConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/commons/commons.baseChannel.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/commons/commons.baseResource.js"></script>
+    
+    <script src="bower_components/ng-drupal-7-services/src/commons/http/http.configurations.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/commons/http/http.requestAcceptIntercepter.js"></script>
+    
+    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.httpIntercepter.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.channelConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.channel.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.serviceConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.service.js"></script>
+         
+    <script src="bower_components/ng-drupal-7-services/src/resources/system/system.resourceConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/system/system.resource.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/system/system.channelConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/system/system.channel.js"></script>
+    
+    <script src="bower_components/ng-drupal-7-services/src/resources/user/user.resourceConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/user/user.resource.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/user/user.channelConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/user/user.channel.js"></script>
+    
+    <script src="bower_components/ng-drupal-7-services/src/resources/node/node.resourceConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/node/node.resource.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/node/node.channelConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/node/node.channel.js"></script>
+    
+    <script src="bower_components/ng-drupal-7-services/src/resources/file/file.resourceConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/file/file.resource.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/file/file.channelConstant.js"></script>
+    <script src="bower_components/ng-drupal-7-services/src/resources/file/file.channel.js"></script>
     
      <!-- 
-     <script src="./assets/js/vendor-8e5ecb0ace.js"></script>  -->
+     <script src="assets/js/vendor-8e5ecb0ace.js"></script>  -->
     
      <!-- js app files  -->
-     <script src="./app/app.controller.js"></script>    
-     <script src="./app/components/home/home.controller.js"></script>
-      <script src="./app/components/services_3x/services_3x.controller.js"></script>
-     <script src="./app/components/auth/auth.controller.js"></script>
-     <script src="./app/components/system/system.controller.js"></script>
-     <script src="./app/components/user/user.controller.js"></script>
-     <!--  --> <script src="./app/components/node/node.controller.js"></script> 
+     <script src="app/app.controller.js"></script>    
+     <script src="app/components/home/home.controller.js"></script>
+      <script src="app/components/services_3x/services_3x.controller.js"></script>
+     <script src="app/components/auth/auth.controller.js"></script>
+     <script src="app/components/system/system.controller.js"></script>
+     <script src="app/components/user/user.controller.js"></script>
+     <script src="app/components/node/node.controller.js"></script> 
+     <script src="app/components/file/file.controller.js"></script> 
   
-  	 <script src="./app/app.config.js"></script>
+  	 <script src="app/app.config.js"></script>
      
-     <script src="./app/components/node/node.states.js"></script>
-     <script src="./app/components/system/system.states.js"></script>
-     <script src="./app/components/user/user.states.js"></script>
-     <script src="./app/app.states.js"></script>
+     <script src="app/components/node/node.states.js"></script>
+     <script src="app/components/system/system.states.js"></script>
+     <script src="app/components/user/user.states.js"></script>
+     <script src="app/components/file/file.states.js"></script>
+     <script src="app/app.states.js"></script>
      
-     <script src="./app/app.js"></script>
+     <script src="app/app.js"></script>
     
-   <!--  <script src="./assets/js/main-92686618e4.js"></script>  -->
+   <!--  <script src="assets/js/main-92686618e4.js"></script>  -->
     
   </head>  
   

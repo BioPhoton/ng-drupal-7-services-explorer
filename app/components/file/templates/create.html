@@ -1,0 +1,80 @@
+<h2>Create request</h2>
+<p>
+	Create a new file.<br/>
+	This function uses drupal_form_submit() and as such expects all input to match the submitting form in question.</br>
+	see <code>services/resources/file_resource.inc => _file_resource_create()</code>
+</p>
+<accordion close-others="oneAtATime"> <accordion-group
+		heading="Create Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+		ng-repeat="(key,request) in file.createRequests"> <ng-include
+		src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="createForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.file.$touched && createForm.file.$invalid || createForm.file.$invalid && createForm.$submitted}">
+		<label for="create__file">File</label>
+		<input type="text" class="form-control" name="file" id="create__file" placeholder="File" ng-model="file.createData.file" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.file.$touched && !createForm.$submitted || createForm.file.$valid" >An array representing a file.</p>
+
+			<ng-messages class="error" ng-if="createForm.file.$invalid && createForm.file.$touched || createForm.$submitted" for="createForm.file.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.filename.$touched && createForm.filename.$invalid || createForm.filename.$invalid && createForm.$submitted}">
+		<label for="create__filename">Filename</label>
+		<input type="text" class="form-control" name="filename" id="create__filename" placeholder="File" ng-model="file.createData.filename" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.filename.$touched && !createForm.$submitted || createForm.filename.$valid" >The name of the file</p>
+
+			<ng-messages class="error" ng-if="createForm.filename.$invalid && createForm.filename.$touched || createForm.$submitted" for="createForm.filename.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+		
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.filesize.$touched && createForm.filesize.$invalid || createForm.filesize.$invalid && createForm.$submitted}">
+		<label for="create__filesize">Filesize</label>
+		<input type="number" class="form-control" name="filesize" id="create__filesize" placeholder="File" ng-model="file.createData.filesize" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.filesize.$touched && !createForm.$submitted || createForm.filesize.$valid" >The files size</p>
+
+			<ng-messages class="error" ng-if="createForm.filesize.$invalid && createForm.filesize.$touched || createForm.$submitted" for="createForm.filesize.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.filepath.$touched && createForm.filepath.$invalid || createForm.filepath.$invalid && createForm.$submitted}">
+		<label for="create__filepath">Filepath</label>
+		<input type="text" class="form-control" name="filepath" id="create__filepath" placeholder="File" ng-model="file.createData.filepath" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.filepath.$touched && !createForm.$submitted || createForm.filepath.$valid" >The files size</p>
+
+			<ng-messages class="error" ng-if="createForm.filepath.$invalid && createForm.filepath.$touched || createForm.$submitted" for="createForm.filepath.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.image_file_name.$touched && createForm.image_file_name.$invalid || createForm.image_file_name.$invalid && createForm.$submitted}">
+		<label for="create__image_file_name">Image File Name</label>
+		<input type="text" class="form-control" name="image_file_name" id="create__image_file_name" placeholder="File" ng-model="file.createData.image_file_name" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.image_file_name.$touched && !createForm.$submitted || createForm.image_file_name.$valid" >The files size</p>
+
+			<ng-messages class="error" ng-if="createForm.image_file_name.$invalid && createForm.image_file_name.$touched || createForm.$submitted" for="createForm.image_file_name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<button class="btn btn-success" ng-click="file.doCreate(createForm)">create request</button>
+</form>

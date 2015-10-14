@@ -11,25 +11,6 @@
 
 <form name="createForm" novalidate>
 
-	<!-- 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.nodeType.$touched && createForm.nodeType.$invalid || createForm.nodeType.$invalid && createForm.$submitted}">
-		<label for="create__title">Node Type</label>	
-		<select class="form-control"  name="nodeType" id="create__nodeType"  >
-		  <option value="">Select the node type</option>
-	      <option value="page">Page</option>
-	      <option value="article">Article</option>
-	      <option value="drupal_member">Drupal Member (custom created node type)</option>
-		</select>
-		<form-control-feedback></form-control-feedback>
-		<div class="help-block">
-			<p class="description" ng-if="!createForm.nodeType.$touched && !createForm.$submitted || createForm.nodeType.$valid" >The node type</p>
-			<ng-messages class="error" ng-if="createForm.title.$invalid && createForm.nodeType.$touched || createForm.$submitted" for="createForm.nodeType.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
-			</ng-messages>
-		</div>
-	</div> 
-	-->
-
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.title.$touched && createForm.title.$invalid || createForm.title.$invalid && createForm.$submitted}">
 		<label for="create__title">Title</label>
 		<input type="text" class="form-control" name="title" id="create__title" placeholder="Title" ng-model="node.createData.title" required>

@@ -1,9 +1,20 @@
 <div id="node" class="resource">
 	<h1>Node resource</h1>
 	<p>Link general node functionalities to services module.<br/>
-	See  <code>services/resources/node_resource.inc</code></p>
+	See  <code>services/resources/node_resource.inc</code><br/>
+	Following requests are provided:</p>
+	<ul>
+		<li>Retrieve</li>
+		<li>Create</li>
+		<li>Update</li>
+		<li>Delete</li>
+		<li>Index</li>
+		<li>Files</li>
+		<li>Comments</li>
+		<li>Attach File</li>
+	</ul>
 	<br/>
-	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified" role="tablist">
+	<ul id="node-tabs" class="nav nav-tabs nav-justified" role="tablist">
 		<li ui-sref-active-eq="active">
 			<a id="retrieve-tab" role="tab" ui-sref="app.services_3x.node.retrieve" >Retrieve</a>
 		</li>
@@ -32,14 +43,14 @@
 	</ul>
 
 	<div class="tabs-content">
-		<ui-view name="retrieve" ng-show="services_3x.$state.includes('app.services_3x.node.retrieve')"></ui-view>
-		<ui-view name="create" ng-show="services_3x.$state.includes('app.services_3x.node.create')"></ui-view>
-		<ui-view name="update" ng-show="services_3x.$state.includes('app.services_3x.node.update')"></ui-view>
-		<ui-view name="delete" ng-show="services_3x.$state.includes('app.services_3x.node.delete')"></ui-view>
-		<ui-view name="index" ng-show="services_3x.$state.includes('app.services_3x.node.index')"></ui-view>
-		<ui-view name="files" ng-show="services_3x.$state.includes('app.services_3x.node.files')"></ui-view>
-		<ui-view name="comments" ng-show="services_3x.$state.includes('app.services_3x.node.comments')"></ui-view>
-		<ui-view name="attachFile" ng-show="services_3x.$state.includes('app.services_3x.node.attach_file')"></ui-view>
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.services_3x.node.retrieve')"></ui-view>
+		<ui-view name="create" ng-show="app.$state.includes('app.services_3x.node.create')"></ui-view>
+		<ui-view name="update" ng-show="app.$state.includes('app.services_3x.node.update')"></ui-view>
+		<ui-view name="delete" ng-show="app.$state.includes('app.services_3x.node.delete')"></ui-view>
+		<ui-view name="index" ng-show="app.$state.includes('app.services_3x.node.index')"></ui-view>
+		<ui-view name="files" ng-show="app.$state.includes('app.services_3x.node.files')"></ui-view>
+		<ui-view name="comments" ng-show="app.$state.includes('app.services_3x.node.comments')"></ui-view>
+		<ui-view name="attachFile" ng-show="app.$state.includes('app.services_3x.node.attach_file')"></ui-view>
 	</div>
 	
 </div>

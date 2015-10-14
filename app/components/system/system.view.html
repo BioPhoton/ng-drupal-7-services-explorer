@@ -3,7 +3,7 @@
 	<p>Link general system functionalities to services module.<br/>
 	See  <code>services/resources/system_resource.inc</code></p>
 	<br/>
-	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified" role="tablist">
+	<ul id="system-tabs" class="nav nav-tabs nav-justified" role="tablist">
 		<li ui-sref-active-eq="active">
 			<a id="connect-tab" role="tab" ui-sref="app.services_3x.system.connect" >Connect</a>
 		</li>
@@ -19,10 +19,10 @@
 	</ul>
 	
 	<div class="tabs-content">
-		<ui-view name="connect" ng-show="services_3x.$state.includes('app.services_3x.system.connect')"></ui-view>
-		<ui-view name="getVariable" ng-show="services_3x.$state.includes('app.services_3x.system.get_variable')"></ui-view>
-		<ui-view name="setVariable" ng-show="services_3x.$state.includes('app.services_3x.system.set_variable')"></ui-view>
-		<ui-view name="delVariable" ng-show="services_3x.$state.includes('app.services_3x.system.del_variable')"></ui-view>
+		<ui-view name="connect" ng-show="app.$state.includes('app.services_3x.system.connect')"></ui-view>
+		<ui-view name="getVariable" ng-show="app.$state.includes('app.services_3x.system.get_variable')"></ui-view>
+		<ui-view name="setVariable" ng-show="app.$state.includes('app.services_3x.system.set_variable')"></ui-view>
+		<ui-view name="delVariable" ng-show="app.$state.includes('app.services_3x.system.del_variable')"></ui-view>
 	</div>
 	
 </div>

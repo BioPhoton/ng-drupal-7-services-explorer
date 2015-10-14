@@ -1,6 +1,19 @@
 <h2>Comments request</h2>
 <p>Get node details.<br/>
 see <code>services/resources/node_resource.inc => _node_resource_comments()</code>
+<br/>
+
+<blockquote class="bg-warning">
+	<h4>It's possible to get following error here:</h4>
+	<small>
+	<b>Fatal error</b>:  Call to undefined function  services_field_permissions_comment_clean() in <b>/paths/to/your/system/sites/all/modules/services/resources/node_resource.inc</b> on
+	 line <b>614</b>
+	</small>
+	<br/>
+	<a href="https://www.drupal.org/files/issues/services_wrong_function_call_in_node_resource-2475119-99.patch">Here</a> is a patch for this.
+</blockquote>
+
+
 </p>
 <accordion close-others="oneAtATime">
 	<accordion-group heading="Comments Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in node.commentsRequests">
@@ -24,18 +37,31 @@ see <code>services/resources/node_resource.inc => _node_resource_comments()</cod
 		</div>
 	</div>
 	
-
-<label class="item item-input">
-<input type="text" ng-model="nodeComments.nid" placeholder="nid" >
-</label>
-<label class="item item-input">
-<input type="text" ng-model="nodeComments.count" placeholder="count" >
-</label>
-<label class="item item-input">
-<input type="text" ng-model="nodeComments.offset" placeholder="offset" >
-</label>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': commentsForm.count.$touched && commentsForm.count.$invalid || commentsForm.count.$invalid && commentsForm.$submitted }" >
+		<label for="comments__count">Count</label>
+		<input type="number" class="form-control" id="comments__count" name="count" placeholder="Count" ng-model="node.commentsData.count">
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!commentsForm.count.$touched && !commentsForm.$submitted || commentsForm.count.$valid" >Number of comments to load.</p>
+						
+			<ng-messages class="error" ng-if="commentsForm.count.$invalid && commentsForm.count.$touched || commentsForm.$submitted" for="commentsForm.count.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
 	
-	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': commentsForm.offset.$touched && commentsForm.offset.$invalid || commentsForm.offset.$invalid && commentsForm.$submitted }" >
+		<label for="comments__offset">Offset</label>
+		<input type="number" class="form-control" id="comments__offset" name="offset" placeholder="Offset" ng-model="node.commentsData.offset">
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!commentsForm.offset.$touched && !commentsForm.$submitted || commentsForm.offset.$valid" >If count is set to non-zero value, you can pass also non-zero value for start. For example to get comments from 5 to 15, pass count=10 and offset=5.</p>
+						
+			<ng-messages class="error" ng-if="commentsForm.offset.$invalid && commentsForm.offset.$touched || commentsForm.$submitted" for="commentsForm.offset.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
 	
 	<button class="btn btn-success" ng-click="node.doComments(commentsForm)">comments request</button>
 </form>

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('commons.directives.navbarLogin', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel', 'ngDrupal7Services-3_x.commons.acl.constant'])
+        .module('commons.directives.navbarLogin', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel', 'ngDrupal7Services-3_x.commons.accessControl.constant'])
         .directive('navbarLogin', navbarLogin);
 
 

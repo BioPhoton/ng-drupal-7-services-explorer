@@ -115,19 +115,6 @@
 		</div>
 
 	</div>
-	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.field_siganture.$touched && createForm.field_siganture.$invalid || createForm.field_siganture.$invalid && createForm.$submitted}">
-		<label for="create__field_siganture">Signature</label>
-		<input type="field_siganture" class="form-control" name="siganture" id="create__field_siganture" placeholder="Signature" ng-model="user.createData.siganture" required>
-		<form-control-feedback></form-control-feedback>
-		<div class="help-block">
-			<p class="description" ng-if="!createForm.field_siganture.$touched && !createForm.$submitted || createForm.field_siganture.$valid" >The user's siganture. ( Custom field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
-		
-			<ng-messages class="error" ng-if="createForm.field_siganture.$invalid && createForm.field_siganture.$touched || createForm.$submitted" for="createForm.field_siganture.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
-			</ng-messages>
-		</div>
-	</div>
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.field_nickname.$touched && createForm.field_nickname.$invalid || createForm.field_nickname.$invalid && createForm.$submitted}">
 		<label for="create__field_nickname">Nickname</label>

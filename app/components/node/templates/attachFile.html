@@ -24,23 +24,61 @@ see <code>services/resources/node_resource.inc => _node_resource_attachFile()</c
 			</ng-messages>
 		</div>
 	</div>
-
-<label class="item item-input">
-	<input type="text" ng-model="nodeAttachFile.nid" placeholder="nid" >
-</label>
-<label class="item item-input">
-	<input type="text" ng-model="nodeAttachFile.field_name" placeholder="field_name" >
-</label>
-<label class="item item-input">
-	<input type="text" ng-model="nodeAttachFile.attach" placeholder="attach" >
-</label>
-<label class="item item-input">
-	<input type="text" ng-model="nodeAttachFile.field_values.title" placeholder="field_values.title" >
-</label>
-<label class="item item-input">
-	<input type="text" ng-model="nodeAttachFile.field_values.alt" placeholder="field_values.alt" >
-</label>
-<img width="16" height="16" ng-src="{{'data:image/gif;base64,'+nodeAttachFile.attach}}">
-
-	<button class="btn btn-success" ng-click="node.doAttachFile(attachFileForm)">attachFile request</button>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': attachFileForm.field_name.$touched && attachFileForm.field_name.$invalid || attachFileForm.field_name.$invalid && attachFileForm.$submitted }" >
+		<label for="attachFile__field_name">Field name</label>
+		<input type="text" class="form-control" id="attachFile__field_name" name="field_name" placeholder="Field name" ng-model="node.attachFileData.field_name" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!attachFileForm.field_name.$touched && !attachFileForm.$submitted || attachFileForm.field_name.$valid" >The file field name</p>
+						
+			<ng-messages class="error" ng-if="attachFileForm.field_name.$invalid && attachFileForm.field_name.$touched || attachFileForm.$submitted" for="attachFileForm.field_name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': attachFileForm.attach.$touched && attachFileForm.attach.$invalid || attachFileForm.attach.$invalid && attachFileForm.$submitted }" >
+		<label for="attachFile__attach">Attach</label>
+		<input type="number" class="form-control" id="attachFile__attach" name="attach" placeholder="Attach" ng-model="node.attachFileData.attach">
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!attachFileForm.attach.$touched && !attachFileForm.$submitted || attachFileForm.attach.$valid" >Attach the file(s) to the node. If FALSE, this clears ALL files attached, and attaches the files</p>
+						
+			<ng-messages class="error" ng-if="attachFileForm.attach.$invalid && attachFileForm.attach.$touched || attachFileForm.$submitted" for="attachFileForm.attach.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<label>Field values:</label>
+	<br/>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': attachFileForm.field_values.title.$touched && attachFileForm.field_values.title.$invalid || attachFileForm.field_values.title.$invalid && attachFileForm.$submitted }" >
+		<label for="attachFile__attach">Title</label>
+		<input type="text" class="form-control" id="attachFile__field_values_title" name="field_values_title" placeholder="Title" ng-model="node.attachFileData.field_values.title">
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!attachFileForm.field_values.title.$touched && !attachFileForm.$submitted || attachFileForm.field_values.title.$valid" >The extra title field value</p>
+						
+			<ng-messages class="error" ng-if="attachFileForm.field_values.title.$invalid && attachFileForm.field_values.title.$touched || attachFileForm.$submitted" for="attachFileForm.field_values.title.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': attachFileForm.field_values.alt.$touched && attachFileForm.field_values.alt.$invalid || attachFileForm.field_values.alt.$invalid && attachFileForm.$submitted }" >
+		<label for="attachFile__attach">Alt</label>
+		<input type="text" class="form-control" id="attachFile__field_values_alt" name="field_values_alt" placeholder="Alt" ng-model="node.attachFileData.field_values.alt">
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!attachFileForm.field_values.alt.$touched && !attachFileForm.$submitted || attachFileForm.field_values.alt.$valid" >The extra alt field value</p>
+						
+			<ng-messages class="error" ng-if="attachFileForm.field_values.alt.$invalid && attachFileForm.field_values.alt.$touched || attachFileForm.$submitted" for="attachFileForm.field_values.alt.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<button class="btn btn-success" ng-click="node.doAttachFile(attachFileForm)">Attach File request</button>
+	
 </form>

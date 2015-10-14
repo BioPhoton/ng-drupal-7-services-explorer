@@ -6,13 +6,13 @@
 	
 <form name="updateForm" novalidate>
 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.uid.$touched && updateForm.uid.$invalid || updateForm.uid.$invalid && updateForm.$submitted}" >
-		<label for="update__uid">Uid</label>
-		<input type="number" class="form-control" id="update__uid" name="uid" placeholder="Uid" ng-model="node.updateData.uid" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.nid.$touched && updateForm.nid.$invalid || updateForm.nid.$invalid && updateForm.$submitted}" >
+		<label for="update__nid">Nid</label>
+		<input type="number" class="form-control" id="update__nid" name="nid" placeholder="Nid" ng-model="node.updateData.nid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!updateForm.uid.$touched && !updateForm.$submitted || updateForm.uid.$valid" >UID of the node to be loaded</p>
-			<ng-messages class="error" ng-if="updateForm.uid.$invalid && updateForm.uid.$touched || updateForm.$submitted" for="updateForm.uid.$error">
+			<p class="description" ng-if="!updateForm.nid.$touched && !updateForm.$submitted || updateForm.nid.$valid" >NID of the node to be loaded</p>
+			<ng-messages class="error" ng-if="updateForm.nid.$invalid && updateForm.nid.$touched || updateForm.$submitted" for="updateForm.nid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>

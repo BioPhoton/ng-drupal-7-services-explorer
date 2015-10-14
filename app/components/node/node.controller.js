@@ -18,6 +18,7 @@ angular
 		
 		// jshint validthis: true 
 		var vm = this;
+		vm.descriptionColapsed = true;
 		
 		//retrieve request
 		
@@ -327,6 +328,7 @@ angular
 	    //do files
 		function doFiles(filesForm) {
 			if(filesForm.$valid) {
+				console.log('SADF'); 
 				requestStart = Date.now();
 		   		NodeResource.files(vm.filesData)
 				    .then(

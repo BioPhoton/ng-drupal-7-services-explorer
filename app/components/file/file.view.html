@@ -1,0 +1,43 @@
+<div id="file" class="resource">
+	<h1>File resource</h1>
+	<p>Link general file functionalities to services module.<br/>
+	See  <code>services/resources/file_resource.inc</code><br/>
+	Following requests are provided:</p>
+	<ul>
+		<li>Retrieve</li>
+		<li>Create</li>
+		<li>Delete</li>
+		<li>Index</li>
+		<li>Create raw</li>
+	</ul>
+	<br/>
+	<ul id="files-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="retrieve-tab" role="tab" ui-sref="app.services_3x.file.retrieve">Retrieve</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="create-tab" role="tab"  ui-sref="app.services_3x.file.create">Create</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="delete-tab" role="tab"  ui-sref="app.services_3x.file.delete">Delete</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.file.index">Index</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="createRaw-tab" role="tab"  ui-sref="app.services_3x.file.createRaw">Create raw</a>
+		</li>
+
+
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.services_3x.file.retrieve')"></ui-view>
+		<ui-view name="create" ng-show="app.$state.includes('app.services_3x.file.create')"></ui-view>
+		<ui-view name="delete" ng-show="app.$state.includes('app.services_3x.file.delete')"></ui-view>
+		<ui-view name="index" ng-show="app.$state.includes('app.services_3x.file.index')"></ui-view>
+		<ui-view name="createRaw " ng-show="app.$state.includes('app.services_3x.file.createRaw')"></ui-view>
+
+	</div>
+	
+</div>

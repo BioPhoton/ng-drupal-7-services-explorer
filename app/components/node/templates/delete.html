@@ -9,13 +9,13 @@
 		<div class="alert alert-danger fade in " ng-repeat="serverError in node.deleteErrors.errors.server_errors"> {{serverError}} </div>
 	</div>
 	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': deleteForm.uid.$touched && deleteForm.uid.$invalid || deleteForm.uid.$invalid && deleteForm.$submitted}" >
-		<label for="delete__uid">Uid</label>
-		<input type="number" class="form-control" id="delete__uid" name="uid" placeholder="Uid" ng-model="node.deleteData.uid" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': deleteForm.nid.$touched && deleteForm.nid.$invalid || deleteForm.nid.$invalid && deleteForm.$submitted}" >
+		<label for="delete__nid">Nid</label>
+		<input type="number" class="form-control" id="delete__nid" name="nid" placeholder="Nid" ng-model="node.deleteData.nid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!deleteForm.uid.$touched && !deleteForm.$submitted || deleteForm.uid.$valid" >UID of the node to be loaded</p>
-			<ng-messages class="error" ng-if="deleteForm.uid.$invalid && deleteForm.uid.$touched || deleteForm.$submitted" for="deleteForm.uid.$error">
+			<p class="description" ng-if="!deleteForm.nid.$touched && !deleteForm.$submitted || deleteForm.nid.$valid" >NID of the node to be loaded</p>
+			<ng-messages class="error" ng-if="deleteForm.nid.$invalid && deleteForm.nid.$touched || deleteForm.$submitted" for="deleteForm.nid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>

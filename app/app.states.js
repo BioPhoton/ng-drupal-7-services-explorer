@@ -10,7 +10,8 @@ angular
                                               
                                              'ngDrupalServicesTests.system.states',
                                              'ngDrupalServicesTests.user.states',
-                                             'ngDrupalServicesTests.node.states'
+                                             'ngDrupalServicesTests.node.states',
+                                             'ngDrupalServicesTests.file.states'
                                              ])
     .config(configFunction);
 
