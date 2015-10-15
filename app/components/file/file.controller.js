@@ -45,9 +45,10 @@ angular
 		
 		vm.createData = {};
 		vm.createData.file = "R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7";
-		vm.createData.filename = 'test.jpg';
-		vm.createData.filesize;
-		vm.createData.filepath;
+		vm.createData.filename = 'drupal.jpg';
+		vm.createData.filesize = vm.createData.file.length;
+		vm.createData.filepath = 'content/node/20/';
+		vm.createData.image_file_name = 'drupal image';
 		
 		//test request and event callbacks
 		vm.doCreate = doCreate;

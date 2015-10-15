@@ -7,11 +7,16 @@ angular
                                              'ngDrupalServicesTests.app.controller',
                                              'ngDrupalServicesTests.home.controller',
                                              'ngDrupalServicesTests.services_3x.controller',
+                                             'ngDrupalServicesTests.services_views.controller',
                                               
+                                             //services_3x
                                              'ngDrupalServicesTests.system.states',
                                              'ngDrupalServicesTests.user.states',
                                              'ngDrupalServicesTests.node.states',
-                                             'ngDrupalServicesTests.file.states'
+                                             'ngDrupalServicesTests.file.states',
+                                             
+                                             //services_views
+                                             'ngDrupalServicesTests.views.states'
                                              ])
     .config(configFunction);
 
@@ -59,53 +64,20 @@ angular
 			    }
         })
         
-       
-        /*
-        .state('app.services_3x.system', {
-            url: "/system",
+        .state('app.services_views', {
+            url: "/services_views",
             abstract: true,
-	        views : {
-	        	'system' : {
-			        templateUrl: './app/components/system/system.view.html',
-			        controller: 'SystemController',
-			        controllerAs : 'system'
-	        	}
-	    	}
-        })
+            views: {
+			      'mainNavContent': {
+			    	  templateUrl		: "app/components/services_views/services_views.view.html",
+			    	  controller		: 'Services_ViewsController',
+			          controllerAs 		: 'services_views',
+			      }
+			    }
+        });
         
-        .state('app.services_3x.system.connect', {
-            url: "/connect",
-            views : {
-	        	'connect' : {
-			        templateUrl: './app/components/system/templates/connect.html'
-	        	}
-	    	}
-        })
-
-	    .state('app.auth', {
-	        url: '/auth',
-	        deepStateRedirect: true,
-	        sticky: true,
-	        views : {
-	        	'mainNavContent' : {
-			        templateUrl: './app/components/auth/auth.view.html',
-			        controller: 'AuthController',
-			        controllerAs: 'auth'
-	        	}
-	        }
-	    })
-
-	    .state('app.node', {
-	        url: '/node',
-	        deepStateRedirect: true,
-	        sticky: true,
-	        views : {
-	        	'mainNavContent' : {
-			        templateUrl: './app/components/node/node.view.html',
-			        controller: 'NodeController as node'
-	        	}
-	        }
-	    })*/;
+       
+       
 		
 	};
 

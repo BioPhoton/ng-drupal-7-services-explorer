@@ -1,0 +1,15 @@
+<div id="views" class="resource">
+	<h1>Views resource</h1>
+	<p>Link general views functionalities to services_views module.<br/>
+	<br/>
+	<ul id="views-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="connect-tab" role="tab" ui-sref="app.services_views.views.retrieve" >Retrieve</a>
+		</li>
+	</ul>
+	
+	<div class="tabs-content">
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.services_views.views.retrieve')"></ui-view>
+	</div>
+	
+</div>

@@ -55,7 +55,7 @@
 		<input type="text" class="form-control" name="filepath" id="create__filepath" placeholder="File" ng-model="file.createData.filepath" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.filepath.$touched && !createForm.$submitted || createForm.filepath.$valid" >The files size</p>
+			<p class="description" ng-if="!createForm.filepath.$touched && !createForm.$submitted || createForm.filepath.$valid" >The path to store file</p>
 
 			<ng-messages class="error" ng-if="createForm.filepath.$invalid && createForm.filepath.$touched || createForm.$submitted" for="createForm.filepath.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
@@ -68,7 +68,7 @@
 		<input type="text" class="form-control" name="image_file_name" id="create__image_file_name" placeholder="File" ng-model="file.createData.image_file_name" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.image_file_name.$touched && !createForm.$submitted || createForm.image_file_name.$valid" >The files size</p>
+			<p class="description" ng-if="!createForm.image_file_name.$touched && !createForm.$submitted || createForm.image_file_name.$valid" >The image files name</p>
 
 			<ng-messages class="error" ng-if="createForm.image_file_name.$invalid && createForm.image_file_name.$touched || createForm.$submitted" for="createForm.image_file_name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
