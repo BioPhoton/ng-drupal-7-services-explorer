@@ -15,7 +15,7 @@ See <code>services/resources/views_resource.inc</code>
 
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.view_name.$touched && retrieveForm.view_name.$invalid || retrieveForm.view_name.$invalid && retrieveForm.$submitted }" >
-		<label for="retrieve__view_name">Uid</label>
+		<label for="retrieve__view_name">View Name</label>
 		<input type="text" class="form-control" id="retrieve__view_name" name="view_name" placeholder="View Name" ng-model="views.retrieveData.view_name" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
@@ -29,7 +29,7 @@ See <code>services/resources/views_resource.inc</code>
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.display_id.$touched && retrieveForm.display_id.$invalid || retrieveForm.display_id.$invalid && retrieveForm.$submitted }" >
 		<label for="retrieve__display_id">Display Id</label>
-		<input type="text" class="form-control" id="retrieve__display_id" name="display_id" placeholder="Display Id" ng-model="views.retrieveData.display_id" required>
+		<input type="text" class="form-control" id="retrieve__display_id" name="display_id" placeholder="Display Id" ng-model="views.retrieveData.display_id" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!retrieveForm.display_id.$touched && !retrieveForm.$submitted || retrieveForm.display_id.$valid" >Display Id of the view to loaded. You can find this under Views Administration -> Advanced -> Other -> Machine Name: "display_id" </p>
@@ -42,7 +42,7 @@ See <code>services/resources/views_resource.inc</code>
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.args.$touched && retrieveForm.args.$invalid || retrieveForm.args.$invalid && retrieveForm.$submitted }" >
 		<label for="retrieve__args">Args</label>
-		<input type="text" class="form-control" id="retrieve__args" name="args" placeholder="Display Id" ng-model="views.retrieveData.args" required>
+		<input type="text" class="form-control" id="retrieve__args" name="args" placeholder="Args" ng-model="views.retrieveData.args" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!retrieveForm.args.$touched && !retrieveForm.$submitted || retrieveForm.args.$valid" >Args to pass to view</p>
@@ -55,7 +55,7 @@ See <code>services/resources/views_resource.inc</code>
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.offset.$touched && retrieveForm.offset.$invalid || retrieveForm.offset.$invalid && retrieveForm.$submitted }" >
 		<label for="retrieve__offset">Offset</label>
-		<input type="number" class="form-control" id="retrieve__offset" name="offset" placeholder="Display Id" ng-model="views.retrieveData.offset" required>
+		<input type="number" class="form-control" id="retrieve__offset" name="offset" placeholder="Offset" ng-model="views.retrieveData.offset" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!retrieveForm.offset.$touched && !retrieveForm.$submitted || retrieveForm.offset.$valid" >Offset of the views records</p>
@@ -68,7 +68,7 @@ See <code>services/resources/views_resource.inc</code>
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.limit.$touched && retrieveForm.limit.$invalid || retrieveForm.limit.$invalid && retrieveForm.$submitted }" >
 		<label for="retrieve__limit">Limit</label>
-		<input type="number" class="form-control" id="retrieve__limit" name="limit" placeholder="Limit" ng-model="views.retrieveData.limit" required>
+		<input type="number" class="form-control" id="retrieve__limit" name="limit" placeholder="Limit" ng-model="views.retrieveData.limit" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!retrieveForm.limit.$touched && !retrieveForm.$submitted || retrieveForm.limit.$valid" >Limit of the views records</p>
@@ -90,27 +90,31 @@ See <code>services/resources/views_resource.inc</code>
 	</div>
 	
 
-<label>Exposed filters:</label>
+	<label>Exposed filters:</label>
+	<div class="help-block">
+		<p>The filters have to be set to exposed in the view</p>
+	</div>
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.sort_order.$touched && retrieveForm.exposed_filters.sort_order.$invalid || retrieveForm.exposed_filters.sort_order.$invalid && retrieveForm.$submitted }" >
-		<label for="retrieve__exposed_filters.sort_order">Sort Order</label>
-		<input type="number" class="form-control" id="retrieve__exposed_filters_sort_order" name="Sort Order" placeholder="Sort Order" ng-model="views.retrieveData.exposed_filters.sort_order" required>
-		<form-control-feedback></form-control-feedback>
+		<label for="retrieve__exposed_filters.sort_order">Sort Order:</label>
+		<br/>
+		<label class="radio-inline">
+		  <input type="radio" name="sort_order" id="retrieve__exposed_filters_sort_order_asc" ng-model="views.retrieveData.exposed_filters.sort_order" value="ASC"> ASC
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="sort_order" id="retrieve__exposed_filters_sort_order_desc" ng-model="views.retrieveData.exposed_filters.sort_order" value="DESC"> DESC
+		</label>
 		<div class="help-block">
-			<p class="description" ng-if="!retrieveForm.exposed_filters.sort_order.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.sort_order.$valid" >The sort order</p>
-						
-			<ng-messages class="error" ng-if="retrieveForm.exposed_filters.sort_order.$invalid && retrieveForm.exposed_filters.sort_order.$touched || retrieveForm.$submitted" for="retrieveForm.exposed_filters.sort_order.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
-			</ng-messages>
+			<p class="description">The sort order</p>
 		</div>
 	</div>	
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.sort_by.$touched && retrieveForm.exposed_filters.sort_by.$invalid || retrieveForm.exposed_filters.sort_by.$invalid && retrieveForm.$submitted }" >
 		<label for="retrieve__exposed_filters.sort_by">Sort By</label>
-		<input type="number" class="form-control" id="retrieve__exposed_filters_sort_by" name="Sort Order" placeholder="Sort By" ng-model="views.retrieveData.exposed_filters.sort_by" required>
-		<form-control-feedback></form-control-feedback>
+		<input type="number" class="form-control" id="retrieve__exposed_filters_sort_by" name="Sort Order" placeholder="Sort By" ng-model="views.retrieveData.exposed_filters.sort_by" >
+		
 		<div class="help-block">
-			<p class="description" ng-if="!retrieveForm.exposed_filters.sort_by.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.sort_by.$valid" >Sort by field</p>
+			<p class="description" ng-if="!retrieveForm.exposed_filters.sort_by.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.sort_by.$valid" >The field name to sort by</p>
 						
 			<ng-messages class="error" ng-if="retrieveForm.exposed_filters.sort_by.$invalid && retrieveForm.exposed_filters.sort_by.$touched || retrieveForm.$submitted" for="retrieveForm.exposed_filters.sort_by.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
@@ -120,8 +124,8 @@ See <code>services/resources/views_resource.inc</code>
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.comment_count.$touched && retrieveForm.exposed_filters.comment_count.$invalid || retrieveForm.exposed_filters.comment_count.$invalid && retrieveForm.$submitted }" >
 		<label for="retrieve__exposed_filters.comment_count">Comment Count</label>
-		<input type="number" class="form-control" id="retrieve__exposed_filters_comment_count" name="Sort Order" placeholder="Comment Count" ng-model="views.retrieveData.exposed_filters.comment_count" required>
-		<form-control-feedback></form-control-feedback>
+		<input type="number" class="form-control" id="retrieve__exposed_filters_comment_count" name="Sort Order" placeholder="Comment Count" ng-model="views.retrieveData.exposed_filters.comment_count" >
+		
 		<div class="help-block">
 			<p class="description" ng-if="!retrieveForm.exposed_filters.comment_count.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.comment_count.$valid" >Sort by field</p>
 						
@@ -131,5 +135,5 @@ See <code>services/resources/views_resource.inc</code>
 		</div>
 	</div>	
 	
-	<button class="btn btn-success" ng-click="views.doRetrievet(retrieveForm)">retrieve request</button>
+	<button class="btn btn-success" ng-click="views.doRetrieve(retrieveForm)">retrieve request</button>
 </form>

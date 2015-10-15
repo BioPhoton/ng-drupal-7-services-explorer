@@ -21,6 +21,16 @@ angular
 		
 		//store requests
 		vm.retrieveRequests = [];
+		
+		vm.retrieveData = {};
+		vm.retrieveData.view_name = 'testview';
+		vm.retrieveData.display_id = 'page';
+		vm.retrieveData.args = "";
+		vm.retrieveData.offset = "";
+		vm.retrieveData.limit = "";
+		//vm.retrieveData.format_output;
+		//vm.retrieveData.exposed_filters;
+		
 		//test request
 		vm.doRetrieve = doRetrieve;
 		//test the retrieve on confirm event
@@ -39,7 +49,8 @@ angular
 			
 			if(retrieveForm.$valid) {
 				requestStart = Date.now();
-		   		ViewsResource.retrieve()
+				console.log(ViewsResource); 
+				ViewsResource.retrieve(vm.retrieveData)
 				    .then(
 				    		//retrieve success
 				    		function(data) { console.log('views retrieve success', data); },
