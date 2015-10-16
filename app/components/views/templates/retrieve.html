@@ -13,7 +13,6 @@ See <code>services/resources/views_resource.inc</code>
 
 <form name="retrieveForm" novalidate>
 
-
 	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.view_name.$touched && retrieveForm.view_name.$invalid || retrieveForm.view_name.$invalid && retrieveForm.$submitted }" >
 		<label for="retrieve__view_name">View Name</label>
 		<input type="text" class="form-control" id="retrieve__view_name" name="view_name" placeholder="View Name" ng-model="views.retrieveData.view_name" required>
@@ -79,61 +78,194 @@ See <code>services/resources/views_resource.inc</code>
 		</div>
 	</div>
 	
+	
 	<div class="checkbox">
 	  	<label>
 		    <input type="checkbox" ng-model="views.retrieveData.format_output">
 		    format_output
 		</label>
 		<div class="help-block">
-			<p class="description">To format the output</p>
+			<p class="description">To format the output as html or not</p>
 		</div>
 	</div>
 	
-
-	<label>Exposed filters:</label>
+	
+	<label  ng-click="views.exposed_sortsCollapsed = !views.exposed_sortsCollapsed">Exposed sorts <span class="caret" ng-class="{true:'down',false:'up'}[views.exposed_sortsCollapsed]"></span></label>
 	<div class="help-block">
-		<p>The filters have to be set to exposed in the view</p>
+		<p>The sort criteria have to be set to exposed in the view</p>
 	</div>
 	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.sort_order.$touched && retrieveForm.exposed_filters.sort_order.$invalid || retrieveForm.exposed_filters.sort_order.$invalid && retrieveForm.$submitted }" >
-		<label for="retrieve__exposed_filters.sort_order">Sort Order:</label>
-		<br/>
-		<label class="radio-inline">
-		  <input type="radio" name="sort_order" id="retrieve__exposed_filters_sort_order_asc" ng-model="views.retrieveData.exposed_filters.sort_order" value="ASC"> ASC
-		</label>
-		<label class="radio-inline">
-		  <input type="radio" name="sort_order" id="retrieve__exposed_filters_sort_order_desc" ng-model="views.retrieveData.exposed_filters.sort_order" value="DESC"> DESC
-		</label>
-		<div class="help-block">
-			<p class="description">The sort order</p>
-		</div>
-	</div>	
+	<div class="well collapse" ng-class="!views.exposed_sortsCollapsed && 'in'">
 	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.sort_by.$touched && retrieveForm.exposed_filters.sort_by.$invalid || retrieveForm.exposed_filters.sort_by.$invalid && retrieveForm.$submitted }" >
-		<label for="retrieve__exposed_filters.sort_by">Sort By</label>
-		<input type="number" class="form-control" id="retrieve__exposed_filters_sort_by" name="Sort Order" placeholder="Sort By" ng-model="views.retrieveData.exposed_filters.sort_by" >
+		<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_sorts.sort_order.$touched && retrieveForm.exposed_sorts.sort_order.$invalid || retrieveForm.exposed_sorts.sort_order.$invalid && retrieveForm.$submitted }" >
+			<label for="retrieve__exposed_sorts.sort_order">Sort Order:</label>
+			<br/>
+			<label class="radio-inline">
+			  <input type="radio" name="sort_order" id="retrieve__exposed_sorts_sort_order_asc"  ng-model="views.retrieveData.exposed_sorts.sort_order" value="ASC"> ASC
+			</label>
+			<label class="radio-inline">
+			  <input type="radio" name="sort_order" id="retrieve__exposed_sorts_sort_order_desc" ng-model="views.retrieveData.exposed_sorts.sort_order" value="DESC"> DESC
+			</label>
+			<div class="help-block">
+				<p class="description">The sort order</p>
+			</div>
+		</div>	
 		
-		<div class="help-block">
-			<p class="description" ng-if="!retrieveForm.exposed_filters.sort_by.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.sort_by.$valid" >The field name to sort by</p>
-						
-			<ng-messages class="error" ng-if="retrieveForm.exposed_filters.sort_by.$invalid && retrieveForm.exposed_filters.sort_by.$touched || retrieveForm.$submitted" for="retrieveForm.exposed_filters.sort_by.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
-			</ng-messages>
-		</div>
-	</div>	
+		<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_sorts.sort_by.$touched && retrieveForm.exposed_sorts.sort_by.$invalid || retrieveForm.exposed_sorts.sort_by.$invalid && retrieveForm.$submitted }" >
+			<label for="retrieve__exposed_sorts.sort_by">Sort By</label>
+			<input type="text" class="form-control" id="retrieve__exposed_sort_sort_by" name="Sort Order" placeholder="Sort By" ng-model="views.retrieveData.exposed_sorts.sort_by" >
+			
+			<div class="help-block">
+				<p class="description" ng-if="!retrieveForm.exposed_sorts.sort_by.$touched && !retrieveForm.$submitted || retrieveForm.exposed_sorts.sort_by.$valid" >The field name to sort by</p>
+			</div>
+		</div>	
+		
+	</div>
 	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.comment_count.$touched && retrieveForm.exposed_filters.comment_count.$invalid || retrieveForm.exposed_filters.comment_count.$invalid && retrieveForm.$submitted }" >
-		<label for="retrieve__exposed_filters.comment_count">Comment Count</label>
-		<input type="number" class="form-control" id="retrieve__exposed_filters_comment_count" name="Sort Order" placeholder="Comment Count" ng-model="views.retrieveData.exposed_filters.comment_count" >
-		
-		<div class="help-block">
-			<p class="description" ng-if="!retrieveForm.exposed_filters.comment_count.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.comment_count.$valid" >Sort by field</p>
-						
-			<ng-messages class="error" ng-if="retrieveForm.exposed_filters.comment_count.$invalid && retrieveForm.exposed_filters.comment_count.$touched || retrieveForm.$submitted" for="retrieveForm.exposed_filters.comment_count.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
-			</ng-messages>
+	<label  ng-click="views.exposed_filtersCollapsed = !views.exposed_filtersCollapsed">Exposed filters <span class="caret" ng-class="{true:'down',false:'up'}[views.exposed_filtersCollapsed]"></span></label>
+	<div class="help-block">
+		<p>The filters criteria have to be set to exposed in the view</p>
+	</div>
+	
+	<div class="well collapse" ng-class="!views.exposed_filtersCollapsed && 'in'">
+	
+		<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.nid.$touched && retrieveForm.nid.$invalid || retrieveForm.nid.$invalid && retrieveForm.$submitted }" >
+			<label for="retrieve__nid">Nid</label>
+			<input type="number" class="form-control" id="retrieve__nid" name="nid" placeholder="Nid" ng-model="views.retrieveData.exposed_filters.nid" >
+			<form-control-feedback></form-control-feedback>
+			<div class="help-block">
+				<p class="description" ng-if="!retrieveForm.nid.$touched && !retrieveForm.$submitted || retrieveForm.nid.$valid" >Nid in views records (The field is set to exposed in the view)</p>
+							
+				<ng-messages class="error" ng-if="retrieveForm.nid.$invalid && retrieveForm.nid.$touched || retrieveForm.$submitted" for="retrieveForm.nid.$error">
+					<ng-messages-include src="error-required"></ng-messages-include>
+				</ng-messages>
+			</div>
 		</div>
-	</div>	
+	
+		<div class="form-group" >
+			<label for="retrieve__exposed_sorts.sort_order">Comment Count Operators (The field and operators are set to exposed in the view)</label>
+			<br/>
+			<div class="radio">
+				<label> <input type="radio" name="is_less_than"
+					id="retrieve__exposed_filters__is_less_than"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op" value="<">
+					Is less than
+				</label>
+			</div>
+			<div class="radio">
+				<label> <input type="radio" name="is_less_than_or_equal_to"
+					id="retrieve__exposed_filters__is_less_than_or_equal_to"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op" value="<=">
+					Is less than or equal to
+				</label>
+			</div>
+			<div class="radio">
+				<label> <input type="radio" name="is_equal_to"
+					id="retrieve__exposed_filters__is_equal_to"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op" value="=">
+					Is equal to
+				</label>
+			</div>
+			<div class="radio">
+				<label> <input type="radio" name="is_not_equal_to"
+					id="retrieve__exposed_filters__is_not_equal_to"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op" value="!=">
+					Is not equal to
+				</label>
+			</div>
+			<div class="radio">
+				<label> <input type="radio" name="is_greater_than_or_equal_to"
+					id="retrieve__exposed_filters__is_greater_than_or_equal_to"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op" value=">=">
+					Is greater than or equal to
+				</label>
+			</div>
+			<div class="radio">
+				<label> <input type="radio" name="is_greater_than"
+					id="retrieve__exposed_filters__is_greater_than"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op" value=">">
+					Is greater than
+				</label>
+			</div>
+			<div class="radio">
+				<label> <input type="radio" name="is_between"
+					id="retrieve__exposed_filters__is_between"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op"
+					value="between"> Is between
+				</label>
+			</div>
+			<div class="radio">
+				<label> <input type="radio" name="is_not_between"
+					id="retrieve__exposed_filters__is_not_between"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op"
+					value="not+between"> Is not between
+				</label>
+			</div>
+			<div class="radio">
+				<label> <input type="radio" name="regular_expression"
+					id="retrieve__exposed_filters_"
+					ng-model="views.retrieveData.exposed_filters.comment_count_op"
+					value="regular_expression"> Regular expression
+				</label>
+			</div>
+			<div class="help-block">
+				<p class="description">The comment count operators</p>
+			</div>
+		</div>	
+		
+		<div class="form-group" 
+			ng-if="views.retrieveData.exposed_filters.comment_count_op !== 'between' && views.retrieveData.exposed_filters.comment_count_op !== 'not+between' && views.retrieveData.exposed_filters.comment_count_op !== 'regular_expression'" 
+			ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.comment_count.$touched && retrieveForm.exposed_filters.comment_count.$invalid || retrieveForm.exposed_filters.comment_count.$invalid && retrieveForm.$submitted }" >
+			<label for="retrieve__exposed_filters.comment_count">Comment count value</label>
+			<input type="number" class="form-control" id="retrieve__exposed_filters_comment_count_value" name="Comment count value" placeholder="Comment count value" ng-model="views.retrieveData.exposed_filters.comment_count.value" >
+			
+			<div class="help-block">
+				<p class="description" >Comment count of node in views records</p>
+			</div>
+		</div>	
+		
+		<div class="form-group" ng-if="views.retrieveData.exposed_filters.comment_count_op === 'between' || views.retrieveData.exposed_filters.comment_count_op === 'not+between'" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.comment_count.min.$touched && retrieveForm.exposed_filters.comment_count.min.$invalid || retrieveForm.exposed_filters.comment_count.min.$invalid && retrieveForm.$submitted }" >
+			<label for="retrieve__exposed_filters.comment_count_min">Comment count min</label>
+			<input type="number" class="form-control" id="retrieve__exposed_filters_comment_count_min" name="Comment count min" placeholder="Comment count min" ng-model="views.retrieveData.exposed_filters.comment_count.min" >
+			
+			<div class="help-block">
+				<p class="description" ng-if="!retrieveForm.exposed_filters.comment_count.min.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.comment_count.min.$valid" >Comment count of node in views records</p>
+							
+				<ng-messages class="error" ng-if="retrieveForm.exposed_filters.comment_count.min.$invalid && retrieveForm.exposed_filters.comment_count.min.$touched || retrieveForm.$submitted" for="retrieveForm.exposed_filters.comment_count.min.$error">
+					<ng-messages-include src="error-required"></ng-messages-include>
+				</ng-messages>
+			</div>
+		</div>	
+		
+		<div class="form-group" ng-if="views.retrieveData.exposed_filters.comment_count_op === 'between' || views.retrieveData.exposed_filters.comment_count_op === 'not+between'" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.comment_count.max.$touched && retrieveForm.exposed_filters.comment_count.max.$invalid || retrieveForm.exposed_filters.comment_count.max.$invalid && retrieveForm.$submitted }" >
+			<label for="retrieve__exposed_filters.comment_count_max">Comment count max</label>
+			<input type="number" class="form-control" id="retrieve__exposed_filters_comment_count.max" name="Comment count max" placeholder="Comment count max" ng-model="views.retrieveData.exposed_filters.comment_count.max" >
+			
+			<div class="help-block">
+				<p class="description" ng-if="!retrieveForm.exposed_filters.comment_count.max.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.comment_count.max.$valid" >Comment count of node in views records</p>
+							
+				<ng-messages class="error" ng-if="retrieveForm.exposed_filters.comment_count.max.$invalid && retrieveForm.exposed_filters.comment_count.max.$touched || retrieveForm.$submitted" for="retrieveForm.exposed_filters.comment_count.max.$error">
+					<ng-messages-include src="error-required"></ng-messages-include>
+				</ng-messages>
+			</div>
+		</div>	
+		
+		<div class="form-group" ng-if="views.retrieveData.exposed_filters.comment_count_op === 'regular_expression'" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_filters.comment_count.regular_expression.$touched && retrieveForm.exposed_filters.comment_count.regular_expression.$invalid || retrieveForm.exposed_filters.comment_count.regular_expression.$invalid && retrieveForm.$submitted }" >
+			<label for="retrieve__exposed_filters.comment_count_regular_expression">Comment count regular_expression</label>
+			<input type="text" class="form-control" id="retrieve__exposed_filters_comment_count.regular_expression" name="Comment count regular_expression" placeholder="Comment count regular_expression" ng-model="views.retrieveData.exposed_filters.comment_count.regular_expression" >
+			
+			<div class="help-block">
+				<p class="description" ng-if="!retrieveForm.exposed_filters.comment_count.regular_expression.$touched && !retrieveForm.$submitted || retrieveForm.exposed_filters.comment_count.regular_expression.$valid" >Comment count of node in views records</p>
+							
+				<ng-messages class="error" ng-if="retrieveForm.exposed_filters.comment_count.regular_expression.$invalid && retrieveForm.exposed_filters.comment_count.regular_expression.$touched || retrieveForm.$submitted" for="retrieveForm.exposed_filters.comment_count.regular_expression.$error">
+					<ng-messages-include src="error-required"></ng-messages-include>
+				</ng-messages>
+			</div>
+		</div>	
+		
+		
+		
+	</div>
 	
 	<button class="btn btn-success" ng-click="views.doRetrieve(retrieveForm)">retrieve request</button>
 </form>

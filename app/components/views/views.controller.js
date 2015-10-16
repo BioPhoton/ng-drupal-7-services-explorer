@@ -24,12 +24,32 @@ angular
 		
 		vm.retrieveData = {};
 		vm.retrieveData.view_name = 'testview';
+		
 		vm.retrieveData.display_id = 'page';
-		vm.retrieveData.args = "";
-		vm.retrieveData.offset = "";
-		vm.retrieveData.limit = "";
-		//vm.retrieveData.format_output;
-		//vm.retrieveData.exposed_filters;
+		vm.retrieveData.args = "args";
+		vm.retrieveData.offset = 1;
+		vm.retrieveData.limit = 1;
+		vm.retrieveData.format_output = false;
+		
+		vm.retrieveData.exposed_sorts = {};
+		vm.retrieveData.exposed_sorts.sort_order = 'ASC';
+		vm.retrieveData.exposed_sorts.sort_by = "created";
+		
+		vm.retrieveData.exposed_filters = {};
+		vm.retrieveData.exposed_filters.nid = 20;
+		
+		vm.retrieveData.exposed_filters.comment_count_op;
+		vm.retrieveData.exposed_filters.comment_count = {};
+		vm.retrieveData.exposed_filters.comment_count.value = 1;
+		vm.retrieveData.exposed_filters.comment_count.min = 1;
+		vm.retrieveData.exposed_filters.comment_count.max = 1;
+		vm.retrieveData.exposed_filters.comment_count.regular_expression = 'a regex here';
+		
+		
+		
+		vm.exposed_filtersCollapsed = true;
+		vm.exposed_sortsCollapsed = true;
+		
 		
 		//test request
 		vm.doRetrieve = doRetrieve;
@@ -48,14 +68,37 @@ angular
 		function doRetrieve(retrieveForm) {
 			
 			if(retrieveForm.$valid) {
+				
+				
+				if( vm.retrieveData.exposed_filters.comment_count_op === 'regular_expression' || 
+					vm.retrieveData.exposed_filters.comment_count_op === 'between' ||
+					vm.retrieveData.exposed_filters.comment_count_op === 'not+between' ) {
+					
+					delete vm.retrieveData.exposed_filters.comment_count.value;
+					
+					if(vm.retrieveData.exposed_filters.comment_count_op === "regular_expression") {
+						delete vm.retrieveData.exposed_filters.comment_count.min;
+						delete vm.retrieveData.exposed_filters.comment_count.max;
+					}
+					
+					if(vm.retrieveData.exposed_filters.comment_count_op === "between" || vm.retrieveData.exposed_filters.comment_count_op === "not+between") {
+						delete vm.retrieveData.exposed_filters.comment_count.regular_expression;
+					}
+					
+				} else {
+					console.log(); 
+					delete vm.retrieveData.exposed_filters.comment_count.min;
+					delete vm.retrieveData.exposed_filters.comment_count.max;
+					delete vm.retrieveData.exposed_filters.comment_count.regular_expression;
+				};
+
 				requestStart = Date.now();
-				console.log(ViewsResource); 
 				ViewsResource.retrieve(vm.retrieveData)
 				    .then(
 				    		//retrieve success
 				    		function(data) { console.log('views retrieve success', data); },
 				    		//retrieve error
-				    		function(data) { console.log('views retrieve error'); }
+				    		function(error) { console.log('views retrieve error', error); }
 				    );
 				}
 		}
