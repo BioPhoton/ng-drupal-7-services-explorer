@@ -3,13 +3,13 @@
 
 
 angular
-    .module('ngDrupalServicesTests.auth.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel'])
-    .controller('AuthController', AuthController);
+    .module('ngDrupalServicesTests.authentication.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel'])
+    .controller('AuthenticationController', AuthenticationController);
 
-	AuthController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel'];
+	AuthenticationController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel'];
 
 	/** @ngInject */ 
-	function AuthController($scope ,AuthenticationService, AuthenticationChannel) 
+	function AuthenticationController($scope ,AuthenticationService, AuthenticationChannel) 
 	{ 
 		
 		

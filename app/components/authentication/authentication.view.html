@@ -1,0 +1,139 @@
+<div id="authentication" class="commons">
+	<h1>Authentication service</h1>
+	<p>Provides all important workflows for authentication token evaluation, an AccessControl
+	</p>
+	
+	<br/>
+	
+	<ul id="user-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="isAuthorized-tab" role="tab"  ui-sref="app.authentication.isAuthorized">IsAuthorized</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="login-tab" role="tab"  ui-sref="app.authentication.login">Login</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="logout-tab" role="tab"  ui-sref="app.authentication.logout">Logout</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="refreshConnection-tab" role="tab"  ui-sref="app.authentication.refreshConnection">RefreshConnection</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="getLastConnectTime-tab" role="tab"  ui-sref="app.authentication.getLastConnectTime">GetLastConnectTime</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="getConnectionState-tab" role="tab"  ui-sref="app.authentication.getConnectionState">GetConnectionState</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="getAuthenticationHeaders-tab" role="tab"  ui-sref="app.authentication.getAuthenticationHeaders">GetAuthenticationHeaders</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="getCurrentUser-tab" role="tab"  ui-sref="app.authentication.getCurrentUser">GetCurrentUser</a>
+		</li>
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="isAuthorized" ng-show="app.$state.includes('app.authentication.isAuthorized')"></ui-view>
+		<ui-view name="login" ng-show="app.$state.includes('app.authentication.login')"></ui-view>
+		<ui-view name="logout" ng-show="app.$state.includes('app.authentication.logout')"></ui-view>
+		<ui-view name="refreshConnection" ng-show="app.$state.includes('app.authentication.refreshConnection')"></ui-view>
+		<ui-view name="getLastConnectTime" ng-show="app.$state.includes('app.authentication.getLastConnectTime')"></ui-view>
+		<ui-view name="getConnectionState" ng-show="app.$state.includes('app.authentication.getConnectionState')"></ui-view>
+		<ui-view name="getAuthenticationHeaders" ng-show="app.$state.includes('app.authentication.getAuthenticationHeaders')"></ui-view>
+		<ui-view name="getCurrentUser" ng-show="app.$state.includes('app.authentication.getCurrentUser')"></ui-view>	
+	</div>
+	
+</div>
+
+<div id="auth" class="resource">
+	<h1>Auth Service</h1>
+	<p>
+	https://docs.google.com/drawings/d/1q3GqIDhmSA8UI8FIrkWaBSV4cXc8otFyBqdlP6EqS5U/pub?w=1440&h=1080<br/>
+	https://www.drupal.org/node/1699354
+	</p>
+	<tabset justified="true">
+	
+		<tab heading="Login">
+		  	
+			
+			
+		</tab> 
+		
+		<tab heading="Logout">
+			
+			<h2>Logout request</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="Logout Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in authentication.logoutRequests">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="logoutForm">
+		  		<button class="btn btn-success" ng-click="authentication.doLogout(logoutForm)">logout request</button>
+		  	</form>
+			
+		</tab> 
+    			
+		<tab heading="refreshConnection">
+			
+			<h2>Refresh connection function</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="RefreshConnection Request {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in authentication.refreshConnectionRequests">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="refreshConnectionForm">
+		  		<button class="btn btn-success" ng-click="authentication.doRefreshConnection(refreshConnectionForm)">refreshConnection</button>
+		  	</form>
+			
+		</tab> 
+		
+		<tab heading="getLastConnectTime">
+			
+			<h2>Get last connect time</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="getLastConnectTime {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in authentication.getLastConnectionTimeData">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="getLastConnectTimeForm">
+		  		<button class="btn btn-success" ng-click="authentication.doGetLastConnectTime(getLastConnectTimeForm)">getLastConnectTime</button>
+		  	</form>
+			
+		</tab> 
+		
+		<tab heading="getConnectionState">
+			
+			<h2>get Connection State</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="getConnectionState {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in authentication.getConnectionStateData">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="getLastConnectTimeForm">
+		  		<button class="btn btn-success" ng-click="authentication.doGetConnectionState(getLastConnectTimeForm)">getConnectionState</button>
+		  	</form>
+			
+		</tab> 
+		
+		<tab heading="getAuthenticationHeaders">
+			
+			<h2>get Authentication Headers</h2>
+			<accordion close-others="oneAtATime">
+ 				<accordion-group heading="getAuthenticationHeaders {{key}} at {{request.requestStart | date}}" ng-repeat="(key,request) in authentication.getAuthenticationHeadersData">
+				    <ng-include src="'app/templates/request/request.html'"></ng-include>
+		    	</accordion-group>
+		  	</accordion>
+		  	
+		  	<form name="getAuthenticationHeadersForm">
+		  		<button class="btn btn-success" ng-click="authentication.doGetAuthenticationHeaders(getAuthenticationHeadersForm)">doGetAuthenticationHeaders</button>
+		  	</form>
+			
+		</tab> 
+ 
+	</tabset>
+	
+</div>

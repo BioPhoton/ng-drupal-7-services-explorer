@@ -1,0 +1,40 @@
+<h2>Login request</h2>
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="Login Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in authentication.loginRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="loginForm" novalidate>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.username.$touched && loginForm.username.$invalid || loginForm.username.$invalid && loginForm.$submitted}">
+		<label for="login__username">Username</label>
+		<input type="text" class="form-control" name="username" id="login__username" placeholder="Name" ng-model="authentication.loginData.username" ng-maxlength="60" maxlength="61" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p ng-if="!loginForm.username.$touched && !loginForm.$submitted || loginForm.username.$valid" >The user name</p>
+
+			<ng-messages ng-if="loginForm.username.$invalid && loginForm.username.$touched || loginForm.$submitted" for="loginForm.username.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<div ng-message="maxlength">
+					Your username must be less than 61 characters long
+				</div>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': loginForm.password.$touched && loginForm.password.$invalid || loginForm.password.$invalid && loginForm.$submitted}">
+		<label for="login__password">Password</label>
+		<input type="password" class="form-control" name="password" id="login__password" placeholder="Password" ng-model="authentication.loginData.password" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!loginForm.password.$touched && !loginForm.$submitted || loginForm.password.$valid">The plain text unencrypted password</p>
+			<ng-messages class="error" ng-if="loginForm.password.$invalid && loginForm.password.$touched || loginForm.$submitted" for="loginForm.password.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	
+
+	<button class="btn btn-success" ng-click="authentication.doLogin(loginForm)">login request</button>
+</form>
