@@ -18,7 +18,6 @@
 		vm.accessLevels = accessControlConstant.accessLevels;
 		
 		AuthenticationService.refreshConnection();
-	
 	};
 
 

@@ -29,8 +29,8 @@
 	
 	<!-- common directives -->
     <script src="app/commons/directives/formControlFeedback.js"></script>
-
     <script src="app/commons/directives/navbarLogin.js"></script>
+    <script src="app/commons/filters/filters.ifEmpty.js"></script>
 	
 	<!-- ng-drupal-7-services -->
 	<script src="bower_components/ng-drupal-7-services/src/commons/accessControl/accessControl.constant.js"></script>
@@ -82,28 +82,35 @@
      <!-- 
      <script src="assets/js/vendor-8e5ecb0ace.js"></script>  -->
     
-     <!-- js app files  -->
+     <!-- js app components  -->
      <script src="app/app.controller.js"></script>    
      <script src="app/components/home/home.controller.js"></script>
+     
+     <script src="app/components/commons/commons.controller.js"></script>
      <script src="app/components/services_3x/services_3x.controller.js"></script>
      <script src="app/components/services_views/services_views.controller.js"></script>
      
      <script src="app/components/authentication/authentication.controller.js"></script>
+     <script src="app/components/authentication/authentication.states.js"></script>
+     
      <script src="app/components/system/system.controller.js"></script>
-     <script src="app/components/user/user.controller.js"></script>
-     <script src="app/components/node/node.controller.js"></script> 
-     <script src="app/components/file/file.controller.js"></script> 
-     <script src="app/components/views/views.controller.js"></script> 
-  
-  	 <script src="app/app.config.js"></script>
-     
-     <script src="app/components/node/node.states.js"></script>
      <script src="app/components/system/system.states.js"></script>
-     <script src="app/components/user/user.states.js"></script>
-     <script src="app/components/file/file.states.js"></script>
-     <script src="app/components/views/views.states.js"></script>
-     <script src="app/app.states.js"></script>
      
+     <script src="app/components/user/user.controller.js"></script>
+     <script src="app/components/user/user.states.js"></script>
+     
+     <script src="app/components/node/node.controller.js"></script> 
+     <script src="app/components/node/node.states.js"></script>
+      
+     <script src="app/components/file/file.controller.js"></script> 
+     <script src="app/components/file/file.states.js"></script>
+     
+     <script src="app/components/views/views.controller.js"></script>
+     <script src="app/components/views/views.states.js"></script>
+  
+   	 <!-- js app  -->
+  	 <script src="app/app.config.js"></script>
+     <script src="app/app.states.js"></script>
      <script src="app/app.js"></script>
     
    <!--  <script src="assets/js/main-92686618e4.js"></script>  -->

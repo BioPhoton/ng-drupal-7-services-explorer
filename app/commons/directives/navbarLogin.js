@@ -28,7 +28,6 @@
 				    				'<span class="glyphicon glyphicon-user"></span> {{username}} <b class="caret"></b>'+
 				    			'</a>'+
 				    			'<ul class="dropdown-menu">'+
-			                        '<li><a href="#"><span class="glyphicon glyphicon-user"> </span>Profile</a></li>'+
 			                        '<li class="divider"></li>'+
 			                        '<li><a href="#" ng-click="doLogout()"><span class="glyphicon glyphicon-off"> </span>Logout</a></li>'+
 			                    '</ul>'+
@@ -44,9 +43,7 @@
             link : function linkFunction(scope, ele, attrs, ctrl) {
             	
             	scope.accessLevels = accessControlConstant.accessLevels;
-            	
             	scope.doLogin = doLogin;
-            	
             	scope.doLogout = doLogout;
 
             	AuthenticationChannel.subAuthenticationCurrentUserUpdated(scope, currentUserUpdatedHandler);
@@ -63,23 +60,14 @@
 		    			    			scope.ngModel.navbarLoginData = {};
 						    			navbarLoginForm.$setPristine();
 						    			navbarLoginForm.$setUntouched();
-		    			    		},
-		    			    		//login error
-		    			    		function(data) { console.log('auth login error'); }
+		    			    		}
 		    			    );
             		}
             		
             	};
             	
             	function doLogout() {
-            		console.log('doLogout'); 
-            		AuthenticationService.logout()
-	    			    .then(
-	    			    		//login success
-	    			    		function(data) { console.log('auth logout success', data); },
-	    			    		//login error
-	    			    		function(data) { console.log('auth logout error'); }
-	    			    );
+            		AuthenticationService.logout();
             	};
             	
             	function currentUserUpdatedHandler(user){
@@ -91,35 +79,6 @@
         };
 
     };
-    
-    
-    /*
-     var navbarLoginform = 
-    		'<form class="navbar-form navbar-right" name="navbarLoginForm" novalidate>' +
-    		'<div class="form-group" ng-class="{ \'has-error has-feedback\' : navbarLoginForm.username.$touched && navbarLoginForm.username.$invalid || navbarLoginForm.username.$invalid && navbarLoginForm.$submitted}">' +
-    		'<input type="text" class="form-control" name="username" id="navbarLogin__username" placeholder="Username" ng-model="user.navbarLoginData.username" ng-maxlength="60" required>' +
-    	'</div>' +
-    	'<div class="form-group" ng-class="{ \'has-error has-feedback\': navbarLoginForm.password.$touched && navbarLoginForm.password.$invalid || navbarLoginForm.password.$invalid && navbarLoginForm.$submitted}">' +
-    		'<input type="password" class="form-control" name="password" id="navbarLogin__password" placeholder="Password" ng-model="user.navbarLoginData.password" required>' +
-    	'</div>
-    	'<button class="btn btn-success" ng-click="user.doLogin(navbarLoginForm)">Login</button>' +
-	    	'</form>'; 
-    
-<form class="navbar-form navbar-right" name="navbarLoginForm" novalidate>
-			<div class="form-group" ng-class="{ 'has-error has-feedback' : navbarLoginForm.username.$touched && navbarLoginForm.username.$invalid || navbarLoginForm.username.$invalid && navbarLoginForm.$submitted}">
-	    		<input type="text" class="form-control" name="username" id="navbarLogin__username" placeholder="Username" ng-model="user.navbarLoginData.username" ng-maxlength="60" required>
-	    		<form-control-feedback></form-control-feedback>
-	    	</div>
-	
-	    	<div class="form-group" ng-class="{ 'has-error has-feedback': navbarLoginForm.password.$touched && navbarLoginForm.password.$invalid || navbarLoginForm.password.$invalid && navbarLoginForm.$submitted}">
-	    		<input type="password" class="form-control" name="password" id="navbarLogin__password" placeholder="Password" ng-model="user.navbarLoginData.password" required>
-	    		<form-control-feedback></form-control-feedback>
-	    	</div>
-	    	<button class="btn btn-success" ng-click="user.doLogin(navbarLoginForm)">Login</button>
-    	</form>
-
-*/
-    
     
 
 

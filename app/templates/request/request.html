@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="col-sm-3">
 	 	<h4>Start time</h4>
-      	<p>{{request.requestStart}}</p>
+      	<p>{{request.requestStart | date:'hh:mm:ss,sss'}}</p>
 	</div>
 	<div class="col-sm-3">
 	 	<h4>End time</h4>
-      	<p>{{request.requestEnd}}</p>
+      	<p>{{request.requestEnd | date:'hh:mm:ss,sss'}}</p>
 	</div>
 	<div class="col-sm-3">
 	 	<h4>Duration in ms</h4>

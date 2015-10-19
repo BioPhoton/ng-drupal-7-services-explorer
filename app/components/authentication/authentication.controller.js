@@ -3,13 +3,13 @@
 
 
 angular
-    .module('ngDrupalServicesTests.authentication.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel'])
+    .module('ngDrupalServicesTests.authentication.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel', 'commons.filters.ifEmpty'])
     .controller('AuthenticationController', AuthenticationController);
 
-	AuthenticationController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel'];
+	AuthenticationController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel', '$filter'];
 
 	/** @ngInject */ 
-	function AuthenticationController($scope ,AuthenticationService, AuthenticationChannel) 
+	function AuthenticationController($scope ,AuthenticationService, AuthenticationChannel, $filter) 
 	{ 
 		
 		
@@ -68,7 +68,7 @@ angular
 	    // getLastConnectionTime
 		
 		// store requests
-		vm.getLastConnectionTimeData = [];
+		vm.lastConnectionTime = '';
 
 		// test request
 		vm.doGetLastConnectTime = doGetLastConnectTime;
@@ -78,27 +78,26 @@ angular
 		// getConnectionState
 		
 		// store requests
-		vm.getConnectionStateData = [];
+		vm.connectionStateChanges = [];
+		vm.currentConnectionState = '';
 
 		// test request
 		vm.doGetConnectionState = doGetConnectionState;
+		// test connectionState updated event
+		AuthenticationChannel.subAuthenticationConnectionStateUpdated($scope, subAuthenticationConnectionStateUpdatedCallback);
 
 	    //__________________________________________________________________________________________________
 		
 		// getAuthenticationHeaders
 		
 		// store requests
-		vm.getAuthenticationHeadersData = [];
+		vm.authenticationHeaders = [];
 
 		// test request
 		vm.doGetAuthenticationHeaders = doGetAuthenticationHeaders;
 
 	    //__________________________________________________________________________________________________
 		
-		
-		
-	   
-	    
 		///////////////////////
 	    
 		// login request
@@ -177,8 +176,9 @@ angular
 			requestStart = Date.now();
 	   		AuthenticationService
 	   			.refreshConnection()
-	   				.success(function(data) { console.log('auth RefreshConnection success'); })
-	   				.error(function(data) { console.log('auth RefreshConnection error'); });
+	   				.then(	function(data) { console.log('auth RefreshConnection success'); },
+	   						function(data) { console.log('auth RefreshConnection error'); }
+	   				);
 		};
 		
 		// confirm callback
@@ -200,23 +200,27 @@ angular
 	    
 	    //do request
 		function doGetLastConnectTime() {
-			requestStart = Date.now();
-			requestEnd = Date.now();
-			
-			vm.getLastConnectionTimeData.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:AuthenticationService.getLastConnectTime()});    
+			vm.lastConnectionTime = AuthenticationService.getLastConnectTime();
 		};
+		
+		
 		
 		//_____________________________________________________________________________________________________________________________________________
 		
 		// get connectionState 
-	    
+		
 	    //do request
 		function doGetConnectionState() {
-			requestStart = Date.now();
-			requestEnd = Date.now();
-			console.log(AuthenticationService); 
-			vm.getConnectionStateData.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data: AuthenticationService.getConnectionState()});    
+			console.log(AuthenticationService.getConnectionState()); 
+			vm.currentConnectionState = AuthenticationService.getConnectionState();
 		};
+		
+		// confirm callback
+		function subAuthenticationConnectionStateUpdatedCallback(data) { 
+			console.log('subAuthenticationConnectionStateUpdatedCallback'); 
+			vm.connectionStateChanges.push({timeOfChange: Date.now(), from: vm.currentConnectionState, to: data});    
+			vm.currentConnectionState = data;
+		}
 		
 		//_____________________________________________________________________________________________________________________________________________
 		
@@ -224,10 +228,7 @@ angular
 	    
 	    //do request
 		function doGetAuthenticationHeaders() {
-			requestStart = Date.now();
-			requestEnd = Date.now();
-			
-			vm.getAuthenticationHeadersData.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data: AuthenticationService.getAuthenticationHeaders()});    
+			AuthenticationService.getAuthenticationHeaders();    
 		};
 		
 		//_____________________________________________________________________________________________________________________________________________

@@ -1,0 +1,28 @@
+<div id="Commons" class="resource">
+	<h1 ng-click="commons.descriptionColapsed = !commons.descriptionColapsed">Commons <span class="caret" ng-class="{true:'down',false:'up'}[commons.descriptionColapsed]"></span></h1>
+	<div class="collapse" ng-class="!commons.descriptionColapsed && 'in'">
+		<p>
+			The commons section contains all the functionality that is storedin commons and consists of following modules: 
+		</p>
+		<ul>
+			<li>Authentication</li>
+			<li>Directives</li>
+		</ul>
+	</div>
+	<hr/>
+	
+	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified">
+		<li ui-sref-active="active">
+			<a ui-sref="app.commons.authentication">Authentication</a>
+		</li>
+        <li ui-sref-active="active">
+        	<a ui-sref="app.commons.directives">Directives</a>
+        </li>
+	</ul>
+	
+	<div class="tabs-content">
+		<ui-view name="authentication"></ui-view>
+		<ui-view name="directives"></ui-view>
+	</div>
+	
+</div>

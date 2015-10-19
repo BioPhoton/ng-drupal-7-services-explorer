@@ -1,1 +1,20 @@
-<button class="btn btn-success" ng-click="authentication.doRefreshConnection()">refreshConnection request</button>
+<accordion close-others="oneAtATime">
+	<accordion-group heading="Refresh Connection Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in authentication.refreshConnectionRequests">
+	   <ng-include src="'app/templates/request/request.html'"></ng-include>
+	</accordion-group>
+</accordion>
+<div class="row">
+
+	<div class="col-sm-6">
+		<button class="btn btn-success" ng-click="authentication.doRefreshConnection()">refreshConnection request</button>
+	</div>
+	
+	<div class="col-sm-6">
+		<p>
+			This function should be called on first launche or refresh page.
+			Here is a flowchart of the workflow:<br/>
+			<img src="assets/images/refreshTokenWorkflow.png" />
+		</p>
+	</div>
+	
+</div>

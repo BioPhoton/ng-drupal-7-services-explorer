@@ -20,7 +20,9 @@ var gulp 		= require('gulp'),
 /*Vars*/
 
 	//general
-var bowerDir 		= './bower_components',
+var bowerDir 		= 'bower_components',
+	resourcesDir 	= 'resources',
+		imgPath 	= '/images',
 		//libs
 		libsPath 		= '/libs',
 	assetsPath 		= './assets',
@@ -91,6 +93,17 @@ gulp.task('move-fonts', function() {
         .pipe(gulp.dest(bsTo))
         .on('end', function(){  gutil.log(gutil.colors.green('moved bootstrap font-files from '+bsFrom+' to '+bsTo)); });
         
+});
+
+/*Move font files form resources into assets/fonts directory so that our css @font-face's will resolve their files*/
+gulp.task('move-images', function() {
+	//fontawesome
+	var imgFrom = resourcesDir + imgPath + '/*';
+		imgTo = assetsPath+imgPath;
+	gulp.src(imgFrom)
+     	.pipe(gulp.dest(imgTo))
+     	.on('end', function(){  gutil.log(gutil.colors.green('moved image files from '+imgFrom+' to '+imgTo)); });
+  
 });
 
 /* Taske the app.scss file and creates .css and .min.css files and save theem in app/css. */

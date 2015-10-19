@@ -1,1 +1,9 @@
-<button class="btn btn-success" ng-click="authentication.doGetConnectionState()">getConnectionState request</button>
+<p class="well" ng-repeat="(key,change) in authentication.connectionStateChanges">
+ConnectionStateChange {{key}} changed at {{change.timeOfChange | date:'HH:mm:ss'}} from [{{change.from | ifEmpty:'undefined'}}] to [{{change.to | ifEmpty:'undefined'}}]
+</p>
+
+<p>
+Current connectionState =  <b>{{authentication.currentConnectionState| ifEmpty:'undefined'}}</b>
+</p>
+
+<button class="btn btn-success" ng-click="authentication.doGetConnectionState()">getConnectionState</button>

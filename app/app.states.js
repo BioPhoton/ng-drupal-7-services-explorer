@@ -5,10 +5,15 @@ angular
     .module('ngDrupalServicesTests.states', ['ui.router','ct.ui.router.extras',
                                              
                                              'ngDrupalServicesTests.app.controller',
+                                             
                                              'ngDrupalServicesTests.home.controller',
+                                             'ngDrupalServicesTests.commons.controller',
                                              'ngDrupalServicesTests.services_3x.controller',
                                              'ngDrupalServicesTests.services_views.controller',
                                               
+                                             //commons
+                                             'ngDrupalServicesTests.authentication.states',
+                                             
                                              //services_3x
                                              'ngDrupalServicesTests.system.states',
                                              'ngDrupalServicesTests.user.states',
@@ -52,6 +57,19 @@ angular
 	        }
 	        
 	    })
+	    
+	    .state('app.commons', {
+            url: "/commons",
+            abstract: true,
+	        views : {
+	        	'mainNavContent' : {
+			        templateUrl: './app/components/commons/commons.view.html',
+			        controller: 'CommonsController',
+			        controllerAs : 'authentication'
+	        	}
+	    	}
+        })
+	    
         .state('app.services_3x', {
             url: "/services_3x",
             abstract: true,

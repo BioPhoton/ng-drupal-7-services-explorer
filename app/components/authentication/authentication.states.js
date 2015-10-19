@@ -13,53 +13,13 @@ angular
 
 	    $stateProvider
         .state('app.commons.authentication', {
-            url: "/user",
+            url: "/authentication",
             abstract: true,
 	        views : {
-	        	'user' : {
+	        	'authentication' : {
 			        templateUrl: './app/components/authentication/authentication.view.html',
 			        controller: 'AuthenticationController',
 			        controllerAs : 'authentication'
-	        	}
-	    	}
-        })
-        .state('app.commons.authentication.retrieve', {
-            url: "/retrieve",
-            deepStateRedirect: true,
-	        sticky: true,
-            views : {
-	        	'retrieve' : {
-			        templateUrl: './app/components/user/templates/retrieve.html'
-	        	}
-	    	}
-        })
-        .state('app.commons.authentication.create', {
-            url: "/create",
-            deepStateRedirect: true,
-	        sticky: true,
-            views : {
-	        	'create' : {
-			        templateUrl: './app/components/user/templates/create.html'
-	        	}
-	    	}
-        })
-        .state('app.commons.authentication.update', {
-            url: "/update",
-            deepStateRedirect: true,
-	        sticky: true,
-            views : {
-	        	'update' : {
-			        templateUrl: './app/components/user/templates/update.html'
-	        	}
-	    	}
-        })
-        .state('app.commons.authentication.delete', {
-            url: "/delete",
-            deepStateRedirect: true,
-	        sticky: true,
-            views : {
-	        	'delete' : {
-			        templateUrl: './app/components/user/templates/delete.html'
 	        	}
 	    	}
         })
@@ -69,7 +29,7 @@ angular
 	        sticky: true,
             views : {
 	        	'isAuthorized' : {
-			        templateUrl: './app/components/user/templates/isAuthorized.html'
+			        templateUrl: './app/components/authentication/templates/isAuthorized.html'
 	        	}
 	    	}
         })
@@ -79,7 +39,7 @@ angular
 	        sticky: true,
             views : {
 	        	'login' : {
-			        templateUrl: './app/components/user/templates/login.html'
+			        templateUrl: './app/components/authentication/templates/login.html'
 	        	}
 	    	}
         })
@@ -89,7 +49,7 @@ angular
 	        sticky: true,
             views : {
 	        	'logout' : {
-			        templateUrl: './app/components/user/templates/logout.html'
+			        templateUrl: './app/components/authentication/templates/logout.html'
 	        	}
 	    	}
         })
@@ -99,7 +59,7 @@ angular
 	        sticky: true,
             views : {
 	        	'getAuthenticationHeaders' : {
-			        templateUrl: './app/components/user/templates/getAuthenticationHeaders.html'
+			        templateUrl: './app/components/authentication/templates/getAuthenticationHeaders.html'
 	        	}
 	    	}
         })
@@ -109,7 +69,7 @@ angular
 	        sticky: true,
             views : {
 	        	'getConnectionState' : {
-			        templateUrl: './app/components/user/templates/getConnectionState.html'
+			        templateUrl: './app/components/authentication/templates/getConnectionState.html'
 	        	}
 	    	}
         })
@@ -119,17 +79,17 @@ angular
 	        sticky: true,
             views : {
 	        	'getCurrentUser' : {
-			        templateUrl: './app/components/user/templates/getCurrentUser.html'
+			        templateUrl: './app/components/authentication/templates/getCurrentUser.html'
 	        	}
 	    	}
         })
-        .state('app.commons.authentication.getLastConnectionTime', {
-            url: "/get-last-connection-time",
+        .state('app.commons.authentication.getLastConnectTime', {
+            url: "/get-last-connect-time",
             deepStateRedirect: true,
 	        sticky: true,
             views : {
-	        	'getLastConnectionTime' : {
-			        templateUrl: './app/components/user/templates/getLastConnectionTime.html'
+	        	'getLastConnectTime' : {
+			        templateUrl: './app/components/authentication/templates/getLastConnectTime.html'
 	        	}
 	    	}
         })
@@ -139,7 +99,7 @@ angular
 	        sticky: true,
             views : {
 	        	'refreshConnection' : {
-			        templateUrl: './app/components/user/templates/refreshConnection.html'
+			        templateUrl: './app/components/authentication/templates/refreshConnection.html'
 	        	}
 	    	}
         })
