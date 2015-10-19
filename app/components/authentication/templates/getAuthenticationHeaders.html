@@ -1,1 +1,6 @@
+<div>
+	Current connectionState:<br/>
+  	<pre>{{authentication.currentAuthenticationHeaders | ifEmpty:'undefined' | json }}</pre>
+</div>
+
 <button class="btn btn-success" ng-click="authentication.doGetAuthenticationHeaders()">getAuthenticationHeaders request</button>

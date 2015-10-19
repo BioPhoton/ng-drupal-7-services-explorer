@@ -91,10 +91,24 @@ angular
 		// getAuthenticationHeaders
 		
 		// store requests
-		vm.authenticationHeaders = [];
+		vm.currentAuthenticationHeaders = '';
 
 		// test request
 		vm.doGetAuthenticationHeaders = doGetAuthenticationHeaders;
+
+	    //__________________________________________________________________________________________________
+		
+		// getCurrentUser
+		
+		// store requests
+		vm.currentUserChanges = [];
+		vm.currentUser = AuthenticationService.getCurrentUser();
+
+		// test request
+		vm.doGetCurrentUser = doGetCurrentUser;
+		
+		// test connectionState updated event
+		AuthenticationChannel.subAuthenticationCurrentUserUpdated($scope, subAuthenticationCurrentUserUpdatedCallback);
 
 	    //__________________________________________________________________________________________________
 		
@@ -228,10 +242,27 @@ angular
 	    
 	    //do request
 		function doGetAuthenticationHeaders() {
-			AuthenticationService.getAuthenticationHeaders();    
+			vm.currentAuthenticationHeaders = AuthenticationService.getAuthenticationHeaders();    
 		};
 		
 		//_____________________________________________________________________________________________________________________________________________
+		
+		// currentUser request
+	    
+	    //do request
+		function doGetCurrentUser() {
+			currentUser = AuthenticationService.getCurrentUser();
+		};
+		
+		// confirm callback
+		function subAuthenticationCurrentUserUpdatedCallback(data) { 
+			console.log('subAuthenticationCurrentUserUpdatedCallback'); 
+			vm.currentUserChanges.push({timeOfChange: Date.now(), from: vm.currentUser, to: data});
+			vm.currentUser = data;
+		}
+		
+		//_____________________________________________________________________________________________________________________________________________
+		
 	};
 	
 	

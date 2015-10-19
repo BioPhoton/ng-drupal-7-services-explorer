@@ -1,1 +1,22 @@
+<div class="" ng-repeat="(key,change) in authentication.currentUserChanges">
+	<p><b>CurrentUserChange {{key}} changed at {{change.timeOfChange | date:'HH:mm:ss'}}</b></p>
+	<div class="row">
+		<div class="col-sm-6">
+			<b>From:</b><br/>
+			<pre>{{change.from | json}}</pre>
+		</div>
+		<div class="col-sm-6">
+		<b>To:</b><br/>
+		<pre>{{change.to | json}}</pre>
+		</div>
+	</div>
+</div>
+
+<p>
+Current user:<br/>
+<pre>{{authentication.currentUser | json}}</pre>
+</p>
+
+
+
 <button class="btn btn-success" ng-click="authentication.doGetCurrentUser()">getCurrentUser</button>

@@ -1,5 +1,5 @@
 <p>
-Last connectTime =  <b>{{authentication.lastConnectionTime | date:'dd.MM.yyyy hh:mm:ss,sss'}}</b>
+Last connectTime =  <b>{{authentication.lastConnectionTime | date:'dd.MM.yyyy hh:mm:ss,sss' | ifEmpty:'0'}}</b>
 </p>
 
 <button class="btn btn-success" ng-click="authentication.doGetLastConnectTime()">getLastConnectionTime request</button>
