@@ -2,14 +2,14 @@
     'use strict';
 
     angular
-        .module('commons.directives.navbarLogin', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel', 'ngDrupal7Services-3_x.commons.accessControl.constant'])
+        .module('commons.directives.navbarLogin', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel', 'ngDrupal7Services-3_x.commons.authentication.serviceConstant'])
         .directive('navbarLogin', navbarLogin);
 
 
-    navbarLogin.$inject = ['AuthenticationService', 'AuthenticationChannel', 'accessControlConstant'];
+    navbarLogin.$inject = ['AuthenticationService', 'AuthenticationChannel', 'AuthenticationServiceConstant'];
 
     /** @ngInject */
-    function navbarLogin(AuthenticationService, AuthenticationChannel, accessControlConstant) {
+    function navbarLogin(AuthenticationService, AuthenticationChannel, AuthenticationServiceConstant) {
     	
     	var navbarLoginform = 
 	    			'<div class="navbar-right">'+
@@ -42,7 +42,7 @@
             template: navbarLoginform,
             link : function linkFunction(scope, ele, attrs, ctrl) {
             	
-            	scope.accessLevels = accessControlConstant.accessLevels;
+            	scope.accessLevels = AuthenticationServiceConstant.accessLevels;
             	scope.doLogin = doLogin;
             	scope.doLogout = doLogout;
 

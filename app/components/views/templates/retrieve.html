@@ -100,12 +100,11 @@ See <code>services/resources/views_resource.inc</code>
 		<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_sorts.sort_order.$touched && retrieveForm.exposed_sorts.sort_order.$invalid || retrieveForm.exposed_sorts.sort_order.$invalid && retrieveForm.$submitted }" >
 			<label for="retrieve__exposed_sorts.sort_order">Sort Order:</label>
 			<br/>
-			<label class="radio-inline">
-			  <input type="radio" name="sort_order" id="retrieve__exposed_sorts_sort_order_asc"  ng-model="views.retrieveData.exposed_sorts.sort_order" value="ASC"> ASC
+			
+			<label class="radio-inline" ng-repeat="(sortName, value) in views.sorts">
+			  <input type="radio" name="sort_order" id="retrieve__exposed_sorts_sort_order_{{sortName}}"  ng-model="views.retrieveData.exposed_sorts.sort_order" value="{{value}}"> {{value}}
 			</label>
-			<label class="radio-inline">
-			  <input type="radio" name="sort_order" id="retrieve__exposed_sorts_sort_order_desc" ng-model="views.retrieveData.exposed_sorts.sort_order" value="DESC"> DESC
-			</label>
+	
 			<div class="help-block">
 				<p class="description">The sort order</p>
 			</div>
@@ -143,69 +142,12 @@ See <code>services/resources/views_resource.inc</code>
 		</div>
 	
 		<div class="form-group" >
-			<label for="retrieve__exposed_sorts.sort_order">Comment Count Operators (The field and operators are set to exposed in the view)</label>
+			<label for="retrieve__exposed_sorts.sort_order">Comment count operators (The field and operators are set to exposed in the view)</label>
 			<br/>
-			<div class="radio">
-				<label> <input type="radio" name="is_less_than"
-					id="retrieve__exposed_filters__is_less_than"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op" value="<">
-					Is less than
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="is_less_than_or_equal_to"
-					id="retrieve__exposed_filters__is_less_than_or_equal_to"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op" value="<=">
-					Is less than or equal to
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="is_equal_to"
-					id="retrieve__exposed_filters__is_equal_to"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op" value="=">
-					Is equal to
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="is_not_equal_to"
-					id="retrieve__exposed_filters__is_not_equal_to"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op" value="!=">
-					Is not equal to
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="is_greater_than_or_equal_to"
-					id="retrieve__exposed_filters__is_greater_than_or_equal_to"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op" value=">=">
-					Is greater than or equal to
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="is_greater_than"
-					id="retrieve__exposed_filters__is_greater_than"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op" value=">">
-					Is greater than
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="is_between"
-					id="retrieve__exposed_filters__is_between"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op"
-					value="between"> Is between
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="is_not_between"
-					id="retrieve__exposed_filters__is_not_between"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op"
-					value="not+between"> Is not between
-				</label>
-			</div>
-			<div class="radio">
-				<label> <input type="radio" name="regular_expression"
-					id="retrieve__exposed_filters_"
-					ng-model="views.retrieveData.exposed_filters.comment_count_op"
-					value="regular_expression"> Regular expression
+			<div  class="radio" ng-repeat="(filterName, value)  in views.filters">
+				<label> 
+					<input type="radio" name="{{filterName}}" id="retrieve__exposed_filters__{{filterName}}" ng-model="views.retrieveData.exposed_filters.comment_count_op" value="{{value}}">
+					{{filterName}}
 				</label>
 			</div>
 			<div class="help-block">

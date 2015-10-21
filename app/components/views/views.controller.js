@@ -2,13 +2,13 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.views.controller', ['ngDrupal7Services-3_x.resources.views.resource', 'ngDrupal7Services-3_x.resources.views.channel'])
+    .module('ngDrupalServicesTests.views.controller', ['ngDrupal7Services-3_x.resources.views.resource', 'ngDrupal7Services-3_x.resources.views.channel', 'ngDrupal7Services-3_x.resources.views.operatorsConstant'])
     .controller('ViewsController', ViewsController);
 
-	ViewsController.$inject = ['$scope','ViewsResource', 'ViewsChannel'];
+	ViewsController.$inject = ['$scope','ViewsResource', 'ViewsChannel', 'ViewsOperatorsConstant'];
 
 	/** @ngInject */ 
-	function ViewsController($scope, ViewsResource, ViewsChannel) { 
+	function ViewsController($scope, ViewsResource, ViewsChannel, ViewsOperatorsConstant) { 
 		
 		var requestEnd = 0;
 		var requestStart = 0;
@@ -16,34 +16,36 @@ angular
 		// jshint validthis: true 
 		var vm = this;
 		
+		//operator constants
+		vm.filters = ViewsOperatorsConstant.filter_operators;
+		vm.sorts = ViewsOperatorsConstant.sort_operators;
 		
 		//retrieve request
-		
-		//store requests
 		vm.retrieveRequests = [];
 		
 		vm.retrieveData = {};
 		vm.retrieveData.view_name = 'testview';
 		
-		vm.retrieveData.display_id = 'page';
-		vm.retrieveData.args = "args";
-		vm.retrieveData.offset = 1;
-		vm.retrieveData.limit = 1;
-		vm.retrieveData.format_output = false;
+		//vm.retrieveData.display_id = 'page';
+		//vm.retrieveData.args = "args";
+		//vm.retrieveData.offset = 1;
+		//vm.retrieveData.limit = 1;
+		//vm.retrieveData.format_output = false;
 		
 		vm.retrieveData.exposed_sorts = {};
-		vm.retrieveData.exposed_sorts.sort_order = 'ASC';
-		vm.retrieveData.exposed_sorts.sort_by = "created";
+		//vm.retrieveData.exposed_sorts.sort_order = vm.sorts.asc;
+		//vm.retrieveData.exposed_sorts.sort_by = "created";
 		
 		vm.retrieveData.exposed_filters = {};
-		vm.retrieveData.exposed_filters.nid = 20;
+		//vm.retrieveData.exposed_filters.nid = 20;
 		
-		vm.retrieveData.exposed_filters.comment_count_op;
-		vm.retrieveData.exposed_filters.comment_count = {};
-		vm.retrieveData.exposed_filters.comment_count.value = 1;
-		vm.retrieveData.exposed_filters.comment_count.min = 1;
-		vm.retrieveData.exposed_filters.comment_count.max = 1;
-		vm.retrieveData.exposed_filters.comment_count.regular_expression = 'a regex here';
+		//vm.retrieveData.exposed_filters.comment_count_op = vm.filters.is_less_than;
+		
+		//vm.retrieveData.exposed_filters.comment_count = {};
+		//vm.retrieveData.exposed_filters.comment_count.value = 1;
+		//vm.retrieveData.exposed_filters.comment_count.min = 1;
+		//vm.retrieveData.exposed_filters.comment_count.max = 1;
+		//vm.retrieveData.exposed_filters.comment_count.regular_expression = 'a regex here';
 		
 		
 		
@@ -85,11 +87,10 @@ angular
 						delete vm.retrieveData.exposed_filters.comment_count.regular_expression;
 					}
 					
-				} else {
-					console.log(); 
-					delete vm.retrieveData.exposed_filters.comment_count.min;
-					delete vm.retrieveData.exposed_filters.comment_count.max;
-					delete vm.retrieveData.exposed_filters.comment_count.regular_expression;
+				} else if(vm.retrieveData.exposed_filters.comment_count) {
+						delete vm.retrieveData.exposed_filters.comment_count.min;
+						delete vm.retrieveData.exposed_filters.comment_count.max;
+						delete vm.retrieveData.exposed_filters.comment_count.regular_expression;
 				};
 
 				requestStart = Date.now();
