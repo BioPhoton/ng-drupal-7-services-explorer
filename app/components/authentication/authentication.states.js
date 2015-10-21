@@ -18,7 +18,7 @@ angular
 	        views : {
 	        	'authentication' : {
 			        templateUrl: './app/components/authentication/authentication.view.html',
-			        controller: 'AuthenticationController',
+			        controller	: 'AuthenticationController',
 			        controllerAs : 'authentication'
 	        	}
 	    	}

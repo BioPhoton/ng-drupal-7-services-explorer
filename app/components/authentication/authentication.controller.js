@@ -3,13 +3,13 @@
 
 
 angular
-    .module('ngDrupalServicesTests.authentication.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel', 'commons.filters.ifEmpty'])
+    .module('ngDrupalServicesTests.authentication.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.serviceConstant', 'ngDrupal7Services-3_x.commons.authentication.channel', 'commons.filters.ifEmpty'])
     .controller('AuthenticationController', AuthenticationController);
 
-	AuthenticationController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel', '$filter'];
+	AuthenticationController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel', 'AuthenticationServiceConstant', '$filter'];
 
 	/** @ngInject */ 
-	function AuthenticationController($scope ,AuthenticationService, AuthenticationChannel, $filter) 
+	function AuthenticationController($scope ,AuthenticationService, AuthenticationChannel, AuthenticationServiceConstant, $filter) 
 	{ 
 		
 		
@@ -19,7 +19,31 @@ angular
 		// jshint validthis: true 
 		var vm = this;
 
+		//AuthenticationServiceConstant
+		vm.roles = AuthenticationServiceConstant.roles;
+		vm.accessLevels = AuthenticationServiceConstant.accessLevels;
+		console.log('AuthenticationServiceConstant.accessLevels',AuthenticationServiceConstant.accessLevels); 
+		vm.selectedAccessLevel = 'public';
+		vm.rolesOptions = {};
 		
+		//@TODO make initial selected accessLevel work also with other then accessLevels.public
+		vm.isAuthorizedData = {};
+		
+		vm.isAuthorizedData.selectedAccessLevel = vm.accessLevels.public
+		
+		vm.isAuthorizedData.selectedRoles = {};
+		vm.isAuthorizedData.selectedRoles['1'] =  vm.roles['1'];
+		
+		
+		//create object of roleId and boolean
+		//set roleID of vm.isAuthorizedData.accessLevel to true
+		angular.forEach(vm.roles, function(v,k) { vm.rolesOptions[k] = (vm.isAuthorizedData.selectedRoles[k])?true:false; });
+		
+		//isAuthorized
+		vm.isAuthorizedResult;
+		vm.updateSelectedAccessLevel = updateSelectedAccessLevel;
+		vm.updateSelectedRoles = updateSelectedRoles;
+		vm.doIsAuthorized = doIsAuthorized;
 		
 		// login request
 		
@@ -37,6 +61,32 @@ angular
 
 	    //__________________________________________________________________________________________________
 		
+		
+		// isAuthorized check
+		function updateSelectedAccessLevel(accessLevelKeyName) {
+			vm.isAuthorizedData.selectedAccessLevel = vm.accessLevels[accessLevelKeyName];
+		};
+		
+		function updateSelectedRoles(roleId) {
+			
+			if(vm.isAuthorizedData.selectedRoles[roleId]){
+				delete vm.isAuthorizedData.selectedRoles[roleId];
+			} else {
+				vm.isAuthorizedData.selectedRoles[roleId] =  vm.roles[roleId];
+			}
+			
+		};
+		
+		function doIsAuthorized(authType) {
+			
+			if(authType == 'level') {
+				vm.isUserAuthorized = AuthenticationService.isAuthorized(vm.isAuthorizedData.selectedAccessLevel);
+			}
+			if(authType == 'roles_and_level') {
+				vm.isUserAuthorized = AuthenticationService.isAuthorized(vm.isAuthorizedData.selectedAccessLevel, vm.isAuthorizedData.selectedRoles);
+			}
+			
+		};
 		// logout request
 		
 		// store requests

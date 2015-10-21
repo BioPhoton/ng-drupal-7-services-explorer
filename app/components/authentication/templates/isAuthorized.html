@@ -1,1 +1,54 @@
-<button class="btn btn-success" ng-click="authentication.doIsAuthorized()">isAuthorized request</button>
+<form name="isAuthorizedForm" novalidate>
+	
+	<div class="row">
+		
+		<div class="col-sm-6">
+			<div class="form-group" >
+				<label for="isAuthorized__access_levels">Access Level: <span="badge">{{authentication.selectedAccessLevel}}</span></label>
+				<br/>
+				<div  class="radio" ng-repeat="(accessLevelName, value) in authentication.accessLevels">
+					<label> 
+						<input type="radio" name="access_levels" id="isAuthorized__access_levels__{{accessLevelName}}" ng-change="authentication.updateSelectedAccessLevel(authentication.selectedAccessLevel)" ng-model="authentication.selectedAccessLevel" value="{{accessLevelName}}">
+						{{accessLevelName}} : {{authentication.accessLevels[accessLevelName]}}
+					</label>
+				</div>
+				<div class="help-block">
+					<p class="description">The access levels is a group (array) of role object</p>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="col-sm-6">
+			<div class="form-group" >
+				<label for="isAuthorized__roles">Roles</label>
+				<br/>
+				<div class="checkbox" ng-repeat="(roleId, value) in authentication.rolesOptions">
+					<label> 
+						<input type="checkbox" name="selectedRoles[]" id="isAuthorized__roles__{{roleId}}" ng-checked="authentication.isAuthorizedData.selectedRoles[roleId]" ng-change="authentication.updateSelectedRoles(roleId)" ng-model="authentication.rolesOptions[roleId]">
+						{{roleId}} : {{ authentication.roles[roleId] }}
+					</label>
+				</div>
+				<div class="help-block">
+					<p class="description">The roles param in same as access level an array of objects</p>
+				</div>
+			</div>	
+		</div>
+	
+	</div>
+
+	<h2>You are: <span ng-if="authentication.isUserAuthorized" class="text-success">authorized</span> <span ng-if="authentication.isUserAuthorized === false" class="text-danger">not authorized</span></h2>
+	<hr/>
+	<div class="row">
+		
+		<div class="col-sm-6">
+		<p>Authorize by access level checks if at least one role of the access level is in the logged in users roles</p>
+		<button class="btn btn-success" ng-click="authentication.doIsAuthorized('level')">isAuthorized by access level</button>
+		</div>
+		<div class="col-sm-6">
+		<p>Authorize by access level and roles checks if at least one role of the access level is in the provided roles of some other user. </p>
+		<button class="btn btn-success" ng-click="authentication.doIsAuthorized('roles_and_level')">Authorize by access level and roles</button>
+		</div>
+		
+	</div>
+	
+</form>
