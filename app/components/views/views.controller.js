@@ -71,23 +71,26 @@ angular
 			
 			if(retrieveForm.$valid) {
 				
-				
-				if( vm.retrieveData.exposed_filters.comment_count_op === 'regular_expression' || 
-					vm.retrieveData.exposed_filters.comment_count_op === 'between' ||
-					vm.retrieveData.exposed_filters.comment_count_op === 'not+between' ) {
+				//prepare exposed_filters data for request
+				//normally you use just the fields you need in vm.retrieveData
+				if( vm.retrieveData.exposed_filters.comment_count_op === vm.filters.regular_expression || 
+					vm.retrieveData.exposed_filters.comment_count_op === vm.filters.is_between ||
+					vm.retrieveData.exposed_filters.comment_count_op === vm.filters.is_not_between ) {
 					
 					delete vm.retrieveData.exposed_filters.comment_count.value;
 					
-					if(vm.retrieveData.exposed_filters.comment_count_op === "regular_expression") {
+					if( vm.retrieveData.exposed_filters.comment_count_op === vm.filters.regular_expression ) {
 						delete vm.retrieveData.exposed_filters.comment_count.min;
 						delete vm.retrieveData.exposed_filters.comment_count.max;
 					}
 					
-					if(vm.retrieveData.exposed_filters.comment_count_op === "between" || vm.retrieveData.exposed_filters.comment_count_op === "not+between") {
+					if( vm.retrieveData.exposed_filters.comment_count_op === vm.filters.is_between || 
+						vm.retrieveData.exposed_filters.comment_count_op    === vm.filters.is_not_between) {
 						delete vm.retrieveData.exposed_filters.comment_count.regular_expression;
 					}
 					
-				} else if(vm.retrieveData.exposed_filters.comment_count) {
+				} 
+				else if(vm.retrieveData.exposed_filters.comment_count) {
 						delete vm.retrieveData.exposed_filters.comment_count.min;
 						delete vm.retrieveData.exposed_filters.comment_count.max;
 						delete vm.retrieveData.exposed_filters.comment_count.regular_expression;
