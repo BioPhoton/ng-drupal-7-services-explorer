@@ -1,3 +1,7 @@
+<h3>Get connection state</h3>
+<p>
+This function also provides an event that is fired every time the connection state changes.
+</p>
 <p class="well" ng-repeat="(key,change) in authentication.connectionStateChanges">
 ConnectionStateChange {{key}} changed at {{change.timeOfChange | date:'HH:mm:ss'}} from [{{change.from | ifEmpty:'undefined'}}] to [{{change.to | ifEmpty:'undefined'}}]
 </p>
