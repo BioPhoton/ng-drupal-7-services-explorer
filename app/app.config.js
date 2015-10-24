@@ -6,20 +6,15 @@ angular
     .module('ngDrupalServicesTests.config', ['ngDrupal7Services-3_x.commons.configurations','ngDrupal7Services-3_x.commons.http.configurations'])
     .config(configFunction);
 
-	configFunction.$inject = ['DrupalApiConstant', '$ionicLoadingConfig'];
+	configFunction.$inject = ['DrupalApiConstant'];
 
 	/** @ngInject */ 
-	function configFunction(DrupalApiConstant, $ionicLoadingConfig) 
+	function configFunction(DrupalApiConstant) 
 	{ 
 		//drupal services configurations
-		DrupalApiConstant.drupal_instance = 'http://www.drupalionic.org/drupal_test/';
+		DrupalApiConstant.drupal_instance = 'http://www.drupalionic.org/drupal_demo/';
 		DrupalApiConstant.api_endpoint += 'v1/';
-		
-		//Configure loading intercepter
-		//http://ionicframework.com/docs/api/service/$ionicLoading/
-		$ionicLoadingConfig.template = '<p><ion-spinner></ion-spinner><br/>Loading...</p>';
-		
-		
+
 	};
 
 })();

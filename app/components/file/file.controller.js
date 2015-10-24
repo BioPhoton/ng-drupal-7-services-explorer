@@ -48,6 +48,7 @@ angular
 		vm.createData.filename = 'drupal.jpg';
 		vm.createData.filesize = vm.createData.file.length;
 		vm.createData.filepath = 'content/node/20/';
+		vm.createData.filemime = "image/jpeg",
 		vm.createData.image_file_name = 'drupal image';
 		
 		//test request and event callbacks
@@ -153,9 +154,7 @@ angular
 		function doCreate(createForm) {
 
 			if(createForm.$valid) {
-				//format fields
-				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
-				
+			
 				requestStart = Date.now();
 				FileResource.create(vm.createData)
 					.then(
