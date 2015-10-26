@@ -46,7 +46,7 @@
             	scope.doLogin = doLogin;
             	scope.doLogout = doLogout;
 
-            	AuthenticationChannel.subAuthenticationCurrentUserUpdated(scope, currentUserUpdatedHandler);
+            	AuthenticationChannel.subCurrentUserUpdated(scope, currentUserUpdatedHandler);
                 
             	///////////////////////////////
             	
