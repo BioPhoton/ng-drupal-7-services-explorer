@@ -1,0 +1,131 @@
+<h2>Update request</h2>
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="Update Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in taxonomy_terms.updateRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+	
+<form name="updateForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.uid.$touched && updateForm.uid.$invalid || updateForm.uid.$invalid && updateForm.$submitted}" >
+		<label for="update__uid">Uid</label>
+		<input type="number" class="form-control" id="update__uid" name="uid" placeholder="Uid" ng-model="taxonomy_terms.updateData.uid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!updateForm.uid.$touched && !updateForm.$submitted || updateForm.uid.$valid" >UID of the taxonomy_terms to be loaded</p>
+			<ng-messages class="error" ng-if="updateForm.uid.$invalid && updateForm.uid.$touched || updateForm.$submitted" for="updateForm.uid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.name.$touched && updateForm.name.$invalid || updateForm.name.$invalid && updateForm.$submitted}">
+		<label for="update__name">Name</label>
+		<input type="text" class="form-control" name="name" id="update__name" placeholder="Name" ng-model="taxonomy_terms.updateData.name" ng-maxlength="60" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!updateForm.name.$touched && !updateForm.$submitted || updateForm.name.$valid" >The taxonomy_terms name</p>
+
+			<ng-messages class="error" ng-if="updateForm.name.$invalid && updateForm.name.$touched || updateForm.$submitted" for="updateForm.name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				
+				<div ng-message="maxlength">
+					Your taxonomy_termsname must be less than 61 characters long
+				</div>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.email.$touched && updateForm.email.$invalid || updateForm.email.$invalid && updateForm.$submitted}">
+		<label for="update__email">Email</label> 
+		<input type="email" class="form-control" name="email" id="update__email" placeholder="Email" ng-model="taxonomy_terms.updateData.mail" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!updateForm.email.$touched && !updateForm.$submitted || updateForm.email.$valid" >The email address</p>
+
+			<ng-messages class="error" ng-if="updateForm.email.$invalid && updateForm.email.$touched || updateForm.$submitted" for="updateForm.email.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-email"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label" for="update__status">Status</label>
+		<label class="radio-inline">
+			<input type="radio" name="update__status" id="blocked" ng-model="taxonomy_terms.updateData.status" value="0"> blocked
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="update__status" id="active" ng-model="taxonomy_terms.updateData.status" value="1" > active
+		</label>
+		<div class="help-block">
+			<div>Value 0 for blocked, otherwise will be active by default</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="control-label" for="update__notify">Notify</label>
+		<label class="radio-inline">
+			<input type="radio" name="update__notify" id="notification" ng-model="taxonomy_terms.updateData.notify" value="0"> no taxonomy_terms notification
+		</label>
+		<label class="radio-inline">
+			<input type="radio" name="update__notify" id="no_notification" ng-model="taxonomy_terms.updateData.notify" value="1"> taxonomy_terms notification
+		</label>
+		<div class="help-block">
+			<div>Value 1 to notify taxonomy_terms of new account, will not notify by default</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label ng-click="taxonomy_terms.updateRolesColapsed = !taxonomy_terms.updateRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[taxonomy_terms.updateRolesColapsed]"></span></label> 
+	</div>
+	<div class="well collapse" ng-class="!taxonomy_terms.updateRolesColapsed && 'in'"> 
+		<div class="form-group">
+
+			<div class="checkbox disabled">
+				<label>
+					<input type="checkbox" name="update__role__anonymous_taxonomy_terms" disabled>
+					anonymous taxonomy_terms (not available)
+				</label>
+			</div>
+
+			<div class="checkbox disabled">
+				<label>
+					<input type="checkbox" name="update__role__authenticated_taxonomy_terms" disabled>
+					authenticated taxonomy_terms (not available)
+				</label>
+			</div>
+
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="update__role__administrator" ng-model="taxonomy_terms.updateData.roles.administrator" ng-true-value="'3'">
+					administrator
+				</label>
+			</div>
+			
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="update__role__editor" ng-model="taxonomy_terms.updateData.roles.editor" ng-true-value="'4'">
+					editor (custom updated role)
+				</label>
+			</div>
+
+		</div>
+
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.field_nickname.$touched && updateForm.field_nickname.$invalid || updateForm.field_nickname.$invalid && updateForm.$submitted}">
+		<label for="update__field_nickname">Nickname</label> 
+		<input type="field_nickname" class="form-control" name="field_nickname" id="update__field_nickname" placeholder="Nickname" ng-model="taxonomy_terms.updateData.field_nickname" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p  class="description" ng-if="!updateForm.field_nickname.$touched && !updateForm.$submitted || updateForm.field_nickname.$valid" >The taxonomy_terms's nickname. ( Custom created field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
+
+			<ng-messages class="error" ng-if="updateForm.field_nickname.$invalid && updateForm.field_nickname.$touched || updateForm.$submitted" for="updateForm.field_nickname.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="taxonomy_terms.doUpdate(updateForm)">update request</button>
+</form>

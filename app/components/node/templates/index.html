@@ -43,60 +43,18 @@
 		    fields.nid
 		  </label>
 		</div>
-
+		
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.name">
-		    fields.name
+		    <input type="checkbox" ng-model="node.indexData.fields.vid">
+		    fields.vid
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.mail">
-		    fields.mail
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.theme">
-		    fields.theme
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.signature">
-		    fields.signature
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.signature_format">
-		    fields.signature_format
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.created">
-		    fields.created
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.access">
-		    fields.access
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.login">
-		    fields.login
+		    <input type="checkbox" ng-model="node.indexData.fields.title">
+		    fields.title
 		  </label>
 		</div>
 
@@ -109,8 +67,43 @@
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.timezone">
-		    fields.timezone
+		    <input type="checkbox" ng-model="node.indexData.fields.comment">
+		    fields.comment
+		  </label>
+		</div>
+
+		<div class="checkbox">
+	  		<label>
+		    <input type="checkbox" ng-model="node.indexData.fields.promote">
+		    fields.promote
+		  </label>
+		</div>
+
+		<div class="checkbox">
+	  		<label>
+		    <input type="checkbox" ng-model="node.indexData.fields.sticky">
+		    fields.sticky
+		  </label>
+		</div>
+		
+		<div class="checkbox">
+	  		<label>
+		    <input type="checkbox" ng-model="node.indexData.fields.created">
+		    fields.created
+		  </label>
+		</div>
+		
+		<div class="checkbox">
+	  		<label>
+		    <input type="checkbox" ng-model="node.indexData.fields.changed">
+		    fields.changed
+		  </label>
+		</div>
+
+		<div class="checkbox">
+	  		<label>
+		    <input type="checkbox" ng-model="node.indexData.fields.type">
+		    fields.type
 		  </label>
 		</div>
 
@@ -121,27 +114,20 @@
 		  </label>
 		</div>
 
-
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.picture">
-		    fields.picture
+		    <input type="checkbox" ng-model="node.indexData.fields.tnid">
+		    fields.tnid
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.init">
-		    fields.init
+		    <input type="checkbox" ng-model="node.indexData.fields.translate">
+		    fields.translate
 		  </label>
 		</div>
 
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="node.indexData.fields.data">
-		    fields.data
-		  </label>
-		</div>
 	</div>
 
 
@@ -156,45 +142,15 @@
 			<label for="index__parameters_nid">Parameter nid</label>
 			<input type="number" class="form-control" id="index__parameters_nid" placeholder="Nid" ng-model="node.indexData.parameters.nid">
 		</div>
-
+		
 		<div class="form-group">
-			<label for="index__parameters_name">Parameter name</label>
-			<input type="text" class="form-control" id="index__parameters_name" placeholder="Nodename" ng-model="node.indexData.parameters.name">
+			<label for="index__parameters_vid">Parameter vid</label>
+			<input type="number" class="form-control" id="index__parameters_vid" placeholder="Vid" ng-model="node.indexData.parameters.vid">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_name">Parameter mail</label>
-			<input type="text" class="form-control" id="index__parameters_mail" placeholder="EMail" ng-model="node.indexData.parameters.mail">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_theme">Parameter theme</label>
-			<input type="text" class="form-control" id="index__parameters_theme" placeholder="Theme" ng-model="node.indexData.parameters.theme">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_signature">Parameter signature</label>
-			<input type="text" class="form-control" id="index__parameters_signature" placeholder="Signature" ng-model="node.indexData.parameters.signature">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_signature_format">Parameter signature_format</label>
-			<input type="text" class="form-control" id="index__parameters_signature_format" placeholder="Signature Format" ng-model="node.indexData.parameters.signature_format">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_created">Parameter created</label>
-			<input type="text" class="form-control" id="index__parameters_created" placeholder="Created" ng-model="node.indexData.parameters.created">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_access">Parameter access</label>
-			<input type="text" class="form-control" id="index__parameters_access" placeholder="Access" ng-model="node.indexData.parameters.access">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_login">Parameter login</label>
-			<input type="text" class="form-control" id="index__parameters_login" placeholder="Login" ng-model="node.indexData.parameters.login">
+			<label for="index__parameters_title">Parameter title</label>
+			<input type="text" class="form-control" id="index__parameters_title" placeholder="Title" ng-model="node.indexData.parameters.title">
 		</div>
 
 		<div class="form-group">
@@ -203,29 +159,50 @@
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_timezone">Parameter timezone</label>
-			<input type="text" class="form-control" id="index__parameters_timezone" placeholder="Timezone" ng-model="node.indexData.parameters.timezone">
+			<label for="index__parameters_comment">Parameter comment</label>
+			<input type="text" class="form-control" id="index__parameters_comment" placeholder="Comment" ng-model="node.indexData.parameters.comment">
 		</div>
 
+		<div class="form-group">
+			<label for="index__parameters_promote">Parameter promote</label>
+			<input type="text" class="form-control" id="index__parameters_promote" placeholder="Promote" ng-model="node.indexData.parameters.promote">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_sticky">Parameter sticky</label>
+			<input type="text" class="form-control" id="index__parameters_sticky" placeholder="Sticky" ng-model="node.indexData.parameters.sticky">
+		</div>
+
+		<div class="form-group">
+			<label for="index__parameters_created">Parameter created</label>
+			<input type="text" class="form-control" id="index__parameters_created" placeholder="Created" ng-model="node.indexData.parameters.created">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_changed">Parameter changed</label>
+			<input type="text" class="form-control" id="index__parameters_changed" placeholder="Changed" ng-model="node.indexData.parameters.changed">
+		</div>
+
+		<div class="form-group">
+			<label for="index__parameters_type">Parameter type</label>
+			<input type="text" class="form-control" id="index__parameters_type" placeholder="Type" ng-model="node.indexData.parameters.type">
+		</div>
+		
 		<div class="form-group">
 			<label for="index__parameters_language">Parameter language</label>
 			<input type="text" class="form-control" id="index__parameters_language" placeholder="Language" ng-model="node.indexData.parameters.language">
 		</div>
-
+		
 		<div class="form-group">
-			<label for="index__parameters_picture">Parameter picture</label>
-			<input type="text" class="form-control" id="index__parameters_picture" placeholder="Picture" ng-model="node.indexData.parameters.picture">
+			<label for="index__parameters_tnid">Parameter tnid</label>
+			<input type="text" class="form-control" id="index__parameters_tnid" placeholder="Tnid" ng-model="node.indexData.parameters.tnid">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_init">Parameter init</label>
-			<input type="text" class="form-control" id="index__parameters_init" placeholder="Init" ng-model="node.indexData.parameters.init">
+			<label for="index__parameters_timezone">Parameter translate</label>
+			<input type="text" class="form-control" id="index__parameters_translate" placeholder="Translate" ng-model="node.indexData.parameters.translate">
 		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_data">Parameter data</label>
-			<input type="text" class="form-control" id="index__parameters_data" placeholder="Data" ng-model="node.indexData.parameters.data">
-		</div>	
+		
 	</div>
 	
 	<button class="btn btn-success" ng-click="node.doIndex(indexForm)">index request</button>

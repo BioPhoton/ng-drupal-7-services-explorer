@@ -19,6 +19,7 @@ angular
                                              'ngDrupalServicesTests.user.states',
                                              'ngDrupalServicesTests.node.states',
                                              'ngDrupalServicesTests.file.states',
+                                             'ngDrupalServicesTests.taxonomy_terms.states',
                                              
                                              //services_views
                                              'ngDrupalServicesTests.views.states'
@@ -93,10 +94,7 @@ angular
 			      }
 			    }
         });
-        
        
-       
-		
 	};
 	
 

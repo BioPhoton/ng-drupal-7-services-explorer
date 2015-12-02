@@ -1,0 +1,10 @@
+<h2>SelectNodes request</h2>
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="SelectNodes Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in taxonomy_terms.selectNodesRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="selectNodesForm" novalidate>
+	<button class="btn btn-success" ng-click="taxonomy_terms.doSelectNodes(selectNodesForm)">selectNodes
+		request</button>
+</form>

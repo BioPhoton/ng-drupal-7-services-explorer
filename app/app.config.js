@@ -12,7 +12,7 @@ angular
 	function configFunction(DrupalApiConstant) 
 	{ 
 		//drupal services configurations
-		DrupalApiConstant.drupal_instance = 'http://www.drupalionic.org/drupal_demo/';
+		DrupalApiConstant.drupal_instance = 'http://www.drupalionic.org/drupal_test/';
 		DrupalApiConstant.api_endpoint += 'v1/';
 
 	};
