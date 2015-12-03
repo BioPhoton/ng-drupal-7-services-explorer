@@ -13,16 +13,13 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.name.$touched && createForm.name.$invalid || createForm.name.$invalid && createForm.$submitted}">
 		<label for="create__name">Name</label>
-		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="taxonomy_terms.createData.name" ng-maxlength="60" required>
+		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="taxonomy_terms.createData.name" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The taxonomy_terms name</p>
+			<p class="description" ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The terms name</p>
 
 			<ng-messages class="error" ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
-				<div ng-message="maxlength">
-					Your taxonomy_termsname must be less than 61 characters long
-				</div>
 			</ng-messages>
 		</div>
 	</div>
@@ -44,45 +41,45 @@
 		<input type="text" class="form-control" name="weight" id="create__weight" placeholder="Weight" ng-model="taxonomy_terms.createData.weight" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.weight.$touched && !createForm.$submitted || createForm.weight.$valid">The plain text unencrypted weight</p>
+			<p class="description" ng-if="!createForm.weight.$touched && !createForm.$submitted || createForm.weight.$valid">The weight/order of term</p>
 			<ng-messages class="error" ng-if="createForm.weight.$invalid && createForm.weight.$touched || createForm.$submitted" for="createForm.weight.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>
 	</div>
-
-	<!-- <div class="form-group" ng-class="{ 'has-error has-feedback': createForm.vocabulary_machine_name.$touched && createForm.vocabulary_machine_name.$invalid || createForm.vocabulary_machine_name.$invalid && createForm.$submitted}">
-		<label class="control-label" for="create__vocabulary_machine_name">Vocabulary machine name</label>
-		<input type="text" class="form-control" name="vocabulary_machine_name" id="create__vocabulary_machine_name" placeholder="Vocabulary machine name" ng-model="taxonomy_terms.createData.vocabulary_machine_name" required>
-		<form-control-feedback></form-control-feedback>
-		<div class="help-block">
-			<p class="description">Machine readable name of vocabulary</p>
-		</div>
-		<ng-messages class="error" ng-if="createForm.weight.$invalid && createForm.weight.$touched || createForm.$submitted" for="createForm.weight.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
-			</ng-messages>
-	</div> -->
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.parent.$touched && createForm.parent.$invalid || createForm.parent.$invalid && createForm.$submitted}">
 		<label class="control-label" for="create__parent">Parent</label>
 		<input type="text" class="form-control" name="parent" id="create__parent" placeholder="Parent" ng-model="taxonomy_terms.createData.parent" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description">Parent</p>
+			<p class="description">Parent term tid.</p>
 		</div>
-		<ng-messages class="error" ng-if="createForm.weight.$invalid && createForm.weight.$touched || createForm.$submitted" for="createForm.weight.$error">
+		<ng-messages class="error" ng-if="createForm.parent.$invalid && createForm.parent.$touched || createForm.$submitted" for="createForm.parent.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 	</div>
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.format.$touched && createForm.format.$invalid || createForm.format.$invalid && createForm.$submitted}">
 		<label class="control-label" for="create__format">Format</label>
-		<input type="text" class="form-control" name="format" id="create__format" placeholder="Vocabulary machine name" ng-model="taxonomy_terms.createData.format" required>
+		<input type="text" class="form-control" name="format" id="create__format" placeholder="Format" ng-model="taxonomy_terms.createData.format" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description">Format</p>
+			<p class="description">Format of description</p>
 		</div>
-		<ng-messages class="error" ng-if="createForm.weight.$invalid && createForm.weight.$touched || createForm.$submitted" for="createForm.weight.$error">
+		<ng-messages class="error" ng-if="createForm.format.$invalid && createForm.format.$touched || createForm.$submitted" for="createForm.format.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.vocabulary_machine_name.$touched && createForm.vocabulary_machine_name.$invalid || createForm.vocabulary_machine_name.$invalid && createForm.$submitted}">
+		<label class="control-label" for="create__vocabulary_machine_name">Vocabulary machine name</label>
+		<input type="text" class="form-control" name="vocabulary_machine_name" id="create__vocabulary_machine_name" placeholder="Vocabulary machine name" ng-model="taxonomy_terms.createData.vocabulary_machine_name" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description">Machine name of vocabulary the term lives in.</p>
+		</div>
+		<ng-messages class="error" ng-if="createForm.vocabulary_machine_name.$invalid && createForm.vocabulary_machine_name.$touched || createForm.$submitted" for="createForm.vocabulary_machine_name.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 	</div>

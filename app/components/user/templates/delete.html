@@ -14,7 +14,7 @@
 		<input type="number" class="form-control" id="delete__uid" name="uid" placeholder="Uid" ng-model="user.deleteData.uid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!deleteForm.uid.$touched && !deleteForm.$submitted || deleteForm.uid.$valid" >UID of the user to be loaded</p>
+			<p class="description" ng-if="!deleteForm.uid.$touched && !deleteForm.$submitted || deleteForm.uid.$valid" >UID of the user to be deleted</p>
 			<ng-messages class="error" ng-if="deleteForm.uid.$invalid && deleteForm.uid.$touched || deleteForm.$submitted" for="deleteForm.uid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>

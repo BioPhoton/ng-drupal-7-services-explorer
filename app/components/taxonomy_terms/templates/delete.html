@@ -9,13 +9,13 @@
 		<div class="alert alert-danger fade in " ng-repeat="serverError in taxonomy_terms.deleteErrors.errors.server_errors"> {{serverError}} </div>
 	</div>
 	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': deleteForm.uid.$touched && deleteForm.uid.$invalid || deleteForm.uid.$invalid && deleteForm.$submitted}" >
-		<label for="delete__uid">Uid</label>
-		<input type="number" class="form-control" id="delete__uid" name="uid" placeholder="Uid" ng-model="taxonomy_terms.deleteData.uid" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': deleteForm.tid.$touched && deleteForm.tid.$invalid || deleteForm.tid.$invalid && deleteForm.$submitted}" >
+		<label for="delete__tid">Tid</label>
+		<input type="number" class="form-control" id="delete__tid" name="tid" placeholder="Tid" ng-model="taxonomy_terms.deleteData.tid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!deleteForm.uid.$touched && !deleteForm.$submitted || deleteForm.uid.$valid" >UID of the taxonomy_terms to be loaded</p>
-			<ng-messages class="error" ng-if="deleteForm.uid.$invalid && deleteForm.uid.$touched || deleteForm.$submitted" for="deleteForm.uid.$error">
+			<p class="description" ng-if="!deleteForm.tid.$touched && !deleteForm.$submitted || deleteForm.tid.$valid" >TID of the terms to delete</p>
+			<ng-messages class="error" ng-if="deleteForm.tid.$invalid && deleteForm.tid.$touched || deleteForm.$submitted" for="deleteForm.tid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>

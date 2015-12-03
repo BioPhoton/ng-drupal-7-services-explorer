@@ -3,6 +3,16 @@
 Get taxonomy_terms details.<br/>
 see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_resource_retrieve()</code>
 </p>
+
+<blockquote class="bg-warning">
+	<h4>It's possible to get following error here if you require a term that not exist:</h4>
+	<small>
+	<b>Fatal error</b>:  __clone method called on non-object in <b>/paths/to/your/system/sites/all/modules/services/services.module</b> on line <b>1022</b><br />
+	</small>
+	<br/>
+	@TODO find patch
+</blockquote>
+
 <accordion close-others="oneAtATime">
 	<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in taxonomy_terms.retrieveRequests">
 	   <ng-include src="'app/templates/request/request.html'"></ng-include>
