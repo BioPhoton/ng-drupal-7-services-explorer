@@ -1,0 +1,36 @@
+<div id="taxonomy_term" class="resource">
+	<h1>TaxonomyTerm resource</h1>
+	<p>Link general taxonomy_term functionalities to services module.<br/>
+	See  <code>services/resources/taxonomy_term_resource.inc</code></p>
+	<br/>
+	<ul id="taxonomy_term-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="retrieve-tab" role="tab" ui-sref="app.services_3x.taxonomy_term.retrieve" >Retrieve</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="create-tab" role="tab"  ui-sref="app.services_3x.taxonomy_term.create">Create</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="update-tab" role="tab"  ui-sref="app.services_3x.taxonomy_term.update">Update</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="delete-tab" role="tab"  ui-sref="app.services_3x.taxonomy_term.delete">Delete</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.taxonomy_term.index">Index</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="selectNodes-tab" role="tab"  ui-sref="app.services_3x.taxonomy_term.selectNodes">SelectNodes</a>
+		</li>
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.services_3x.taxonomy_term.retrieve')"></ui-view>
+		<ui-view name="create" ng-show="app.$state.includes('app.services_3x.taxonomy_term.create')"></ui-view>
+		<ui-view name="update" ng-show="app.$state.includes('app.services_3x.taxonomy_term.update')"></ui-view>
+		<ui-view name="delete" ng-show="app.$state.includes('app.services_3x.taxonomy_term.delete')"></ui-view>
+		<ui-view name="index" ng-show="app.$state.includes('app.services_3x.taxonomy_term.index')"></ui-view>
+		<ui-view name="selectNodes" ng-show="app.$state.includes('app.services_3x.taxonomy_term.selectNodes')"></ui-view>
+	</div>
+	
+</div>

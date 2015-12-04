@@ -1,7 +1,7 @@
 <h2>SelectNodes request</h2>
 <p>
-Get taxonomy_terms selectNodes.<br/>
-see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_resource_selectNodes()</code>
+Get taxonomy_term selectNodes.<br/>
+see <code>services/resources/taxonomy_term_resource.inc => _taxonomy_term_resource_selectNodes()</code>
 </p>
 
 <blockquote class="bg-warning">
@@ -17,14 +17,14 @@ see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_reso
 
 <accordion close-others="oneAtATime"> <accordion-group
 	heading="SelectNodes Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
-	ng-repeat="(key,request) in taxonomy_terms.selectNodesRequests"> <ng-include
+	ng-repeat="(key,request) in taxonomy_term.selectNodesRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
 <form name="selectNodesForm" novalidate>
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.tid.$touched && selectNodesForm.tid.$invalid || selectNodesForm.tid.$invalid && selectNodesForm.$submitted }" >
 		<label for="retrieve__tid">Tid</label>
-		<input type="number" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="taxonomy_terms.selectNodesData.tid" required>
+		<input type="number" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="taxonomy_term.selectNodesData.tid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!selectNodesForm.tid.$touched && !selectNodesForm.$submitted || selectNodesForm.tid.$valid" >The vocabulary ids to retrieve, separated by comma.</p>
@@ -38,7 +38,7 @@ see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_reso
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.pager.$touched && selectNodesForm.pager.$invalid || selectNodesForm.pager.$invalid && selectNodesForm.$submitted}" >
 		<label for="index__pager">Page</label>
-		<input type="number" class="form-control" id="index__pager" name="pager" placeholder="Pager" ng-model="taxonomy_terms.selectNodesData.pager" >
+		<input type="number" class="form-control" id="index__pager" name="pager" placeholder="Pager" ng-model="taxonomy_term.selectNodesData.pager" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p  class="description" ng-if="!selectNodesForm.pager.$touched && !selectNodesForm.$submitted || selectNodesForm.pager.$valid" >Whether the nodes are to be used with a pager (the case on most Drupal pagers) or not (in an XML feed, for example).</p>
@@ -50,7 +50,7 @@ see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_reso
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.limit.$touched && selectNodesForm.limit.$invalid || selectNodesForm.limit.$invalid && selectNodesForm.$submitted}" >
 		<label for="index__limit">Limit</label>
-		<input type="number" class="form-control" id="index__limit" name="limit" placeholder="Limit" ng-model="taxonomy_terms.selectNodesData.limit" >
+		<input type="number" class="form-control" id="index__limit" name="limit" placeholder="Limit" ng-model="taxonomy_term.selectNodesData.limit" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!selectNodesForm.limit.$touched && !selectNodesForm.$submitted || selectNodesForm.limit.$valid" >Maximum number of nodes to find.</p>
@@ -62,7 +62,7 @@ see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_reso
 	
 	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.order.$touched && selectNodesForm.order.$invalid || selectNodesForm.order.$invalid && selectNodesForm.$submitted}" >
 		<label for="index__order">Limit</label>
-		<input type="number" class="form-control" id="index__order" name="order" placeholder="Order" ng-model="taxonomy_terms.selectNodesData.order" >
+		<input type="number" class="form-control" id="index__order" name="order" placeholder="Order" ng-model="taxonomy_term.selectNodesData.order" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!selectNodesForm.order.$touched && !selectNodesForm.$submitted || selectNodesForm.order.$valid" >The order clause for the query that retrieve the nodes.</p>
@@ -72,5 +72,5 @@ see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_reso
 		</div>
 	</div>
 
-	<button class="btn btn-success" ng-click="taxonomy_terms.doSelectNodes(selectNodesForm)">selectNodes request</button>
+	<button class="btn btn-success" ng-click="taxonomy_term.doSelectNodes(selectNodesForm)">selectNodes request</button>
 </form>

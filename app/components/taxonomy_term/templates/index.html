@@ -1,14 +1,14 @@
 <h2>Index request</h2>
 <accordion close-others="oneAtATime"> <accordion-group
 	heading="Index Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
-	ng-repeat="(key,request) in taxonomy_terms.indexRequests"> <ng-include
+	ng-repeat="(key,request) in taxonomy_term.indexRequests"> <ng-include
 	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
 
 <form name="indexForm" novalidate>
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': indexForm.page.$touched && indexForm.page.$invalid || indexForm.page.$invalid && indexForm.$submitted}" >
 		<label for="index__page">Page</label>
-		<input type="number" class="form-control" id="index__page" name="page" placeholder="Page" ng-model="taxonomy_terms.indexData.page" >
+		<input type="number" class="form-control" id="index__page" name="page" placeholder="Page" ng-model="taxonomy_term.indexData.page" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p  class="description" ng-if="!indexForm.page.$touched && !indexForm.$submitted || indexForm.page.$valid" >Number of items to display on one page</p>
@@ -20,10 +20,10 @@
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': indexForm.pagesize.$touched && indexForm.pagesize.$invalid || indexForm.pagesize.$invalid && indexForm.$submitted}" >
 		<label for="index__pagesize">Pagesize</label>
-		<input type="number" class="form-control" id="index__pagesize" name="pagesize" placeholder="Pagesize" ng-model="taxonomy_terms.indexData.pagesize" >
+		<input type="number" class="form-control" id="index__pagesize" name="pagesize" placeholder="Pagesize" ng-model="taxonomy_term.indexData.pagesize" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!indexForm.pagesize.$touched && !indexForm.$submitted || indexForm.pagesize.$valid" >Number of items to display on one page. (Anonymous taxonomy_terms are limited to 25)</p>
+			<p class="description" ng-if="!indexForm.pagesize.$touched && !indexForm.$submitted || indexForm.pagesize.$valid" >Number of items to display on one page. (Anonymous taxonomy_term are limited to 25)</p>
 			<ng-messages class="error" ng-if="indexForm.pagesize.$invalid && indexForm.pagesize.$touched || indexForm.$submitted" for="indexForm.pagesize.$error">
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
@@ -31,57 +31,57 @@
 	</div>
 
 	<div class="form-group">
-		<label ng-click="taxonomy_terms.indexFieldsColapsed = !taxonomy_terms.indexFieldsColapsed">Fields <span class="caret" ng-class="{true:'down',false:'up'}[taxonomy_terms.indexFieldsColapsed]"></span></label>
+		<label ng-click="taxonomy_term.indexFieldsColapsed = !taxonomy_term.indexFieldsColapsed">Fields <span class="caret" ng-class="{true:'down',false:'up'}[taxonomy_term.indexFieldsColapsed]"></span></label>
 		<div class="help-block">
 			<p class="description">Define the fields to fetched.</p>
 		</div>
 	</div>
-	<div class="well collapse" ng-class="!taxonomy_terms.indexFieldsColapsed && 'in'">
+	<div class="well collapse" ng-class="!taxonomy_term.indexFieldsColapsed && 'in'">
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.tid">
+		    <input type="checkbox" ng-model="taxonomy_term.indexData.fields.tid">
 		    fields.tid
 		  </label>
 		</div>
 		
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.vid">
+		    <input type="checkbox" ng-model="taxonomy_term.indexData.fields.vid">
 		    fields.vid
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.name">
+		    <input type="checkbox" ng-model="taxonomy_term.indexData.fields.name">
 		    fields.name
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.description">
+		    <input type="checkbox" ng-model="taxonomy_term.indexData.fields.description">
 		    fields.description
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.weight">
+		    <input type="checkbox" ng-model="taxonomy_term.indexData.fields.weight">
 		    fields.weight
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.parent">
+		    <input type="checkbox" ng-model="taxonomy_term.indexData.fields.parent">
 		    fields.parent
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.format">
+		    <input type="checkbox" ng-model="taxonomy_term.indexData.fields.format">
 		    fields.format
 		  </label>
 		</div>
@@ -90,54 +90,54 @@
 
 
 	<div class="form-group">
-		<label ng-click="taxonomy_terms.indexParametersColapsed = !taxonomy_terms.indexParametersColapsed">Parameters <span class="caret" ng-class="{true:'down',false:'up'}[taxonomy_terms.indexParametersColapsed]"></span></label>
+		<label ng-click="taxonomy_term.indexParametersColapsed = !taxonomy_term.indexParametersColapsed">Parameters <span class="caret" ng-class="{true:'down',false:'up'}[taxonomy_term.indexParametersColapsed]"></span></label>
 		<div class="help-block">
 			<p class="description">Filter by field value.</p>
 		</div>
 	</div>
-	<div class="well collapse" ng-class="!taxonomy_terms.indexParametersColapsed && 'in'">
+	<div class="well collapse" ng-class="!taxonomy_term.indexParametersColapsed && 'in'">
 		<div class="form-group">
 			<label for="index__parameters_tid">Parameter tid</label>
-			<input type="number" class="form-control" id="index__parameters_tid" placeholder="Tid" ng-model="taxonomy_terms.indexData.parameters.tid">
+			<input type="number" class="form-control" id="index__parameters_tid" placeholder="Tid" ng-model="taxonomy_term.indexData.parameters.tid">
 		</div>
 		
 		<div class="form-group">
 			<label for="index__parameters_vid">Parameter vid</label>
-			<input type="number" class="form-control" id="index__parameters_vid" placeholder="Vid" ng-model="taxonomy_terms.indexData.parameters.vid">
+			<input type="number" class="form-control" id="index__parameters_vid" placeholder="Vid" ng-model="taxonomy_term.indexData.parameters.vid">
 		</div>
 
 		<div class="form-group">
 			<label for="index__parameters_name">Parameter name</label>
-			<input type="text" class="form-control" id="index__parameters_name" placeholder="TaxonomyTermsname" ng-model="taxonomy_terms.indexData.parameters.name">
+			<input type="text" class="form-control" id="index__parameters_name" placeholder="TaxonomyTermname" ng-model="taxonomy_term.indexData.parameters.name">
 		</div>
 
 		<div class="form-group">
 			<label for="index__parameters_description">Parameter description</label>
-			<input type="text" class="form-control" id="index__parameters_description" placeholder="Description" ng-model="taxonomy_terms.indexData.parameters.description">
+			<input type="text" class="form-control" id="index__parameters_description" placeholder="Description" ng-model="taxonomy_term.indexData.parameters.description">
 		</div>
 
 		<div class="form-group">
 			<label for="index__parameters_weight">Parameter weight</label>
-			<input type="text" class="form-control" id="index__parameters_weight" placeholder="Weight" ng-model="taxonomy_terms.indexData.parameters.weight">
+			<input type="text" class="form-control" id="index__parameters_weight" placeholder="Weight" ng-model="taxonomy_term.indexData.parameters.weight">
 		</div>
 
 		<div class="form-group">
 			<label for="index__parameters_signature">Parameter parent</label>
-			<input type="text" class="form-control" id="index__parameters_parent" placeholder="Parent" ng-model="taxonomy_terms.indexData.parameters.parent">
+			<input type="text" class="form-control" id="index__parameters_parent" placeholder="Parent" ng-model="taxonomy_term.indexData.parameters.parent">
 		</div>
 
 		<div class="form-group">
 			<label for="index__parameters_format">Parameter format</label>
-			<input type="text" class="form-control" id="index__parameters_format" placeholder="Signature Format" ng-model="taxonomy_terms.indexData.parameters.format">
+			<input type="text" class="form-control" id="index__parameters_format" placeholder="Signature Format" ng-model="taxonomy_term.indexData.parameters.format">
 		</div>
 
 		<div class="form-group">
 			<label for="index__parameters_created">Parameter created</label>
-			<input type="text" class="form-control" id="index__parameters_created" placeholder="Created" ng-model="taxonomy_terms.indexData.parameters.created">
+			<input type="text" class="form-control" id="index__parameters_created" placeholder="Created" ng-model="taxonomy_term.indexData.parameters.created">
 		</div>
 
 	</div>
 	
-	<button class="btn btn-success" ng-click="taxonomy_terms.doIndex(indexForm)">index request</button>
+	<button class="btn btn-success" ng-click="taxonomy_term.doIndex(indexForm)">index request</button>
 	
 </form>

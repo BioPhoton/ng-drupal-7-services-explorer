@@ -2,7 +2,7 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.taxonomy_terms.states', ['ui.router','ct.ui.router.extras','ngDrupalServicesTests.taxonomy_terms.controller'])
+    .module('ngDrupalServicesTests.taxonomy_term.states', ['ui.router','ct.ui.router.extras','ngDrupalServicesTests.taxonomy_term.controller'])
     .config(configFunction);
 
 	configFunction.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -11,77 +11,77 @@ angular
 	function configFunction($stateProvider, $urlRouterProvider) 
 	{ 
 		
-		console.log("TaxonomyTerms configFunction"); 
+		console.log("TaxonomyTerm configFunction"); 
 
 	    $stateProvider
-        .state('app.services_3x.taxonomy_terms', {
-            url: "/taxonomy_terms",
+        .state('app.services_3x.taxonomy_term', {
+            url: "/taxonomy_term",
             abstract: true,
 	        views : {
-	        	'taxonomy_terms' : {
-			        templateUrl: './app/components/taxonomy_terms/taxonomy_terms.view.html',
-			        controller: 'TaxonomyTermsController',
-			        controllerAs : 'taxonomy_terms'
+	        	'taxonomy_term' : {
+			        templateUrl: './app/components/taxonomy_term/taxonomy_term.view.html',
+			        controller: 'TaxonomyTermController',
+			        controllerAs : 'taxonomy_term'
 	        	}
 	    	}
         })
-        .state('app.services_3x.taxonomy_terms.retrieve', {
+        .state('app.services_3x.taxonomy_term.retrieve', {
             url: "/retrieve",
             deepStateRedirect: true,
 	        sticky: true,
             views : {
 	        	'retrieve' : {
-			        templateUrl: './app/components/taxonomy_terms/templates/retrieve.html'
+			        templateUrl: './app/components/taxonomy_term/templates/retrieve.html'
 	        	}
 	    	}
         })
-        .state('app.services_3x.taxonomy_terms.create', {
+        .state('app.services_3x.taxonomy_term.create', {
             url: "/create",
             deepStateRedirect: true,
 	        sticky: true,
             views : {
 	        	'create' : {
-			        templateUrl: './app/components/taxonomy_terms/templates/create.html'
+			        templateUrl: './app/components/taxonomy_term/templates/create.html'
 	        	}
 	    	}
         })
-        .state('app.services_3x.taxonomy_terms.update', {
+        .state('app.services_3x.taxonomy_term.update', {
             url: "/update",
             deepStateRedirect: true,
 	        sticky: true,
             views : {
 	        	'update' : {
-			        templateUrl: './app/components/taxonomy_terms/templates/update.html'
+			        templateUrl: './app/components/taxonomy_term/templates/update.html'
 	        	}
 	    	}
         })
-        .state('app.services_3x.taxonomy_terms.delete', {
+        .state('app.services_3x.taxonomy_term.delete', {
             url: "/delete",
             deepStateRedirect: true,
 	        sticky: true,
             views : {
 	        	'delete' : {
-			        templateUrl: './app/components/taxonomy_terms/templates/delete.html'
+			        templateUrl: './app/components/taxonomy_term/templates/delete.html'
 	        	}
 	    	}
         })
-        .state('app.services_3x.taxonomy_terms.index', {
+        .state('app.services_3x.taxonomy_term.index', {
             url: "/index",
             deepStateRedirect: true,
 	        sticky: true,
             views : {
 	        	'index' : {
-			        templateUrl: './app/components/taxonomy_terms/templates/index.html'
+			        templateUrl: './app/components/taxonomy_term/templates/index.html'
 	        	}
 	    	}
         })
-        .state('app.services_3x.taxonomy_terms.selectNodes', {
+        .state('app.services_3x.taxonomy_term.selectNodes', {
             url: "/selectNodes",
             deepStateRedirect: true,
 	        sticky: true,
             views : {
 	        	'selectNodes' : {
-			        templateUrl: './app/components/taxonomy_terms/templates/selectNodes.html'
+			        templateUrl: './app/components/taxonomy_term/templates/selectNodes.html'
 	        	}
 	    	}
         });

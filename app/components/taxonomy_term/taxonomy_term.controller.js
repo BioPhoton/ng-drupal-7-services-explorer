@@ -2,14 +2,14 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.taxonomy_terms.controller', ['ngDrupal7Services-3_x.resources.taxonomy_terms.resource', 'ngDrupal7Services-3_x.resources.taxonomy_terms.channel'])
-    .controller('TaxonomyTermsController', TaxonomyTermsController);
+    .module('ngDrupalServicesTests.taxonomy_term.controller', ['ngDrupal7Services-3_x.resources.taxonomy_term.resource', 'ngDrupal7Services-3_x.resources.taxonomy_term.channel'])
+    .controller('TaxonomyTermController', TaxonomyTermController);
 
-	TaxonomyTermsController.$inject = ['$scope', 'TaxonomyTermsResource', 'TaxonomyTermsChannel'];
+	TaxonomyTermController.$inject = ['$scope', 'TaxonomyTermResource', 'TaxonomyTermChannel'];
 
 	/** @ngInject */ 
-	function TaxonomyTermsController($scope, TaxonomyTermsResource, TaxonomyTermsChannel) { 
-		console.log('TaxonomyTermsController'); 
+	function TaxonomyTermController($scope, TaxonomyTermResource, TaxonomyTermChannel) { 
+		console.log('TaxonomyTermController'); 
 		var requestEnd = 0;
 		var requestStart = 0;
 		
@@ -26,9 +26,9 @@ angular
 		//test request and event callbacks
 		vm.doRetrieve = doRetrieve;
 		//test the retrieve on confirm event
-		TaxonomyTermsChannel.subRetrieveConfirmed($scope, subRetrieveConfirmedCallback);
+		TaxonomyTermChannel.subRetrieveConfirmed($scope, subRetrieveConfirmedCallback);
 		//test the retrieve on failed event
-	    TaxonomyTermsChannel.subRetrieveFailed($scope, subRetrieveFailedCallback);
+	    TaxonomyTermChannel.subRetrieveFailed($scope, subRetrieveFailedCallback);
 
 	    //__________________________________________________________________________________________________
 	    
@@ -41,9 +41,9 @@ angular
 		//test request and event callbacks
 		vm.doCreate = doCreate;
 		//test the create on confirm event
-		TaxonomyTermsChannel.subCreateConfirmed($scope, subCreateConfirmedCallback);
+		TaxonomyTermChannel.subCreateConfirmed($scope, subCreateConfirmedCallback);
 		//test the create on failed event
-	    TaxonomyTermsChannel.subCreateFailed($scope, subCreateFailedCallback);
+	    TaxonomyTermChannel.subCreateFailed($scope, subCreateFailedCallback);
 
 	    //__________________________________________________________________________________________________
 	    
@@ -55,9 +55,9 @@ angular
 		//test request and event callbacks
 		vm.doUpdate = doUpdate;
 		//test the update on confirm event
-		TaxonomyTermsChannel.subUpdateConfirmed($scope, subUpdateConfirmedCallback);
+		TaxonomyTermChannel.subUpdateConfirmed($scope, subUpdateConfirmedCallback);
 		//test the update on failed event
-	    TaxonomyTermsChannel.subUpdateFailed($scope, subUpdateFailedCallback);
+	    TaxonomyTermChannel.subUpdateFailed($scope, subUpdateFailedCallback);
 
 	    //__________________________________________________________________________________________________
 	    
@@ -72,9 +72,9 @@ angular
 		//test request and event callbacks
 		vm.doDelete = doDelete;
 		//test the delete on confirm event
-		TaxonomyTermsChannel.subDeleteConfirmed($scope, subDeleteConfirmedCallback);
+		TaxonomyTermChannel.subDeleteConfirmed($scope, subDeleteConfirmedCallback);
 		//test the delete on failed event
-	    TaxonomyTermsChannel.subDeleteFailed($scope, subDeleteFailedCallback);
+	    TaxonomyTermChannel.subDeleteFailed($scope, subDeleteFailedCallback);
 
 	    //__________________________________________________________________________________________________
 	    
@@ -93,9 +93,9 @@ angular
 		//test request and event callbacks
 		vm.doIndex = doIndex;
 		//test the index on confirm event
-		TaxonomyTermsChannel.subIndexConfirmed($scope, subIndexConfirmedCallback);
+		TaxonomyTermChannel.subIndexConfirmed($scope, subIndexConfirmedCallback);
 		//test the index on failed event
-	    TaxonomyTermsChannel.subIndexFailed($scope, subIndexFailedCallback);
+	    TaxonomyTermChannel.subIndexFailed($scope, subIndexFailedCallback);
 
 	    //__________________________________________________________________________________________________
 	    
@@ -107,9 +107,9 @@ angular
 		//test request and event callbacks
 		vm.doSelectNodes = doSelectNodes;
 		//test the selectNodes on confirm event
-		TaxonomyTermsChannel.subSelectNodesConfirmed($scope, subSelectNodesConfirmedCallback);
+		TaxonomyTermChannel.subSelectNodesConfirmed($scope, subSelectNodesConfirmedCallback);
 		//test the selectNodes on failed event
-	    TaxonomyTermsChannel.subSelectNodesFailed($scope, subSelectNodesFailedCallback);
+	    TaxonomyTermChannel.subSelectNodesFailed($scope, subSelectNodesFailedCallback);
 
 	    //__________________________________________________________________________________________________
 
@@ -123,12 +123,12 @@ angular
 			
 			if(retrieveForm.$valid) {
 				requestStart = Date.now();
-		   		TaxonomyTermsResource.retrieve(vm.retrieveData)
+		   		TaxonomyTermResource.retrieve(vm.retrieveData)
 				    .then(
 			    		//retrieve success
-			    		function(data) { console.log('taxonomy_terms retrieve success'); },
+			    		function(data) { console.log('taxonomy_term retrieve success'); },
 			    		//retrieve error
-			    		function(data) { console.log('taxonomy_terms retrieve error'); }
+			    		function(data) { console.log('taxonomy_term retrieve error'); }
 				    );
 			}
 		};
@@ -155,12 +155,12 @@ angular
 	
 			if(createForm.$valid) {	
 				requestStart = Date.now();
-				TaxonomyTermsResource.create(vm.createData)
+				TaxonomyTermResource.create(vm.createData)
 					.then(
 						//create success
-						function(data) { console.log('taxonomy_terms create success'); },
+						function(data) { console.log('taxonomy_term create success'); },
 						//create error
-						function(data) { console.log('taxonomy_terms create error'); }
+						function(data) { console.log('taxonomy_term create error'); }
 					);
 			}
 		};
@@ -187,12 +187,12 @@ angular
 			if(updateForm.$valid) {
 				
 				requestStart = Date.now();
-		   		TaxonomyTermsResource.update(vm.updateData)
+		   		TaxonomyTermResource.update(vm.updateData)
 				    .then(
 			    		//update success
-			    		function(data) { console.log('taxonomy_terms update success'); },
+			    		function(data) { console.log('taxonomy_term update success'); },
 			    		//update error
-			    		function(data) { console.log('taxonomy_terms update error'); }
+			    		function(data) { console.log('taxonomy_term update error'); }
 				    );
 			}
 			
@@ -219,12 +219,12 @@ angular
 		function doDelete(deleteForm) {
 			if(deleteForm.$valid) {
 				requestStart = Date.now();
-		   		TaxonomyTermsResource.delete(vm.deleteData)
+		   		TaxonomyTermResource.delete(vm.deleteData)
 				    .then(
 			    		//delete success
-			    		function(data) { console.log('taxonomy_terms delete success'); },
+			    		function(data) { console.log('taxonomy_term delete success'); },
 			    		//delete error
-			    		function(data) { console.log('taxonomy_terms delete error'); }
+			    		function(data) { console.log('taxonomy_term delete error'); }
 				    );
 			}
 		};
@@ -251,12 +251,12 @@ angular
 		function doIndex(indexForm) {
 			if(indexForm.$valid) {
 				requestStart = Date.now();
-		   		TaxonomyTermsResource.index(vm.indexData)
+		   		TaxonomyTermResource.index(vm.indexData)
 				    .then(
 			    		//index success
-			    		function(data) { console.log('taxonomy_terms index success'); },
+			    		function(data) { console.log('taxonomy_term index success'); },
 			    		//index error
-			    		function(data) { console.log('taxonomy_terms index error'); }
+			    		function(data) { console.log('taxonomy_term index error'); }
 				    );
 			}
 		};
@@ -283,12 +283,12 @@ angular
 			
 			if(selectNodesForm.$valid) {
 				requestStart = Date.now();
-		   		TaxonomyTermsResource.selectNodes(vm.selectNodesData)
+		   		TaxonomyTermResource.selectNodes(vm.selectNodesData)
 				    .then(
 			    		//register success
-			    		function(data) { console.log('taxonomy_terms selectNodes success'); },
+			    		function(data) { console.log('taxonomy_term selectNodes success'); },
 			    		//register error
-			    		function(data) { console.log('taxonomy_terms selectNodes error'); }
+			    		function(data) { console.log('taxonomy_term selectNodes error'); }
 				    );
 			}
 		};
