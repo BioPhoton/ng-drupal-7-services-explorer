@@ -24,14 +24,14 @@ see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_reso
 
 	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.tid.$touched && selectNodesForm.tid.$invalid || selectNodesForm.tid.$invalid && selectNodesForm.$submitted }" >
 		<label for="retrieve__tid">Tid</label>
-		<input type="text" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="taxonomy_terms.selectNodesData.tid" required>
+		<input type="number" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="taxonomy_terms.selectNodesData.tid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!selectNodesForm.tid.$touched && !selectNodesForm.$submitted || selectNodesForm.tid.$valid" >The vocabulary ids to retrieve, separated by comma.</p>
 						
 			<ng-messages class="error" ng-if="selectNodesForm.tid.$invalid && selectNodesForm.tid.$touched || selectNodesForm.$submitted" for="selectNodesForm.tid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
-			
+				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
 		</div>
 	</div>
@@ -41,7 +41,7 @@ see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_reso
 		<input type="number" class="form-control" id="index__pager" name="pager" placeholder="Pager" ng-model="taxonomy_terms.selectNodesData.pager" >
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p  class="description" ng-if="!selectNodesForm.pager.$touched && !selectNodesForm.$submitted || selectNodesForm.pager.$valid" >Whether the nodes are to be used with a pagerr (the case on most Drupal pagers) or not (in an XML feed, for example).</p>
+			<p  class="description" ng-if="!selectNodesForm.pager.$touched && !selectNodesForm.$submitted || selectNodesForm.pager.$valid" >Whether the nodes are to be used with a pager (the case on most Drupal pagers) or not (in an XML feed, for example).</p>
 			<ng-messages  class="error" ng-if="selectNodesForm.pager.$invalid && selectNodesForm.pager.$touched || selectNodesForm.$submitted" for="selectNodesForm.pager.$error">
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
