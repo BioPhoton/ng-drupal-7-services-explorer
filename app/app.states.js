@@ -15,6 +15,7 @@ angular
                                              'ngDrupalServicesTests.authentication.states',
                                              
                                              //services_3x
+                                             'ngDrupalServicesTests.comment.states',
                                              'ngDrupalServicesTests.system.states',
                                              'ngDrupalServicesTests.user.states',
                                              'ngDrupalServicesTests.node.states',

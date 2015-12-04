@@ -1,0 +1,76 @@
+<h2>CountAll request</h2>
+<p>
+Get comment countAll.<br/>
+see <code>services/resources/comment_resource.inc => _comment_resource_countAll()</code>
+</p>
+
+<blockquote class="bg-warning">
+	<h4>It's possible to get following error here if you require a term that not exist:</h4>
+	<small>
+	<b>Fatal error</b>:  __clone method called on non-object in <b>/paths/to/your/system/sites/all/modules/services/services.module</b> on line <b>1022</b><br />
+	</small>
+	<br/>
+	@TODO find patch
+</blockquote>
+
+
+
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="countAll Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in comment.countAllRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="countAllForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': countAllForm.tid.$touched && countAllForm.tid.$invalid || countAllForm.tid.$invalid && countAllForm.$submitted }" >
+		<label for="retrieve__tid">Tid</label>
+		<input type="number" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="comment.countAllData.tid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!countAllForm.tid.$touched && !countAllForm.$submitted || countAllForm.tid.$valid" >The vocabulary ids to retrieve, separated by comma.</p>
+						
+			<ng-messages class="error" ng-if="countAllForm.tid.$invalid && countAllForm.tid.$touched || countAllForm.$submitted" for="countAllForm.tid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': countAllForm.pager.$touched && countAllForm.pager.$invalid || countAllForm.pager.$invalid && countAllForm.$submitted}" >
+		<label for="index__pager">Page</label>
+		<input type="number" class="form-control" id="index__pager" name="pager" placeholder="Pager" ng-model="comment.countAllData.pager" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p  class="description" ng-if="!countAllForm.pager.$touched && !countAllForm.$submitted || countAllForm.pager.$valid" >Whether the nodes are to be used with a pager (the case on most Drupal pagers) or not (in an XML feed, for example).</p>
+			<ng-messages  class="error" ng-if="countAllForm.pager.$invalid && countAllForm.pager.$touched || countAllForm.$submitted" for="countAllForm.pager.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': countAllForm.limit.$touched && countAllForm.limit.$invalid || countAllForm.limit.$invalid && countAllForm.$submitted}" >
+		<label for="index__limit">Limit</label>
+		<input type="number" class="form-control" id="index__limit" name="limit" placeholder="Limit" ng-model="comment.countAllData.limit" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!countAllForm.limit.$touched && !countAllForm.$submitted || countAllForm.limit.$valid" >Maximum number of nodes to find.</p>
+			<ng-messages class="error" ng-if="countAllForm.limit.$invalid && countAllForm.limit.$touched || countAllForm.$submitted" for="countAllForm.limit.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': countAllForm.order.$touched && countAllForm.order.$invalid || countAllForm.order.$invalid && countAllForm.$submitted}" >
+		<label for="index__order">Limit</label>
+		<input type="number" class="form-control" id="index__order" name="order" placeholder="Order" ng-model="comment.countAllData.order" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!countAllForm.order.$touched && !countAllForm.$submitted || countAllForm.order.$valid" >The order clause for the query that retrieve the nodes.</p>
+			<ng-messages class="error" ng-if="countAllForm.order.$invalid && countAllForm.order.$touched || countAllForm.$submitted" for="countAllForm.order.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="comment.docountAll(countAllForm)">countAll request</button>
+</form>

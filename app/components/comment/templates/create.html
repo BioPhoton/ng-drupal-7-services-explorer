@@ -1,0 +1,70 @@
+<h2>Create request</h2>
+<p>
+	Create a new comment.<br/>
+	This function uses drupal_form_submit() and as such expects all input to match the submitting form in question.</br>
+	see <code>services/resources/comment_resource.inc => _comment_resource_create()</code>
+</p>
+<accordion close-others="oneAtATime"> <accordion-group
+		heading="Create Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+		ng-repeat="(key,request) in comment.createRequests"> <ng-include
+		src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="createForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.nid.$touched && createForm.nid.$invalid || createForm.nid.$invalid && createForm.$submitted }" >
+		<label for="retrieve__nid">Nid</label>
+		<input type="number" class="form-control" id="retrieve__nid" name="nid" placeholder="Nid" ng-model="comment.createData.nid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.nid.$touched && !createForm.$submitted || createForm.nid.$valid" >NID of the Node to save comment to</p>
+						
+			<ng-messages class="error" ng-if="createForm.nid.$invalid && createForm.nid.$touched || createForm.$submitted" for="createForm.nid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.title.$touched && createForm.title.$invalid || createForm.title.$invalid && createForm.$submitted}">
+		<label for="create__title">Title</label>
+		<input type="text" class="form-control" name="title" id="create__title" placeholder="Title" ng-model="comment.createData.title" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.title.$touched && !createForm.$submitted || createForm.title.$valid" >The comment title</p>
+
+			<ng-messages class="error" ng-if="createForm.title.$invalid && createForm.title.$touched || createForm.$submitted" for="createForm.title.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.body_value.$touched && createForm.body_value.$invalid || createForm.body_value.$invalid && createForm.$submitted}">
+		<label for="create__body_value">Body Value</label>
+		<textarea class="form-control" name="body_value" id="create__body_value" placeholder="Body Value" ng-model="comment.createData.body_value" required>
+		</textarea>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.body_value.$touched && !createForm.$submitted || createForm.body_value.$valid" >The body value.</p>
+
+			<ng-messages class="error" ng-if="createForm.body_value.$invalid && createForm.body_value.$touched || createForm.$submitted" for="createForm.body_value.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.body_summary.$touched && createForm.body_summary.$invalid || createForm.body_summary.$invalid && createForm.$submitted}">
+		<label for="create__body_summary">Body Summary</label>
+		<textarea class="form-control" name="body_summary" id="create__body_summary" placeholder="Body Summary" ng-model="comment.createData.body_summary" required>
+		</textarea>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.body_summary.$touched && !createForm.$submitted || createForm.body_summary.$valid" >The body summary</p>
+
+			<ng-messages class="error" ng-if="createForm.body_summary.$invalid && createForm.body_summary.$touched || createForm.$submitted" for="createForm.body_summary.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="comment.doCreate(createForm)">create request</button>
+</form>

@@ -14,8 +14,6 @@ angular
 		var requestEnd = 0;
 		var requestStart = 0;
 		
-		
-		
 		// jshint validthis: true 
 		var vm = this;
 		vm.descriptionColapsed = true;
@@ -24,9 +22,7 @@ angular
 		
 		//store requests
 		vm.retrieveRequests = [];
-		vm.retrieveData = {
-				nid : ''
-		};
+		vm.retrieveData = {};
 		//test request and event callbacks
 		vm.doRetrieve = doRetrieve;
 		//test the retrieve on confirm event
@@ -40,9 +36,7 @@ angular
 		
 		//store requests
 		vm.createRequests = [];
-		vm.createData = {
-				
-		};
+		vm.createData = {};
 		//test request and event callbacks
 		vm.doCreate = doCreate;
 		//test the create on confirm event
@@ -71,9 +65,7 @@ angular
 		//store requests
 		vm.deleteRequests = [];
 		vm.deleteErrors = {}
-		vm.deleteData = {
-				nid : '',
-		};
+		vm.deleteData = {};
 		//test request and event callbacks
 		vm.doDelete = doDelete;
 		//test the delete on confirm event
@@ -109,9 +101,7 @@ angular
 		//store requests
 		vm.filesRequests = [];
 		vm.filesErrors = {}
-		vm.filesData = {
-				nid : '',
-		};
+		vm.filesData = {};
 		//test request and event callbacks
 		vm.doFiles = doFiles;
 		//test the delete on confirm event
@@ -143,9 +133,7 @@ angular
 		//store requests
 		vm.attachFileRequests = [];
 		vm.attachFileErrors = {}
-		vm.attachFileData = {
-				nid : '',
-		};
+		vm.attachFileData = {};
 		//test request and event callbacks
 		vm.doAttachFile = doAttachFile;
 		//test the delete on confirm event
@@ -193,9 +181,8 @@ angular
 	    
 	    //do create
 		function doCreate(createForm) {
-			console.log('SDF'); 
+			console.log(vm.createData);
 			if(createForm.$valid) {
-				console.log('SDF');
 				//format fields
 				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
 				
