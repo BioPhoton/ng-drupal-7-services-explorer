@@ -1,0 +1,36 @@
+<div id="taxonomy_vocabulary" class="resource">
+	<h1>TaxonomyVocabulary resource</h1>
+	<p>Link general taxonomy_vocabulary functionalities to services module.<br/>
+	See  <code>services/resources/taxonomy_vocabulary_resource.inc</code></p>
+	<br/>
+	<ul id="taxonomy_vocabulary-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="retrieve-tab" role="tab" ui-sref="app.services_3x.taxonomy_vocabulary.retrieve" >Retrieve</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="create-tab" role="tab"  ui-sref="app.services_3x.taxonomy_vocabulary.create">Create</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="update-tab" role="tab"  ui-sref="app.services_3x.taxonomy_vocabulary.update">Update</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="delete-tab" role="tab"  ui-sref="app.services_3x.taxonomy_vocabulary.delete">Delete</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.taxonomy_vocabulary.index">Index</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="getTree-tab" role="tab"  ui-sref="app.services_3x.taxonomy_vocabulary.getTree">GetTree</a>
+		</li>
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.services_3x.taxonomy_vocabulary.retrieve')"></ui-view>
+		<ui-view name="create" ng-show="app.$state.includes('app.services_3x.taxonomy_vocabulary.create')"></ui-view>
+		<ui-view name="update" ng-show="app.$state.includes('app.services_3x.taxonomy_vocabulary.update')"></ui-view>
+		<ui-view name="delete" ng-show="app.$state.includes('app.services_3x.taxonomy_vocabulary.delete')"></ui-view>
+		<ui-view name="index" ng-show="app.$state.includes('app.services_3x.taxonomy_vocabulary.index')"></ui-view>
+		<ui-view name="getTree" ng-show="app.$state.includes('app.services_3x.taxonomy_vocabulary.getTree')"></ui-view>
+	</div>
+	
+</div>

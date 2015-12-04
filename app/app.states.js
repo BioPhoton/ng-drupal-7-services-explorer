@@ -20,6 +20,7 @@ angular
                                              'ngDrupalServicesTests.node.states',
                                              'ngDrupalServicesTests.file.states',
                                              'ngDrupalServicesTests.taxonomy_terms.states',
+                                             'ngDrupalServicesTests.taxonomy_vocabulary.states',
                                              
                                              //services_views
                                              'ngDrupalServicesTests.views.states'

@@ -32,8 +32,8 @@
         <li ui-sref-active="active" >
         	<a ui-sref="app.services_3x.taxonomy_terms.retrieve">Taxonomy Terms</a>
         </li>
-        <li ui-sref-active="active" class="disabled">
-        	<a>Taxonomy Vocabulary</a>
+        <li ui-sref-active="active">
+        	<a ui-sref="app.services_3x.taxonomy_vocabulary.retrieve">Taxonomy Vocabulary</a>
         </li>
         <li ui-sref-active="active">
        	 	<a ui-sref="app.services_3x.user.retrieve" >User</a>
@@ -46,6 +46,7 @@
 		<ui-view name="system" ></ui-view>
 		<ui-view name="file" ></ui-view>
 		<ui-view name="taxonomy_terms" ></ui-view>
+		<ui-view name="taxonomy_vocabulary" ></ui-view>
 	</div>
 	
 </div>
