@@ -103,9 +103,7 @@ angular
 		
 		//store requests
 		vm.selectNodesRequests = [];
-		vm.selectNodesData = {
-				uid : ''
-		};
+		vm.selectNodesData = {};
 		//test request and event callbacks
 		vm.doSelectNodes = doSelectNodes;
 		//test the selectNodes on confirm event
@@ -282,6 +280,7 @@ angular
 	    
 	    //do request
 		function doSelectNodes(selectNodesForm) {
+			
 			if(selectNodesForm.$valid) {
 				requestStart = Date.now();
 		   		TaxonomyTermsResource.selectNodes(vm.selectNodesData)
@@ -304,7 +303,7 @@ angular
 		function subSelectNodesFailedCallback(data) { 
 			requestEnd = Date.now();
 			console.log('subSelectNodesFailed'); 
-			vm.registerRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+			vm.selectNodesRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
 	}

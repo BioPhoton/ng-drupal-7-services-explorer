@@ -12,7 +12,7 @@
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p  class="description" ng-if="!indexForm.page.$touched && !indexForm.$submitted || indexForm.page.$valid" >Number of items to display on one page</p>
-			<ng-messages  class="error" ng-if="indexForm.page.$invalid && indexForm.page.$touched || createForm.$submitted" for="indexForm.page.$error">
+			<ng-messages  class="error" ng-if="indexForm.page.$invalid && indexForm.page.$touched || indexForm.$submitted" for="indexForm.page.$error">
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
 		</div>
@@ -24,7 +24,7 @@
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
 			<p class="description" ng-if="!indexForm.pagesize.$touched && !indexForm.$submitted || indexForm.pagesize.$valid" >Number of items to display on one page. (Anonymous taxonomy_terms are limited to 25)</p>
-			<ng-messages class="error" ng-if="indexForm.pagesize.$invalid && indexForm.pagesize.$touched || createForm.$submitted" for="indexForm.pagesize.$error">
+			<ng-messages class="error" ng-if="indexForm.pagesize.$invalid && indexForm.pagesize.$touched || indexForm.$submitted" for="indexForm.pagesize.$error">
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>
 		</div>
@@ -39,8 +39,15 @@
 	<div class="well collapse" ng-class="!taxonomy_terms.indexFieldsColapsed && 'in'">
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.uid">
-		    fields.uid
+		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.tid">
+		    fields.tid
+		  </label>
+		</div>
+		
+		<div class="checkbox">
+	  		<label>
+		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.vid">
+		    fields.vid
 		  </label>
 		</div>
 
@@ -53,95 +60,32 @@
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.mail">
-		    fields.mail
+		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.description">
+		    fields.description
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.theme">
-		    fields.theme
+		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.weight">
+		    fields.weight
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.signature">
-		    fields.signature
+		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.parent">
+		    fields.parent
 		  </label>
 		</div>
 
 		<div class="checkbox">
 	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.signature_format">
-		    fields.signature_format
+		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.format">
+		    fields.format
 		  </label>
 		</div>
 
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.created">
-		    fields.created
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.access">
-		    fields.access
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.login">
-		    fields.login
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.status">
-		    fields.status
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.timezone">
-		    fields.timezone
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.language">
-		    fields.language
-		  </label>
-		</div>
-
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.picture">
-		    fields.picture
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.init">
-		    fields.init
-		  </label>
-		</div>
-
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="taxonomy_terms.indexData.fields.data">
-		    fields.data
-		  </label>
-		</div>
 	</div>
 
 
@@ -153,8 +97,13 @@
 	</div>
 	<div class="well collapse" ng-class="!taxonomy_terms.indexParametersColapsed && 'in'">
 		<div class="form-group">
-			<label for="index__parameters_uid">Parameter uid</label>
-			<input type="number" class="form-control" id="index__parameters_uid" placeholder="Uid" ng-model="taxonomy_terms.indexData.parameters.uid">
+			<label for="index__parameters_tid">Parameter tid</label>
+			<input type="number" class="form-control" id="index__parameters_tid" placeholder="Tid" ng-model="taxonomy_terms.indexData.parameters.tid">
+		</div>
+		
+		<div class="form-group">
+			<label for="index__parameters_vid">Parameter vid</label>
+			<input type="number" class="form-control" id="index__parameters_vid" placeholder="Vid" ng-model="taxonomy_terms.indexData.parameters.vid">
 		</div>
 
 		<div class="form-group">
@@ -163,23 +112,23 @@
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_mail">Parameter mail</label>
-			<input type="text" class="form-control" id="index__parameters_mail" placeholder="EMail" ng-model="taxonomy_terms.indexData.parameters.mail">
+			<label for="index__parameters_description">Parameter description</label>
+			<input type="text" class="form-control" id="index__parameters_description" placeholder="Description" ng-model="taxonomy_terms.indexData.parameters.description">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_theme">Parameter theme</label>
-			<input type="text" class="form-control" id="index__parameters_theme" placeholder="Theme" ng-model="taxonomy_terms.indexData.parameters.theme">
+			<label for="index__parameters_weight">Parameter weight</label>
+			<input type="text" class="form-control" id="index__parameters_weight" placeholder="Weight" ng-model="taxonomy_terms.indexData.parameters.weight">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_signature">Parameter signature</label>
-			<input type="text" class="form-control" id="index__parameters_signature" placeholder="Signature" ng-model="taxonomy_terms.indexData.parameters.signature">
+			<label for="index__parameters_signature">Parameter parent</label>
+			<input type="text" class="form-control" id="index__parameters_parent" placeholder="Parent" ng-model="taxonomy_terms.indexData.parameters.parent">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_signature_format">Parameter signature_format</label>
-			<input type="text" class="form-control" id="index__parameters_signature_format" placeholder="Signature Format" ng-model="taxonomy_terms.indexData.parameters.signature_format">
+			<label for="index__parameters_format">Parameter format</label>
+			<input type="text" class="form-control" id="index__parameters_format" placeholder="Signature Format" ng-model="taxonomy_terms.indexData.parameters.format">
 		</div>
 
 		<div class="form-group">
@@ -187,45 +136,6 @@
 			<input type="text" class="form-control" id="index__parameters_created" placeholder="Created" ng-model="taxonomy_terms.indexData.parameters.created">
 		</div>
 
-		<div class="form-group">
-			<label for="index__parameters_access">Parameter access</label>
-			<input type="text" class="form-control" id="index__parameters_access" placeholder="Access" ng-model="taxonomy_terms.indexData.parameters.access">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_login">Parameter login</label>
-			<input type="text" class="form-control" id="index__parameters_login" placeholder="Login" ng-model="taxonomy_terms.indexData.parameters.login">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_status">Parameter status</label>
-			<input type="text" class="form-control" id="index__parameters_status" placeholder="Status" ng-model="taxonomy_terms.indexData.parameters.status">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_timezone">Parameter timezone</label>
-			<input type="text" class="form-control" id="index__parameters_timezone" placeholder="Timezone" ng-model="taxonomy_terms.indexData.parameters.timezone">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_language">Parameter language</label>
-			<input type="text" class="form-control" id="index__parameters_language" placeholder="Language" ng-model="taxonomy_terms.indexData.parameters.language">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_picture">Parameter picture</label>
-			<input type="text" class="form-control" id="index__parameters_picture" placeholder="Picture" ng-model="taxonomy_terms.indexData.parameters.picture">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_init">Parameter init</label>
-			<input type="text" class="form-control" id="index__parameters_init" placeholder="Init" ng-model="taxonomy_terms.indexData.parameters.init">
-		</div>
-
-		<div class="form-group">
-			<label for="index__parameters_data">Parameter data</label>
-			<input type="text" class="form-control" id="index__parameters_data" placeholder="Data" ng-model="taxonomy_terms.indexData.parameters.data">
-		</div>	
 	</div>
 	
 	<button class="btn btn-success" ng-click="taxonomy_terms.doIndex(indexForm)">index request</button>

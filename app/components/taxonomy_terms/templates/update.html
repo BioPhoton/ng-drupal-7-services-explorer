@@ -11,7 +11,7 @@
 		<input type="number" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="taxonomy_terms.updateData.tid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!updateForm.tid.$touched && !updateForm.$submitted || updateForm.tid.$valid" >UID of the taxonomy_terms to be loaded</p>
+			<p class="description" ng-if="!updateForm.tid.$touched && !updateForm.$submitted || updateForm.tid.$valid" >TID of the taxonomy_terms to be loaded</p>
 						
 			<ng-messages class="error" ng-if="updateForm.tid.$invalid && updateForm.tid.$touched || updateForm.$submitted" for="updateForm.tid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>

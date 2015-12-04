@@ -26,7 +26,7 @@ see <code>services/resources/taxonomy_terms_resource.inc => _taxonomy_terms_reso
 		<input type="number" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="taxonomy_terms.retrieveData.tid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!retrieveForm.tid.$touched && !retrieveForm.$submitted || retrieveForm.tid.$valid" >UID of the taxonomy_terms to be loaded</p>
+			<p class="description" ng-if="!retrieveForm.tid.$touched && !retrieveForm.$submitted || retrieveForm.tid.$valid" >TID of the taxonomy_term to be loaded</p>
 						
 			<ng-messages class="error" ng-if="retrieveForm.tid.$invalid && retrieveForm.tid.$touched || retrieveForm.$submitted" for="retrieveForm.tid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
