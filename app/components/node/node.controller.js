@@ -181,9 +181,15 @@ angular
 	    
 	    //do create
 		function doCreate(createForm) {
+			NodeResource.create(vm.createData);
+
 			console.log(vm.createData);
 			if(createForm.$valid) {
 				//format fields
+				vm.createData.body = DrupalHelperService.structureField({'value' : vm.createData.body_value, 'summary' : vm.createData.body_summary});
+				delete vm.createData.body_value;
+				delete vm.createData.body_summary;
+				console.log(vm.createData);
 				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
 				
 				requestStart = Date.now();
