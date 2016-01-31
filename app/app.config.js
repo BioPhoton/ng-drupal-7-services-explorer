@@ -12,7 +12,7 @@ angular
 	function configFunction(DrupalApiConstant) 
 	{ 
 		//drupal services configurations
-		DrupalApiConstant.drupal_instance = 'http://www.your.domin/';
+		DrupalApiConstant.drupal_instance = 'http://dev-drulap-headless.pantheon.io/';
 		DrupalApiConstant.api_endpoint += 'v1/';
 
 	};

@@ -40,6 +40,16 @@
   $ gulp webserver  
   ```
   
-  
+  ##Setup Drupal
+  - Setup a fresh Drupal installation
+  - install following Modules:
+    - [CORS](https://www.drupal.org/project/cors)
+    - [Services](https://www.drupal.org/project/services)
+    - [Services Views](https://www.drupal.org/project/services_view)
+    - [libraries](https://www.drupal.org/project/libraries)
+    - [Views](https://www.drupal.org/project/views)
+    - [C Tools](https://www.drupal.org/project/ctools)
+  - Go to  admin/structure/services/add and import [the preconfigured service](https://github.com/BioPhoton/ng-drupal-services-tests-with-ng/blob/dev/resources/drupal/services_export.txt)
+  - Go to admin/config/services/cors  and paste following into the textarea `api/v1*|<mirror>|POST,PUT,GET,DELETE|Content-Type,Authorization,X-CSRF-TOKEN|true`
 
 
