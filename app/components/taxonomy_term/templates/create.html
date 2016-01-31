@@ -80,14 +80,5 @@
 		</div>
 	</div>
 	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.vocabulary_machine_name.$touched && createForm.vocabulary_machine_name.$invalid || createForm.vocabulary_machine_name.$invalid && createForm.$submitted}">
-		<label class="control-label" for="create__vocabulary_machine_name">Vocabulary machine name</label>
-		<input type="text" class="form-control" name="vocabulary_machine_name" id="create__vocabulary_machine_name" placeholder="Vocabulary machine name" ng-model="taxonomy_term.createData.vocabulary_machine_name">
-		<form-control-feedback></form-control-feedback>
-		<div class="help-block">
-			<p class="description">Machine name of vocabulary the term lives in.</p>
-		</div>
-	</div>
-
 	<button class="btn btn-success" ng-click="taxonomy_term.doCreate(createForm)">create request</button>
 </form>

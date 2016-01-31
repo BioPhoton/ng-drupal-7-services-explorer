@@ -2,13 +2,13 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.comment.controller', ['ngDrupal7Services-3_x.resources.comment.resource', 'ngDrupal7Services-3_x.resources.comment.channel'])
+    .module('ngDrupalServicesTests.comment.controller', ['ngDrupal7Services-3_x.resources.comment.resource', 'ngDrupal7Services-3_x.resources.comment.channel', 'ngDrupal7Services-3_x.commons.helperService'])
     .controller('CommentController', CommentController);
 
-	CommentController.$inject = ['$scope', 'CommentResource', 'CommentChannel'];
+	CommentController.$inject = ['$scope', 'CommentResource', 'CommentChannel','DrupalHelperService'];
 
 	/** @ngInject */ 
-	function CommentController($scope, CommentResource, CommentChannel) { 
+	function CommentController($scope, CommentResource, CommentChannel, DrupalHelperService) { 
 		console.log('CommentController'); 
 		var requestEnd = 0;
 		var requestStart = 0;
@@ -108,6 +108,19 @@ angular
 
 	    //__________________________________________________________________________________________________
 
+	    //countNew request
+		
+		//store requests
+		vm.countNewRequests = [];
+		vm.countNewData = {};
+		//test request and event callbacks
+		vm.doCountNew = doCountNew;
+		//test the countNew on confirm event
+		CommentChannel.subCountNewConfirmed($scope, subCountNewConfirmedCallback);
+		//test the countNew on failed event
+	    CommentChannel.subCountNewFailed($scope, subCountNewFailedCallback);
+
+	    //__________________________________________________________________________________________________
 	    
 		///////////////////////
 		
@@ -149,8 +162,14 @@ angular
 		function doCreate(createForm) {
 	
 			if(createForm.$valid) {	
+				
+				//format fields
+				var formatedCreateData = angular.extend({}, vm.createData);
+				formatedCreateData.comment_body = DrupalHelperService.structureField({'value' : formatedCreateData.comment_body_value});
+				delete formatedCreateData.comment_body_value;
+				
 				requestStart = Date.now();
-				CommentResource.create(vm.createData)
+				CommentResource.create(formatedCreateData)
 					.then(
 						//create success
 						function(data) { console.log('comment create success'); },
@@ -181,8 +200,14 @@ angular
 		function doUpdate(updateForm) {			
 			if(updateForm.$valid) {
 				
+				//format fields
+				var formatedUpdateData = angular.extend({}, vm.updateData);
+				formatedUpdateData.comment_body = DrupalHelperService.structureField({'value' : formatedUpdateData.comment_body_value});
+				delete formatedUpdateData.comment_body_value;
+			
+			
 				requestStart = Date.now();
-		   		CommentResource.update(vm.updateData)
+		   		CommentResource.update(formatedUpdateData)
 				    .then(
 			    		//update success
 			    		function(data) { console.log('comment update success'); },
@@ -275,7 +300,7 @@ angular
 	    
 	    //do request
 		function doCountAll(countAllForm) {
-			
+			console.log(countAllForm, vm.countAllData); 
 			if(countAllForm.$valid) {
 				requestStart = Date.now();
 		   		CommentResource.countAll(vm.countAllData)
@@ -299,6 +324,38 @@ angular
 			requestEnd = Date.now();
 			console.log('subCountAllFailed'); 
 			vm.countAllRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+		}
+		
+//_____________________________________________________________________________________________________________________________________________
+		
+		//countAll request
+	    
+	    //do request
+		function doCountNew(countNewForm) {
+			console.log(countNewForm, vm.countNewData); 
+			if(countNewForm.$valid) {
+				requestStart = Date.now();
+		   		CommentResource.countNew(vm.countNewData)
+				    .then(
+			    		//register success
+			    		function(data) { console.log('comment countNew success'); },
+			    		//register error
+			    		function(data) { console.log('comment countNew error'); }
+				    );
+			}
+		};
+		
+		//confirm callback
+		function subCountNewConfirmedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subCountNewConfirmed'); 
+			vm.countNewRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		//failed callback
+		function subCountNewFailedCallback(data) { 
+			requestEnd = Date.now();
+			console.log('subCountNewFailed'); 
+			vm.countNewRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
 	}

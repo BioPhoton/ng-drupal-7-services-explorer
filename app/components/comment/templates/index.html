@@ -6,138 +6,222 @@
 
 <form name="indexForm" novalidate>
 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': indexForm.page.$touched && indexForm.page.$invalid || indexForm.page.$invalid && indexForm.$submitted}" >
-		<label for="index__page">Page</label>
-		<input type="number" class="form-control" id="index__page" name="page" placeholder="Page" ng-model="comment.indexData.page" >
+	<div class="form-group"
+		ng-class="{ 'has-error has-feedback': indexForm.page.$touched && indexForm.page.$invalid || indexForm.page.$invalid && indexForm.$submitted}">
+		<label for="index__page">Page</label> <input type="number"
+			class="form-control" id="index__page" name="page"
+			placeholder="Page" ng-model="comment.indexData.page">
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p  class="description" ng-if="!indexForm.page.$touched && !indexForm.$submitted || indexForm.page.$valid" >Number of items to display on one page</p>
-			<ng-messages  class="error" ng-if="indexForm.page.$invalid && indexForm.page.$touched || indexForm.$submitted" for="indexForm.page.$error">
-				<ng-messages-include src="error-number"></ng-messages-include>
-			</ng-messages>
+			<p class="subject"
+				ng-if="!indexForm.page.$touched && !indexForm.$submitted || indexForm.page.$valid">Number
+				of items to display on one page</p>
+			<ng-messages class="error"
+				ng-if="indexForm.page.$invalid && indexForm.page.$touched || indexForm.$submitted"
+				for="indexForm.page.$error"> <ng-messages-include
+				src="error-number"></ng-messages-include> </ng-messages>
 		</div>
 	</div>
 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': indexForm.pagesize.$touched && indexForm.pagesize.$invalid || indexForm.pagesize.$invalid && indexForm.$submitted}" >
-		<label for="index__pagesize">Pagesize</label>
-		<input type="number" class="form-control" id="index__pagesize" name="pagesize" placeholder="Pagesize" ng-model="comment.indexData.pagesize" >
+	<div class="form-group"
+		ng-class="{ 'has-error has-feedback': indexForm.pagesize.$touched && indexForm.pagesize.$invalid || indexForm.pagesize.$invalid && indexForm.$submitted}">
+		<label for="index__pagesize">Pagesize</label> <input type="number"
+			class="form-control" id="index__pagesize" name="pagesize"
+			placeholder="Pagesize" ng-model="comment.indexData.pagesize">
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!indexForm.pagesize.$touched && !indexForm.$submitted || indexForm.pagesize.$valid" >Number of items to display on one page. (Anonymous comment are limited to 25)</p>
-			<ng-messages class="error" ng-if="indexForm.pagesize.$invalid && indexForm.pagesize.$touched || indexForm.$submitted" for="indexForm.pagesize.$error">
-				<ng-messages-include src="error-number"></ng-messages-include>
-			</ng-messages>
+			<p class="subject"
+				ng-if="!indexForm.pagesize.$touched && !indexForm.$submitted || indexForm.pagesize.$valid">Number
+				of items to display on one page. (Anonymous comment are limited to
+				25)</p>
+			<ng-messages class="error"
+				ng-if="indexForm.pagesize.$invalid && indexForm.pagesize.$touched || indexForm.$submitted"
+				for="indexForm.pagesize.$error"> <ng-messages-include
+				src="error-number"></ng-messages-include> </ng-messages>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label ng-click="comment.indexFieldsColapsed = !comment.indexFieldsColapsed">Fields <span class="caret" ng-class="{true:'down',false:'up'}[comment.indexFieldsColapsed]"></span></label>
+		<label
+			ng-click="comment.indexFieldsColapsed = !comment.indexFieldsColapsed">Fields
+			<span class="caret"
+			ng-class="{true:'down',false:'up'}[comment.indexFieldsColapsed]"></span>
+		</label>
 		<div class="help-block">
-			<p class="description">Define the fields to fetched.</p>
+			<p class="subject">Define the fields to fetched.</p>
 		</div>
 	</div>
-	<div class="well collapse" ng-class="!comment.indexFieldsColapsed && 'in'">
+	<div class="well collapse"
+		ng-class="!comment.indexFieldsColapsed && 'in'">
+
 		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="comment.indexData.fields.tid">
-		    fields.tid
-		  </label>
-		</div>
-		
-		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="comment.indexData.fields.vid">
-		    fields.vid
-		  </label>
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.cid"> fields.cid
+			</label>
 		</div>
 
 		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="comment.indexData.fields.name">
-		    fields.name
-		  </label>
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.nid"> fields.nid
+			</label>
 		</div>
 
 		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="comment.indexData.fields.description">
-		    fields.description
-		  </label>
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.uid"> fields.uid
+			</label>
 		</div>
 
 		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="comment.indexData.fields.weight">
-		    fields.weight
-		  </label>
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.subject"> fields.subject
+			</label>
 		</div>
 
 		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="comment.indexData.fields.parent">
-		    fields.parent
-		  </label>
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.hostname">
+				fields.hostname
+			</label>
+		</div>
+
+
+		<div class="checkbox">
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.created"> fields.created
+			</label>
 		</div>
 
 		<div class="checkbox">
-	  		<label>
-		    <input type="checkbox" ng-model="comment.indexData.fields.format">
-		    fields.format
-		  </label>
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.changed"> fields.changed
+			</label>
 		</div>
+
+		<div class="checkbox">
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.status"> fields.status
+			</label>
+		</div>
+
+	
+			<div class="checkbox">
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.name">
+				fields.name
+			</label>
+		</div>
+
+		<div class="checkbox">
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.mail"> fields.mail
+			</label>
+		</div>
+
+		<div class="checkbox">
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.homepage">
+				fields.homepage
+			</label>
+		</div>
+
+		<div class="checkbox">
+			<label> <input type="checkbox"
+				ng-model="comment.indexData.fields.language">
+				fields.language
+			</label>
+		</div>
+
 
 	</div>
 
 
 	<div class="form-group">
-		<label ng-click="comment.indexParametersColapsed = !comment.indexParametersColapsed">Parameters <span class="caret" ng-class="{true:'down',false:'up'}[comment.indexParametersColapsed]"></span></label>
+		<label
+			ng-click="comment.indexParametersColapsed = !comment.indexParametersColapsed">Parameters
+			<span class="caret"
+			ng-class="{true:'down',false:'up'}[comment.indexParametersColapsed]"></span>
+		</label>
 		<div class="help-block">
-			<p class="description">Filter by field value.</p>
+			<p class="subject">Filter by field value.</p>
 		</div>
 	</div>
-	<div class="well collapse" ng-class="!comment.indexParametersColapsed && 'in'">
+	<div class="well collapse"
+		ng-class="!comment.indexParametersColapsed && 'in'">
+
 		<div class="form-group">
-			<label for="index__parameters_tid">Parameter tid</label>
-			<input type="number" class="form-control" id="index__parameters_tid" placeholder="Tid" ng-model="comment.indexData.parameters.tid">
-		</div>
-		
-		<div class="form-group">
-			<label for="index__parameters_vid">Parameter vid</label>
-			<input type="number" class="form-control" id="index__parameters_vid" placeholder="Vid" ng-model="comment.indexData.parameters.vid">
+			<label for="index__parameters_cid">Parameter cid</label> <input
+				type="number" class="form-control" id="index__parameters_cid"
+				placeholder="Cid" ng-model="comment.indexData.parameters.cid">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_name">Parameter name</label>
-			<input type="text" class="form-control" id="index__parameters_name" placeholder="Commentname" ng-model="comment.indexData.parameters.name">
+			<label for="index__parameters_nid">Parameter nid</label> <input
+				type="number" class="form-control" id="index__parameters_nid"
+				placeholder="Nid" ng-model="comment.indexData.parameters.nid">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_description">Parameter description</label>
-			<input type="text" class="form-control" id="index__parameters_description" placeholder="Description" ng-model="comment.indexData.parameters.description">
+			<label for="index__parameters_uid">Parameter uid</label> <input
+				type="number" class="form-control" id="index__parameters_uid"
+				placeholder="Uid" ng-model="comment.indexData.parameters.uid">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_weight">Parameter weight</label>
-			<input type="text" class="form-control" id="index__parameters_weight" placeholder="Weight" ng-model="comment.indexData.parameters.weight">
+			<label for="index__parameters_subject">Parameter subject</label> <input
+				type="text" class="form-control" id="index__parameters_subject"
+				placeholder="Subject"
+				ng-model="comment.indexData.parameters.subject">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_signature">Parameter parent</label>
-			<input type="text" class="form-control" id="index__parameters_parent" placeholder="Parent" ng-model="comment.indexData.parameters.parent">
+			<label for="index__parameters_hostname">Parameter hostname</label> <input
+				type="text" class="form-control" id="index__parameters_hostname"
+				placeholder="Hostname"
+				ng-model="comment.indexData.parameters.hostname">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_format">Parameter format</label>
-			<input type="text" class="form-control" id="index__parameters_format" placeholder="Signature Format" ng-model="comment.indexData.parameters.format">
+			<label for="index__parameters_created">Parameter created</label> <input
+				type="text" class="form-control" id="index__parameters_created"
+				placeholder="Created"
+				ng-model="comment.indexData.parameters.created">
 		</div>
 
 		<div class="form-group">
-			<label for="index__parameters_created">Parameter created</label>
-			<input type="text" class="form-control" id="index__parameters_created" placeholder="Created" ng-model="comment.indexData.parameters.created">
+			<label for="index__parameters_changed">Parameter changed</label> <input
+				type="text" class="form-control" id="index__parameters_changed"
+				placeholder="Changed"
+				ng-model="comment.indexData.parameters.changed">
+		</div>
+
+		<div class="form-group">
+			<label for="index__parameters_signature">Parameter status</label> <input
+				type="text" class="form-control" id="index__parameters_status"
+				placeholder="Status" ng-model="comment.indexData.parameters.status">
+		</div>
+
+		<div class="form-group">
+			<label for="index__parameters_mail">Parameter mail</label> <input
+				type="text" class="form-control" id="index__parameters_mail"
+				placeholder="Mail" ng-model="comment.indexData.parameters.mail">
+		</div>
+	<div class="form-group">
+			<label for="index__parameters_name">Parameter name</label> <input
+				type="text" class="form-control" id="index__parameters_name"
+				placeholder="Name"
+				ng-model="comment.indexData.parameters.name">
+		</div>
+		<div class="form-group">
+			<label for="index__parameters_language">Parameter language</label> <input
+				type="text" class="form-control" id="index__parameters_language"
+				placeholder="Language"
+				ng-model="comment.indexData.parameters.language">
 		</div>
 
 	</div>
-	
-	<button class="btn btn-success" ng-click="comment.doIndex(indexForm)">index request</button>
-	
+
+	<button class="btn btn-success" ng-click="comment.doIndex(indexForm)">index
+		request</button>
+
 </form>

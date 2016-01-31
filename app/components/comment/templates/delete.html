@@ -9,13 +9,13 @@
 		<div class="alert alert-danger fade in " ng-repeat="serverError in comment.deleteErrors.errors.server_errors"> {{serverError}} </div>
 	</div>
 	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': deleteForm.tid.$touched && deleteForm.tid.$invalid || deleteForm.tid.$invalid && deleteForm.$submitted}" >
-		<label for="delete__tid">Tid</label>
-		<input type="number" class="form-control" id="delete__tid" name="tid" placeholder="Tid" ng-model="comment.deleteData.tid" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': deleteForm.cid.$touched && deleteForm.cid.$invalid || deleteForm.cid.$invalid && deleteForm.$submitted}" >
+		<label for="delete__cid">Cid</label>
+		<input type="number" class="form-control" id="delete__cid" name="cid" placeholder="Cid" ng-model="comment.deleteData.cid" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!deleteForm.tid.$touched && !deleteForm.$submitted || deleteForm.tid.$valid" >TID of the terms to delete</p>
-			<ng-messages class="error" ng-if="deleteForm.tid.$invalid && deleteForm.tid.$touched || deleteForm.$submitted" for="deleteForm.tid.$error">
+			<p class="description" ng-if="!deleteForm.cid.$touched && !deleteForm.$submitted || deleteForm.cid.$valid" >CID of the terms to delete</p>
+			<ng-messages class="error" ng-if="deleteForm.cid.$invalid && deleteForm.cid.$touched || deleteForm.$submitted" for="deleteForm.cid.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 				<ng-messages-include src="error-number"></ng-messages-include>
 			</ng-messages>

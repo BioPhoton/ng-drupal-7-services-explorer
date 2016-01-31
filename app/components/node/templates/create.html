@@ -65,5 +65,17 @@
 		</div>
 	</div>
 
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.field_custom_field.$touched && createForm.field_custom_field.$invalid || createForm.field_custom_field.$invalid && createForm.$submitted}">
+		<label for="create__field_custom_field">Custom Field</label>
+		<input type="field_custom_field" class="form-control" name="field_custom_field" id="create__field_custom_field" placeholder="custom_field" ng-model="node.createData.field_custom_field" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.field_custom_field.$touched && !createForm.$submitted || createForm.field_custom_field.$valid" >The nodes custom_field. ( Custom field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
+
+			<ng-messages class="error" ng-if="createForm.field_custom_field.$invalid && createForm.field_custom_field.$touched || createForm.$submitted" for="createForm.field_custom_field.$error">
+			</ng-messages>
+		</div>
+	</div>
+
 	<button class="btn btn-success" ng-click="node.doCreate(createForm)">create request</button>
 </form>

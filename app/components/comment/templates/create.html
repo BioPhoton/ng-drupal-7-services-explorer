@@ -25,42 +25,28 @@
 		</div>
 	</div>
 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.title.$touched && createForm.title.$invalid || createForm.title.$invalid && createForm.$submitted}">
-		<label for="create__title">Title</label>
-		<input type="text" class="form-control" name="title" id="create__title" placeholder="Title" ng-model="comment.createData.title" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.subject.$touched && createForm.subject.$invalid || createForm.subject.$invalid && createForm.$submitted}">
+		<label for="create__subject">Subject</label>
+		<input type="text" class="form-control" name="subject" id="create__subject" placeholder="Subject" ng-model="comment.createData.subject" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.title.$touched && !createForm.$submitted || createForm.title.$valid" >The comment title</p>
+			<p class="description" ng-if="!createForm.subject.$touched && !createForm.$submitted || createForm.subject.$valid" >The comment subject</p>
 
-			<ng-messages class="error" ng-if="createForm.title.$invalid && createForm.title.$touched || createForm.$submitted" for="createForm.title.$error">
+			<ng-messages class="error" ng-if="createForm.subject.$invalid && createForm.subject.$touched || createForm.$submitted" for="createForm.subject.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>
 	</div>
 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.body_value.$touched && createForm.body_value.$invalid || createForm.body_value.$invalid && createForm.$submitted}">
-		<label for="create__body_value">Body Value</label>
-		<textarea class="form-control" name="body_value" id="create__body_value" placeholder="Body Value" ng-model="comment.createData.body_value" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.comment_body_value.$touched && createForm.comment_body_value.$invalid || createForm.comment_body_value.$invalid && createForm.$submitted}">
+		<label for="create__comment_body_value">Body Value</label>
+		<textarea class="form-control" name="comment_body_value" id="create__comment_body_value" placeholder="Body Value" ng-model="comment.createData.comment_body_value" required>
 		</textarea>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!createForm.body_value.$touched && !createForm.$submitted || createForm.body_value.$valid" >The body value.</p>
+			<p class="description" ng-if="!createForm.comment_body_value.$touched && !createForm.$submitted || createForm.comment_body_value.$valid" >The body value.</p>
 
-			<ng-messages class="error" ng-if="createForm.body_value.$invalid && createForm.body_value.$touched || createForm.$submitted" for="createForm.body_value.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
-			</ng-messages>
-		</div>
-	</div>
-	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.body_summary.$touched && createForm.body_summary.$invalid || createForm.body_summary.$invalid && createForm.$submitted}">
-		<label for="create__body_summary">Body Summary</label>
-		<textarea class="form-control" name="body_summary" id="create__body_summary" placeholder="Body Summary" ng-model="comment.createData.body_summary" required>
-		</textarea>
-		<form-control-feedback></form-control-feedback>
-		<div class="help-block">
-			<p class="description" ng-if="!createForm.body_summary.$touched && !createForm.$submitted || createForm.body_summary.$valid" >The body summary</p>
-
-			<ng-messages class="error" ng-if="createForm.body_summary.$invalid && createForm.body_summary.$touched || createForm.$submitted" for="createForm.body_summary.$error">
+			<ng-messages class="error" ng-if="createForm.comment_body_value.$invalid && createForm.comment_body_value.$touched || createForm.$submitted" for="createForm.comment_body_value.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>

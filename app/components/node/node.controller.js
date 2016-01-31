@@ -181,19 +181,18 @@ angular
 	    
 	    //do create
 		function doCreate(createForm) {
-			NodeResource.create(vm.createData);
-
-			console.log(vm.createData);
+		
 			if(createForm.$valid) {
 				//format fields
-				vm.createData.body = DrupalHelperService.structureField({'value' : vm.createData.body_value, 'summary' : vm.createData.body_summary});
-				delete vm.createData.body_value;
-				delete vm.createData.body_summary;
-				console.log(vm.createData);
-				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
+				var formatedCreateData = angular.extend({}, vm.createData);
+				formatedCreateData.body = DrupalHelperService.structureField({'value' : formatedCreateData.body_value, 'summary' : formatedCreateData.body_summary});
+				delete formatedCreateData.body_value;
+				delete formatedCreateData.body_summary;
+				
+				formatedCreateData.field_custom_field = DrupalHelperService.structureField({'value' : formatedCreateData.field_custom_field});
 				
 				requestStart = Date.now();
-				NodeResource.create(vm.createData)
+				NodeResource.create(formatedCreateData)
 					.then(
 						//create success
 						function(data) { console.log('node create success'); },
@@ -223,11 +222,17 @@ angular
 	    //do update
 		function doUpdate(updateForm) {			
 			if(updateForm.$valid) {
+				
 				//format fields
-				vm.updateData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
+				var formatedUpdateData = angular.extend({}, vm.updateData);
+				formatedUpdateData.body = DrupalHelperService.structureField({'value' : formatedUpdateData.body_value, 'summary' : formatedUpdateData.body_summary});
+				delete formatedUpdateData.body_value;
+				delete formatedUpdateData.body_summary;
+				
+				formatedUpdateData.field_custom_field = DrupalHelperService.structureField({'value' : formatedUpdateData.field_custom_field});
 				
 				requestStart = Date.now();
-		   		NodeResource.update(vm.updateData)
+		   		NodeResource.update(formatedUpdateData)
 				    .then(
 			    		//update success
 			    		function(data) { console.log('node update success'); },

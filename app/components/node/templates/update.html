@@ -19,110 +19,55 @@
 		</div>
 	</div>
 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.name.$touched && updateForm.name.$invalid || updateForm.name.$invalid && updateForm.$submitted}">
-		<label for="update__name">Name</label>
-		<input type="text" class="form-control" name="name" id="update__name" placeholder="Name" ng-model="node.updateData.name" ng-maxlength="60" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.title.$touched && updateForm.title.$invalid || updateForm.title.$invalid && updateForm.$submitted}">
+		<label for="update__title">Title</label>
+		<input type="text" class="form-control" name="title" id="update__title" placeholder="Title" ng-model="node.updateData.title" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!updateForm.name.$touched && !updateForm.$submitted || updateForm.name.$valid" >The node name</p>
+			<p class="description" ng-if="!updateForm.title.$touched && !updateForm.$submitted || updateForm.title.$valid" >The node title</p>
 
-			<ng-messages class="error" ng-if="updateForm.name.$invalid && updateForm.name.$touched || updateForm.$submitted" for="updateForm.name.$error">
+			<ng-messages class="error" ng-if="updateForm.title.$invalid && updateForm.title.$touched || updateForm.$submitted" for="updateForm.title.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
-				
-				<div ng-message="maxlength">
-					Your nodename must be less than 61 characters long
-				</div>
 			</ng-messages>
 		</div>
 	</div>
 
-	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.email.$touched && updateForm.email.$invalid || updateForm.email.$invalid && updateForm.$submitted}">
-		<label for="update__email">Email</label> 
-		<input type="email" class="form-control" name="email" id="update__email" placeholder="Email" ng-model="node.updateData.mail" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.body_value.$touched && updateForm.body_value.$invalid || updateForm.body_value.$invalid && updateForm.$submitted}">
+		<label for="update__body_value">Body Value</label>
+		<textarea class="form-control" name="body_value" id="update__body_value" placeholder="Body Value" ng-model="node.updateData.body_value" required>
+		</textarea>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p class="description" ng-if="!updateForm.email.$touched && !updateForm.$submitted || updateForm.email.$valid" >The email address</p>
+			<p class="description" ng-if="!updateForm.body_value.$touched && !updateForm.$submitted || updateForm.body_value.$valid" >The body value.</p>
 
-			<ng-messages class="error" ng-if="updateForm.email.$invalid && updateForm.email.$touched || updateForm.$submitted" for="updateForm.email.$error">
+			<ng-messages class="error" ng-if="updateForm.body_value.$invalid && updateForm.body_value.$touched || updateForm.$submitted" for="updateForm.body_value.$error">
 				<ng-messages-include src="error-required"></ng-messages-include>
-				<ng-messages-include src="error-email"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.body_summary.$touched && updateForm.body_summary.$invalid || updateForm.body_summary.$invalid && updateForm.$submitted}">
+		<label for="update__body_summary">Body Summary</label>
+		<textarea class="form-control" name="body_summary" id="update__body_summary" placeholder="Body Summary" ng-model="node.updateData.body_summary" required>
+		</textarea>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!updateForm.body_summary.$touched && !updateForm.$submitted || updateForm.body_summary.$valid" >The body summary</p>
+
+			<ng-messages class="error" ng-if="updateForm.body_summary.$invalid && updateForm.body_summary.$touched || updateForm.$submitted" for="updateForm.body_summary.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
 			</ng-messages>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label class="control-label" for="update__status">Status</label>
-		<label class="radio-inline">
-			<input type="radio" name="update__status" id="blocked" ng-model="node.updateData.status" value="0"> blocked
-		</label>
-		<label class="radio-inline">
-			<input type="radio" name="update__status" id="active" ng-model="node.updateData.status" value="1" > active
-		</label>
-		<div class="help-block">
-			<div>Value 0 for blocked, otherwise will be active by default</div>
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<label class="control-label" for="update__notify">Notify</label>
-		<label class="radio-inline">
-			<input type="radio" name="update__notify" id="notification" ng-model="node.updateData.notify" value="0"> no node notification
-		</label>
-		<label class="radio-inline">
-			<input type="radio" name="update__notify" id="no_notification" ng-model="node.updateData.notify" value="1"> node notification
-		</label>
-		<div class="help-block">
-			<div>Value 1 to notify node of new account, will not notify by default</div>
-		</div>
-	</div>
-	
-	<div class="form-group">
-		<label ng-click="node.updateRolesColapsed = !node.updateRolesColapsed">Roles (optional) <span class="caret" ng-class="{true:'down',false:'up'}[node.updateRolesColapsed]"></span></label> 
-	</div>
-	<div class="well collapse" ng-class="!node.updateRolesColapsed && 'in'"> 
-		<div class="form-group">
-
-			<div class="checkbox disabled">
-				<label>
-					<input type="checkbox" name="update__role__anonymous_node" disabled>
-					anonymous node (not available)
-				</label>
-			</div>
-
-			<div class="checkbox disabled">
-				<label>
-					<input type="checkbox" name="update__role__authenticated_node" disabled>
-					authenticated node (not available)
-				</label>
-			</div>
-
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" name="update__role__administrator" ng-model="node.updateData.roles.administrator" ng-true-value="'3'">
-					administrator
-				</label>
-			</div>
-			
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" name="update__role__editor" ng-model="node.updateData.roles.editor" ng-true-value="'4'">
-					editor (custom updated role)
-				</label>
-			</div>
-
-		</div>
-
-	</div>
-	
-	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.field_nickname.$touched && updateForm.field_nickname.$invalid || updateForm.field_nickname.$invalid && updateForm.$submitted}">
-		<label for="update__field_nickname">Nickname</label> 
-		<input type="field_nickname" class="form-control" name="field_nickname" id="update__field_nickname" placeholder="Nickname" ng-model="node.updateData.field_nickname" required>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.field_custom_field.$touched && updateForm.field_custom_field.$invalid || updateForm.field_custom_field.$invalid && updateForm.$submitted}">
+		<label for="update__field_custom_field">Custom Field</label>
+		<input type="field_custom_field" class="form-control" name="field_custom_field" id="update__field_custom_field" placeholder="custom_field" ng-model="node.updateData.field_custom_field" required>
 		<form-control-feedback></form-control-feedback>
 		<div class="help-block">
-			<p  class="description" ng-if="!updateForm.field_nickname.$touched && !updateForm.$submitted || updateForm.field_nickname.$valid" >The node's nickname. ( Custom created field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
+			<p class="description" ng-if="!updateForm.field_custom_field.$touched && !updateForm.$submitted || updateForm.field_custom_field.$valid" >The nodes custom_field. ( Custom field. Needs to be <a target="_blank" href="https://www.drupal.org/node/1354202" >formated properly</a>. )</p>
 
-			<ng-messages class="error" ng-if="updateForm.field_nickname.$invalid && updateForm.field_nickname.$touched || updateForm.$submitted" for="updateForm.field_nickname.$error">
-				<ng-messages-include src="error-required"></ng-messages-include>
+			<ng-messages class="error" ng-if="updateForm.field_custom_field.$invalid && updateForm.field_custom_field.$touched || updateForm.$submitted" for="updateForm.field_custom_field.$error">
 			</ng-messages>
 		</div>
 	</div>

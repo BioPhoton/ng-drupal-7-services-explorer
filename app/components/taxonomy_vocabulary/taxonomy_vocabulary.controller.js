@@ -178,9 +178,10 @@ angular
 		//update request
 	    
 	    //do update
-		function doUpdate(updateForm) {			
+		function doUpdate(updateForm) {		
+			console.log(updateForm); 
 			if(updateForm.$valid) {
-				
+				console.log(updateForm); 
 				requestStart = Date.now();
 		   		TaxonomyVocabularyResource.update(vm.updateData)
 				    .then(
