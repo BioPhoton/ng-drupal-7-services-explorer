@@ -5,7 +5,7 @@
 			The <a href="https://www.drupal.org/project/services" target="_blank">services 3.x module</a> consists of following resources:
 		</p>
 		<ul>
-			<li>Comments</li>
+			<li>Comment</li>
 			<li>File</li>
 			<li>Node</li>
 			<li>System</li>
@@ -17,8 +17,8 @@
 	<hr/>
 	
 	<ul id="services-3x-tabs" class="nav nav-tabs nav-justified">
-		<li ui-sref-active="active"  class="disabled">
-			<a>Comments</a>
+		<li ui-sref-active="active"  >
+			<a ui-sref="app.services_3x.comment.retrieve">Comment</a>
 		</li>
 		<li ui-sref-active="active">
 			<a ui-sref="app.services_3x.file.retrieve">File</a>
@@ -29,11 +29,11 @@
         <li ui-sref-active="active">
         	<a ui-sref="app.services_3x.system.connect">System</a>
         </li>
-        <li ui-sref-active="active" class="disabled">
-        	<a>Taxonomy Terms</a>
+        <li ui-sref-active="active" >
+        	<a ui-sref="app.services_3x.taxonomy_term.retrieve">Taxonomy Term</a>
         </li>
-        <li ui-sref-active="active" class="disabled">
-        	<a>Taxonomy Vocabulary</a>
+        <li ui-sref-active="active">
+        	<a ui-sref="app.services_3x.taxonomy_vocabulary.retrieve">Taxonomy Vocabulary</a>
         </li>
         <li ui-sref-active="active">
        	 	<a ui-sref="app.services_3x.user.retrieve" >User</a>
@@ -41,10 +41,13 @@
 	</ul>
 	
 	<div class="tabs-content">
+		<ui-view name="comment"></ui-view>
 		<ui-view name="user"></ui-view>
 		<ui-view name="node"></ui-view>
 		<ui-view name="system" ></ui-view>
 		<ui-view name="file" ></ui-view>
+		<ui-view name="taxonomy_term" ></ui-view>
+		<ui-view name="taxonomy_vocabulary" ></ui-view>
 	</div>
 	
 </div>

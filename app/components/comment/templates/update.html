@@ -1,0 +1,56 @@
+<h2>Update request</h2>
+<p>
+	Update a new comment.<br/>
+	This function uses drupal_form_submit() and as such expects all input to match the submitting form in question.</br>
+	see <code>services/resources/comment_resource.inc => _comment_resource_update()</code>
+</p>
+<accordion close-others="oneAtATime"> <accordion-group
+		heading="Update Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+		ng-repeat="(key,request) in comment.updateRequests"> <ng-include
+		src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="updateForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.cid.$touched && updateForm.cid.$invalid || updateForm.cid.$invalid && updateForm.$submitted }" >
+		<label for="retrieve__cid">Cid</label>
+		<input type="number" class="form-control" id="retrieve__cid" name="cid" placeholder="Cid" ng-model="comment.updateData.cid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!updateForm.cid.$touched && !updateForm.$submitted || updateForm.cid.$valid" >CID of the Comment to update</p>
+						
+			<ng-messages class="error" ng-if="updateForm.cid.$invalid && updateForm.cid.$touched || updateForm.$submitted" for="updateForm.cid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.subject.$touched && updateForm.subject.$invalid || updateForm.subject.$invalid && updateForm.$submitted}">
+		<label for="update__subject">Subject</label>
+		<input type="text" class="form-control" name="subject" id="update__subject" placeholder="Subject" ng-model="comment.updateData.subject" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!updateForm.subject.$touched && !updateForm.$submitted || updateForm.subject.$valid" >The comment subject</p>
+
+			<ng-messages class="error" ng-if="updateForm.subject.$invalid && updateForm.subject.$touched || updateForm.$submitted" for="updateForm.subject.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': updateForm.comment_body_value.$touched && updateForm.comment_body_value.$invalid || updateForm.comment_body_value.$invalid && updateForm.$submitted}">
+		<label for="update__comment_body_value">Body Value</label>
+		<textarea class="form-control" name="comment_body_value" id="update__comment_body_value" placeholder="Body Value" ng-model="comment.updateData.comment_body_value" required>
+		</textarea>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!updateForm.comment_body_value.$touched && !updateForm.$submitted || updateForm.comment_body_value.$valid" >The body value.</p>
+
+			<ng-messages class="error" ng-if="updateForm.comment_body_value.$invalid && updateForm.comment_body_value.$touched || updateForm.$submitted" for="updateForm.comment_body_value.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="comment.doUpdate(updateForm)">update request</button>
+</form>

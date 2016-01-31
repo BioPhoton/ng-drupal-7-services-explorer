@@ -3,7 +3,7 @@
 
 
 angular
-    .module('ngDrupalServicesTests.authentication.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.serviceConstant', 'ngDrupal7Services-3_x.commons.authentication.channel', 'commons.filters.ifEmpty'])
+    .module('ngDrupalServicesTests.authentication.controller', ['d7-services.commons.authentication.service', 'd7-services.commons.authentication.serviceConstant', 'd7-services.commons.authentication.channel', 'commons.filters.ifEmpty'])
     .controller('AuthenticationController', AuthenticationController);
 
 	AuthenticationController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel', 'AuthenticationServiceConstant', '$filter'];
@@ -22,7 +22,6 @@ angular
 		//AuthenticationServiceConstant
 		vm.roles = AuthenticationServiceConstant.roles;
 		vm.accessLevels = AuthenticationServiceConstant.accessLevels;
-		console.log('AuthenticationServiceConstant.accessLevels',AuthenticationServiceConstant.accessLevels); 
 		vm.selectedAccessLevel = 'public';
 		vm.rolesOptions = {};
 		
@@ -55,9 +54,9 @@ angular
 		// test request
 		vm.doLogin = doLogin;
 		// test the login on confirm event
-		AuthenticationChannel.subAuthenticationLoginConfirmed($scope, subAuthenticationLoginConfirmedCallback);
+		AuthenticationChannel.subLoginConfirmed($scope, subLoginConfirmedCallback);
 		// test the login on failed event
-		AuthenticationChannel.subAuthenticationLoginFailed($scope, subAuthenticationLoginFailedCallback);
+		AuthenticationChannel.subLoginFailed($scope, subLoginFailedCallback);
 
 	    //__________________________________________________________________________________________________
 		
@@ -95,9 +94,9 @@ angular
 		// test request
 		vm.doLogout = doLogout;
 		// test the token on confirm event
-		AuthenticationChannel.subAuthenticationLogoutConfirmed($scope, subAuthenticationLogoutConfirmedCallback);
+		AuthenticationChannel.subLogoutConfirmed($scope, subLogoutConfirmedCallback);
 		// test the token on failed event
-	    AuthenticationChannel.subAuthenticationLogoutFailed($scope, subAuthenticationLogoutFailedCallback);
+	    AuthenticationChannel.subLogoutFailed($scope, subLogoutFailedCallback);
 
 	    //__________________________________________________________________________________________________
 	    
@@ -109,9 +108,9 @@ angular
 		// test request
 		vm.doRefreshConnection = doRefreshConnection;
 		// test the token on confirm event
-		AuthenticationChannel.subAuthenticationRefreshConnectionConfirmed($scope, subAuthenticationRefreshConnectionConfirmedCallback);
+		AuthenticationChannel.subRefreshConnectionConfirmed($scope, subRefreshConnectionConfirmedCallback);
 		// test the token on failed event
-	    AuthenticationChannel.subAuthenticationRefreshConnectionFailed($scope, subAuthenticationRefreshConnectionFailedCallback);
+	    AuthenticationChannel.subRefreshConnectionFailed($scope, subRefreshConnectionFailedCallback);
 
 	    //__________________________________________________________________________________________________
 	  
@@ -134,7 +133,7 @@ angular
 		// test request
 		vm.doGetConnectionState = doGetConnectionState;
 		// test connectionState updated event
-		AuthenticationChannel.subAuthenticationConnectionStateUpdated($scope, subAuthenticationConnectionStateUpdatedCallback);
+		AuthenticationChannel.subConnectionStateUpdated($scope, subConnectionStateUpdatedCallback);
 
 	    //__________________________________________________________________________________________________
 		
@@ -158,7 +157,7 @@ angular
 		vm.doGetCurrentUser = doGetCurrentUser;
 		
 		// test connectionState updated event
-		AuthenticationChannel.subAuthenticationCurrentUserUpdated($scope, subAuthenticationCurrentUserUpdatedCallback);
+		AuthenticationChannel.subCurrentUserUpdated($scope, subCurrentUserUpdatedCallback);
 
 	    //__________________________________________________________________________________________________
 		
@@ -189,15 +188,15 @@ angular
 		};
 		
 		// confirm callback
-		function subAuthenticationLoginConfirmedCallback(data) { 
+		function subLoginConfirmedCallback(data) { 
 			requestEnd = Date.now();
-			console.log('subAuthenticationLoginConfirmed'); 
+			console.log('subLoginConfirmed'); 
 			vm.loginRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
 		}
 		// failed callback
-		function subAuthenticationLoginFailedCallback(data) { 
+		function subLoginFailedCallback(data) { 
 			requestEnd = Date.now();
-			console.log('subAuthenticationLoginFailed', data); 
+			console.log('subLoginFailed', data); 
 			vm.loginRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
@@ -218,15 +217,15 @@ angular
 		};
 		
 		// confirm callback
-		function subAuthenticationLogoutConfirmedCallback(data) { 
+		function subLogoutConfirmedCallback(data) { 
 			requestEnd = Date.now();
-			console.log('subAuthenticationLogoutConfirmed'); 
+			console.log('subLogoutConfirmed'); 
 			vm.logoutRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
 		}
 		// failed callback
-		function subAuthenticationLogoutFailedCallback(data) { 
+		function subLogoutFailedCallback(data) { 
 			requestEnd = Date.now();
-			console.log('subAuthenticationLogoutFailed'); 
+			console.log('subLogoutFailed'); 
 			vm.logoutRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
@@ -246,15 +245,15 @@ angular
 		};
 		
 		// confirm callback
-		function subAuthenticationRefreshConnectionConfirmedCallback(data) { 
+		function subRefreshConnectionConfirmedCallback(data) { 
 			requestEnd = Date.now();
-			console.log('subAuthenticationRefreshConnectionConfirmedCallback'); 
+			console.log('subRefreshConnectionConfirmedCallback'); 
 			vm.refreshConnectionRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
 		}
 		// failed callback
-		function subAuthenticationRefreshConnectionFailedCallback(data) { 
+		function subRefreshConnectionFailedCallback(data) { 
 			requestEnd = Date.now();
-			console.log('subAuthenticationRefreshConnectionFailedCallback'); 
+			console.log('subRefreshConnectionFailedCallback'); 
 			vm.refreshConnectionRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
@@ -280,8 +279,8 @@ angular
 		};
 		
 		// confirm callback
-		function subAuthenticationConnectionStateUpdatedCallback(data) { 
-			console.log('subAuthenticationConnectionStateUpdatedCallback'); 
+		function subConnectionStateUpdatedCallback(data) { 
+			console.log('subConnectionStateUpdatedCallback'); 
 			vm.connectionStateChanges.push({timeOfChange: Date.now(), from: vm.currentConnectionState, to: data});    
 			vm.currentConnectionState = data;
 		}
@@ -305,8 +304,8 @@ angular
 		};
 		
 		// confirm callback
-		function subAuthenticationCurrentUserUpdatedCallback(data) { 
-			console.log('subAuthenticationCurrentUserUpdatedCallback'); 
+		function subCurrentUserUpdatedCallback(data) { 
+			console.log('subCurrentUserUpdatedCallback'); 
 			vm.currentUserChanges.push({timeOfChange: Date.now(), from: vm.currentUser, to: data});
 			vm.currentUser = data;
 		}

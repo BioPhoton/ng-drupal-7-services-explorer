@@ -3,7 +3,7 @@
 
 
 angular
-    .module('ngDrupalServicesTests.user.controller', ['ngDrupal7Services-3_x.resources.user.resource', 'ngDrupal7Services-3_x.resources.user.channel', 'ngDrupal7Services-3_x.commons.helperService'])
+    .module('ngDrupalServicesTests.user.controller', ['d7-services.resources.user.resource', 'd7-services.resources.user.channel', 'd7-services.commons.helperService'])
     .controller('UserController', UserController);
 
 	UserController.$inject = ['$scope', 'UserResource', 'UserChannel', 'DrupalHelperService'];

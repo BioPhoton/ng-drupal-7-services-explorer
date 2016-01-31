@@ -1,0 +1,38 @@
+<h2>Retrieve request</h2>
+<p>
+Get taxonomy_term details.<br/>
+see <code>services/resources/taxonomy_term_resource.inc => _taxonomy_term_resource_retrieve()</code>
+</p>
+
+<blockquote class="bg-warning">
+	<h4>It's possible to get following error here if you require a term that not exist:</h4>
+	<small>
+	<b>Fatal error</b>:  __clone method called on non-object in <b>/paths/to/your/system/sites/all/modules/services/services.module</b> on line <b>1022</b><br />
+	</small>
+	<br/>
+	@TODO find patch
+</blockquote>
+
+<accordion close-others="oneAtATime">
+	<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in taxonomy_term.retrieveRequests">
+	   <ng-include src="'app/templates/request/request.html'"></ng-include>
+	</accordion-group>
+</accordion>
+ 	
+<form name="retrieveForm" novalidate>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.tid.$touched && retrieveForm.tid.$invalid || retrieveForm.tid.$invalid && retrieveForm.$submitted }" >
+		<label for="retrieve__tid">Tid</label>
+		<input type="number" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="taxonomy_term.retrieveData.tid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!retrieveForm.tid.$touched && !retrieveForm.$submitted || retrieveForm.tid.$valid" >TID of the taxonomy_term to be loaded</p>
+						
+			<ng-messages class="error" ng-if="retrieveForm.tid.$invalid && retrieveForm.tid.$touched || retrieveForm.$submitted" for="retrieveForm.tid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	<button class="btn btn-success" ng-click="taxonomy_term.doRetrieve(retrieveForm)">retrieve request</button>
+</form>

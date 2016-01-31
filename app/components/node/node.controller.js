@@ -3,7 +3,7 @@
 
 
 angular
-    .module('ngDrupalServicesTests.node.controller', ['ngDrupal7Services-3_x.resources.node.resource', 'ngDrupal7Services-3_x.resources.node.channel', 'ngDrupal7Services-3_x.commons.helperService'])
+    .module('ngDrupalServicesTests.node.controller', ['d7-services.resources.node.resource', 'd7-services.resources.node.channel', 'd7-services.commons.helperService'])
     .controller('NodeController', NodeController);
 
 	NodeController.$inject = ['$scope', 'NodeResource', 'NodeChannel', 'DrupalHelperService'];
@@ -14,8 +14,6 @@ angular
 		var requestEnd = 0;
 		var requestStart = 0;
 		
-		
-		
 		// jshint validthis: true 
 		var vm = this;
 		vm.descriptionColapsed = true;
@@ -24,9 +22,7 @@ angular
 		
 		//store requests
 		vm.retrieveRequests = [];
-		vm.retrieveData = {
-				nid : ''
-		};
+		vm.retrieveData = {};
 		//test request and event callbacks
 		vm.doRetrieve = doRetrieve;
 		//test the retrieve on confirm event
@@ -40,9 +36,7 @@ angular
 		
 		//store requests
 		vm.createRequests = [];
-		vm.createData = {
-				
-		};
+		vm.createData = {};
 		//test request and event callbacks
 		vm.doCreate = doCreate;
 		//test the create on confirm event
@@ -71,9 +65,7 @@ angular
 		//store requests
 		vm.deleteRequests = [];
 		vm.deleteErrors = {}
-		vm.deleteData = {
-				nid : '',
-		};
+		vm.deleteData = {};
 		//test request and event callbacks
 		vm.doDelete = doDelete;
 		//test the delete on confirm event
@@ -109,9 +101,7 @@ angular
 		//store requests
 		vm.filesRequests = [];
 		vm.filesErrors = {}
-		vm.filesData = {
-				nid : '',
-		};
+		vm.filesData = {};
 		//test request and event callbacks
 		vm.doFiles = doFiles;
 		//test the delete on confirm event
@@ -143,9 +133,7 @@ angular
 		//store requests
 		vm.attachFileRequests = [];
 		vm.attachFileErrors = {}
-		vm.attachFileData = {
-				nid : '',
-		};
+		vm.attachFileData = {};
 		//test request and event callbacks
 		vm.doAttachFile = doAttachFile;
 		//test the delete on confirm event
@@ -193,14 +181,18 @@ angular
 	    
 	    //do create
 		function doCreate(createForm) {
-			console.log('SDF'); 
+		
 			if(createForm.$valid) {
-				console.log('SDF');
 				//format fields
-				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
+				var formatedCreateData = angular.extend({}, vm.createData);
+				formatedCreateData.body = DrupalHelperService.structureField({'value' : formatedCreateData.body_value, 'summary' : formatedCreateData.body_summary});
+				delete formatedCreateData.body_value;
+				delete formatedCreateData.body_summary;
+				
+				formatedCreateData.field_custom_field = DrupalHelperService.structureField({'value' : formatedCreateData.field_custom_field});
 				
 				requestStart = Date.now();
-				NodeResource.create(vm.createData)
+				NodeResource.create(formatedCreateData)
 					.then(
 						//create success
 						function(data) { console.log('node create success'); },
@@ -230,11 +222,17 @@ angular
 	    //do update
 		function doUpdate(updateForm) {			
 			if(updateForm.$valid) {
+				
 				//format fields
-				vm.updateData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
+				var formatedUpdateData = angular.extend({}, vm.updateData);
+				formatedUpdateData.body = DrupalHelperService.structureField({'value' : formatedUpdateData.body_value, 'summary' : formatedUpdateData.body_summary});
+				delete formatedUpdateData.body_value;
+				delete formatedUpdateData.body_summary;
+				
+				formatedUpdateData.field_custom_field = DrupalHelperService.structureField({'value' : formatedUpdateData.field_custom_field});
 				
 				requestStart = Date.now();
-		   		NodeResource.update(vm.updateData)
+		   		NodeResource.update(formatedUpdateData)
 				    .then(
 			    		//update success
 			    		function(data) { console.log('node update success'); },

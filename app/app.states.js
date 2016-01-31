@@ -15,10 +15,13 @@ angular
                                              'ngDrupalServicesTests.authentication.states',
                                              
                                              //services_3x
+                                             'ngDrupalServicesTests.comment.states',
                                              'ngDrupalServicesTests.system.states',
                                              'ngDrupalServicesTests.user.states',
                                              'ngDrupalServicesTests.node.states',
                                              'ngDrupalServicesTests.file.states',
+                                             'ngDrupalServicesTests.taxonomy_term.states',
+                                             'ngDrupalServicesTests.taxonomy_vocabulary.states',
                                              
                                              //services_views
                                              'ngDrupalServicesTests.views.states'
@@ -93,11 +96,10 @@ angular
 			      }
 			    }
         });
-        
        
-       
-		
 	};
+	
+
 
 })();
 

@@ -3,7 +3,7 @@
 
 
 angular
-    .module('ngDrupalServicesTests.file.controller', ['ngDrupal7Services-3_x.resources.file.resource', 'ngDrupal7Services-3_x.resources.file.channel', 'ngDrupal7Services-3_x.commons.helperService'])
+    .module('ngDrupalServicesTests.file.controller', ['d7-services.resources.file.resource', 'd7-services.resources.file.channel', 'd7-services.commons.helperService'])
     .controller('FileController', FileController);
 
 	FileController.$inject = ['$scope', 'FileResource', 'FileChannel', 'DrupalHelperService'];
@@ -48,6 +48,7 @@ angular
 		vm.createData.filename = 'drupal.jpg';
 		vm.createData.filesize = vm.createData.file.length;
 		vm.createData.filepath = 'content/node/20/';
+		vm.createData.filemime = "image/jpeg",
 		vm.createData.image_file_name = 'drupal image';
 		
 		//test request and event callbacks
@@ -153,9 +154,7 @@ angular
 		function doCreate(createForm) {
 
 			if(createForm.$valid) {
-				//format fields
-				vm.createData.field_nickname = DrupalHelperService.structureField(vm.createData.field_nickname);
-				
+			
 				requestStart = Date.now();
 				FileResource.create(vm.createData)
 					.then(

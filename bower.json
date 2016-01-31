@@ -4,7 +4,7 @@
   "authors": [
     "Michael Hladky <michael@hladky.at>"
   ],
-  "description": "ready to use angular project to test your api setup",
+  "description": "A ready to use angular project to test your api setup",
   "license": "MIT",
   "ignore": [
     "**/.*",

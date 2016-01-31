@@ -1,0 +1,39 @@
+<h2>CountNew request</h2>
+<p>
+Get comment countNew.<br/>
+see <code>services/resources/comment_resource.inc => _comment_resource_countNew()</code>
+</p>
+
+<blockquote class="bg-warning">
+	<h4>It's possible to get following error here if you require a term that not exist:</h4>
+	<small>
+	<b>Fatal error</b>:  __clone method called on non-object in <b>/paths/to/your/system/sites/all/modules/services/services.module</b> on line <b>1022</b><br />
+	</small>
+	<br/>
+	@TODO find patch
+</blockquote>
+
+
+
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="countNew Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in comment.countNewRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="countNewForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': countNewForm.nid.$touched && countNewForm.nid.$invalid || countNewForm.nid.$invalid && countNewForm.$submitted}" >
+		<label for="countNew__nid">Nid</label>
+		<input type="number" class="form-control" id="countNew__nid" name="nid" placeholder="Nid" ng-model="comment.countNewData.nid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!countNewForm.nid.$touched && !countNewForm.$submitted || countNewForm.nid.$valid" >The NID to count all new comments.</p>
+			<ng-messages class="error" ng-if="countNewForm.nid.$invalid && countNewForm.nid.$touched || countNewForm.$submitted" for="countNewForm.nid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="comment.doCountNew(countNewForm)">countNew request</button>
+</form>

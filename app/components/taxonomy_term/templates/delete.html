@@ -1,0 +1,26 @@
+<h2>Delete request</h2>
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="Delete Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in taxonomy_term.deleteRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+	
+<form name="deleteForm" novalidate>
+	<div class="form-errors">
+		<div class="alert alert-danger fade in " ng-repeat="serverError in taxonomy_term.deleteErrors.errors.server_errors"> {{serverError}} </div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': deleteForm.tid.$touched && deleteForm.tid.$invalid || deleteForm.tid.$invalid && deleteForm.$submitted}" >
+		<label for="delete__tid">Tid</label>
+		<input type="number" class="form-control" id="delete__tid" name="tid" placeholder="Tid" ng-model="taxonomy_term.deleteData.tid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!deleteForm.tid.$touched && !deleteForm.$submitted || deleteForm.tid.$valid" >TID of the terms to delete</p>
+			<ng-messages class="error" ng-if="deleteForm.tid.$invalid && deleteForm.tid.$touched || deleteForm.$submitted" for="deleteForm.tid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="taxonomy_term.doDelete(deleteForm)">delete request</button>
+</form>

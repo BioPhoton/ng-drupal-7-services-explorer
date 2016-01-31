@@ -1,0 +1,84 @@
+<h2>Create request</h2>
+<p>
+	Create a new taxonomy_term.<br/>
+	This function uses drupal_form_submit() and as such expects all input to match the submitting form in question.</br>
+	see <code>services/resources/taxonomy_term_resource.inc => _taxonomy_term_resource_create()</code>
+</p>
+<accordion close-others="oneAtATime"> <accordion-group
+		heading="Create Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+		ng-repeat="(key,request) in taxonomy_term.createRequests"> <ng-include
+		src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="createForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.vid.$touched && createForm.vid.$invalid || createForm.vid.$invalid && createForm.$submitted}">
+		<label class="control-label" for="create__parent">Vid</label>
+		<input type="number" class="form-control" name="vid" id="create__vid" placeholder="Vid" ng-model="taxonomy_term.createData.vid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description">VID of the taxonomy terms vocabolary</p>
+		</div>
+		<ng-messages class="error" ng-if="createForm.vid.$invalid && createForm.vid.$touched || createForm.$submitted" for="createForm.vid.$error">
+			<ng-messages-include src="error-number"></ng-messages-include>
+		</ng-messages>
+	</div>
+	
+
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.name.$touched && createForm.name.$invalid || createForm.name.$invalid && createForm.$submitted}">
+		<label for="create__name">Name</label>
+		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="taxonomy_term.createData.name" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The terms name</p>
+
+			<ng-messages class="error" ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.description.$touched && createForm.description.$invalid || createForm.description.$invalid && createForm.$submitted}">
+		<label for="create__description">Description</label>
+		<input type="text" class="form-control" name="description" id="create__description" placeholder="Description" ng-model="taxonomy_term.createData.description" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.description.$touched && !createForm.$submitted || createForm.description.$valid" >The description of the term</p>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.weight.$touched && createForm.weight.$invalid || createForm.weight.$invalid && createForm.$submitted}">
+		<label for="create__weight">Weight</label>
+		<input type="number" class="form-control" name="weight" id="create__weight" placeholder="Weight" ng-model="taxonomy_term.createData.weight" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.weight.$touched && !createForm.$submitted || createForm.weight.$valid">The weight/order of term</p>
+			<ng-messages class="error" ng-if="createForm.weight.$invalid && createForm.weight.$touched || createForm.$submitted" for="createForm.weight.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.parent.$touched && createForm.parent.$invalid || createForm.parent.$invalid && createForm.$submitted}">
+		<label class="control-label" for="create__parent">Parent</label>
+		<input type="number" class="form-control" name="parent" id="create__parent" placeholder="Parent" ng-model="taxonomy_term.createData.parent" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description">Parent term tid.</p>
+		</div>
+		<ng-messages class="error" ng-if="createForm.parent.$invalid && createForm.parent.$touched || createForm.$submitted" for="createForm.parent.$error">
+					<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.format.$touched && createForm.format.$invalid || createForm.format.$invalid && createForm.$submitted}">
+		<label class="control-label" for="create__format">Format</label>
+		<input type="text" class="form-control" name="format" id="create__format" placeholder="Format" ng-model="taxonomy_term.createData.format">
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description">Format of description</p>
+		</div>
+	</div>
+	
+	<button class="btn btn-success" ng-click="taxonomy_term.doCreate(createForm)">create request</button>
+</form>

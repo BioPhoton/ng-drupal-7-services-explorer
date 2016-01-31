@@ -1,0 +1,76 @@
+<h2>SelectNodes request</h2>
+<p>
+Get taxonomy_term selectNodes.<br/>
+see <code>services/resources/taxonomy_term_resource.inc => _taxonomy_term_resource_selectNodes()</code>
+</p>
+
+<blockquote class="bg-warning">
+	<h4>It's possible to get following error here if you require a term that not exist:</h4>
+	<small>
+	<b>Fatal error</b>:  __clone method called on non-object in <b>/paths/to/your/system/sites/all/modules/services/services.module</b> on line <b>1022</b><br />
+	</small>
+	<br/>
+	@TODO find patch
+</blockquote>
+
+
+
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="SelectNodes Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in taxonomy_term.selectNodesRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="selectNodesForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.tid.$touched && selectNodesForm.tid.$invalid || selectNodesForm.tid.$invalid && selectNodesForm.$submitted }" >
+		<label for="retrieve__tid">Tid</label>
+		<input type="number" class="form-control" id="retrieve__tid" name="tid" placeholder="Tid" ng-model="taxonomy_term.selectNodesData.tid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!selectNodesForm.tid.$touched && !selectNodesForm.$submitted || selectNodesForm.tid.$valid" >The vocabulary ids to retrieve, separated by comma.</p>
+						
+			<ng-messages class="error" ng-if="selectNodesForm.tid.$invalid && selectNodesForm.tid.$touched || selectNodesForm.$submitted" for="selectNodesForm.tid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.pager.$touched && selectNodesForm.pager.$invalid || selectNodesForm.pager.$invalid && selectNodesForm.$submitted}" >
+		<label for="index__pager">Page</label>
+		<input type="number" class="form-control" id="index__pager" name="pager" placeholder="Pager" ng-model="taxonomy_term.selectNodesData.pager" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p  class="description" ng-if="!selectNodesForm.pager.$touched && !selectNodesForm.$submitted || selectNodesForm.pager.$valid" >Whether the nodes are to be used with a pager (the case on most Drupal pagers) or not (in an XML feed, for example).</p>
+			<ng-messages  class="error" ng-if="selectNodesForm.pager.$invalid && selectNodesForm.pager.$touched || selectNodesForm.$submitted" for="selectNodesForm.pager.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.limit.$touched && selectNodesForm.limit.$invalid || selectNodesForm.limit.$invalid && selectNodesForm.$submitted}" >
+		<label for="index__limit">Limit</label>
+		<input type="number" class="form-control" id="index__limit" name="limit" placeholder="Limit" ng-model="taxonomy_term.selectNodesData.limit" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!selectNodesForm.limit.$touched && !selectNodesForm.$submitted || selectNodesForm.limit.$valid" >Maximum number of nodes to find.</p>
+			<ng-messages class="error" ng-if="selectNodesForm.limit.$invalid && selectNodesForm.limit.$touched || selectNodesForm.$submitted" for="selectNodesForm.limit.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': selectNodesForm.order.$touched && selectNodesForm.order.$invalid || selectNodesForm.order.$invalid && selectNodesForm.$submitted}" >
+		<label for="index__order">Limit</label>
+		<input type="number" class="form-control" id="index__order" name="order" placeholder="Order" ng-model="taxonomy_term.selectNodesData.order" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!selectNodesForm.order.$touched && !selectNodesForm.$submitted || selectNodesForm.order.$valid" >The order clause for the query that retrieve the nodes.</p>
+			<ng-messages class="error" ng-if="selectNodesForm.order.$invalid && selectNodesForm.order.$touched || selectNodesForm.$submitted" for="selectNodesForm.order.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="taxonomy_term.doSelectNodes(selectNodesForm)">selectNodes request</button>
+</form>

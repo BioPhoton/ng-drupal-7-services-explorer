@@ -2,7 +2,7 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.views.controller', ['ngDrupal7Services-3_x.resources.views.resource', 'ngDrupal7Services-3_x.resources.views.channel', 'ngDrupal7Services-3_x.resources.views.operatorsConstant'])
+    .module('ngDrupalServicesTests.views.controller', ['d7-services.resources.views.resource', 'd7-services.resources.views.channel', 'd7-services.resources.views.operatorsConstant'])
     .controller('ViewsController', ViewsController);
 
 	ViewsController.$inject = ['$scope','ViewsResource', 'ViewsChannel', 'ViewsOperatorsConstant'];

@@ -1,0 +1,65 @@
+<h2>GetTree request</h2>
+<p>
+Get taxonomy_vocabulary getTree.<br/>
+see <code>services/resources/taxonomy_vocabulary_resource.inc => _taxonomy_vocabulary_resource_getTree()</code>
+</p>
+
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="SelectNodes Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in taxonomy_vocabulary.getTreeRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="getTreeForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': getTreeForm.vid.$touched && getTreeForm.vid.$invalid || getTreeForm.vid.$invalid && getTreeForm.$submitted }" >
+		<label for="retrieve__vid">Vid</label>
+		<input type="number" class="form-control" id="retrieve__vid" name="vid" placeholder="Vid" ng-model="taxonomy_vocabulary.getTreeData.vid" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!getTreeForm.vid.$touched && !getTreeForm.$submitted || getTreeForm.vid.$valid" >The vocabulary ids to retrieve, separated by comma.</p>
+						
+			<ng-messages class="error" ng-if="getTreeForm.vid.$invalid && getTreeForm.vid.$touched || getTreeForm.$submitted" for="getTreeForm.vid.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': getTreeForm.parent.$touched && getTreeForm.parent.$invalid || getTreeForm.parent.$invalid && getTreeForm.$submitted}" >
+		<label for="index__parent">Parent</label>
+		<input type="number" class="form-control" id="index__parent" name="parent" placeholder="Parent" ng-model="taxonomy_vocabulary.getTreeData.parent" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p  class="description" ng-if="!getTreeForm.parent.$touched && !getTreeForm.$submitted || getTreeForm.parent.$valid" >The term ID under which to generate the tree. If 0, generate the tree for the entire vocabulary.</p>
+			<ng-messages  class="error" ng-if="getTreeForm.parent.$invalid && getTreeForm.parent.$touched || getTreeForm.$submitted" for="getTreeForm.parent.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': getTreeForm.maxdepth.$touched && getTreeForm.maxdepth.$invalid || getTreeForm.maxdepth.$invalid && getTreeForm.$submitted}" >
+		<label for="index__maxdepth">Maxdepth</label>
+		<input type="number" class="form-control" id="index__maxdepth" name="maxdepth" placeholder="Maxdepth" ng-model="taxonomy_vocabulary.getTreeData.maxdepth" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!getTreeForm.maxdepth.$touched && !getTreeForm.$submitted || getTreeForm.maxdepth.$valid" >Maximum number of nodes to find.</p>
+			<ng-messages class="error" ng-if="getTreeForm.maxdepth.$invalid && getTreeForm.maxdepth.$touched || getTreeForm.$submitted" for="getTreeForm.maxdepth.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': getTreeForm.load_entities.$touched && getTreeForm.load_entities.$invalid || getTreeForm.load_entities.$invalid && getTreeForm.$submitted}" >
+		<label for="index__load_entities">Load Entities</label>
+		<input type="number" class="form-control" id="index__load_entities" name="load_entities" placeholder="Load Entities" ng-model="taxonomy_vocabulary.getTreeData.load_entities" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!getTreeForm.load_entities.$touched && !getTreeForm.$submitted || getTreeForm.load_entities.$valid" >Whether the tree of terms should contain full term entity objects. If 1 (TRUE), a full entity load will occur on the term objects. Otherwise they are partial objects to save execution time and memory consumption. Defaults to 0 (FALSE).</p>
+			<ng-messages class="error" ng-if="getTreeForm.load_entities.$invalid && getTreeForm.load_entities.$touched || getTreeForm.$submitted" for="getTreeForm.load_entities.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<button class="btn btn-success" ng-click="taxonomy_vocabulary.doGetTree(getTreeForm)">getTree request</button>
+</form>

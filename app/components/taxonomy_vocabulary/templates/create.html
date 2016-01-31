@@ -1,0 +1,75 @@
+<h2>Create request</h2>
+<p>
+	Create a new taxonomy_vocabulary.<br/>
+	This function uses drupal_form_submit() and as such expects all input to match the submitting form in question.</br>
+	see <code>services/resources/taxonomy_vocabulary_resource.inc => _taxonomy_vocabulary_resource_create()</code>
+</p>
+<accordion close-others="oneAtATime"> <accordion-group
+		heading="Create Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+		ng-repeat="(key,request) in taxonomy_vocabulary.createRequests"> <ng-include
+		src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="createForm" novalidate>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.name.$touched && createForm.name.$invalid || createForm.name.$invalid && createForm.$submitted}">
+		<label for="create__name">Name</label>
+		<input type="text" class="form-control" name="name" id="create__name" placeholder="Name" ng-model="taxonomy_vocabulary.createData.name" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.name.$touched && !createForm.$submitted || createForm.name.$valid" >The terms name</p>
+
+			<ng-messages class="error" ng-if="createForm.name.$invalid && createForm.name.$touched || createForm.$submitted" for="createForm.name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.machine_name.$touched && createForm.machine_name.$invalid || createForm.machine_name.$invalid && createForm.$submitted}">
+		<label for="create__machine_name">Machine Name</label>
+		<input type="text" class="form-control" name="machine_name" id="create__machine_name" placeholder="Machine Name" ng-model="taxonomy_vocabulary.createData.machine_name" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.machine_name.$touched && !createForm.$submitted || createForm.machine_name.$valid" >The terms machine_name</p>
+
+			<ng-messages class="error" ng-if="createForm.machine_name.$invalid && createForm.machine_name.$touched || createForm.$submitted" for="createForm.machine_name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.description.$touched && createForm.description.$invalid || createForm.description.$invalid && createForm.$submitted}">
+		<label for="create__description">Description</label>
+		<input type="text" class="form-control" name="description" id="create__description" placeholder="Description" ng-model="taxonomy_vocabulary.createData.description" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.description.$touched && !createForm.$submitted || createForm.description.$valid" >The description of the term</p>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.hierarchy.$touched && createForm.hierarchy.$invalid || createForm.hierarchy.$invalid && createForm.$submitted}">
+		<label for="create__hierarchy">Hierarchy</label>
+		<input type="number" class="form-control" name="hierarchy" id="create__hierarchy" placeholder="Hierarchy" ng-model="taxonomy_vocabulary.createData.hierarchy" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.hierarchy.$touched && !createForm.$submitted || createForm.hierarchy.$valid">The hierarchy of term</p>
+			<ng-messages class="error" ng-if="createForm.hierarchy.$invalid && createForm.hierarchy.$touched || createForm.$submitted" for="createForm.hierarchy.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class="{ 'has-error has-feedback': createForm.weight.$touched && createForm.weight.$invalid || createForm.weight.$invalid && createForm.$submitted}">
+		<label for="create__weight">Weight</label>
+		<input type="number" class="form-control" name="weight" id="create__weight" placeholder="Weight" ng-model="taxonomy_vocabulary.createData.weight" >
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!createForm.weight.$touched && !createForm.$submitted || createForm.weight.$valid">The weight/order of term</p>
+			<ng-messages class="error" ng-if="createForm.weight.$invalid && createForm.weight.$touched || createForm.$submitted" for="createForm.weight.$error">
+				<ng-messages-include src="error-number"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
+	
+	<button class="btn btn-success" ng-click="taxonomy_vocabulary.doCreate(createForm)">create request</button>
+</form>

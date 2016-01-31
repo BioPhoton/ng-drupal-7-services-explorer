@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('commons.directives.navbarLogin', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.channel', 'ngDrupal7Services-3_x.commons.authentication.serviceConstant'])
+        .module('commons.directives.navbarLogin', ['d7-services.commons.authentication.service', 'd7-services.commons.authentication.channel', 'd7-services.commons.authentication.serviceConstant'])
         .directive('navbarLogin', navbarLogin);
 
 
@@ -46,7 +46,7 @@
             	scope.doLogin = doLogin;
             	scope.doLogout = doLogout;
 
-            	AuthenticationChannel.subAuthenticationCurrentUserUpdated(scope, currentUserUpdatedHandler);
+            	AuthenticationChannel.subCurrentUserUpdated(scope, currentUserUpdatedHandler);
                 
             	///////////////////////////////
             	

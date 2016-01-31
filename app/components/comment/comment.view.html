@@ -1,0 +1,41 @@
+<div id="comment" class="resource">
+	<h1>Comment resource</h1>
+	<p>Link general comment functionalities to services module.<br/>
+	See  <code>services/resources/comment_resource.inc</code></p>
+	<p>Following requests are provided:</p>
+	<br/>
+	<ul id="comment-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="retrieve-tab" role="tab" ui-sref="app.services_3x.comment.retrieve" >Retrieve</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="create-tab" role="tab"  ui-sref="app.services_3x.comment.create">Create</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="update-tab" role="tab"  ui-sref="app.services_3x.comment.update">Update</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="delete-tab" role="tab"  ui-sref="app.services_3x.comment.delete">Delete</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_3x.comment.index">Index</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="selectNodes-tab" role="tab"  ui-sref="app.services_3x.comment.countAll">CountAll</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="selectNodes-tab" role="tab"  ui-sref="app.services_3x.comment.countNew">CountNew</a>
+		</li>
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.services_3x.comment.retrieve')"></ui-view>
+		<ui-view name="create" ng-show="app.$state.includes('app.services_3x.comment.create')"></ui-view>
+		<ui-view name="update" ng-show="app.$state.includes('app.services_3x.comment.update')"></ui-view>
+		<ui-view name="delete" ng-show="app.$state.includes('app.services_3x.comment.delete')"></ui-view>
+		<ui-view name="index" ng-show="app.$state.includes('app.services_3x.comment.index')"></ui-view>
+		<ui-view name="countAll" ng-show="app.$state.includes('app.services_3x.comment.countAll')"></ui-view>
+		<ui-view name="countNew" ng-show="app.$state.includes('app.services_3x.comment.countNew')"></ui-view>
+	</div>
+	
+</div>
