@@ -2,7 +2,7 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.comment.controller', ['ngDrupal7Services-3_x.resources.comment.resource', 'ngDrupal7Services-3_x.resources.comment.channel', 'ngDrupal7Services-3_x.commons.helperService'])
+    .module('ngDrupalServicesTests.comment.controller', ['d7-services.resources.comment.resource', 'd7-services.resources.comment.channel', 'd7-services.commons.helperService'])
     .controller('CommentController', CommentController);
 
 	CommentController.$inject = ['$scope', 'CommentResource', 'CommentChannel','DrupalHelperService'];

@@ -17,9 +17,7 @@
      */
     /** @ngInject */
     function ifEmpty() {
-    	console.log('input, defaultValue'); 
         return function(input, defaultValue) {
-        	console.log('input, defaultValue2'); 
             if (angular.isUndefined(input) || input === null || input === '') {
                 return defaultValue;
             }

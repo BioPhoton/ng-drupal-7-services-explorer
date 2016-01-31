@@ -2,7 +2,7 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.taxonomy_term.controller', ['ngDrupal7Services-3_x.resources.taxonomy_term.resource', 'ngDrupal7Services-3_x.resources.taxonomy_term.channel'])
+    .module('ngDrupalServicesTests.taxonomy_term.controller', ['d7-services.resources.taxonomy_term.resource', 'd7-services.resources.taxonomy_term.channel'])
     .controller('TaxonomyTermController', TaxonomyTermController);
 
 	TaxonomyTermController.$inject = ['$scope', 'TaxonomyTermResource', 'TaxonomyTermChannel'];

@@ -2,7 +2,7 @@
     'use strict';
 
 angular
-    .module('ngDrupalServicesTests.system.controller', ['ngDrupal7Services-3_x.resources.system.resource', 'ngDrupal7Services-3_x.resources.system.channel'])
+    .module('ngDrupalServicesTests.system.controller', ['d7-services.resources.system.resource', 'd7-services.resources.system.channel'])
     .controller('SystemController', SystemController);
 
 	SystemController.$inject = ['$scope', 'SystemResource', 'SystemChannel'];

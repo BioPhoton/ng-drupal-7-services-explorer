@@ -3,7 +3,7 @@
 
 
 angular
-    .module('ngDrupalServicesTests.node.controller', ['ngDrupal7Services-3_x.resources.node.resource', 'ngDrupal7Services-3_x.resources.node.channel', 'ngDrupal7Services-3_x.commons.helperService'])
+    .module('ngDrupalServicesTests.node.controller', ['d7-services.resources.node.resource', 'd7-services.resources.node.channel', 'd7-services.commons.helperService'])
     .controller('NodeController', NodeController);
 
 	NodeController.$inject = ['$scope', 'NodeResource', 'NodeChannel', 'DrupalHelperService'];

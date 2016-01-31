@@ -3,7 +3,7 @@
 
 
 angular
-    .module('ngDrupalServicesTests.authentication.controller', ['ngDrupal7Services-3_x.commons.authentication.service', 'ngDrupal7Services-3_x.commons.authentication.serviceConstant', 'ngDrupal7Services-3_x.commons.authentication.channel', 'commons.filters.ifEmpty'])
+    .module('ngDrupalServicesTests.authentication.controller', ['d7-services.commons.authentication.service', 'd7-services.commons.authentication.serviceConstant', 'd7-services.commons.authentication.channel', 'commons.filters.ifEmpty'])
     .controller('AuthenticationController', AuthenticationController);
 
 	AuthenticationController.$inject = ['$scope', 'AuthenticationService', 'AuthenticationChannel', 'AuthenticationServiceConstant', '$filter'];
@@ -22,7 +22,6 @@ angular
 		//AuthenticationServiceConstant
 		vm.roles = AuthenticationServiceConstant.roles;
 		vm.accessLevels = AuthenticationServiceConstant.accessLevels;
-		console.log('AuthenticationServiceConstant.accessLevels',AuthenticationServiceConstant.accessLevels); 
 		vm.selectedAccessLevel = 'public';
 		vm.rolesOptions = {};
 		

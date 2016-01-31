@@ -3,7 +3,7 @@
 
 
 angular
-    .module('ngDrupalServicesTests.file.controller', ['ngDrupal7Services-3_x.resources.file.resource', 'ngDrupal7Services-3_x.resources.file.channel', 'ngDrupal7Services-3_x.commons.helperService'])
+    .module('ngDrupalServicesTests.file.controller', ['d7-services.resources.file.resource', 'd7-services.resources.file.channel', 'd7-services.commons.helperService'])
     .controller('FileController', FileController);
 
 	FileController.$inject = ['$scope', 'FileResource', 'FileChannel', 'DrupalHelperService'];

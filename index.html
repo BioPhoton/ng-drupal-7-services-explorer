@@ -15,89 +15,21 @@
     
     <!-- js dependencies -->
     
-    <!-- angular and modules -->
+    <!-- bower_components -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
-    
  	<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
     <script src="bower_components/angular-messages/angular-messages.min.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
-
-    <!-- third party libs -->
+    <script src="bower_components/ng-drupal-7-services/dist/ng-drupal-7-services.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 	
 	<!-- common directives -->
     <script src="app/commons/directives/formControlFeedback.js"></script>
     <script src="app/commons/directives/navbarLogin.js"></script>
     <script src="app/commons/filters/filters.ifEmpty.js"></script>
-	
-	<!-- ng-drupal-7-services -->
-    
-   <!--  -->
-   <script src="bower_components/ng-drupal-7-services/src/commons/directives/directives.toggleByAccessLevel.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/commons/commons.drupalApiConfig.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/commons/commons.helperService.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/commons/commons.validationConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/commons/commons.baseChannel.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/commons/commons.baseResource.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/commons/http/http.configurations.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/commons/http/http.requestAcceptIntercepter.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.httpIntercepter.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.channel.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.serviceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/commons/authentication/authentication.service.js"></script>
-         
-    <script src="bower_components/ng-drupal-7-services/src/resources/system/system.resourceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/system/system.resource.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/system/system.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/system/system.channel.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/resources/user/user.resourceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/user/user.resource.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/user/user.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/user/user.channel.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/resources/node/node.resourceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/node/node.resource.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/node/node.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/node/node.channel.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/resources/file/file.resourceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/file/file.resource.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/file/file.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/file/file.channel.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_term/taxonomy_term.resourceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_term/taxonomy_term.resource.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_term/taxonomy_term.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_term/taxonomy_term.channel.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_term/taxonomy_term.bundle.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_vocabulary/taxonomy_vocabulary.resourceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_vocabulary/taxonomy_vocabulary.resource.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_vocabulary/taxonomy_vocabulary.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_vocabulary/taxonomy_vocabulary.channel.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/taxonomy_vocabulary/taxonomy_vocabulary.bundle.js"></script>
-    
-    <script src="bower_components/ng-drupal-7-services/src/resources/comment/comment.resourceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/comment/comment.resource.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/comment/comment.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/comment/comment.channel.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/comment/comment.bundle.js"></script>
-    
-    
-    <script src="bower_components/ng-drupal-7-services/src/resources/views/views.resourceConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/views/views.resource.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/views/views.channelConstant.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/views/views.channel.js"></script>
-    <script src="bower_components/ng-drupal-7-services/src/resources/views/views.operatorsConstant.js"></script>
-    
+  
      <!-- 
      <script src="assets/js/vendor-8e5ecb0ace.js"></script>  -->
     
