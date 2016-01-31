@@ -25,9 +25,17 @@
 3. Load bower lib's  
   As all the thrid party libs are not in the repository we have to load them over bower  
   ```bash
-  $ bower update  
-  ```
-  Now you are ready to test it. Run following command:  
+  $ bower update   
+  ```  
+  Open app.config.js
+  ```javascript
+	//drupal services configurations
+	DrupalApiConstant.drupal_instance = 'http://www.your.domain/'; 
+	DrupalApiConstant.api_endpoint += 'v1/'; // "api/v1/"
+
+  ```  
+  
+  Now you are ready to test it. Run following command:    
   ```bash
   $ gulp webserver  
   ```
