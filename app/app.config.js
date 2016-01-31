@@ -3,7 +3,7 @@
 
 
 angular
-    .module('ngDrupalServicesTests.config', [])
+    .module('ngDrupalServicesTests.config', ['ngDrupal7Services-3_x.commons.configurations','ngDrupal7Services-3_x.commons.http.configurations'])
     .config(configFunction);
 
 	configFunction.$inject = ['DrupalApiConstant'];
@@ -12,7 +12,7 @@ angular
 	function configFunction(DrupalApiConstant) 
 	{ 
 		//drupal services configurations
-		DrupalApiConstant.drupal_instance = 'http://www.your.domin/';
+		DrupalApiConstant.drupal_instance = 'http://www.drupalionic.org/drupal_test/';
 		DrupalApiConstant.api_endpoint += 'v1/';
 
 	};
