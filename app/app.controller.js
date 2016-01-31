@@ -2,7 +2,7 @@
     'use strict';
 
 	angular
-	    .module('ngDrupalServicesTests.app.controller', ['d7-services.commons.authentication.service', 'd7-services.commons.authentication.serviceConstant',  'commons.directives.navbarLogin'])
+	    .module('ngDrupalServicesTests.app.controller', ['commons.directives.navbarLogin'])
 	    .controller('AppController', AppController);
 	
 	AppController.$inject = ['$state', 'AuthenticationService', 'AuthenticationServiceConstant'];
