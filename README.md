@@ -45,7 +45,7 @@
   - install following Modules:
     - [CORS](https://www.drupal.org/project/cors)
     - [Services](https://www.drupal.org/project/services)
-    - [Services Views](https://www.drupal.org/project/services_view)
+    - [Services Views](https://www.drupal.org/project/services_views)
     - [libraries](https://www.drupal.org/project/libraries)
     - [Views](https://www.drupal.org/project/views)
     - [C Tools](https://www.drupal.org/project/ctools)

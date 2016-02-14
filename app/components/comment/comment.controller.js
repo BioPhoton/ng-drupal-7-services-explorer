@@ -300,7 +300,7 @@ angular
 	    
 	    //do request
 		function doCountAll(countAllForm) {
-			console.log(countAllForm, vm.countAllData); 
+			console.log(countAllForm, vm.countAllData);
 			if(countAllForm.$valid) {
 				requestStart = Date.now();
 		   		CommentResource.countAll(vm.countAllData)
@@ -332,7 +332,6 @@ angular
 	    
 	    //do request
 		function doCountNew(countNewForm) {
-			console.log(countNewForm, vm.countNewData); 
 			if(countNewForm.$valid) {
 				requestStart = Date.now();
 		   		CommentResource.countNew(vm.countNewData)

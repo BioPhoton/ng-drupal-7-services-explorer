@@ -9,7 +9,7 @@
 		
 		<div class="col-sm-6">
 			<div class="form-group" >
-				<label for="isAuthorized__access_levels">Access Level: <span="badge">{{authentication.selectedAccessLevel}}</span></label>
+				<label for="isAuthorized__access_levels">Access Level: <span class="badge">{{authentication.selectedAccessLevel}}</span></label>
 				<br/>
 				<div  class="radio" ng-repeat="(accessLevelName, value) in authentication.accessLevels">
 					<label> 
@@ -25,7 +25,14 @@
 		
 		<div class="col-sm-6">
 			<div class="form-group" >
-				<label for="isAuthorized__roles">Roles</label>
+				<label for="isAuthorized__roles">Roles:
+					<span class="badge">
+						<span ng-repeat="roleId in authentication.isAuthorizedData.selectedRoles track by $index">
+							<span ng-if="$index > 0">, </span>
+							<span>{{roleId}}{{authentication.roles[roleId]}}</span>
+						</span>
+					</span>
+				</label>
 				<br/>
 				<div class="checkbox" ng-repeat="(roleId, value) in authentication.rolesOptions">
 					<label> 
