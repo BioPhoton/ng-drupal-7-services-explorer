@@ -2,6 +2,7 @@ module.exports = {
 	bundle : {
 		main : {
 			scripts : [
+			"assets/html/templates.js",
 			"app/commons/directives/formControlFeedback.js",
 			"app/commons/directives/navbarLogin.js",
 			"app/commons/filters/filters.ifEmpty.js",

@@ -11,9 +11,12 @@ var gulp 		= require('gulp'),
 	sass 		= require('gulp-sass'),
 	minifyCss 	= require('gulp-minify-css'),
 	autoprefixer 	= require('gulp-autoprefixer'),
-	
+
+	templateCache = require('gulp-angular-templatecache'),
 	bower 		= require('gulp-bower'),
-	server 		= require('gulp-server-livereload')
+	server 		= require('gulp-server-livereload'),
+	del 		= require('del'),
+	htmlmin = require('gulp-htmlmin'),
 	
 	bundle = require('gulp-bundle-assets');
 
@@ -63,6 +66,12 @@ var config = {
 
 /*Gulp Tasks*/
 
+
+gulp.task('build', function(done){
+	gutil.log(gutil.colors.green('building project'));
+	return runSequence('move-fonts','move-images','sass','templatecache','bundle',  done);
+});
+
 /*This task creates a bundle of all js files*/
 gulp.task('bundle', function() {
 	  return gulp.src('./bundle.config.js')
@@ -76,7 +85,34 @@ gulp.task('bower', function() {
     return bower()
         .pipe(gulp.dest(bowerDir))
         .on('end', function(){  gutil.log(gutil.colors.green('loaded bower components')); });
-}); 
+});
+
+gulp.task('templatecache',['clean-html'], function (done) {
+	gutil.log(gutil.colors.green('collecting html files minify and put in templates file'));
+
+	var options = {
+		root : "app/",
+		module : "da.commons.caching.templates",
+		standalone : true,
+		//base : './app/',
+		//moduleSystem : "Wrap the templateCache in a module system. Currently supported systems: RequireJS, Browserify, ES6 and IIFE (Immediately-Invoked Function Expression).",
+		//transformUrl : "Transform the generated URL before it's put into $templateCache.",
+		//templateHeader : "Override template header.",
+		//templateBody :  "Override template body.",
+		//templateFooter : "Override template footer."
+	};
+
+	return gulp.src('app/**/*.html')
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(templateCache('templates.js', options))
+		.pipe(gulp.dest('./assets/html'), done);
+});
+gulp.task('clean-html', function(done) {
+	gutil.log(gutil.colors.green('cleaning'+ assetsPath+'/html'));
+
+	return del([assetsPath+'/html'], done)
+});
+
 
 /*Move font files form resources into assets/fonts directory so that our css @font-face's will resolve their files*/
 gulp.task('move-fonts', function() {
@@ -141,13 +177,6 @@ gulp.task('watch-sass', function() {
 	runSequence('sass', function() {
 		 gulp.watch(config.sassPaths, ['sass'])
 		 .on('end', function(){  gutil.log(gutil.colors.green('watch-sass started')); })
-	});
-});
-
-/*Sets uo the project loads bower components, fone fonts files, compiles sass files*/
-gulp.task('setup-project',  function() {
-	runSequence('bower', 'move-fonts', 'sass', function() {
-		 gutil.log(gutil.colors.green('setup-project done'));
 	});
 });
 
