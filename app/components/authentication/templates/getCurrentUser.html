@@ -3,6 +3,12 @@
 This function also provides an event that is fired every time the user object changes.
 </p>
 
+<p>
+	Current user:<br/>
+<pre>{{authentication.currentUser | json}}</pre>
+</p>
+
+
 <div class="" ng-repeat="(key,change) in authentication.currentUserChanges">
 	<p><b>CurrentUserChange {{key}} changed at {{change.timeOfChange | date:'HH:mm:ss'}}</b></p>
 	<div class="row">
@@ -16,12 +22,5 @@ This function also provides an event that is fired every time the user object ch
 		</div>
 	</div>
 </div>
-
-<p>
-Current user:<br/>
-<pre>{{authentication.currentUser | json}}</pre>
-</p>
-
-
 
 <button class="btn btn-success" ng-click="authentication.doGetCurrentUser()">getCurrentUser</button>

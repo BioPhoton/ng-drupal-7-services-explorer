@@ -300,7 +300,8 @@ angular
 	    
 	    //do request
 		function doGetCurrentUser() {
-			currentUser = AuthenticationService.getCurrentUser();
+			vm.currentUser = AuthenticationService.getCurrentUser();
+			return vm.currentUser;
 		};
 		
 		// confirm callback

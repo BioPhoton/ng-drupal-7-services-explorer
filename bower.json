@@ -21,7 +21,7 @@
     "angular-ui-router": "0.2.13",
     "bootstrap-sass-official": "~3.3.5",
     "fontawesome": "~4.4.0",
-    "ng-drupal-7-services": "https://github.com/BioPhoton/ng-drupal-7-services.git#2.0.1",
+    "ng-drupal-7-services": "https://github.com/BioPhoton/ng-drupal-7-services.git#2.0.2",
     "ui-router-extras": "~0.0.14"
   },
   "resolutions": {

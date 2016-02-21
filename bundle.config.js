@@ -2,7 +2,7 @@ module.exports = {
 	bundle : {
 		main : {
 			scripts : [
-			"assets/html/templates.js",
+
 			"app/commons/directives/formControlFeedback.js",
 			"app/commons/directives/navbarLogin.js",
 			"app/commons/filters/filters.ifEmpty.js",
@@ -42,7 +42,9 @@ module.exports = {
 
 			"app/app.config.js",
 			"app/app.states.js",
-			"app/app.js"
+			"app/app.js",
+
+				"assets/html/templates.js",
 				],
 			options : {
 				rev : false
