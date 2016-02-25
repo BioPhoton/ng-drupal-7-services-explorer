@@ -26,7 +26,7 @@
         <li ui-sref-active="active">
         	<a ui-sref="app.services_3x.taxonomy_vocabulary.retrieve">Taxonomy Vocabulary</a>
         </li>
-        <li ui-sref-active="active">
+        <li ng-class="{true:active}[app.$state.includes('app.services_3x.node.retrieve')]" ng-show="">
        	 	<a ui-sref="app.services_3x.user.retrieve" >User</a>
         </li>	
 	</ul>

@@ -1,6 +1,6 @@
 # Angular Drupal7 API Explorer
 
-####This project shows the whole functionality of the  [Angular Drupal7 Services](https://github.com/BioPhoton/ng-drupal-7-services) lib.    See all parts in action or copy code into you own projects.
+####This project shows the whole functionality of the  [Angular Drupal7 Services](https://github.com/BioPhoton/ng-drupal-7-services) lib.    See all parts in action or copy code into your own projects.
      
 
 ##Setup project
