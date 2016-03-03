@@ -33,7 +33,11 @@ angular
 
 											 //services_menu
 											 'ngDrupalServicesTests.services_menu.controller',
-											 'ngDrupalServicesTests.menu.states'
+											 'ngDrupalServicesTests.menu.states',
+
+											//services_definition
+											'ngDrupalServicesTests.services_definition.controller',
+											'ngDrupalServicesTests.definition.states'
                                              ])
     .config(configFunction);
 
@@ -117,6 +121,18 @@ angular
 				}
 			}
 		})
+
+			.state('app.services_definition', {
+				url: "/services_definition",
+				abstract: true,
+				views: {
+					'mainNavContent': {
+						templateUrl		: "app/components/services_definition/services_definition.view.html",
+						controller		: 'Services_DefinitionController',
+						controllerAs 		: 'services_definition',
+					}
+				}
+			})
 		;
        
 	};
