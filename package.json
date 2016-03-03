@@ -1,7 +1,7 @@
 {
   "name": "ng-drupal-services-explorer",
   "version": "0.0.0",
-  "description": "An angular sass bootstrap project to explorer the services module in drupal7",
+  "description": "An angular sass bootstrap project to explorer the services modules in drupal7",
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
