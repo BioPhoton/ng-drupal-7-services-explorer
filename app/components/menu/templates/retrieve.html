@@ -1,0 +1,14 @@
+<h2>Retrieve request</h2>
+<p>
+@TODO write comment
+</p>
+<hr/>
+<accordion close-others="oneAtATime"> 
+	<accordion-group heading="Retrieve Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}" ng-repeat="(key,request) in menu.retrieveRequests">
+		<ng-include src="'app/templates/request/request.html'"></ng-include> 
+	</accordion-group> 
+</accordion>
+
+<form name="retrieveForm" novalidate>
+	<button class="btn btn-success" ng-click="menu.doRetrieve(retrieveForm)">retrieve request</button>
+</form>
