@@ -106,6 +106,22 @@ angular
 		//test the getTree on failed event
 	    TaxonomyVocabularyChannel.subGetTreeFailed($scope, subGetTreeFailedCallback);
 
+		//__________________________________________________________________________________________________
+
+		//retrieveByMachineName request
+
+		//store requests
+		vm.retrieveByMachineNameRequests = [];
+		vm.retrieveByMachineNameData = {};
+		//test request and event callbacks
+		vm.doRetrieveByMachineName = doRetrieveByMachineName;
+		//test the retrieveByMachineName on confirm event
+		TaxonomyVocabularyChannel.subRetrieveByMachineNameConfirmed($scope, subRetrieveByMachineNameConfirmedCallback);
+		//test the retrieveByMachineName on failed event
+		TaxonomyVocabularyChannel.subRetrieveByMachineNameFailed($scope, subRetrieveByMachineNameFailedCallback);
+
+
+		retrieveByMachineName
 	    //__________________________________________________________________________________________________
 
 	    
@@ -300,6 +316,38 @@ angular
 			requestEnd = Date.now();
 			console.log('subGetTreeFailed'); 
 			vm.getTreeRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
+		}
+
+		//_____________________________________________________________________________________________________________________________________________
+
+		//retrieveByMachineName request
+
+		//do request
+		function doRetrieveByMachineName(retrieveByMachineNameForm) {
+
+			if(retrieveByMachineNameForm.$valid) {
+				requestStart = Date.now();
+				TaxonomyVocabularyResource.retrieveByMachineName(vm.retrieveByMachineNameData)
+					.then(
+					//register success
+					function(data) { console.log('taxonomy_vocabulary retrieveByMachineName success'); },
+					//register error
+					function(data) { console.log('taxonomy_vocabulary retrieveByMachineName error'); }
+				);
+			}
+		};
+
+		//confirm callback
+		function subRetrieveByMachineNameConfirmedCallback(data) {
+			requestEnd = Date.now();
+			console.log('subRetrieveByMachineNameConfirmed');
+			vm.retrieveByMachineNameRequests.push({requestStart:requestStart, requestEnd:requestEnd, requestDuration:requestEnd-requestStart, data:data});
+		}
+		//failed callback
+		function subRetrieveByMachineNameFailedCallback(data) {
+			requestEnd = Date.now();
+			console.log('subRetrieveByMachineNameFailed');
+			vm.retrieveByMachineNameRequests.push({requestStart:requestStart, requestEnd:requestEnd,  requestDuration:requestEnd-requestStart, data:data});
 		}
 		
 	}
