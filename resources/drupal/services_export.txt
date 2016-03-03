@@ -52,6 +52,13 @@ $endpoint->resources = array(
       ),
     ),
   ),
+  'definition' => array(
+    'operations' => array(
+      'index' => array(
+        'enabled' => '1',
+      ),
+    ),
+  ),
   'file' => array(
     'operations' => array(
       'create' => array(
@@ -69,6 +76,13 @@ $endpoint->resources = array(
     ),
     'actions' => array(
       'create_raw' => array(
+        'enabled' => '1',
+      ),
+    ),
+  ),
+  'menu' => array(
+    'operations' => array(
+      'retrieve' => array(
         'enabled' => '1',
       ),
     ),
@@ -164,6 +178,9 @@ $endpoint->resources = array(
       ),
     ),
     'actions' => array(
+      'retrieveByMachineName' => array(
+        'enabled' => '1',
+      ),
       'getTree' => array(
         'enabled' => '1',
       ),
@@ -235,4 +252,3 @@ $endpoint->resources = array(
   ),
 );
 $endpoint->debug = 0;
-
