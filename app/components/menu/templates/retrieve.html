@@ -10,5 +10,17 @@
 </accordion>
 
 <form name="retrieveForm" novalidate>
+	<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.menu_name.$touched && retrieveForm.menu_name.$invalid || retrieveForm.menu_name.$invalid && retrieveForm.$submitted}">
+		<label for="create__menu_name">menu name</label>
+		<input menu_name="text" class="form-control" name="menu_name" id="create__menu_name" placeholder="Menu Name" ng-model="menu.retrieveData.menu_name" required>
+		<form-control-feedback></form-control-feedback>
+		<div class="help-block">
+			<p class="description" ng-if="!retrieveForm.menu_name.$touched && !retrieveForm.$submitted || retrieveForm.menu_name.$valid" >The menu menu_name. Default menu_names are page and article</p>
+
+			<ng-messages class="error" ng-if="retrieveForm.menu_name.$invalid && retrieveForm.menu_name.$touched || retrieveForm.$submitted" for="retrieveForm.menu_name.$error">
+				<ng-messages-include src="error-required"></ng-messages-include>
+			</ng-messages>
+		</div>
+	</div>
 	<button class="btn btn-success" ng-click="menu.doRetrieve(retrieveForm)">retrieve request</button>
 </form>

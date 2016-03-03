@@ -12,7 +12,7 @@ angular
 	{ 
 
 	    $stateProvider
-        .state('app.services_3x.menu', {
+        .state('app.services_menu.menu', {
             url: "/menu",
             abstract: true,
 	        views : {
@@ -23,7 +23,7 @@ angular
 	        	}
 	    	}
         })
-        .state('app.services_3x.menu.retrieve', {
+        .state('app.services_menu.menu.retrieve', {
             url: "/retrieve",
             deepStateRedirect: true,
 	        sticky: true,

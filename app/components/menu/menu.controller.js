@@ -21,8 +21,11 @@ angular
 		
 		//store requests
 		vm.retrieveRequests = [];
+
+		vm.retrieveData = {};
+		vm.retrieveData.menu_name = "main-menu";
 		//test request
-		vm.doConncet = doConncet;
+		vm.doRetrieve = doRetrieve;
 		//test the retrieve on confirm event
 		MenuChannel.subRetrieveConfirmed($scope, subRetrieveConfirmedCallback);
 		//test the retrieve on failed event
@@ -35,11 +38,11 @@ angular
 		//retrieve request
 	    
 	    //do request
-		function doConncet(retrieveForm) {
+		function doRetrieve(retrieveForm) {
 			
 			if(retrieveForm.$valid) {
 				requestStart = Date.now();
-		   		MenuResource.retrieve()
+		   		MenuResource.retrieve(vm.retrieveData)
 				    .then(
 				    		//retrieve success
 				    		function(data) { console.log('menu retrieve success', data); },
