@@ -17,7 +17,7 @@ angular
             abstract: true,
 	        views : {
 	        	'authentication' : {
-			        templateUrl: './app/components/authentication/authentication.view.html',
+			        templateUrl: 'app/components/authentication/authentication.view.html',
 			        controller	: 'AuthenticationController',
 			        controllerAs : 'authentication'
 	        	}
@@ -29,7 +29,7 @@ angular
 	        sticky: true,
             views : {
 	        	'isAuthorized' : {
-			        templateUrl: './app/components/authentication/templates/isAuthorized.html'
+			        templateUrl: 'app/components/authentication/templates/isAuthorized.html'
 	        	}
 	    	}
         })
@@ -39,7 +39,7 @@ angular
 	        sticky: true,
             views : {
 	        	'login' : {
-			        templateUrl: './app/components/authentication/templates/login.html'
+			        templateUrl: 'app/components/authentication/templates/login.html'
 	        	}
 	    	}
         })
@@ -49,7 +49,7 @@ angular
 	        sticky: true,
             views : {
 	        	'logout' : {
-			        templateUrl: './app/components/authentication/templates/logout.html'
+			        templateUrl: 'app/components/authentication/templates/logout.html'
 	        	}
 	    	}
         })
@@ -59,7 +59,7 @@ angular
 	        sticky: true,
             views : {
 	        	'getAuthenticationHeaders' : {
-			        templateUrl: './app/components/authentication/templates/getAuthenticationHeaders.html'
+			        templateUrl: 'app/components/authentication/templates/getAuthenticationHeaders.html'
 	        	}
 	    	}
         })
@@ -69,7 +69,7 @@ angular
 	        sticky: true,
             views : {
 	        	'getConnectionState' : {
-			        templateUrl: './app/components/authentication/templates/getConnectionState.html'
+			        templateUrl: 'app/components/authentication/templates/getConnectionState.html'
 	        	}
 	    	}
         })
@@ -79,7 +79,7 @@ angular
 	        sticky: true,
             views : {
 	        	'getCurrentUser' : {
-			        templateUrl: './app/components/authentication/templates/getCurrentUser.html'
+			        templateUrl: 'app/components/authentication/templates/getCurrentUser.html'
 	        	}
 	    	}
         })
@@ -89,7 +89,7 @@ angular
 	        sticky: true,
             views : {
 	        	'getLastConnectTime' : {
-			        templateUrl: './app/components/authentication/templates/getLastConnectTime.html'
+			        templateUrl: 'app/components/authentication/templates/getLastConnectTime.html'
 	        	}
 	    	}
         })
@@ -99,7 +99,7 @@ angular
 	        sticky: true,
             views : {
 	        	'refreshConnection' : {
-			        templateUrl: './app/components/authentication/templates/refreshConnection.html'
+			        templateUrl: 'app/components/authentication/templates/refreshConnection.html'
 	        	}
 	    	}
         })

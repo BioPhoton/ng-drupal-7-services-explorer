@@ -7,15 +7,19 @@ angular
                                              'ngDrupalServicesTests.app.controller',
                                              
                                              'ngDrupalServicesTests.home.controller',
-                                             'ngDrupalServicesTests.commons.controller',
-                                             'ngDrupalServicesTests.services_3x.controller',
-                                             'ngDrupalServicesTests.services_views.controller',
+
+
+
+
                                               
                                              //commons
+											'ngDrupalServicesTests.commons.controller',
                                              'ngDrupalServicesTests.authentication.states',
                                              
                                              //services_3x
-                                             'ngDrupalServicesTests.comment.states',
+											'ngDrupalServicesTests.services_3x.controller',
+
+												'ngDrupalServicesTests.comment.states',
                                              'ngDrupalServicesTests.system.states',
                                              'ngDrupalServicesTests.user.states',
                                              'ngDrupalServicesTests.node.states',
@@ -24,7 +28,12 @@ angular
                                              'ngDrupalServicesTests.taxonomy_vocabulary.states',
                                              
                                              //services_views
-                                             'ngDrupalServicesTests.views.states'
+											 'ngDrupalServicesTests.services_views.controller',
+                                             'ngDrupalServicesTests.views.states',
+
+											 //services_menu
+											 'ngDrupalServicesTests.services_menu.controller',
+											 'ngDrupalServicesTests.menu.states'
                                              ])
     .config(configFunction);
 
@@ -53,7 +62,7 @@ angular
 	        sticky: true,
 	        views : {
 	        	'mainNavContent' : {
-	        		templateUrl: './app/components/home/home.view.html',
+	        		templateUrl: 'app/components/home/home.view.html',
 	    	        controller: 'HomeController',
 	                controllerAs : 'home'
 	        	}
@@ -66,7 +75,7 @@ angular
             abstract: true,
 	        views : {
 	        	'mainNavContent' : {
-			        templateUrl: './app/components/commons/commons.view.html',
+			        templateUrl: 'app/components/commons/commons.view.html',
 			        controller: 'CommonsController',
 			        controllerAs : 'authentication'
 	        	}
@@ -95,7 +104,20 @@ angular
 			          controllerAs 		: 'services_views',
 			      }
 			    }
-        });
+        })
+
+		.state('app.services_menu', {
+			url: "/services_menu",
+			abstract: true,
+			views: {
+				'mainNavContent': {
+					templateUrl		: "app/components/services_menu/services_menu.view.html",
+					controller		: 'Services_MenuController',
+					controllerAs 		: 'services_menu',
+				}
+			}
+		})
+		;
        
 	};
 	

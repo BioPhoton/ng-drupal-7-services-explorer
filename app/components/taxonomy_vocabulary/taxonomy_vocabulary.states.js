@@ -91,10 +91,11 @@ angular
 			sticky: true,
 			views : {
 				'retrieveByMachineName' : {
-					templateUrl: './app/components/taxonomy_vocabulary/templates/retrieveByMachineName.html'
+					templateUrl: 'app/components/taxonomy_vocabulary/templates/retrieveByMachineName.html'
 				}
 			}
-		});
+		})
+		;
 
 
 		

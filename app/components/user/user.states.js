@@ -17,7 +17,7 @@ angular
             abstract: true,
 	        views : {
 	        	'user' : {
-			        templateUrl: './app/components/user/user.view.html',
+			        templateUrl: 'app/components/user/user.view.html',
 			        controller: 'UserController',
 			        controllerAs : 'user'
 	        	}
@@ -29,7 +29,7 @@ angular
 	        sticky: true,
             views : {
 	        	'retrieve' : {
-			        templateUrl: './app/components/user/templates/retrieve.html'
+			        templateUrl: 'app/components/user/templates/retrieve.html'
 	        	}
 	    	}
         })
@@ -39,7 +39,7 @@ angular
 	        sticky: true,
             views : {
 	        	'create' : {
-			        templateUrl: './app/components/user/templates/create.html'
+			        templateUrl: 'app/components/user/templates/create.html'
 	        	}
 	    	}
         })
@@ -49,7 +49,7 @@ angular
 	        sticky: true,
             views : {
 	        	'update' : {
-			        templateUrl: './app/components/user/templates/update.html'
+			        templateUrl: 'app/components/user/templates/update.html'
 	        	}
 	    	}
         })
@@ -59,7 +59,7 @@ angular
 	        sticky: true,
             views : {
 	        	'delete' : {
-			        templateUrl: './app/components/user/templates/delete.html'
+			        templateUrl: 'app/components/user/templates/delete.html'
 	        	}
 	    	}
         })
@@ -69,7 +69,7 @@ angular
 	        sticky: true,
             views : {
 	        	'index' : {
-			        templateUrl: './app/components/user/templates/index.html'
+			        templateUrl: 'app/components/user/templates/index.html'
 	        	}
 	    	}
         })
@@ -79,7 +79,7 @@ angular
 	        sticky: true,
             views : {
 	        	'register' : {
-			        templateUrl: './app/components/user/templates/register.html'
+			        templateUrl: 'app/components/user/templates/register.html'
 	        	}
 	    	}
         })
@@ -89,7 +89,7 @@ angular
 	        sticky: true,
             views : {
 	        	'resendWelcomeEmail' : {
-			        templateUrl: './app/components/user/templates/resendWelcomeEmail.html'
+			        templateUrl: 'app/components/user/templates/resendWelcomeEmail.html'
 	        	}
 	    	}
         })
@@ -99,7 +99,7 @@ angular
 	        sticky: true,
             views : {
 	        	'cancel' : {
-			        templateUrl: './app/components/user/templates/cancel.html'
+			        templateUrl: 'app/components/user/templates/cancel.html'
 	        	}
 	    	}
         })
@@ -109,7 +109,7 @@ angular
 	        sticky: true,
             views : {
 	        	'passwordReset' : {
-			        templateUrl: './app/components/user/templates/passwordReset.html'
+			        templateUrl: 'app/components/user/templates/passwordReset.html'
 	        	}
 	    	}
         })
@@ -119,7 +119,7 @@ angular
 	        sticky: true,
             views : {
 	        	'requestNewPassword' : {
-			        templateUrl: './app/components/user/templates/requestNewPassword.html'
+			        templateUrl: 'app/components/user/templates/requestNewPassword.html'
 	        	}
 	    	}
         })
@@ -129,7 +129,7 @@ angular
 	        sticky: true,
             views : {
 	        	'login' : {
-			        templateUrl: './app/components/user/templates/login.html'
+			        templateUrl: 'app/components/user/templates/login.html'
 	        	}
 	    	}
         })
@@ -139,7 +139,7 @@ angular
 	        sticky: true,
             views : {
 	        	'logout' : {
-			        templateUrl: './app/components/user/templates/logout.html'
+			        templateUrl: 'app/components/user/templates/logout.html'
 	        	}
 	    	}
         })
@@ -149,7 +149,7 @@ angular
 	        sticky: true,
             views : {
 	        	'token' : {
-			        templateUrl: './app/components/user/templates/token.html'
+			        templateUrl: 'app/components/user/templates/token.html'
 	        	}
 	    	}
         });

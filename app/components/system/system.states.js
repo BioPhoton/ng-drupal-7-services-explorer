@@ -17,7 +17,7 @@ angular
             abstract: true,
 	        views : {
 	        	'system' : {
-			        templateUrl: './app/components/system/system.view.html',
+			        templateUrl: 'app/components/system/system.view.html',
 			        controller: 'SystemController',
 			        controllerAs : 'system'
 	        	}
@@ -29,7 +29,7 @@ angular
 	        sticky: true,
             views : {
 	        	'connect' : {
-			        templateUrl: './app/components/system/templates/connect.html'
+			        templateUrl: 'app/components/system/templates/connect.html'
 	        	}
 	    	}
         })
@@ -39,7 +39,7 @@ angular
 	        sticky: true,
             views : {
 	        	'getVariable' : {
-			        templateUrl: './app/components/system/templates/getVariable.html'
+			        templateUrl: 'app/components/system/templates/getVariable.html'
 	        	}
 	    	}
         })
@@ -49,7 +49,7 @@ angular
 	        sticky: true,
             views : {
 	        	'setVariable' : {
-			        templateUrl: './app/components/system/templates/setVariable.html'
+			        templateUrl: 'app/components/system/templates/setVariable.html'
 	        	}
 	    	}
         })
@@ -59,7 +59,7 @@ angular
 	        sticky: true,
             views : {
 	        	'delVariable' : {
-			        templateUrl: './app/components/system/templates/delVariable.html'
+			        templateUrl: 'app/components/system/templates/delVariable.html'
 	        	}
 	    	}
         });

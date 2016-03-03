@@ -17,7 +17,7 @@ angular
             abstract: true,
 	        views : {
 	        	'views' : {
-			        templateUrl: './app/components/views/views.view.html',
+			        templateUrl: 'app/components/views/views.view.html',
 			        controller: 'ViewsController',
 			        controllerAs : 'views'
 	        	}
@@ -30,7 +30,7 @@ angular
 	        sticky: true,
             views : {
 	        	'retrieve' : {
-			        templateUrl: './app/components/views/templates/retrieve.html'
+			        templateUrl: 'app/components/views/templates/retrieve.html'
 	        	}
 	    	}
         });
