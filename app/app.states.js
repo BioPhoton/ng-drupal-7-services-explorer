@@ -37,7 +37,11 @@ angular
 
 											//services_definition
 											'ngDrupalServicesTests.services_definition.controller',
-											'ngDrupalServicesTests.definition.states'
+											'ngDrupalServicesTests.definition.states',
+
+											//geocoder
+											'ngDrupalServicesTests.geocoder.controller',
+											'ngDrupalServicesTests.geocoder.states'
                                              ])
     .config(configFunction);
 
@@ -133,6 +137,20 @@ angular
 					}
 				}
 			})
+
+			.state('app.geocoder_api', {
+				url: "/geocoder_api",
+				abstract: true,
+				views: {
+					'mainNavContent': {
+						templateUrl		: "app/components/geocoder_api/geocoder_api.view.html",
+						controller		: 'GeocoderController',
+						controllerAs 		: 'geocoder',
+					}
+				}
+			})
+
+
 		;
        
 	};

@@ -98,7 +98,7 @@ See <code>services/resources/views_resource.inc</code>
 	<div class="well collapse" ng-class="!views.exposed_sortsCollapsed && 'in'">
 	
 		<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_sorts.sort_order.$touched && retrieveForm.exposed_sorts.sort_order.$invalid || retrieveForm.exposed_sorts.sort_order.$invalid && retrieveForm.$submitted }" >
-			<label for="retrieve__exposed_sorts.sort_order">Sort Order:</label>
+			<label for="retrieve__exposed_sorts_sort_order_{{sortName}}">Sort Order:</label>
 			<br/>
 			
 			<label class="radio-inline" ng-repeat="(sortName, value) in views.sorts">
@@ -111,7 +111,7 @@ See <code>services/resources/views_resource.inc</code>
 		</div>	
 		
 		<div class="form-group" ng-class="{ 'has-error has-feedback': retrieveForm.exposed_sorts.sort_by.$touched && retrieveForm.exposed_sorts.sort_by.$invalid || retrieveForm.exposed_sorts.sort_by.$invalid && retrieveForm.$submitted }" >
-			<label for="retrieve__exposed_sorts.sort_by">Sort By</label>
+			<label for="retrieve__exposed_sorts_sort_order_{{sortName}}y">Sort By</label>
 			<input type="text" class="form-control" id="retrieve__exposed_sort_sort_by" name="Sort Order" placeholder="Sort By" ng-model="views.retrieveData.exposed_sorts.sort_by" >
 			
 			<div class="help-block">
