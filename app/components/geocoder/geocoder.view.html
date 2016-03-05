@@ -1,0 +1,22 @@
+<div id="geocoder" class="resource">
+	<h1>Geocoder resource</h1>
+	<p>Link general geocoder functionalities to services module.<br/>
+	See  <a href="http://cgit.drupalcode.org/geocoder/tree/geocoder.services.inc">geocoder.services.inc</a></p>
+	<p>Following requests are provided:</p>
+	<br/>
+	<ul id="geocoders-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="retrieve-tab" role="tab" ui-sref="app.geocoder_api.geocoder.retrieve">Retrieve</a>
+		</li>
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.geocoder_api.geocoder.index">Index</a>
+		</li>
+
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.geocoder_api.geocoder.retrieve')"></ui-view>
+		<ui-view name="index" ng-show="app.$state.includes('app.geocoder_api.geocoder.index')"></ui-view>
+	</div>
+	
+</div>

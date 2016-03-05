@@ -1,0 +1,19 @@
+<div id="Services-Menu" class="resource">
+	<h1 ng-click="services_menu.descriptionColapsed = !services_menu.descriptionColapsed">Services Menu <span class="caret" ng-class="{true:'down',false:'up'}[services_menu.descriptionColapsed]"></span></h1>
+	<div class="collapse" ng-class="!services_menu.descriptionColapsed && 'in'">
+		<p>
+			The <a href="https://www.drupal.org/project/services_menu" target="_blank">services menu module</a> consists of following resources:
+		</p>
+	</div>
+	<hr/>
+	<ul id="services-menu-tabs" class="nav nav-tabs nav-justified">
+		<li ui-sref-active="active">
+			<a>Menu</a>
+		</li>
+	</ul>
+	
+	<div class="tabs-content">
+		<ui-view name="menu"></ui-view>
+	</div>
+	
+</div>

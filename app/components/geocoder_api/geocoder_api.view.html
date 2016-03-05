@@ -1,0 +1,23 @@
+<div id="Geocoder-API" class="resource">
+	<h1 ng-click="geocoder_api.descriptionColapsed = !geocoder_api.descriptionColapsed">Services Views <span class="caret" ng-class="{true:'down',false:'up'}[geocoder_api.descriptionColapsed]"></span></h1>
+	<div class="collapse" ng-class="!geocoder_api.descriptionColapsed && 'in'">
+		<p>
+			The <a href="https://www.drupal.org/project/geocoder_api" target="_blank">services views module</a> consists of following resources:
+		</p>
+		<ul>
+			<li>Views</li>
+		</ul>
+	</div>
+	<hr/>
+	
+	<ul id="services-views-tabs" class="nav nav-tabs nav-justified">
+		<li ui-sref-active="active">
+			<a>Geocoder</a>
+		</li>
+	</ul>
+	
+	<div class="tabs-content">
+		<ui-view name="geocoder"></ui-view>
+	</div>
+	
+</div>

@@ -92,7 +92,7 @@ gulp.task('templatecache',['clean-html'], function (done) {
 
 	var options = {
 		root : "app/",
-		module : "da.commons.caching.templates",
+		module : "ngDrupalServicesTests.assets.html.templates",
 		standalone : false,
 		//base : './app/',
 		//moduleSystem : "Wrap the templateCache in a module system. Currently supported systems: RequireJS, Browserify, ES6 and IIFE (Immediately-Invoked Function Expression).",

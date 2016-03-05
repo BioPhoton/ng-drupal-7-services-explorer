@@ -17,7 +17,7 @@ angular
             abstract: true,
 	        views : {
 	        	'file' : {
-			        templateUrl: './app/components/file/file.view.html',
+			        templateUrl: 'app/components/file/file.view.html',
 			        controller: 'FileController',
 			        controllerAs : 'file'
 	        	}
@@ -29,7 +29,7 @@ angular
 	        sticky: true,
             views : {
 	        	'retrieve' : {
-			        templateUrl: './app/components/file/templates/retrieve.html'
+			        templateUrl: 'app/components/file/templates/retrieve.html'
 	        	}
 	    	}
         })
@@ -39,7 +39,7 @@ angular
 	        sticky: true,
             views : {
 	        	'create' : {
-			        templateUrl: './app/components/file/templates/create.html'
+			        templateUrl: 'app/components/file/templates/create.html'
 	        	}
 	    	}
         })
@@ -49,7 +49,7 @@ angular
 	        sticky: true,
             views : {
 	        	'delete' : {
-			        templateUrl: './app/components/file/templates/delete.html'
+			        templateUrl: 'app/components/file/templates/delete.html'
 	        	}
 	    	}
         })
@@ -59,7 +59,7 @@ angular
 	        sticky: true,
             views : {
 	        	'index' : {
-			        templateUrl: './app/components/file/templates/index.html'
+			        templateUrl: 'app/components/file/templates/index.html'
 	        	}
 	    	}
         })
@@ -69,7 +69,7 @@ angular
 	        sticky: true,
             views : {
 	        	'createRaw' : {
-			        templateUrl: './app/components/file/templates/createRaw.html'
+			        templateUrl: 'app/components/file/templates/createRaw.html'
 	        	}
 	    	}
         });

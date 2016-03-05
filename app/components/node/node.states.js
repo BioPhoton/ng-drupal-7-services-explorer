@@ -17,7 +17,7 @@ angular
             abstract: true,
 	        views : {
 	        	'node' : {
-			        templateUrl: './app/components/node/node.view.html',
+			        templateUrl: 'app/components/node/node.view.html',
 			        controller: 'NodeController',
 			        controllerAs : 'node'
 	        	}
@@ -29,7 +29,7 @@ angular
 	        sticky: true,
             views : {
 	        	'retrieve' : {
-			        templateUrl: './app/components/node/templates/retrieve.html'
+			        templateUrl: 'app/components/node/templates/retrieve.html'
 	        	}
 	    	}
         })
@@ -39,7 +39,7 @@ angular
 	        sticky: true,
             views : {
 	        	'create' : {
-			        templateUrl: './app/components/node/templates/create.html'
+			        templateUrl: 'app/components/node/templates/create.html'
 	        	}
 	    	}
         })
@@ -49,7 +49,7 @@ angular
 	        sticky: true,
             views : {
 	        	'update' : {
-			        templateUrl: './app/components/node/templates/update.html'
+			        templateUrl: 'app/components/node/templates/update.html'
 	        	}
 	    	}
         })
@@ -59,7 +59,7 @@ angular
 	        sticky: true,
             views : {
 	        	'delete' : {
-			        templateUrl: './app/components/node/templates/delete.html'
+			        templateUrl: 'app/components/node/templates/delete.html'
 	        	}
 	    	}
         })
@@ -69,7 +69,7 @@ angular
 	        sticky: true,
             views : {
 	        	'index' : {
-			        templateUrl: './app/components/node/templates/index.html'
+			        templateUrl: 'app/components/node/templates/index.html'
 	        	}
 	    	}
         })
@@ -79,7 +79,7 @@ angular
 	        sticky: true,
             views : {
 	        	'files' : {
-			        templateUrl: './app/components/node/templates/files.html'
+			        templateUrl: 'app/components/node/templates/files.html'
 	        	}
 	    	}
         })
@@ -89,7 +89,7 @@ angular
 	        sticky: true,
             views : {
 	        	'comments' : {
-			        templateUrl: './app/components/node/templates/comments.html'
+			        templateUrl: 'app/components/node/templates/comments.html'
 	        	}
 	    	}
         })
@@ -99,7 +99,7 @@ angular
 	        sticky: true,
             views : {
 	        	'attachFile' : {
-			        templateUrl: './app/components/node/templates/attachFile.html'
+			        templateUrl: 'app/components/node/templates/attachFile.html'
 	        	}
 	    	}
         });

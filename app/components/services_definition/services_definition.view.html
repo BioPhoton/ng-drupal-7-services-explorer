@@ -1,0 +1,20 @@
+<div id="Services-Definition" class="resource">
+	<h1 ng-click="services_definition.descriptionColapsed = !services_definition.descriptionColapsed">Services Definition <span class="caret" ng-class="{true:'down',false:'up'}[services_definition.descriptionColapsed]"></span></h1>
+	<div class="collapse" ng-class="!services_definition.descriptionColapsed && 'in'">
+		<p>
+			The <a href="https://www.drupal.org/project/services_tools" target="_blank">services tools module</a> ships the services definition resource. It consists of following resources:
+		</p>
+	</div>
+	<hr/>
+	
+	<ul id="services-definition-tabs" class="nav nav-tabs nav-justified">
+		<li ui-sref-active="active">
+			<a>Definition</a>
+		</li>
+	</ul>
+	
+	<div class="tabs-content">
+		<ui-view name="definition"></ui-view>
+	</div>
+	
+</div>

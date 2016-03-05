@@ -1,0 +1,11 @@
+<h2>Index request</h2>
+<accordion close-others="oneAtATime"> <accordion-group
+	heading="Index Request {{key}} at {{request.requestStart | date:'HH:mm:ss'}}"
+	ng-repeat="(key,request) in definition.indexRequests"> <ng-include
+	src="'app/templates/request/request.html'"></ng-include> </accordion-group> </accordion>
+
+<form name="indexForm" novalidate>
+
+	<button class="btn btn-success" ng-click="definition.doIndex(indexForm)">index request</button>
+	
+</form>

@@ -2,10 +2,10 @@
     'use strict';
 
 	/*Needed to loosely implement templatecahce*/
-	angular.module('da.commons.caching.templates', []);
+	angular.module('ngDrupalServicesTests.assets.html.templates', []);
 
 	angular
 	.module('ngDrupalServicesTests', ['d7-services', 'ngDrupalServicesTests.config', 'ngDrupalServicesTests.states',
-	                                  'ui.bootstrap', 'ngMessages', 'commons.directives.formControlFeedback']);
+	                                  'ui.bootstrap', 'ngMessages', 'commons.directives.formControlFeedback', 'ngDrupalServicesTests.assets.html.templates']);
 
 })();

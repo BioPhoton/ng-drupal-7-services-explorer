@@ -1,0 +1,17 @@
+<div id="definition" class="resource">
+	<h1>Definition resource</h1>
+	<p>Link general definition functionalities to services module.<br/>
+	See  <code>services/resources/definition_resource.inc</code><br/>
+	Following requests are provided:</p>
+	<br/>
+	<ul id="definition-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="index-tab" role="tab"  ui-sref="app.services_definition.definition.index">Index</a>
+		</li>
+	</ul>
+
+	<div class="tabs-content">
+		<ui-view name="index" ng-show="app.$state.includes('app.services_definition.definition.index')"></ui-view>
+	</div>
+	
+</div>

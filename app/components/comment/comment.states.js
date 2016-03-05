@@ -19,7 +19,7 @@ angular
             abstract: true,
 	        views : {
 	        	'comment' : {
-			        templateUrl: './app/components/comment/comment.view.html',
+			        templateUrl: 'app/components/comment/comment.view.html',
 			        controller: 'CommentController',
 			        controllerAs : 'comment'
 	        	}
@@ -31,7 +31,7 @@ angular
 	        sticky: true,
             views : {
 	        	'retrieve' : {
-			        templateUrl: './app/components/comment/templates/retrieve.html'
+			        templateUrl: 'app/components/comment/templates/retrieve.html'
 	        	}
 	    	}
         })
@@ -41,7 +41,7 @@ angular
 	        sticky: true,
             views : {
 	        	'create' : {
-			        templateUrl: './app/components/comment/templates/create.html'
+			        templateUrl: 'app/components/comment/templates/create.html'
 	        	}
 	    	}
         })
@@ -51,7 +51,7 @@ angular
 	        sticky: true,
             views : {
 	        	'update' : {
-			        templateUrl: './app/components/comment/templates/update.html'
+			        templateUrl: 'app/components/comment/templates/update.html'
 	        	}
 	    	}
         })
@@ -61,7 +61,7 @@ angular
 	        sticky: true,
             views : {
 	        	'delete' : {
-			        templateUrl: './app/components/comment/templates/delete.html'
+			        templateUrl: 'app/components/comment/templates/delete.html'
 	        	}
 	    	}
         })
@@ -71,7 +71,7 @@ angular
 	        sticky: true,
             views : {
 	        	'index' : {
-			        templateUrl: './app/components/comment/templates/index.html'
+			        templateUrl: 'app/components/comment/templates/index.html'
 	        	}
 	    	}
         })
@@ -81,7 +81,7 @@ angular
 	        sticky: true,
             views : {
 	        	'countAll' : {
-			        templateUrl: './app/components/comment/templates/countAll.html'
+			        templateUrl: 'app/components/comment/templates/countAll.html'
 	        	}
 	    	}
         })
@@ -91,7 +91,7 @@ angular
 	        sticky: true,
             views : {
 	        	'countNew' : {
-			        templateUrl: './app/components/comment/templates/countNew.html'
+			        templateUrl: 'app/components/comment/templates/countNew.html'
 	        	}
 	    	}
         });

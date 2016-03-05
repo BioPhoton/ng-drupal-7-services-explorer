@@ -1,0 +1,18 @@
+<div id="menu" class="resource">
+	<h1>Menu resource</h1>
+	<p>Link general menu functionalities to services module.<br/>
+	See  <code>services_menu/resources/menu_resource.inc</code></p>
+	<p>Following requests are provided:</p>
+	<br/>
+	<ul id="menu-tabs" class="nav nav-tabs nav-justified" role="tablist">
+		<li ui-sref-active-eq="active">
+			<a id="retrieve-tab" role="tab" ui-sref="app.services_menu.menu.retrieve" >Retrieve</a>
+		</li>
+	</ul>
+	
+	<div class="tabs-content">
+
+		<ui-view name="retrieve" ng-show="app.$state.includes('app.services_menu.menu.retrieve')"></ui-view>
+	</div>
+	
+</div>

@@ -19,7 +19,7 @@ angular
             abstract: true,
 	        views : {
 	        	'taxonomy_term' : {
-			        templateUrl: './app/components/taxonomy_term/taxonomy_term.view.html',
+			        templateUrl: 'app/components/taxonomy_term/taxonomy_term.view.html',
 			        controller: 'TaxonomyTermController',
 			        controllerAs : 'taxonomy_term'
 	        	}
@@ -31,7 +31,7 @@ angular
 	        sticky: true,
             views : {
 	        	'retrieve' : {
-			        templateUrl: './app/components/taxonomy_term/templates/retrieve.html'
+			        templateUrl: 'app/components/taxonomy_term/templates/retrieve.html'
 	        	}
 	    	}
         })
@@ -41,7 +41,7 @@ angular
 	        sticky: true,
             views : {
 	        	'create' : {
-			        templateUrl: './app/components/taxonomy_term/templates/create.html'
+			        templateUrl: 'app/components/taxonomy_term/templates/create.html'
 	        	}
 	    	}
         })
@@ -51,7 +51,7 @@ angular
 	        sticky: true,
             views : {
 	        	'update' : {
-			        templateUrl: './app/components/taxonomy_term/templates/update.html'
+			        templateUrl: 'app/components/taxonomy_term/templates/update.html'
 	        	}
 	    	}
         })
@@ -61,7 +61,7 @@ angular
 	        sticky: true,
             views : {
 	        	'delete' : {
-			        templateUrl: './app/components/taxonomy_term/templates/delete.html'
+			        templateUrl: 'app/components/taxonomy_term/templates/delete.html'
 	        	}
 	    	}
         })
@@ -71,7 +71,7 @@ angular
 	        sticky: true,
             views : {
 	        	'index' : {
-			        templateUrl: './app/components/taxonomy_term/templates/index.html'
+			        templateUrl: 'app/components/taxonomy_term/templates/index.html'
 	        	}
 	    	}
         })
@@ -81,7 +81,7 @@ angular
 	        sticky: true,
             views : {
 	        	'selectNodes' : {
-			        templateUrl: './app/components/taxonomy_term/templates/selectNodes.html'
+			        templateUrl: 'app/components/taxonomy_term/templates/selectNodes.html'
 	        	}
 	    	}
         });

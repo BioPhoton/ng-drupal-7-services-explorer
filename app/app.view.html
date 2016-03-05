@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">NG Drupal7 Aervices Explorer</a>
+      <a class="navbar-brand" href="#">NG Drupal7 Services Explorer</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse" ng-class="!app.navCollapsed && 'in'">
     
@@ -43,9 +43,9 @@
 	                  <li ui-sref-active-eq="active" ><a ui-sref="app.services_views.views.retrieve">Views</a></li>
 	                </ul>
 	          	</li>
-	            <li ui-sref-active="active-trail" class="dropdown-submenu disabled"><a href="#">Services Menu</a>
+	            <li ui-sref-active="active-trail" class="dropdown-submenu"><a ui-sref="app.services_menu.menu.retrieve">Services Menu</a>
 	            	<ul class="dropdown-menu">
-	                  <li ui-sref-active-eq="active" ><a href="#">Menu</a></li>
+	                  <li ui-sref-active-eq="active"><a ui-sref="app.services_menu.menu.retrieve">Menu</a></li>
 	                </ul>
 	            </li>
 	            <li ui-sref-active="active-trail" class="dropdown-submenu disabled"><a href="#">Services Search</a>
@@ -64,12 +64,20 @@
 	                  <li ui-sref-active-eq="active"><a href="#">Entity User</a></li>
 	                </ul>
 	            </li>
+
 	            <li ui-sref-active-eq="active" ui-sref-active="active-trail" class="dropdown-submenu disabled"><a href="#">Services Entity Reference</a></li>
-	            <li ui-sref-active-eq="active" ui-sref-active="active-trail" class="dropdown-submenu disabled"><a href="#">Services Definition</a>
+	            <li ui-sref-active-eq="active" ui-sref-active="active-trail" class="dropdown-submenu"><a ui-sref="app.services_definition.definition.index">Services Definition</a>
 	            	<ul class="dropdown-menu">
-	                  <li ui-sref-active-eq="active"><a href="#">Definition</a></li>
+	                  <li ui-sref-active-eq="active"><a ui-sref="app.services_definition.definition.index">Definition</a></li>
 	                </ul>
 	            </li>
+
+				<li ui-sref-active-eq="active" ui-sref-active="active-trail" class="dropdown-submenu"><a ui-sref="app.geocoder_api.geocoder.index">Geocoder</a>
+					<ul class="dropdown-menu">
+						<li ui-sref-active-eq="active"><a ui-sref="app.geocoder_api.geocoder.index">Geocoder</a></li>
+					</ul>
+				</li>
+
 	         </ul>
 		</li>
       </ul> 

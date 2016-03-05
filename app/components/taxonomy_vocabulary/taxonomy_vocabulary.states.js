@@ -84,7 +84,20 @@ angular
 			        templateUrl: './app/components/taxonomy_vocabulary/templates/getTree.html'
 	        	}
 	    	}
-        });
+        })
+		.state('app.services_3x.taxonomy_vocabulary.retrieveByMachineName', {
+			url: "/retrieveByMachineName",
+			deepStateRedirect: true,
+			sticky: true,
+			views : {
+				'retrieveByMachineName' : {
+					templateUrl: 'app/components/taxonomy_vocabulary/templates/retrieveByMachineName.html'
+				}
+			}
+		})
+		;
+
+
 		
 	};
 

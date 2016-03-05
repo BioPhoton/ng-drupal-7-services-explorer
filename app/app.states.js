@@ -7,15 +7,19 @@ angular
                                              'ngDrupalServicesTests.app.controller',
                                              
                                              'ngDrupalServicesTests.home.controller',
-                                             'ngDrupalServicesTests.commons.controller',
-                                             'ngDrupalServicesTests.services_3x.controller',
-                                             'ngDrupalServicesTests.services_views.controller',
+
+
+
+
                                               
                                              //commons
+											'ngDrupalServicesTests.commons.controller',
                                              'ngDrupalServicesTests.authentication.states',
                                              
                                              //services_3x
-                                             'ngDrupalServicesTests.comment.states',
+											'ngDrupalServicesTests.services_3x.controller',
+
+												'ngDrupalServicesTests.comment.states',
                                              'ngDrupalServicesTests.system.states',
                                              'ngDrupalServicesTests.user.states',
                                              'ngDrupalServicesTests.node.states',
@@ -24,7 +28,20 @@ angular
                                              'ngDrupalServicesTests.taxonomy_vocabulary.states',
                                              
                                              //services_views
-                                             'ngDrupalServicesTests.views.states'
+											 'ngDrupalServicesTests.services_views.controller',
+                                             'ngDrupalServicesTests.views.states',
+
+											 //services_menu
+											 'ngDrupalServicesTests.services_menu.controller',
+											 'ngDrupalServicesTests.menu.states',
+
+											//services_definition
+											'ngDrupalServicesTests.services_definition.controller',
+											'ngDrupalServicesTests.definition.states',
+
+											//geocoder
+											'ngDrupalServicesTests.geocoder.controller',
+											'ngDrupalServicesTests.geocoder.states'
                                              ])
     .config(configFunction);
 
@@ -53,7 +70,7 @@ angular
 	        sticky: true,
 	        views : {
 	        	'mainNavContent' : {
-	        		templateUrl: './app/components/home/home.view.html',
+	        		templateUrl: 'app/components/home/home.view.html',
 	    	        controller: 'HomeController',
 	                controllerAs : 'home'
 	        	}
@@ -66,7 +83,7 @@ angular
             abstract: true,
 	        views : {
 	        	'mainNavContent' : {
-			        templateUrl: './app/components/commons/commons.view.html',
+			        templateUrl: 'app/components/commons/commons.view.html',
 			        controller: 'CommonsController',
 			        controllerAs : 'authentication'
 	        	}
@@ -95,7 +112,46 @@ angular
 			          controllerAs 		: 'services_views',
 			      }
 			    }
-        });
+        })
+
+		.state('app.services_menu', {
+			url: "/services_menu",
+			abstract: true,
+			views: {
+				'mainNavContent': {
+					templateUrl		: "app/components/services_menu/services_menu.view.html",
+					controller		: 'Services_MenuController',
+					controllerAs 		: 'services_menu',
+				}
+			}
+		})
+
+			.state('app.services_definition', {
+				url: "/services_definition",
+				abstract: true,
+				views: {
+					'mainNavContent': {
+						templateUrl		: "app/components/services_definition/services_definition.view.html",
+						controller		: 'Services_DefinitionController',
+						controllerAs 		: 'services_definition',
+					}
+				}
+			})
+
+			.state('app.geocoder_api', {
+				url: "/geocoder_api",
+				abstract: true,
+				views: {
+					'mainNavContent': {
+						templateUrl		: "app/components/geocoder_api/geocoder_api.view.html",
+						controller		: 'GeocoderController',
+						controllerAs 		: 'geocoder',
+					}
+				}
+			})
+
+
+		;
        
 	};
 	
