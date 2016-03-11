@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">NG Drupal7 Services Explorer</a>
+      <a class="navbar-brand" href="#/app/home">NG Drupal7 Services Explorer</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse" ng-class="!app.navCollapsed && 'in'">
     
@@ -20,7 +20,7 @@
 			<a dropdown-toggle>Commons <b class="caret"></b></a>
 			<ul class="dropdown-menu" role="menu">
 				<li ui-sref-active-eq="active" ><a tabindex="-1" ui-sref="app.commons.authentication.isAuthorized">AuthenticationService</a></li>
-				<li ui-sref-active-eq="active" class="disabled"><a tabindex="-1" href="#">Directives</a></li>
+				<li ui-sref-active-eq="active" class=""><a tabindex="-1"  analytics-on="click" analytics-event="Directives Interest">Directives</a></li>
 	        </ul>
 	    </li>
         <li ui-sref-active="active-trail" class="dropdown" dropdown>
@@ -29,12 +29,12 @@
 				<li ui-sref-active="active-trail" ui-sref-active="active-trail" class="dropdown-submenu">
 	                <a tabindex="-1" ui-sref="app.services_3x.system.connect">Services 3.x</a>
 	                <ul class="dropdown-menu">
-	                  <li ui-sref-active-eq="active"><a href="#">Comments</a></li>
+	                  <li ui-sref-active-eq="active"><a ui-sref="app.services_3x.comments.retrieve">Comments</a></li>
 			          <li ui-sref-active-eq="active"><a ui-sref="app.services_3x.file.retrieve">File</a></li>
 			          <li ui-sref-active-eq="active"><a ui-sref="app.services_3x.node.retrieve">Node</a></li>
 			          <li ui-sref-active-eq="active"><a ui-sref="app.services_3x.system.connect" >System</a></li>
 			          <li ui-sref-active-eq="active"><a ui-sref="app.services_3x.taxonomy_term.retrieve">Taxonomy Terms</a></li>
-			          <li ui-sref-active-eq="active"><a href="#">Taxonomy Vocabulary</a></li>
+			          <li ui-sref-active-eq="active"><a ui-sref="app.services_3x.taxonomy_vocabulary.retrieve">Taxonomy Vocabulary</a></li>
 			          <li ui-sref-active-eq="active"><a ui-sref="app.services_3x.user.retrieve" >User</a></li>
 	                </ul>
 	            </li>
@@ -48,24 +48,24 @@
 	                  <li ui-sref-active-eq="active"><a ui-sref="app.services_menu.menu.retrieve">Menu</a></li>
 	                </ul>
 	            </li>
-	            <li ui-sref-active="active-trail" class="dropdown-submenu disabled"><a href="#">Services Search</a>
+	            <li ui-sref-active="active-trail" class="dropdown-submenu"><a analytics-on="click" analytics-event="Services Search Interest">Services Search</a>
 	            	<ul class="dropdown-menu">
-	                  <li ui-sref-active-eq="active"><a href="#">Search Node</a></li>
-	                  <li ui-sref-active-eq="active"><a href="#">Search User</a></li>
+	                  <li ui-sref-active-eq="active"><a analytics-on="click" analytics-event="Services Search Node Interest">Search Node</a></li>
+	                  <li ui-sref-active-eq="active"><a analytics-on="click" analytics-event="Services Search User Interest">Search User</a></li>
 	                </ul>
 	            </li>
-	            <li ui-sref-active="active-trail" class="dropdown-submenu disabled"><a href="#">Services Entity</a>
-	            	<ul class="dropdown-menu disabled">
-	                  <li ui-sref-active-eq="active"><a href="#">Entity Comment</a></li>
-	                  <li ui-sref-active-eq="active"><a href="#">Entity File</a></li>
-	                  <li ui-sref-active-eq="active"><a href="#">Entity Node</a></li>
-	                  <li ui-sref-active-eq="active"><a href="#">Entity Taxonomy Terms</a></li>
-	                  <li ui-sref-active-eq="active"><a href="#">Entity Taxonomy Vocabulary</a></li>
-	                  <li ui-sref-active-eq="active"><a href="#">Entity User</a></li>
+	            <li ui-sref-active="active-trail" class="dropdown-submenu"><a analytics-on="click" analytics-event="Services Entity Interest">Services Entity</a>
+	            	<ul class="dropdown-menu">
+	                  <li ui-sref-active-eq="active"><a analytics-on="click" analytics-event="Services Entity Comment Interest">Entity Comment</a></li>
+	                  <li ui-sref-active-eq="active"><a analytics-on="click" analytics-event="Services Entity File Interest">Entity File</a></li>
+	                  <li ui-sref-active-eq="active"><a analytics-on="click" analytics-event="Services Entity Node Interest">Entity Node</a></li>
+	                  <li ui-sref-active-eq="active"><a analytics-on="click" analytics-event="Services Entity Taxonomy Terms Interest">Entity Taxonomy Terms</a></li>
+	                  <li ui-sref-active-eq="active"><a analytics-on="click" analytics-event="Services Entity Taxonomy Vocabulary Interest">Entity Taxonomy Vocabulary</a></li>
+	                  <li ui-sref-active-eq="active"><a analytics-on="click" analytics-event="Services Entity User Interest">Entity User</a></li>
 	                </ul>
 	            </li>
 
-	            <li ui-sref-active-eq="active" ui-sref-active="active-trail" class="dropdown-submenu disabled"><a href="#">Services Entity Reference</a></li>
+	            <li ui-sref-active-eq="active" ui-sref-active="active-trail" class="dropdown-submenu"><a analytics-on="click" analytics-event="Services Entity Reference Interest">Services Entity Reference</a></li>
 	            <li ui-sref-active-eq="active" ui-sref-active="active-trail" class="dropdown-submenu"><a ui-sref="app.services_definition.definition.index">Services Definition</a>
 	            	<ul class="dropdown-menu">
 	                  <li ui-sref-active-eq="active"><a ui-sref="app.services_definition.definition.index">Definition</a></li>
