@@ -1,117 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="This is a project for testing the ng-drupal-7-services repo in github">
-    <meta name="author" content="Michael Hladky">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="This is a project for testing the ng-drupal-7-services repo in github">
+        <meta name="author" content="Michael Hladky">
 
-    <title>Drupal services explorer</title>
+        <title>Drupal services explorer</title>
 
-    <!-- compiled css -->
-    <link href="assets/css/app.min.css" rel="stylesheet">
+        <!-- compiled css -->
+        <link href="assets/css/app.min.css" rel="stylesheet">
 
-    <!-- js dependencies -->
+        <!-- js dependencies -->
 
-    <!-- bower_components  -->
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="bower_components/ngstorage/ngStorage.js"></script>
+        <!-- bower_components  -->
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/ui-router-extras/release/ct-ui-router-extras.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+        <script src="bower_components/ngstorage/ngStorage.js"></script>
 
-    <script src="bower_components/ng-drupal-7-services/dist/ng-drupal-7-services.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
-    <script src="bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js"></script>
-
-
-    <!--
-    <script src="assets/js/vendor.js"></script>
--->
-
-    <script src="app/commons/directives/formControlFeedback.js"></script>
-    <script src="app/commons/directives/navbarLogin.js"></script>
-    <script src="app/commons/filters/filters.ifEmpty.js"></script>
-
-    <script src="app/app.controller.js"></script>
-    <script src="app/components/home/home.controller.js"></script>
-
-    <script src="app/components/commons/commons.controller.js"></script>
-
-    <script src="app/components/services_3x/services_3x.controller.js"></script>
-
-    <script src="app/components/authentication/authentication.controller.js"></script>
-    <script src="app/components/authentication/authentication.states.js"></script>
-
-    <script src="app/components/comment/comment.controller.js"></script>
-    <script src="app/components/comment/comment.states.js"></script>
-
-    <script src="app/components/system/system.controller.js"></script>
-    <script src="app/components/system/system.states.js"></script>
-
-    <script src="app/components/user/user.controller.js"></script>
-    <script src="app/components/user/user.states.js"></script>
-
-    <script src="app/components/node/node.controller.js"></script>
-    <script src="app/components/node/node.states.js"></script>
-
-    <script src="app/components/file/file.controller.js"></script>
-    <script src="app/components/file/file.states.js"></script>
-
-    <script src="app/components/taxonomy_term/taxonomy_term.controller.js"></script>
-    <script src="app/components/taxonomy_term/taxonomy_term.states.js"></script>
-
-    <script src="app/components/taxonomy_vocabulary/taxonomy_vocabulary.controller.js"></script>
-    <script src="app/components/taxonomy_vocabulary/taxonomy_vocabulary.states.js"></script>
+        <script src="bower_components/ng-drupal-7-services/dist/ng-drupal-7-services.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="bower_components/angulartics/dist/angulartics.min.js"></script>
+        <script src="bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js"></script>
 
 
-    <script src="app/components/services_views/services_views.controller.js"></script>
-    <script src="app/components/views/views.controller.js"></script>
-    <script src="app/components/views/views.states.js"></script>
+        <!--
+        <script src="assets/js/vendor.js"></script>
+    -->
+
+        <script src="app/commons/directives/formControlFeedback.js"></script>
+        <script src="app/commons/directives/navbarLogin.js"></script>
+        <script src="app/commons/filters/filters.ifEmpty.js"></script>
+
+        <script src="app/app.controller.js"></script>
+        <script src="app/components/home/home.controller.js"></script>
+
+        <script src="app/components/commons/commons.controller.js"></script>
+
+        <script src="app/components/services_3x/services_3x.controller.js"></script>
+
+        <script src="app/components/authentication/authentication.controller.js"></script>
+        <script src="app/components/authentication/authentication.states.js"></script>
+
+        <script src="app/components/comment/comment.controller.js"></script>
+        <script src="app/components/comment/comment.states.js"></script>
+
+        <script src="app/components/system/system.controller.js"></script>
+        <script src="app/components/system/system.states.js"></script>
+
+        <script src="app/components/user/user.controller.js"></script>
+        <script src="app/components/user/user.states.js"></script>
+
+        <script src="app/components/node/node.controller.js"></script>
+        <script src="app/components/node/node.states.js"></script>
+
+        <script src="app/components/file/file.controller.js"></script>
+        <script src="app/components/file/file.states.js"></script>
+
+        <script src="app/components/taxonomy_term/taxonomy_term.controller.js"></script>
+        <script src="app/components/taxonomy_term/taxonomy_term.states.js"></script>
+
+        <script src="app/components/taxonomy_vocabulary/taxonomy_vocabulary.controller.js"></script>
+        <script src="app/components/taxonomy_vocabulary/taxonomy_vocabulary.states.js"></script>
 
 
-    <script src="app/components/services_menu/services_menu.controller.js"></script>
-    <script src="app/components/menu/menu.controller.js"></script>
-    <script src="app/components/menu/menu.states.js"></script>
-
-    <script src="app/components/geocoder_api/geocoder_api.controller.js"></script>
-    <script src="app/components/geocoder/geocoder.controller.js"></script>
-    <script src="app/components/geocoder/geocoder.states.js"></script>
-
-    <script src="app/components/services_definition/services_definition.controller.js"></script>
-    <script src="app/components/definition/definition.controller.js"></script>
-    <script src="app/components/definition/definition.states.js"></script>
+        <script src="app/components/services_views/services_views.controller.js"></script>
+        <script src="app/components/views/views.controller.js"></script>
+        <script src="app/components/views/views.states.js"></script>
 
 
-    <script src="app/app.config.js"></script>
-    <script src="app/app.states.js"></script>
-    <script src="app/app.js"></script>
-    <!-- <script src="assets/html/templates.js"></script> -->
+        <script src="app/components/services_menu/services_menu.controller.js"></script>
+        <script src="app/components/menu/menu.controller.js"></script>
+        <script src="app/components/menu/menu.states.js"></script>
 
-    <!--   -->
-    <!--
-<script src="assets/js/main.js"></script>
--->
+        <script src="app/components/geocoder_api/geocoder_api.controller.js"></script>
+        <script src="app/components/geocoder/geocoder.controller.js"></script>
+        <script src="app/components/geocoder/geocoder.states.js"></script>
 
-</head>
+        <script src="app/components/services_definition/services_definition.controller.js"></script>
+        <script src="app/components/definition/definition.controller.js"></script>
+        <script src="app/components/definition/definition.states.js"></script>
 
-<body ng-app="ngDrupalServicesTests"><a target="_blank" href="https://github.com/BioPhoton/ng-drupal-7-services-explorer"><img style="position: absolute; top: 0; left: 0; border: 0; z-index:10000;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
 
-<div ui-view></div>
+        <script src="app/app.config.js"></script>
+        <script src="app/app.states.js"></script>
+        <script src="app/app.js"></script>
+        <!-- <script src="assets/html/templates.js"></script> -->
 
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-73366938-1', 'auto');
-    //angular will handle that
-    //ga('send', 'pageview');
-</script>
+        <!--   -->
+        <!--
+    <script src="assets/js/main.js"></script>
+    -->
 
-</body>
+    </head>
+
+    <body ng-app="ngDrupalServicesTests">
+    <div ui-view></div>
+
+    <a target="_blank" href="https://github.com/BioPhoton/ng-drupal-7-services-explorer"><img style="position: absolute; top: 0; left: 0; border: 0; z-index:10000;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+    <script>(function (i, s, o, g, r, a, m) {i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {(i[r].q = i[r].q || []).push(arguments)}, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m)})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');ga('create', 'UA-73366938-1', 'auto');</script>
+
+    </body>
 </html>
