@@ -7,4 +7,31 @@
 		User: <b>basic-user</b><br/>
 		Pass: <b>basic-user</b><br/>
 	</h4>
+
+	<div class="row">
+		<div class="col-sm-6 col-md-4 col-md-offset-4">
+			<h1 class="text-center login-title">Enter your Drupal path here</h1>
+			<div class="account-wall">
+				<i class="profile-img fa fa-gear fa-4x" alt=""></i>
+				<form class="form-signin">
+					<input id="drupal-instance" class="form-control" type="text" placeholder="http://your.custom.server/" autofocus
+						   ng-model="home.drupal_instance">
+					<input id="api-endpoint" class="form-control" type="text" placeholder="api/v1/"
+							 ng-model="home.api_endpoint">
+					<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="home.setCustomSettings()">Save</button>
+
+					<label class="checkbox pull-left">
+						<input type="checkbox" value="remember-me">
+						Remember me
+					</label>
+					<a href="https://github.com/BioPhoton/ng-drupal-7-services" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+				</form>
+			</div>
+			<a href="#" class="text-center new-account">Create an account </a>
+		</div>
+	</div>
+
+	</div>
+</div>
+
 </div>

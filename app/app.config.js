@@ -3,12 +3,12 @@
 
 
 angular
-    .module('ngDrupalServicesTests.config', ['d7-services.commons.customizeIntercepter'])
+    .module('ngDrupalServicesTests.config', ['d7-services.commons.configurations'])
     .config(configFunction);
 
 	configFunction.$inject = ['DrupalApiConstant'];
 
-	function configFunction(DrupalApiConstant) 
+	function configFunction(DrupalApiConstant)
 	{ 
 		//drupal services configurations
 		DrupalApiConstant.drupal_instance = 'http://dev-drulap-headless.pantheon.io/';
