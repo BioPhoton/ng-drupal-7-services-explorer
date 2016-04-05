@@ -3,12 +3,11 @@
 
 
 angular
-    .module('ngDrupalServicesTests.config', [])
+    .module('ngDrupalServicesTests.config', ['d7-services.commons.customizeIntercepter'])
     .config(configFunction);
 
 	configFunction.$inject = ['DrupalApiConstant'];
 
-	/** @ngInject */ 
 	function configFunction(DrupalApiConstant) 
 	{ 
 		//drupal services configurations
