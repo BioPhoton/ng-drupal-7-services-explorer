@@ -6,6 +6,6 @@
 
 	angular
 	.module('ngDrupalServicesTests', ['d7-services', 'ngDrupalServicesTests.config', 'ngDrupalServicesTests.states',
-	                                  'ui.bootstrap', 'ngMessages', 'commons.directives.formControlFeedback', 'ngDrupalServicesTests.assets.html.templates']);
+	                                  'ui.bootstrap', 'ngMessages', 'commons.directives.formControlFeedback', 'ngDrupalServicesTests.assets.html.templates', 'angulartics', 'angulartics.google.analytics']);
 
 })();
