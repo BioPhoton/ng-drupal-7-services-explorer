@@ -1,6 +1,49 @@
-/*Gulp modules
- * */
+/* jshint node: true */
+/**
+ *  Welcome to your gulpfile!
+ *  The gulp tasks are splitted in several files in the gulp directory
+ *  because putting all here was really too long
+ */
 
+/**
+ * gulpfile.js
+ *
+ * This file loads all filse located in ./gulp/tasks
+ *
+ * This File requires following npm modules:
+ * ``
+ * $ npm install gulp wrench gulp-load-plugins gulp-task-listing --save--dev
+ * ``
+ *
+ */
+
+'use strict';
+
+var gulp = require('gulp');
+
+var wrench = require('wrench');
+var $ = require('gulp-load-plugins')();
+
+/**
+ *  This will load all js or coffee files in the gulp directory
+ *  in order to load all gulp tasks
+ */
+wrench.readdirSyncRecursive('./gulp/tasks').filter(function(file) {
+	return (/\.(js|coffee)$/i).test(file);
+}).map(function(file) {
+	require('./gulp/tasks/' + file);
+});
+
+/**
+ * List the available gulp tasks
+ */
+gulp.task('help', $.taskListing);
+gulp.task('default', ['help']);
+
+
+//__________________________________________________________________________________________
+
+/*Gulp modules
 var gulp 		= require('gulp'),
 	
 	gutil		= require("gulp-util"),
@@ -20,8 +63,6 @@ var gulp 		= require('gulp'),
 	
 	bundle = require('gulp-bundle-assets');
 
-/*Vars*/
-
 	//general
 var bowerDir 		= 'bower_components',
 	resourcesDir 	= 'resources',
@@ -40,7 +81,7 @@ var bowerDir 		= 'bower_components',
 
 var config = {
 		//we exclude animations because irt is imported in page specific animations
-		sassPaths: ['app/**/*.scss'],
+		sassPaths: ['app/**\/*.scss'],
 		autoprefixerOptions : {
 			browsers: [
                        '> 1%',
@@ -64,28 +105,17 @@ var config = {
 		}
 };
 
-/*Gulp Tasks*/
-
-
 gulp.task('build', function(done){
 	gutil.log(gutil.colors.green('building project'));
 	return runSequence('move-fonts','move-images','sass','templatecache','bundle',  done);
 });
 
-/*This task creates a bundle of all js files*/
+
 gulp.task('bundle', function() {
 	  return gulp.src('./bundle.config.js')
 	    .pipe(bundle())
 	    .pipe(gulp.dest('./assets/js'));
 	});
-
-
-/*This task basically runs bower install. By including in the gulpfile we only have to run gulp bower and have them all setup and ready.*/
-gulp.task('bower', function() {
-    return bower()
-        .pipe(gulp.dest(bowerDir))
-        .on('end', function(){  gutil.log(gutil.colors.green('loaded bower components')); });
-});
 
 gulp.task('templatecache',['clean-html'], function (done) {
 	gutil.log(gutil.colors.green('collecting html files minify and put in templates file'));
@@ -102,11 +132,12 @@ gulp.task('templatecache',['clean-html'], function (done) {
 		//templateFooter : "Override template footer."
 	};
 
-	return gulp.src('app/**/*.html')
+	return gulp.src('app/**\/*.html')
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(templateCache('templates.js', options))
 		.pipe(gulp.dest('./assets/html'), done);
 });
+
 gulp.task('clean-html', function(done) {
 	gutil.log(gutil.colors.green('cleaning'+ assetsPath+'/html'));
 
@@ -114,7 +145,6 @@ gulp.task('clean-html', function(done) {
 });
 
 
-/*Move font files form resources into assets/fonts directory so that our css @font-face's will resolve their files*/
 gulp.task('move-fonts', function() {
 	//fontawesome
 	var faFrom = bowerDir + faSourceFontsPath;
@@ -131,7 +161,7 @@ gulp.task('move-fonts', function() {
         
 });
 
-/*Move font files form resources into assets/fonts directory so that our css @font-face's will resolve their files*/
+
 gulp.task('move-images', function() {
 	//fontawesome
 	var imgFrom = resourcesDir + imgPath + '/*';
@@ -142,7 +172,7 @@ gulp.task('move-images', function() {
   
 });
 
-/* Taske the app.scss file and creates .css and .min.css files and save theem in app/css. */
+
 gulp.task('sass', function(done) {
 	  var scssFrom = config.sassPaths,
 		  scssTo = assetsPath+cssPath; 
@@ -172,7 +202,7 @@ gulp.task('sass', function(done) {
 
 });
 
-/*Watches all scss files and rebuild all if any of them changes.*/
+
 gulp.task('watch-sass', function() {
 	runSequence('sass', function() {
 		 gulp.watch(config.sassPaths, ['sass'])
@@ -180,11 +210,12 @@ gulp.task('watch-sass', function() {
 	});
 });
 
-/*livereload*/
+
 gulp.task('webserver', function() {
 	  gulp.src('./')
 	    .pipe(server(config.serverOptions));
 });
 
-/*The default task (called when you run `gulp` from cli)*/
 gulp.task('default', ['sass', 'watch-sass', 'webserver']);
+
+*/

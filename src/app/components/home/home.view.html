@@ -1,0 +1,72 @@
+<div id="home" class="resource">
+    <h1>Angular Drupal 8 & 7 API Explorer</h1>
+
+    <h3>This project shows the whole functionality of the <a target="_blank" href="https://github.com/BioPhoton/ng-drupal-7-services">AngularDrupal Services</a> lib.
+        <br/>
+        Use the default credentials to authenticate with the server or point to your own server by editing the settings. </h3>
+
+    <hr/>
+
+    <div class="row">
+
+        <div class="col-sm-6 ">
+
+            <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Default Credentials
+                        </div>
+                    <div class="panel-body">
+                        <h4>
+                            User: <b>basic-user</b><br/>
+                            Pass: <b>basic-user</b><br/>
+                        </h4>
+                    </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-sm-6 ">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Custom Settings
+                </div>
+                    <form class="panel-body" name="home.settingsForm">
+                        <div class="form-group">
+                            <label for="drupal-instance">Drupal Instance</label>
+                            <input id="drupal-instance" class="form-control" type="text" placeholder="http://your.custom.server/"
+                                   autofocus
+                                   ng-model="home.drupal_instance">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="api-endpoint">API Endpoint</label>
+                            <input id="api-endpoint" class="form-control" type="text" placeholder="api/v1/"
+                                   ng-model="home.api_endpoint">
+                        </div>
+
+                        <div class="form-group">
+                            <label ng-click="home.resourcesCollapsed = !home.resourcesCollapsed">Resource Aliases (optional) <span class="caret pull-right" ng-class="{true:'down',false:'up'}[home.resourcesCollapsed]"></span></label>
+                        </div>
+                        <div class="well collapse" ng-class="!home.resourcesCollapsed && 'in'">
+
+                        <div class="form-group" ng-repeat="(resourceName , resource) in home.resources">
+                            <label for="user-endpoint">{{resourceName}} Resource Alias</label>
+                            <input id="user-endpoint" class="form-control" type="text" placeholder="{{resourceName}}"
+                                   ng-model="home.resources[resourceName]">
+                        </div>
+                        </div>
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="home.setCustomSettings()">
+                            Save
+                        </button>
+                    </form>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
