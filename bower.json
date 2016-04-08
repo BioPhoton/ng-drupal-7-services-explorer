@@ -29,7 +29,7 @@
     "angular": "1.4.5"
   },
   "overrides": {
-    "font-awesome": {
+    "fontawesome": {
       "main": [
         "css/font-awesome.css"
       ]

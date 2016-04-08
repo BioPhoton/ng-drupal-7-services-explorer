@@ -1,1 +1,0 @@
-import all needed scss files form bower_copmonents and add overrides for default variables

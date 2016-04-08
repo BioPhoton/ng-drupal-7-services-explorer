@@ -15,20 +15,24 @@
 var gulp = require('gulp'),
 
     helper = require('../helper'),
-    $ = require('gulp-load-plugins')();
+    $ = require('gulp-load-plugins')(),
+    angularFilesort = require('gulp-angular-filesort');
 //runSequence = require('run-sequence');
 
 var config = require('../config'),
-    indexFile = config.srcFolder + 'index.html';
+    indexFile = config.client + 'index.html';
 
 var defaultConfig = {
     indexFile :indexFile,
-    injectDest : config.src,
+    injectDest : config.client,
     //js
     injectJsSrc: [
-        config.srcFolder + 'app/**/*.js'
+        config.client + 'app/app.js',
+        config.client + 'app/**/*.js',
+        config.client + 'app/*.js'
+
     ],
-    injectJsOrder : []
+    injectOptions:{ignorePath:'src', addRootSlash:false}
 };
 
 ////////////////
@@ -41,8 +45,8 @@ var defaultConfig = {
  **/
 var scriptsConfig = defaultConfig;
 
-if('scripts' in config) {
-    scriptsConfig = helper.arrayConcatExtend(defaultConfig, config.scripts);
+if('scriptsConfig' in config) {
+    scriptsConfig = helper.arrayConcatExtend(defaultConfig, config.scriptsConfig);
 }
 
 //console.log(scriptsConfig);
@@ -51,14 +55,14 @@ if('scripts' in config) {
 
 
 gulp.task('scripts:inject', function(done) {
-    helper.log('Wiring the project dependencies into html');
 
-    var target = gulp.src(scriptsConfig.injectScr);
-    var sources = gulp.src(scriptsConfig.injectJsSrc)
-        .pipe($.angularFilesort())
+
+    var target = gulp.src(defaultConfig.indexFile);
+    var sources = gulp.src(scriptsConfig.injectJsSrc).pipe($.angularFilesort());
+    helper.log('Wiring the project dependencies from '+scriptsConfig.injectJsSrc+' into '+defaultConfig.indexFile);
 
     return target
-        .pipe($.inject(sources, {ignorePath: 'src', addRootSlash: false}))
+        .pipe($.inject(sources, scriptsConfig.injectOptions))
         .pipe(gulp.dest(scriptsConfig.injectDest), done);
 
 });

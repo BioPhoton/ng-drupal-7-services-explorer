@@ -1,4 +1,4 @@
-;(function() {
+/*;(function() {
     'use strict';
 
     angular
@@ -7,8 +7,6 @@
 
 
     //drupalIllegalChar.$inject = [''];
-
-    /** @ngInject */
     function drupalIllegalChar() {
 
         return {
@@ -51,4 +49,4 @@
     };
 
 
-})();
+})();*/

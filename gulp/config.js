@@ -15,7 +15,7 @@ module.exports = (function() {
         bower = {
             json: require('../bower.json'),
             directory: path.join(root,'bower_components/'),
-            //ignorePath: '../'
+            ignorePath: '../'
         },
         src = './src/',
         //optional wrapper folder here (src+'client/')
@@ -25,8 +25,6 @@ module.exports = (function() {
         clientAssets = client + assetsFolder,
         baseDirs = ['./', src],
         clientApp = client + app,
-
-
         assetsImagesFolder = 'images/',
         assetsFontsFolder = 'fonts/',
         indexFileName = 'index.html';
@@ -56,46 +54,46 @@ module.exports = (function() {
         }
     ];
 
+    var buildCopies = [
+        {
+            src:[
+                clientAssets+assetsImagesFolder+'**/*.*',
+            ],
+            dest:buildFolder + assetsFolder + assetsImagesFolder,
+            name : 'assetImages'
+        },
+        {
+            src:[
+                clientAssets+assetsFontsFolder+'**/*.*',
+            ],
+            dest:buildFolder + assetsFolder + assetsFontsFolder,
+            name : 'assetFonts'
+        }
+    ];
+
 
 
 
 
     var config = {
+        root : root,
+        indexFileName: indexFileName,
+        buildFolder: buildFolder,
+        client: client,
         app : app,
         clientApp : clientApp,
-        inject : {
-            //injectJsSrc : [path.join(clientApp,'**','*.js')],
-            injectJsOrder: [
-                '**/app/app.js',
-                '**/app/*.js',
-                '**/app/**/*.js'
-            ]
-        },
+        assetsFolder : assetsFolder,
+        clientAssets : clientAssets,
         fontsConfig : {
-            fontCopies : fontCopies,
+            fontCopies : fontCopies
         },
         imagesConfig : {
             imageCopies : imageCopies
         },
-
-        root : root,
-        baseDirs:baseDirs,
-        client: client,
-        buildFolder: buildFolder,
-        assetsFolder : assetsFolder,
-        clientAssets : clientAssets,
-        index: client + indexFileName,
-
-        /**
-         * browser sync
-         */
-        browserReloadDelay: 1000,
-
-        /**
-         * Bower and NPM files
-         */
+        buildConfig : {
+            buildCopies : buildCopies
+        },
         bower: bower
-
     };
 
     return config;

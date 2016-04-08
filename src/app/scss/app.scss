@@ -11,7 +11,7 @@ $brand-black:         #000 !default;
 
 $icon-font-path: "../fonts/bootstrap/" !default;
 
-@import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss"; 
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
 // needed for buootatrap-ui =>https://angular-ui.github.io/bootstrap/#/getting_started
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
@@ -51,10 +51,3 @@ $icon-font-path: "../fonts/bootstrap/" !default;
 .control-label {
   display: block;
 }
-
-
-//=Bootstrap end
-
-//=Fontawesome
-$fa-font-path: "../fonts/fontawesome" !default;
-@import "../bower_components/fontawesome/scss/font-awesome.scss"; 
